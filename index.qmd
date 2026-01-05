@@ -1,0 +1,29 @@
+---
+title: "MA22001 Core Mathematics IV"
+---
+
+This webpage contains the lecture notes for the Core Mathematics IV (MA22001) module for the University of Dundee.
+
+# Introduction
+These notes contain all the examinable material within the module, and maybe also some bonus stuff, which will be clearly marked as non-examinable^[Anything in the footnotes is also non-examinable.]. For details of the organisation of the module this year, please see My Dundee.
+
+I'll be updating these notes weekly as we go through, and at the end of the semester I'll make the full set of these notes available as a PDF. If you'd like to read ahead, I have provided some related materials from historical modules on MyDundee.
+
+It's very likely that there are mistakes in these notes. If you find one, please let me know ASAP at <mailto:jparker002@dundee.ac.uk>, no matter how trivial you think the mistake is.
+
+## How to use these notes
+These notes are designed to be complementary to the seminars. They're designed to be easy to read with minimal extra information. For context and motivation, you'll need to come to class.
+These notes contain the key definitions and some brief examples, but I will show more and different examples in class.
+For best results, I suggest quickly reading over these notes the night before each class, and then revisiting them if necessary when
+you come to the problem sheets and before the tests and exam.
+
+As usual, I'll be taking photos of the boards from the seminars in case you want to revisit a specific example we did there, though I don't promise that you'll be able to follow these without having attended the seminars.
+
+## What is Core Mathematics IV
+The bulk of this module is "Vector Calculus".
+Vector calculus is basically the mathematics of shapes in three dimensions. This will combine the "algebra" and "calculus" that you've seen in previous modules. First we'll see differentiation in 3D, then integration in 3D, and then some analogues of the "fundamental theorem of calculus" which combine these two.
+
+We'll also see some methods for solving differential equations in the second half of the module.
+
+Everything in this module is fundamental to anyone who wants to study maths or physics^[or indeed engineering] at a higher level. 
+This builds off previous modules and many future modules will build off this. This is not a physics module, but I will appeal to applications in physics a lot.

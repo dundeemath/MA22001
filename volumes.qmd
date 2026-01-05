@@ -1,0 +1,37 @@
+---
+title: "Volumes in three dimensions"
+---
+
+::: {.hidden}
+ \providecommand{\vv}[1]{{\mathbf{#1}}}
+ \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
+:::
+
+This part of the module deals with sets in 3D.^[And specifically, 'nice' sets which can be differentiated and integrated. We won't go too much into the mathematical details, but these are called _manifolds_. This excludes things like fractal sets.]
+
+Sets are defined by _equalities_ and _inequalities_. The simplest type we will see are those sets which are defined only by inequalities and no equalities. For example, consider the set $S$ where
+$$
+x\geq 0.
+$$
+We haven't mentioned $y$ or $z$, so we assume they can take any values. Formally, we might write this as^[Read this as "S is the set of x y z in R three such that x is non-negative"]
+$$
+S = \{(x,y,z)\in\mathbf{R}^3\,|\,x\geq 0\}.
+$$
+This is an infinite volume, it's all the points on one side of the $y-z$ plane.
+
+### Example
+What sort of set is
+$$
+A = \{(x,y,z)\in\mathbf{R}^3\,|\,x\geq 0,\,x^2+y^2+z^2\leq4\}.
+$$
+
+::: {.callout-tip collapse="true"}
+## Solution
+This set is defined by two inequalities but no equalities, so it's a volume.
+
+It's the half-ball of radius $2$ (because $2^2=4$), centred on the origin, lying in the positive $x$ region.
+:::
+
+::: {.callout-note}
+For the purposes of this module, it doesn't really matter if the inequalities are strict ($<$ or $>$) or non-strict ($\leq$ or $\geq$), the maths will end up the same.
+:::

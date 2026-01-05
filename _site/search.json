@@ -1,0 +1,514 @@
+[
+  {
+    "objectID": "volumes.html",
+    "href": "volumes.html",
+    "title": "Volumes in three dimensions",
+    "section": "",
+    "text": "This part of the module deals with sets in 3D.1\nSets are defined by equalities and inequalities. The simplest type we will see are those sets which are defined only by inequalities and no equalities. For example, consider the set \\(S\\) where \\[\nx\\geq 0.\n\\] We haven’t mentioned \\(y\\) or \\(z\\), so we assume they can take any values. Formally, we might write this as2 \\[\nS = \\{(x,y,z)\\in\\mathbf{R}^3\\,|\\,x\\geq 0\\}.\n\\] This is an infinite volume, it’s all the points on one side of the \\(y-z\\) plane.",
+    "crumbs": [
+      "Chapter 2: Curves, surfaces, volumes (Week 16)",
+      "Volumes"
+    ]
+  },
+  {
+    "objectID": "volumes.html#footnotes",
+    "href": "volumes.html#footnotes",
+    "title": "Volumes in three dimensions",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAnd specifically, ‘nice’ sets which can be differentiated and integrated. We won’t go too much into the mathematical details, but these are called manifolds. This excludes things like fractal sets.↩︎\nRead this as “S is the set of x y z in R three such that x is non-negative”↩︎",
+    "crumbs": [
+      "Chapter 2: Curves, surfaces, volumes (Week 16)",
+      "Volumes"
+    ]
+  },
+  {
+    "objectID": "vectorfields.html",
+    "href": "vectorfields.html",
+    "title": "Derivatives of vector fields",
+    "section": "",
+    "text": "Another thing that changes when moving from 1D to 3D is that we now have a choice of two types of functions, scalar fields or vector fields. Now we’ll think about vector fields, that is, assigning a magnitude and a direction to every point in space. Think about those wind maps on the weather forecast, or magnetic field lines around a magnet.\nTo know a vector field, we need to know each of its components at each point in space. \\[\n{\\mathbf{F}}(x,y,z) = F_1(x,y,z){\\mathbf{e}}_x + F_2(x,y,z){\\mathbf{e}}_y + F_3(x,y,z){\\mathbf{e}}_z,\n\\] or equivalently in a different co-ordinate system.\nFirstly, given any vector field we can easily construct a scalar field by taking the magnitude at each point in space, \\[\n\\left|{\\mathbf{F}}(x,y,z)\\right|=\\sqrt{F_1(x,y,z)^2 + F_2(x,y,z)^2 + F_3(x,y,z)^2}\n\\] and then take scalar derivatives. More on that next week.\nWe consider two different types.",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Derivatives of vector fields"
+    ]
+  },
+  {
+    "objectID": "vectorfields.html#footnotes",
+    "href": "vectorfields.html#footnotes",
+    "title": "Derivatives of vector fields",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nHow can you prove this?↩︎",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Derivatives of vector fields"
+    ]
+  },
+  {
+    "objectID": "surface.html",
+    "href": "surface.html",
+    "title": "Surfaces",
+    "section": "",
+    "text": "Curves in 3D can be seen as a generalisation of curves in 2D, but a different generalisation would be surfaces in 3D1. The easiest way to write down a surface is \\[\nz = f(x,y).\n\\] This is exactly equivalent to \\(y=f(x)\\) in 2D, and you can think of it as giving the height of the surface at any points \\(x\\) and \\(y\\).\nActually, any single equation relating the variables \\(x\\), \\(y\\) and \\(z\\) will in general describe a surface in 3D. For example, \\[\nx^2 + y^2 + z^2 = 1\n\\] is the sphere of radius 1 centred on the origin (MA12001), and \\[\nx = 1\n\\] is the plane parallel to the \\(y-z\\) plane which goes through the point \\([1,0,0]\\).",
+    "crumbs": [
+      "Chapter 2: Curves, surfaces, volumes (Week 16)",
+      "Surfaces"
+    ]
+  },
+  {
+    "objectID": "surface.html#footnotes",
+    "href": "surface.html#footnotes",
+    "title": "Surfaces",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nCurves have dimension 1. But a curve in 2D has co-dimension 1 and a curve in 3D has co-dimension 2, whereas a surface in 3D has co-dimension 1. The co-dimension of a subset is the dimension of the space minus the dimension of the subset. The co-dimension is the number of equations you need to describe a subset.↩︎\nIn the next unit, we’ll write this as \\({\\mathbf{n}} = \\nabla f\\).↩︎",
+    "crumbs": [
+      "Chapter 2: Curves, surfaces, volumes (Week 16)",
+      "Surfaces"
+    ]
+  },
+  {
+    "objectID": "secondderivs.html",
+    "href": "secondderivs.html",
+    "title": "Derivatives of products and second derivatives",
+    "section": "",
+    "text": "This chapter focuses on certain identities we can derive by combining the different 3D derivatives. You should get used to using these identities, but you also need to be able to prove them from the definitions.",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Products & second derivatives"
+    ]
+  },
+  {
+    "objectID": "secondderivs.html#derivatives-of-products",
+    "href": "secondderivs.html#derivatives-of-products",
+    "title": "Derivatives of products and second derivatives",
+    "section": "Derivatives of products",
+    "text": "Derivatives of products\nYou’re familiar with the product rule for ordinary derivatives: \\[\n\\frac{d}{dx}(fg) = \\frac{df}{dx}g + f\\frac{dg}{dx}.\n\\] How does this translate to our new grad, div and curl? The first thing to consider is what kinds of products we have.\nThink: What possible products exist between any two of scalar fields \\(\\phi\\) and \\(\\psi\\) and vector fields \\({\\mathbf{u}}\\) and \\({\\mathbf{v}}\\), and is the result a scalar or vector field?\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\(\\phi\\psi\\) is a scalar field\n\\(\\phi{\\mathbf{u}}\\) is a vector field\n\\({\\mathbf{u}}\\cdot{\\mathbf{v}}\\) is a scalar field\n\\({\\mathbf{u}}\\times{\\mathbf{v}}\\) is a vector field\n\n\n\nFor each product which is a scalar we can work out a formula for the gradient1, and for each vector we can work out formulas for the divergence and curl. Here is the list:\n\nGradient of a product of scalars: \\[\n\\nabla(\\phi\\psi) = (\\nabla\\phi)\\psi + \\phi(\\nabla\\psi)\n\\]\nGradient of a dot product: \\[\n\\nabla({\\mathbf{u}}\\cdot{\\mathbf{v}}) = ({\\mathbf{u}}\\cdot\\nabla){\\mathbf{v}} + ({\\mathbf{v}}\\cdot\\nabla){\\mathbf{u}} + {\\mathbf{u}}\\times(\\nabla\\times{\\mathbf{v}}) + {\\mathbf{v}}\\times(\\nabla\\times{\\mathbf{u}})\n\\]\nDivergence of a scalar times a vector: \\[\n\\nabla\\cdot(\\phi{\\mathbf{u}}) = {\\mathbf{u}}\\cdot\\nabla\\phi + \\phi\\nabla\\cdot{\\mathbf{u}}\n\\]\nDivergence of a cross product: \\[\n\\nabla\\cdot({\\mathbf{u}}\\times{\\mathbf{v}}) = {\\mathbf{v}}\\cdot(\\nabla\\times{\\mathbf{u}}) - {\\mathbf{u}}\\cdot(\\nabla\\times{\\mathbf{v}})\n\\]\nCurl of a scalar times a vector: \\[\n\\nabla\\times(\\phi{\\mathbf{u}}) = (\\nabla\\phi)\\times{\\mathbf{u}} + \\phi(\\nabla\\times{\\mathbf{u}})\n\\]\nCurl of a cross product: \\[\n\\nabla\\times({\\mathbf{u}}\\times{\\mathbf{v}}) = {\\mathbf{u}}(\\nabla\\cdot{\\mathbf{v}}) - {\\mathbf{v}}(\\nabla\\cdot{\\mathbf{u}}) + ({\\mathbf{v}}\\cdot\\nabla){\\mathbf{u}} - ({\\mathbf{u}}\\cdot\\nabla){\\mathbf{v}}\n\\]\n\n\nExample\nFor a general scalar field \\(\\phi\\) and vector field \\({\\mathbf{u}}\\), show that \\[\n\\nabla \\cdot \\left(\\phi{\\mathbf{u}}\\right) = {\\mathbf{u}}\\cdot \\nabla \\phi + \\phi \\nabla\\cdot{\\mathbf{u}}.\n\\]\n\n\n\n\n\n\nSolution\n\n\n\n\n\nLet \\(\\phi\\) be a scalar field and \\({\\mathbf{u}} = [u_1, u_2, u_3]\\) a vector field. Then, \\[\n\\begin{aligned}\n\\nabla \\cdot (\\phi {\\mathbf{u}}) &= {\\frac{\\partial }{\\partial x}}(\\phi u_1) + {\\frac{\\partial }{\\partial y}}(\\phi u_2) + {\\frac{\\partial }{\\partial z}}(\\phi u_3)\\\\\n&= u_1 {\\frac{\\partial \\phi}{\\partial x}} + \\phi {\\frac{\\partial u_1}{\\partial x}} + u_2 {\\frac{\\partial \\phi}{\\partial y}} + \\phi {\\frac{\\partial u_2}{\\partial y}} + u_3 {\\frac{\\partial \\phi}{\\partial z}} + \\phi {\\frac{\\partial u_3}{\\partial z}}\\\\\n&= u_1 {\\frac{\\partial \\phi}{\\partial x}} + u_2 {\\frac{\\partial \\phi}{\\partial y}} + u_3 {\\frac{\\partial \\phi}{\\partial z}} + \\phi \\left({\\frac{\\partial u_1}{\\partial x}} + {\\frac{\\partial u_2}{\\partial y}} + {\\frac{\\partial u_3}{\\partial z}}\\right)\\\\\n&= {\\mathbf{u}} \\cdot \\nabla \\phi + \\phi (\\nabla \\cdot {\\mathbf{u}}).\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Products & second derivatives"
+    ]
+  },
+  {
+    "objectID": "secondderivs.html#second-derivatives",
+    "href": "secondderivs.html#second-derivatives",
+    "title": "Derivatives of products and second derivatives",
+    "section": "Second derivatives",
+    "text": "Second derivatives\nFor normal derivatives, you know \\(\\frac{d}{dx} \\frac{dy}{dx} = \\frac{d^2y}{dx^2}\\) - this is basically just a definition.\nIn 3D, it’s more complicated. Of course, we can only take the gradient of a scalar field, and only take the divergence or curl of a vector field so the possibilities are, for a vector field \\({\\mathbf{u}}\\) and a scalar field \\(\\phi\\):\n\n\\(\\nabla\\cdot(\\nabla\\phi)\\) gives a scalar field\n\\(\\nabla\\times(\\nabla\\phi)\\) gives a vector field\n\\(\\nabla (\\nabla \\cdot {\\mathbf{u}})\\) gives a vector field\n\\(\\nabla \\times(\\nabla\\times {\\mathbf{u}})\\) gives a vector field\n\\(\\nabla \\cdot(\\nabla \\times{\\mathbf{u}})\\) gives a scalar field\n\nAny other combination, like \\(\\nabla\\cdot (\\nabla \\cdot {\\mathbf{u}})\\) is not defined.\nActually, there are two extra rules which you need to learn, and you can prove: \\[\\nabla\\cdot(\\nabla \\times {\\mathbf{u}}) = 0\\] \\[\\nabla\\times(\\nabla \\phi) = {\\mathbf{0}}\\]\n\nExample\nFor any scalar field \\(\\phi\\), show that \\(\\nabla\\times(\\nabla \\phi) = {\\mathbf{0}}\\).\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\[\n\\begin{aligned}\n\\nabla\\times(\\nabla \\phi) &= \\nabla\\times\\left[{\\frac{\\partial \\phi}{\\partial x}},\\,{\\frac{\\partial \\phi}{\\partial y}},\\,{\\frac{\\partial \\phi}{\\partial z}},\\,\\right] \\\\\n&= \\left[ {\\frac{\\partial }{\\partial y}}{\\frac{\\partial \\phi}{\\partial z}} - {\\frac{\\partial }{\\partial z}}{\\frac{\\partial \\phi}{\\partial y}},\\,{\\frac{\\partial }{\\partial z}}{\\frac{\\partial \\phi}{\\partial x}} - {\\frac{\\partial }{\\partial x}}{\\frac{\\partial \\phi}{\\partial z}},\\,{\\frac{\\partial }{\\partial x}}{\\frac{\\partial \\phi}{\\partial y}} - {\\frac{\\partial }{\\partial y}}{\\frac{\\partial \\phi}{\\partial x}}\\right] \\\\\n&= \\left[ {\\frac{\\partial }{\\partial y}}{\\frac{\\partial \\phi}{\\partial z}} - {\\frac{\\partial }{\\partial y}}{\\frac{\\partial \\phi}{\\partial z}},\\,{\\frac{\\partial }{\\partial z}}{\\frac{\\partial \\phi}{\\partial x}} - {\\frac{\\partial }{\\partial z}}{\\frac{\\partial \\phi}{\\partial x}},\\,{\\frac{\\partial }{\\partial x}}{\\frac{\\partial \\phi}{\\partial y}} - {\\frac{\\partial }{\\partial x}}{\\frac{\\partial \\phi}{\\partial y}}\\right]  \\\\\n&= \\left[0,0,0\\right]\\\\\n&= {\\mathbf{0}}.\n\\end{aligned}\n\\]\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe key with all of these proofs is the symmetry of a mixed partial derivatives, i.e. \\(\\frac{\\partial^2 f}{\\partial x\\partial y} = \\frac{\\partial^2 f}{\\partial y\\partial x}\\)2.",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Products & second derivatives"
+    ]
+  },
+  {
+    "objectID": "secondderivs.html#the-laplacian",
+    "href": "secondderivs.html#the-laplacian",
+    "title": "Derivatives of products and second derivatives",
+    "section": "The Laplacian",
+    "text": "The Laplacian\nThe remaining three second derivatives, \\(\\nabla\\cdot(\\nabla\\phi)\\), \\(\\nabla \\times(\\nabla\\times {\\mathbf{u}})\\) and \\(\\nabla (\\nabla \\cdot {\\mathbf{u}})\\) are related to another operator called the Laplacian, which is given the symbol \\(\\Delta\\) or \\(\\nabla^2\\). We’ll use \\(\\Delta\\) in this module.3\nFor a scalar field \\(\\phi\\), \\[\n\\begin{aligned}\n\\nabla\\cdot(\\nabla\\phi) &= \\nabla\\cdot\\left[{\\frac{\\partial \\phi}{\\partial x}},{\\frac{\\partial \\phi}{\\partial y}},{\\frac{\\partial \\phi}{\\partial z}}\\right]\n\\\\&= {\\frac{\\partial }{\\partial x}}{\\frac{\\partial \\phi}{\\partial x}} + {\\frac{\\partial }{\\partial y}}{\\frac{\\partial \\phi}{\\partial y}} + {\\frac{\\partial }{\\partial z}}{\\frac{\\partial \\phi}{\\partial z}}\n\\\\&= \\frac{\\partial^2 \\phi}{\\partial x^2} + \\frac{\\partial^2 \\phi}{\\partial y^2}+ \\frac{\\partial^2 \\phi}{\\partial z^2}\n\\end{aligned}\n\\] This is what we define to be the \\(\\Delta \\phi\\), the (scalar) Laplacian of \\(\\phi\\).\nFor a vector field \\({\\mathbf{u}}\\),4 \\[\n\\begin{aligned}\n\\nabla(\\nabla\\cdot {\\mathbf{u}}) - \\nabla\\times(\\nabla\\times{\\mathbf{u}}) &= \\left[\\frac{\\partial^2 u_1}{\\partial x^2} + \\frac{\\partial^2 u_1}{\\partial y^2}+ \\frac{\\partial^2 u_1}{\\partial z^2},\\,\\frac{\\partial^2 u_2}{\\partial x^2} + \\frac{\\partial^2 u_2}{\\partial y^2}+ \\frac{\\partial^2 u_2}{\\partial z^2},\\,\\frac{\\partial^2 u_3}{\\partial x^2} + \\frac{\\partial^2 u_3}{\\partial y^2}+ \\frac{\\partial^2 u_3}{\\partial z^2}\\right]\\\\\n&= \\left[\\Delta u_1,\\,\\Delta u_2,\\,\\Delta u_3\\right].\n\\end{aligned}\n\\] This is what we define to be \\(\\Delta {\\mathbf{u}}\\), the (vector) Laplacian of \\({\\mathbf{u}}\\).\n\n\n\n\n\n\nImportant\n\n\n\nIn Cartesians, the vector Laplacian is the scalar Laplacian of each of the components. In curvilinear co-ordinates, this isn’t true.",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Products & second derivatives"
+    ]
+  },
+  {
+    "objectID": "secondderivs.html#footnotes",
+    "href": "secondderivs.html#footnotes",
+    "title": "Derivatives of products and second derivatives",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nYou can do directional derivatives too but it’s basically the same.↩︎\nWhich holds as long as the second derivatives are continuous, which they always will be in this module.↩︎\nYou won’t get penalised if you prefer to write \\(\\nabla^2\\).↩︎\nTry this as an exercise, it takes a while.↩︎",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Products & second derivatives"
+    ]
+  },
+  {
+    "objectID": "potentials.html",
+    "href": "potentials.html",
+    "title": "Vector and scalar potentials",
+    "section": "",
+    "text": "The final part of our module concerns special types of vector fields.\nWe call a field \\({\\mathbf{A}}\\) solenoidal if \\[\n\\nabla\\cdot {\\mathbf{A}} = 0\n\\] and we call a field \\({\\mathbf{B}}\\) irrotational if \\[\n\\nabla\\times{\\mathbf{B}} = {\\mathbf{0}}.\n\\]",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Potentials"
+    ]
+  },
+  {
+    "objectID": "potentials.html#irrotational-fields",
+    "href": "potentials.html#irrotational-fields",
+    "title": "Vector and scalar potentials",
+    "section": "Irrotational fields",
+    "text": "Irrotational fields\nThese are sometimes called curl free fields, for obvious reasons. The key theorem is:\n\n\n\n\n\n\nImportant\n\n\n\n\\[\\nabla\\times{\\mathbf{A}} = {\\mathbf{0}} \\text{ if and only if }{\\mathbf{A}} = \\nabla \\phi\\text{ for some scalar field }\\phi.\\]\n\n\nWe call \\(\\phi\\) a scalar potential for \\({\\mathbf{A}}\\).\nProving \\(\\impliedby\\) is easy: If \\({\\mathbf{A}} = \\nabla \\phi\\) then \\[\n\\nabla\\times {\\mathbf{A}} = \\nabla \\times \\nabla \\phi = 0,\n\\] this was one of our second derivative identities.\nThe proof in the other direction is much more complicated, but for any given example you can make it work.\n\nExample\nFind a scalar potential for \\[\n{\\mathbf{A}} = [x^2,y^2,0].\n\\]\n\n\n\n\n\n\nSolution\n\n\n\n\n\nFirst check that \\(\\nabla\\times{\\mathbf{A}}={\\mathbf{0}}\\), otherwise it doesn’t work.\nThen we need to find \\(\\phi\\) such that \\(\\nabla \\phi = [x^2,y^2,0]\\).\nMaybe you can spot it directly, but otherwise we can break it down. We need to find \\(\\phi(x,y,z)\\) such that \\[\n\\begin{aligned}\n{\\frac{\\partial \\phi}{\\partial x}} &= x^2,\\qquad\\text{(1)} \\\\\n{\\frac{\\partial \\phi}{\\partial y}} &= y^2,\\qquad\\text{(2)}\\\\\n{\\frac{\\partial \\phi}{\\partial z}} &= 0.\\qquad\\text{(3)}\n\\end{aligned}\n\\]\nIntegrating the (1), we have \\[\\phi(x,y,z) = \\frac{1}{3} x^3 + C_1(y,z)\\] Here \\(C_1\\) is just a normal constant of integration, but because we integrated a partial derivative, this constant can depend on \\(y\\) and \\(z\\).\nThen (2) becomes \\[{\\frac{\\partial C_1}{\\partial y}} = y^2\\] so \\[\nC_1 = \\frac{1}{3} y^3 + C_2(z).\\] \\(C_1\\) depends only on \\(y\\) and \\(z\\), so the new constant of integration \\(C_2\\) depends only on \\(z\\). So we have \\[\n\\phi = \\frac{1}{3}x^3 + \\frac{1}{3}y^3 + C_2(z),\n\\] so (3) gives \\[\n\\frac{dC_2}{dz} = 0\n\\] so \\(C_2\\) is just a constant.\nSo finally we have \\[\n\\phi(x,y,z) = \\frac{1}{3}x^3 + \\frac{1}{3}y^3 + C_2,\n\\] where \\(C_2\\) is any constant.\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nScalar potentials are not unique - you can add any constant to \\(\\phi\\) and it’s still valid.",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Potentials"
+    ]
+  },
+  {
+    "objectID": "potentials.html#solenoidal-fields",
+    "href": "potentials.html#solenoidal-fields",
+    "title": "Vector and scalar potentials",
+    "section": "Solenoidal fields",
+    "text": "Solenoidal fields\nThese are also called incompressible or divergence free1. The key theorem here is:\n\n\n\n\n\n\nImportant\n\n\n\n\\[\\nabla\\cdot{\\mathbf{A}} = {\\mathbf{0}} \\text{ if and only if }{\\mathbf{A}} = \\nabla\\times {\\mathbf{B}}\\text{ for some vector field }{\\mathbf{B}}.\\]\n\n\nWe call \\({\\mathbf{B}}\\) a vector potential for \\({\\mathbf{A}}\\). Again, you can easily prove that \\(\\nabla\\times{\\mathbf{B}}\\) is solenoidal, but the other way is harder. You can also easily prove this:\n\n\n\n\n\n\nImportant\n\n\n\nVector potentials are not unique - If \\({\\mathbf{B}}\\) is a vector potential for \\({\\mathbf{A}}\\) then so is \\({\\mathbf{B}}+\\nabla\\phi\\) for any scalar field \\(\\phi\\).2\n\n\nThis non-uniqueness is very important, because it means we can choose properties we want \\({\\mathbf{B}}\\) to have. One convenient choice is often \\[B_3=0,\\] no component in the \\(z\\) direction.\n\nExample\nFind a vector potential for \\[\n{\\mathbf{A}} = [x+y^2, -y+z^2, y^2]\n\\]\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThis works the same as for scalar potentials, but it gets much messier. I strongly recommend staring at it for 30 seconds to see if you can guess a potential that works, before trying as follows:\nFirst, you could check it’s actually solenoidal. That’s quite quick in this case.\nWe need to find \\({\\mathbf{B}}=[B_1,B_2,B_3]\\) such that \\[\n[x+y^2, -y+z^2, y^2] = \\nabla\\times{\\mathbf{B}} = [{\\frac{\\partial B_3}{\\partial y}}-{\\frac{\\partial B_2}{\\partial z}},\\,{\\frac{\\partial B_1}{\\partial z}}-{\\frac{\\partial B_3}{\\partial x}},\\,{\\frac{\\partial B_2}{\\partial x}}-{\\frac{\\partial B_1}{\\partial y}}].\n\\]\nLet’s make the gauge choice that \\(B_3=0\\), so then we get \\[x+y^2 = -{\\frac{\\partial B_2}{\\partial z}},\\] \\[-y+z^2 = {\\frac{\\partial B_1}{\\partial z}},\\] \\[y^2 = {\\frac{\\partial B_2}{\\partial x}} - {\\frac{\\partial B_1}{\\partial y}}.\\]\nIntegrating the first two of these, we have: \\[\nB_2 = -x z - y^2 z + f(x, y)\n\\] and \\[\nB_1 = -y z + \\frac{1}{3} z^3 + g(x, y)\n\\] where \\(f\\) and \\(g\\) are some unknown integration constant functions.\nNow, substitute \\(B_1\\) and \\(B_2\\) into the third equation: \\[\ny^2 = (-z + {\\frac{\\partial f}{\\partial x}}) - (-z + {\\frac{\\partial g}{\\partial y}}) = {\\frac{\\partial f}{\\partial x}} - {\\frac{\\partial g}{\\partial y}}\n\\]\nWe still have some freedom here. A simple choice is \\(f(x, y) = 0\\) and \\(g(x, y) = -\\frac{1}{3} y^3\\): \\[\n{\\frac{\\partial f}{\\partial x}} = 0,\\quad {\\frac{\\partial g}{\\partial y}} = -y^2\n\\] So, \\[\ny^2 = 0 - (-y^2) = y^2\n\\] This works.\nTherefore, a vector potential is: \\[\n{\\mathbf{B}} = \\left[\n    -y z + \\frac{1}{3} z^3 - \\frac{1}{3} y^3,\\;\n    -x z - y^2 z,\\;\n    0.\n\\right]\n\\]\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nAs with many things in maths, finding the potentials is slow but checking they are valid is quick. Always check!",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Potentials"
+    ]
+  },
+  {
+    "objectID": "potentials.html#footnotes",
+    "href": "potentials.html#footnotes",
+    "title": "Vector and scalar potentials",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nIn physics, the magnetic field is a solenoidal field. This is where the name comes from.↩︎\nThis is called gauge freedom in physics.↩︎",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Potentials"
+    ]
+  },
+  {
+    "objectID": "links.html",
+    "href": "links.html",
+    "title": "Helpful links",
+    "section": "",
+    "text": "My notes for the vectors stuff of MA12001 are here: https://dundeemath.github.io/MA12001-algebra/_site/. This module builds directly on this (particularly chapters 1 and 3) so it may be helpful to revise this.\nMost of the important results in this module are here: https://en.wikipedia.org/wiki/Vector_calculus_identities. Your formula sheet in the exam should be based off this.\nThe curvilinear co-ordinate results are summarised here: https://en.wikipedia.org/wiki/Del_in_cylindrical_and_spherical_coordinates.",
+    "crumbs": [
+      "Helpful links"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MA22001 Core Mathematics IV",
+    "section": "",
+    "text": "This webpage contains the lecture notes for the Core Mathematics IV (MA22001) module for the University of Dundee.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use-these-notes",
+    "href": "index.html#how-to-use-these-notes",
+    "title": "MA22001 Core Mathematics IV",
+    "section": "How to use these notes",
+    "text": "How to use these notes\nThese notes are designed to be complementary to the seminars. They’re designed to be easy to read with minimal extra information. For context and motivation, you’ll need to come to class. These notes contain the key definitions and some brief examples, but I will show more and different examples in class. For best results, I suggest quickly reading over these notes the night before each class, and then revisiting them if necessary when you come to the problem sheets and before the tests and exam.\nAs usual, I’ll be taking photos of the boards from the seminars in case you want to revisit a specific example we did there, though I don’t promise that you’ll be able to follow these without having attended the seminars.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#what-is-core-mathematics-iv",
+    "href": "index.html#what-is-core-mathematics-iv",
+    "title": "MA22001 Core Mathematics IV",
+    "section": "What is Core Mathematics IV",
+    "text": "What is Core Mathematics IV\nThe bulk of this module is “Vector Calculus”. Vector calculus is basically the mathematics of shapes in three dimensions. This will combine the “algebra” and “calculus” that you’ve seen in previous modules. First we’ll see differentiation in 3D, then integration in 3D, and then some analogues of the “fundamental theorem of calculus” which combine these two.\nWe’ll also see some methods for solving differential equations in the second half of the module.\nEverything in this module is fundamental to anyone who wants to study maths or physics2 at a higher level. This builds off previous modules and many future modules will build off this. This is not a physics module, but I will appeal to applications in physics a lot.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "MA22001 Core Mathematics IV",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAnything in the footnotes is also non-examinable.↩︎\nor indeed engineering↩︎",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "divergence.html",
+    "href": "divergence.html",
+    "title": "The divergence theorem",
+    "section": "",
+    "text": "The divergence theorem is similar to Stokes’ theorem, but it relates volumes and surfaces rather than surfaces and curves. As the name suggests, it uses the divergence: \\[\n\\int_V \\nabla\\cdot {\\mathbf{F}}({\\mathbf{r}}) dV = \\int_{\\partial V} {\\mathbf{F}}({\\mathbf{r}})\\cdot d{\\mathbf{S}}.\n\\]\nAs you may be able to guess, \\(\\partial V\\) is the boundary of the volume \\(V\\), with the normal facing out. Again, we may need to do the boundary in more than one piece.",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Divergence theorem"
+    ]
+  },
+  {
+    "objectID": "divergence.html#greens-first-identity",
+    "href": "divergence.html#greens-first-identity",
+    "title": "The divergence theorem",
+    "section": "Green’s first identity",
+    "text": "Green’s first identity\nGreen’s first identity states that, for any scalar fields \\(f\\) and \\(g\\), \\[\n\\int_V \\left(g\\Delta f + \\nabla f \\cdot \\nabla g\\right)dV = \\int_{\\partial V} g\\nabla f \\cdot d{\\mathbf{S}}.\n\\]\nTo prove this, we obviously need to use the divergence theorem. It’s not clear how we can use that on the left-hand side, so let’s start with the right-hand side and use the product rule: \\[\n\\begin{aligned}\n\\int_{\\partial V} g\\nabla f \\cdot d{\\mathbf{S}} &= \\int_{V} \\nabla \\cdot \\left(g\\nabla f\\right) dV\n\\\\ &= \\int_{V} \\left(\\nabla g \\cdot \\nabla f + g\\nabla\\cdot\\nabla f \\right) dV\n\\end{aligned}\n\\] which is exactly what we wanted, when we remember that \\(\\Delta f = \\nabla\\cdot\\nabla f\\).",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Divergence theorem"
+    ]
+  },
+  {
+    "objectID": "divergence.html#greens-second-identity",
+    "href": "divergence.html#greens-second-identity",
+    "title": "The divergence theorem",
+    "section": "Green’s second identity",
+    "text": "Green’s second identity\nGreen’s second identity states that, for any scalar fields \\(f\\) and \\(g\\), \\[\n\\int_V \\left(f\\Delta g - g\\Delta f\\right)dV = \\int_{\\partial V} \\left(f\\nabla g - g\\nabla f\\right) \\cdot d{\\mathbf{S}}.\n\\] You can get this one from subtracting the first identity from itself with \\(f\\) and \\(g\\) swapped.\nThis one is quite handy when you rearrange it: \\[\n\\int_V f\\Delta g\\ dV = \\int_{\\partial V} \\left(f\\nabla g - g\\nabla f\\right) \\cdot d{\\mathbf{S}} + \\int_V g\\Delta f\\ dV.\n\\] This is basically a form of integration by parts for the Laplacian \\(\\Delta\\).",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Divergence theorem"
+    ]
+  },
+  {
+    "objectID": "coordinates.html",
+    "href": "coordinates.html",
+    "title": "Co-ordinate systems",
+    "section": "",
+    "text": "One of the key aims of this module is to learn about curvilinear co-ordinates. These are co-ordinate systems where, unlike the usual Cartesian co-ordinates, the basis vectors change direction at different points in space.\nThat may sound confusing, but you should all already have seen one type of curvilinear co-ordinates, (plane) polar co-ordinates. In this module we’ll see two different ways to generalise 2D polar co-ordinates to 3D space, but first we’ll talk through some basic ideas about co-ordinate systems using plane polars as an example.",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Coordinate systems"
+    ]
+  },
+  {
+    "objectID": "coordinates.html#defining-co-ordinate-systems",
+    "href": "coordinates.html#defining-co-ordinate-systems",
+    "title": "Co-ordinate systems",
+    "section": "Defining co-ordinate systems",
+    "text": "Defining co-ordinate systems\nTypically we define co-ordinate systems by expressing the Cartesian co-ordinates as a function of some other variables.1\nFor example, in plane polars, \\[\nx = \\rho \\cos \\phi,\\qquad y=\\rho\\sin\\phi.\n\\] The co-ordinates for this system, \\((\\rho,\\phi)\\)2 are, respectively, the distance from the origin and the angle anti-clockwise from the \\(x\\) axis.\nWe also need to know the range of values these co-ordinates can take, let’s use \\(0\\leq \\phi &lt; 2\\pi\\) and \\(\\rho\\geq 0\\).\nOur general position vector in this system is then given by \\[\n{\\mathbf{r}}(\\rho, \\phi) = [\\rho \\cos \\phi,\\,\\rho\\sin\\phi].\n\\] But remember that the square brackets are hiding Cartesian co-ordinates, so this isn’t quite complete. First we need basis vectors.\nAlso notice that the co-ordinates break down at the origin, if \\(\\rho=0\\) then the value of \\(\\phi\\) doesn’t matter. That’s quite common with these systems.",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Coordinate systems"
+    ]
+  },
+  {
+    "objectID": "coordinates.html#basis-vectors-scale-factors",
+    "href": "coordinates.html#basis-vectors-scale-factors",
+    "title": "Co-ordinate systems",
+    "section": "Basis vectors & scale factors",
+    "text": "Basis vectors & scale factors\nThe definition of a basis vector is the direction you move from a point in space if you increase a particular co-ordinate. So moving in the direction of \\({\\mathbf{e}}_x\\) increases the value of \\(x\\) but keeps \\(y\\) constant. It’s usually assumed to be a unit vector.\nIn practice, the definition is to differentiate \\({\\mathbf{r}}\\) with respect to the variable and then normalise3: \\[\n\\begin{aligned}\n{\\mathbf{e}}_\\rho &= \\frac{\\partial {\\mathbf{r}}}{\\partial \\rho}/\\left|\\frac{\\partial {\\mathbf{r}}}{\\partial \\rho}\\right|\n\\\\ &= \\frac{\\partial}{\\partial \\rho} [\\rho \\cos \\phi,\\,\\rho\\sin\\phi] / \\left|\\frac{\\partial}{\\partial \\rho} [\\rho \\cos \\phi,\\,\\rho\\sin\\phi]\\right|\n\\\\ &= [\\cos\\phi,\\,\\sin\\phi] / \\sqrt{\\cos^2 \\phi + \\sin^2 \\phi}\n\\\\ &= [\\cos\\phi,\\,\\sin\\phi]\n\\end{aligned}\n\\] and \\[\n\\begin{aligned}\n{\\mathbf{e}}_\\phi &= \\frac{\\partial {\\mathbf{r}}}{\\partial \\phi}/\\left|\\frac{\\partial {\\mathbf{r}}}{\\partial \\phi}\\right|\n\\\\ &= \\frac{\\partial}{\\partial \\phi} [\\rho \\cos \\phi,\\,\\rho\\sin\\phi] / \\left|\\frac{\\partial}{\\partial \\phi} [\\rho \\cos \\phi,\\,\\rho\\sin\\phi]\\right|\n\\\\ &= [-\\rho\\sin\\phi,\\,\\rho\\cos\\phi] / \\sqrt{\\rho^2\\cos^2 \\phi + \\rho^2\\sin^2 \\phi}\n\\\\ &= [-\\sin\\phi,\\,\\cos\\phi].\n\\end{aligned}\n\\]\nNote that this also works for Cartestian co-ordinates \\[\n\\begin{aligned}\n{\\mathbf{e}}_x &= \\frac{\\partial {\\mathbf{r}}}{\\partial x}/\\left|\\frac{\\partial {\\mathbf{r}}}{\\partial x}\\right|\n\\\\ &= \\frac{\\partial}{\\partial x} [x,\\,y] / \\left|\\frac{\\partial}{\\partial x} [x,\\,y]\\right|\n\\\\ &= [1,0] / \\sqrt{1^2 + 0^2}\n\\\\ &= [1,0].\n\\end{aligned}\n\\]\nWe also define the scale factors \\(h_\\rho\\) and \\(h_\\phi\\) as the magnitude of the derivatives \\[h_\\rho = \\left|\\frac{\\partial {\\mathbf{r}}}{\\partial \\phi}\\right| = 1,\\] \\[h_\\phi = \\left|\\frac{\\partial {\\mathbf{r}}}{\\partial \\phi}\\right| = \\rho.\\]\n\n\n\n\n\n\nNote\n\n\n\nScale factors will be useful later in the module. For now just get used to the formulas.",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Coordinate systems"
+    ]
+  },
+  {
+    "objectID": "coordinates.html#notating-vectors",
+    "href": "coordinates.html#notating-vectors",
+    "title": "Co-ordinate systems",
+    "section": "Notating vectors",
+    "text": "Notating vectors\nYou’re used to the idea that co-ordinates and basis vectors are kind of interchangable. In Cartesians, the point \\((x,y)\\) has position vector \\[\n{\\mathbf{r}} = [x,y] = x {\\mathbf{e}}_x + y {\\mathbf{e}}_y.\n\\] We reserve this square bracket notation for Cartesians, because it doesn’t work in curvilinear co-ordinates.\nAt a point with co-ordinates \\((\\rho,\\phi)\\) in plane polars, the position vector is \\[\n{\\mathbf{r}} = [x,y] = [\\rho \\cos \\phi,\\, \\rho\\sin\\phi] = \\rho {\\mathbf{e}}_\\rho.\n\\] Where does \\(\\phi\\) appear in this expression? The answer is that it’s hidden inside the \\({\\mathbf{e}}_\\rho\\). You have to know the co-ordinates to understand this position vector.\n\n\n\n\n\n\nNote\n\n\n\nI think this is the most confusing thing in this module. If you understand this everything else will be easier.",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Coordinate systems"
+    ]
+  },
+  {
+    "objectID": "coordinates.html#orthogonal-co-ordinate-systems",
+    "href": "coordinates.html#orthogonal-co-ordinate-systems",
+    "title": "Co-ordinate systems",
+    "section": "Orthogonal co-ordinate systems",
+    "text": "Orthogonal co-ordinate systems\nA system is called orthogonal if at any point in space, the basis vectors are orthogonal.\nThis seems counterintuitive, since we already said that the basis vectors rotate, but it’s easy to verify that plane polars are orthogonal - we just need to check the dot product: \\[\n{\\mathbf{e}}_\\rho \\cdot {\\mathbf{e}}_\\phi = [\\cos \\phi,\\,\\sin\\phi] \\cdot [-\\sin\\phi,\\,\\cos\\phi] = -\\cos\\phi\\sin\\phi + \\sin\\phi\\cos\\phi = 0.\n\\]\nFor 3D co-ordinate systems, you need to check three different dot products to make sure they’re orthogonal.",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Coordinate systems"
+    ]
+  },
+  {
+    "objectID": "coordinates.html#footnotes",
+    "href": "coordinates.html#footnotes",
+    "title": "Co-ordinate systems",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nWe could do it the other way round but that’s usually much messier.↩︎\nYou might be more used to using \\((r,\\theta)\\) for 2D polars but we’ll save these for spherical co-ordinates.↩︎\nAs well as \\({\\mathbf{e}}_\\rho\\), you might see other notations like \\(\\hat{{\\mathbf{\\rho}}}\\).↩︎\nWe call this the azimuthal angle.↩︎\nWe call this the polar angle.↩︎",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Coordinate systems"
+    ]
+  },
+  {
+    "objectID": "curves.html",
+    "href": "curves.html",
+    "title": "Curves",
+    "section": "",
+    "text": "For the purpose of this module, a curve is a one-dimensional object in three-dimensional space. Imagine a hula hoop or a rope. In fact, we’ll generally assume:\nCurves have many important applications in maths and physics, for example, the path of an electron in a magnetic field, or the boundary of a circular disc.",
+    "crumbs": [
+      "Chapter 2: Curves, surfaces, volumes (Week 16)",
+      "Curves"
+    ]
+  },
+  {
+    "objectID": "curves.html#longer-example",
+    "href": "curves.html#longer-example",
+    "title": "Curves",
+    "section": "Longer example",
+    "text": "Longer example\nTo conclude this part of the notes, let’s see a more complicated example.\nFind the total arc-length of the curve which is parameterised as \\[\n{\\mathbf{r}}(t) = \\left[ \\cos t, \\sin t, t \\right], \\quad 0\\leq t\\leq 4\\pi.\n\\]\nThink: What is this shape?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nIn \\(x\\) and \\(y\\), it just traces out a circle twice. But as it does so, the \\(z\\) co-ordinate increases. So this is a helix, like a slinky.\n\n\n\n\nStep 1: Calculate the tangent vector\n\\[\n{\\mathbf{T}}(t) = \\frac{d{\\mathbf{r}}}{dt} = \\left[-\\sin t, \\cos t, 1\\right].\n\\]\n\n\nStep 2: Find its magnitude\n\\[\n\\left|{\\mathbf{T}}\\right| = \\sqrt{(-\\sin t)^2+(\\cos t)^2 + 1^2} = \\sqrt{2}.\n\\]\n\n\nStep 3: Integrate this\nHere we need to remember that the limits of the integral are the limits of the parameterisation \\[\n\\int_0^{4\\pi} \\sqrt{2} dt = 4\\pi \\sqrt{2}.\n\\]",
+    "crumbs": [
+      "Chapter 2: Curves, surfaces, volumes (Week 16)",
+      "Curves"
+    ]
+  },
+  {
+    "objectID": "fields.html",
+    "href": "fields.html",
+    "title": "Scalar and vector fields",
+    "section": "",
+    "text": "By this module, you should already be very comfortable with the idea of vectors as things which can be added and multiplied in certain ways, and as having both a direction and a magnitude.\nIn this module, we will deal with vector fields as well as scalar fields. Instead of being a single number, this is a vector or a scalar for every point in space.\nBefore we move onto definitions, here are some examples to make the concepts clear:\nMathematically, we can define a scalar field as a function which takes co-ordinates, and gives a single number. Mostly in this course we will deal with three dimensions, so the function takes three numbers and gives one. We can write this as \\[\n\\alpha : \\mathbb{R}^3 \\to \\mathbb{R}.\n\\] Very often we will use Greek letters for scalar fields.\nA vector field is a function which takes co-ordinates and gives us a vector. In 3D: \\[\n{\\mathbf{u}} : \\mathbb{R}^3 \\to \\mathbb{R}^3.\n\\] When printing, we use bold letters like \\({\\mathbf{u}}\\) for vector fields. You should use an underline when you handwrite them.",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Scalar and vector fields"
+    ]
+  },
+  {
+    "objectID": "fields.html#making-scalar-fields-from-vector-fields",
+    "href": "fields.html#making-scalar-fields-from-vector-fields",
+    "title": "Scalar and vector fields",
+    "section": "Making scalar fields from vector fields",
+    "text": "Making scalar fields from vector fields\nWe’ll soon see ways to differentiate fields which can produce scalar fields from vector fields and vice versa, but even without calculus we can do this.\nFor example, given any two vector fields \\({\\mathbf{a}}\\) and \\({\\mathbf{b}}\\), we can take the dot product \\({\\mathbf{a}}\\cdot{\\mathbf{b}}\\) which gives a scalar field, or the cross product \\({\\mathbf{a}}\\times{\\mathbf{b}}\\) gives a different vector field. Or we can take the magnitude of a vector field to give a scalar field\n\nExample\nA wind tunnel is decribed by Cartesian co-ordinates with \\(0\\leq x \\leq 1\\), \\(0 \\leq y \\leq 1\\), \\(z\\in \\mathbb{R}\\).1 The velocity of the air in a wind tunnel is given by the vector field \\(\\mathbf{v} = [x(1-x)y(1-y), 0 ,0]\\).2 What is the windspeed, given as a scalar field? At what co-ordinates is the wind fastest? Where is there no wind?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThe speed is just the magnitude of the velocity, so we can work out \\[\n|\\mathbf{v}| = \\sqrt{\\left(x(1-x)y(1-y)\\right)^2 + 0^2 + 0^2} = x(1-x)y(1-y).\n\\] Note that this answer is non-negative, as required for a magnitude, because of the range of \\(x\\) and \\(y\\) we are considering.\nThis is greatest when \\(x=1/2\\) and \\(y=1/2\\). The value of \\(z\\) is not important. This is the centre of the wind tunnel.\nThere is no wind when \\(x=0\\) or \\(x=1\\) or \\(y=0\\) or \\(y=1\\). This makes sense - these are the sidewalls of the tunnel.",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Scalar and vector fields"
+    ]
+  },
+  {
+    "objectID": "fields.html#the-position-vector",
+    "href": "fields.html#the-position-vector",
+    "title": "Scalar and vector fields",
+    "section": "The position vector",
+    "text": "The position vector\nA very special vector field is where at each point, we assign the position vector for that point. So at the point \\((x,y,z)\\), the vector field has value \\([x,y,z]\\). We notate this by \\({\\mathbf{r}}\\). So (in Cartesian coordinates, at least) \\[\n{\\mathbf{r}}(x,y,z) = [x,y,z].\n\\]",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Scalar and vector fields"
+    ]
+  },
+  {
+    "objectID": "fields.html#footnotes",
+    "href": "fields.html#footnotes",
+    "title": "Scalar and vector fields",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nHere the range of \\(z\\) is infinite. Wind tunnels aren’t really infinitely long, but this is a common approximation if one dimension is much larger than the others. We are neglecting the confinement in \\(z\\).↩︎\nAs a mathematician I don’t worry about units too much. Sometimes units are important, but for this module, you can safely ignore them.↩︎",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Scalar and vector fields"
+    ]
+  },
+  {
+    "objectID": "lineintegrals.html",
+    "href": "lineintegrals.html",
+    "title": "Line integrals",
+    "section": "",
+    "text": "So far we’ve discussed vector and scalar fields and what it means to differentiate them. In this part of the module we’ll discuss different ways we can integrate these fields over different structures in 3D space, starting with integration over a curve.\nThere’s some general notation here to consider before we dive in. All integrals will be written as \\[\n\\int_A F({\\mathbf{r}}) dB.\n\\] \\(F\\) is the function we’re integrating, \\(A\\) is the set we’re integrating it over (which could be a curve, surface, or volume) and \\(dB\\) is the integral element appropriate for the set (and there are different choices). Instead of \\(\\int\\) you might also see symbols like \\(\\iint\\) or \\(\\oint\\) but these can always be replaced with \\(\\int\\), they just give you a little more context about what you’re integrating.\nIn every case, the steps are going to be the same:",
+    "crumbs": [
+      "Chapter 3: Integrals (Weeks 17/18)",
+      "Line integrals"
+    ]
+  },
+  {
+    "objectID": "lineintegrals.html#footnotes",
+    "href": "lineintegrals.html#footnotes",
+    "title": "Line integrals",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nSometimes this is written \\(d{\\mathbf{r}}\\)↩︎",
+    "crumbs": [
+      "Chapter 3: Integrals (Weeks 17/18)",
+      "Line integrals"
+    ]
+  },
+  {
+    "objectID": "scalarfields.html",
+    "href": "scalarfields.html",
+    "title": "Derivatives of scalar fields",
+    "section": "",
+    "text": "In this part of the module, we study how to differentiate fields. A field is another word for a function defined over space. This week, scalar fields: assigning to each point in space a scalar value. Think about a temperature field.\nFor example, the following could be a vector field \\[\nf({\\mathbf{r}}) = f(x,y,z) = x^2y +z.\n\\] If you know a point in space (given by co-ordinates or a position vector) then you know the value of \\(f\\) at that point.\nThere are different types of differentiation in higher dimensions, and they are generalisations of different interpretations of the normal derivative.",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Derivatives of scalar fields"
+    ]
+  },
+  {
+    "objectID": "scalarfields.html#footnotes",
+    "href": "scalarfields.html#footnotes",
+    "title": "Derivatives of scalar fields",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nWe already saw this for calculating normals to surfaces.↩︎\nStrictly speaking the symbol \\(\\nabla\\) is called “nabla” or “del”, but we often call it “grad” in other settings.↩︎\nIn fact, we could see straight away that \\[\n\\nabla f \\neq {\\frac{\\partial f}{\\partial r}}{\\mathbf{e}}_r + {\\frac{\\partial f}{\\partial \\theta}}{\\mathbf{e}}_\\theta + {\\frac{\\partial f}{\\partial \\phi}}{\\mathbf{e}}_\\phi\n\\] because of the dimensions of the quantities. The dimensions of a derivative should be the dimensions of \\(f\\) divided by length, which is what the first expression has. But \\(\\theta\\) and \\(\\phi\\) are dimensionless, so we need to divide by a length to keep these ones consistent.↩︎",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Derivatives of scalar fields"
+    ]
+  },
+  {
+    "objectID": "stokes.html",
+    "href": "stokes.html",
+    "title": "Stokes’ theorem",
+    "section": "",
+    "text": "Stokes’ theorem is one form of the Fundamental Theorem of Calculus in three dimensions, and it relates surface integrals to line integrals. Specifically, it says that \\[\n\\int_S (\\nabla \\times {\\mathbf{F}})\\cdot d{\\mathbf{S}} = \\int_{\\partial S} {\\mathbf{F}} \\cdot d{\\mathbf{s}}.\n\\] The only thing that’s new here is the curve \\(\\partial S\\). It says that\nWe won’t attempt a proof of this theorem, though in class we’ll see some intuition behind it. It is possible to prove it with techniques you know, but once you learn differential geometry it’s a special case of a much easier theorem.",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Stokes' theorem"
+    ]
+  },
+  {
+    "objectID": "stokes.html#the-boundary-of-a-surface",
+    "href": "stokes.html#the-boundary-of-a-surface",
+    "title": "Stokes’ theorem",
+    "section": "The boundary of a surface",
+    "text": "The boundary of a surface\nThe symbol \\(\\partial S\\) is the boundary of the surface \\(S\\).1 The surface is a 2D object, and the boundary is a curve, a 1D object. Specifically, given the direction the normal is pointing, the boundary obeys the right-hand rule as per the diagram.\n\nThink: what’s the boundary of the surface \\(x^2+y^2+z^2=1\\), \\(z\\geq 0\\).\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThis is a hemisphere. Hopefully you can immediately spot the boundary, but if not, try substituting the condition \\(z\\geq 0\\) at its limit, i.e. \\(z=0\\), into the equation \\(x^2+y^2+z^2=0\\).\nSo we get \\(x^2+y^2=0\\), \\(z=0\\), which is a circle.\nI didn’t tell you the direction of the normal, so you can’t tell me which way this is oriented.\n\n\n\nSometimes, the boundary of a surface has multiple parts. In this case, you can split the line integral into several simpler ones, making sure that at each separate curve, the right-hand rule is respected. The example below should make this a bit clearer.",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Stokes' theorem"
+    ]
+  },
+  {
+    "objectID": "stokes.html#conditions",
+    "href": "stokes.html#conditions",
+    "title": "Stokes’ theorem",
+    "section": "Conditions",
+    "text": "Conditions\nFor the theorem to apply, the surface \\(S\\) has to be oriented. That means that the normal is well-defined everywhere on the surface.\nMost things you can think of are orientable: a sphere, a sheet of paper, a donut. You then have to choose which direction the normal goes and it becomes oriented.\nThe usual counter example is the Mobius band: this doesn’t have a well defined normal, because you can point it one way, and then follow it all the way around the band and it’s suddenly pointing the opposite way.\n\nExample\nLet \\(S\\) be the curved surface of the cylinder \\(x^2+y^2=1\\), \\(0\\leq z\\leq 2\\), with normal pointing out. Evaluate the integral \\[\n\\int_S \\left(\\nabla\\times [z^2,x^2,y^2]\\right) \\cdot d{\\mathbf{S}}\n\\] both directly and using Stokes’ theorem.\n\n\n\n\n\n\nSolution\n\n\n\n\n\nFirst, sketch the surface to understand it and its boundary.\n\nDirectly\nThe obvious parameterisation is, taking inspiration from cylindrical co-ordinates, \\[\n[x,y,z] = [\\cos u,\\sin u, v]\\qquad 0\\leq u&lt;2\\pi,\\,0\\leq v \\leq 2.\n\\]\nThen we have \\[\nd{\\mathbf{S}} = {\\frac{\\partial {\\mathbf{r}}}{\\partial u}}\\times{\\frac{\\partial {\\mathbf{r}}}{\\partial v}} du\\, dv = [-\\sin u,\\cos u,0]\\times[0,0,1] du\\,dv = [\\cos u,\\sin u,0] du\\,dv\n\\] and this normal does point out, as we want.\nThe integrand is \\[\\nabla\\times [z^2,x^2,y^2] = [2y, 2z, 2x] = [2\\sin u,2v,2\\cos u]\\] so putting it all together, \\[\n\\begin{aligned}\n\\int_S \\left(\\nabla\\times [z^2,x^2,y^2]\\right) \\cdot d{\\mathbf{S}} &= \\int_0^{2\\pi} du \\int_0^2 dv [2\\sin u,2v,2\\cos u]\\cdot[\\cos u,\\sin u,0]\\\\\n&=\\int_0^{2\\pi} du \\int_0^2 dv \\left(2\\sin u \\cos u + 2v\\sin u\\right)\\\\\n&=\\int_0^{2\\pi} du \\int_0^2 dv \\left(\\sin 2u + 2v\\sin u\\right)\\\\\n&= \\int_0^{2\\pi} du \\left(2\\sin 2u + 4\\sin u\\right)\\\\\n&= 0.\n\\end{aligned}\n\\]\n\n\nStokes theorem\nWe need to evaluate \\[\n\\int_{\\partial S} [z^2,x^2,y^2] \\cdot d{\\mathbf{s}},\n\\] but crucially \\(\\partial S\\) has two parts, that we will call \\(\\gamma_1\\) and \\(\\gamma_2\\), and we write \\(\\partial S = \\gamma_1+\\gamma_2\\).\n\nFor \\(\\gamma_1\\), we parameterise \\[[x,y,z] = [\\cos t,\\,\\sin t,\\,0], \\qquad 0\\leq t &lt; 2\\pi.\\] Then \\(d{\\mathbf{s}} = [-\\sin t,\\cos t,0]dt\\) so the integral is \\[\n\\int_{\\gamma_1} [z^2,x^2,y^2] \\cdot d{\\mathbf{s}} = \\int_0^{2\\pi} [0,\\cos^2 t,\\sin^2 t]\\cdot [-\\sin t,\\cos t,0]dt =\n\\int_0^{2\\pi} \\cos^3 t\\, dt = 0.\n\\]\nFor \\(\\gamma_2\\), we parameterise \\[[x,y,z] = [\\cos t,\\,-\\sin t,\\,2], \\qquad 0\\leq t &lt; 2\\pi.\\] Notice the extra minus sign! This is because we need to go the opposite direction from usual, from the diagram. Now \\(d{\\mathbf{s}} = [\\sin t,\\cos t,0]dt\\) so the integral is \\[\n\\int_{\\gamma_2} [z^2,x^2,y^2] \\cdot d{\\mathbf{s}} = \\int_0^{2\\pi} [4,\\cos^2 t,\\sin^2 t]\\cdot [\\sin t,\\cos t,0]dt =\n\\int_0^{2\\pi} \\left(4\\sin t + \\cos^3 t\\right)\\, dt = 0.\n\\] So overall \\[\n\\int_S \\left(\\nabla\\times [z^2,x^2,y^2]\\right) \\cdot d{\\mathbf{S}}=\\int_{\\partial S} [z^2,x^2,y^2] \\cdot d{\\mathbf{s}} = \\int_{\\gamma_1} [z^2,x^2,y^2] \\cdot d{\\mathbf{s}} + \\int_{\\gamma_2} [z^2,x^2,y^2] \\cdot d{\\mathbf{s}} = 0,\n\\] which is exactly the same answer as we got before!\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nTo change the direction of a line integral, you can just subtract the integral instead of changing the direction of the parameterisation.",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Stokes' theorem"
+    ]
+  },
+  {
+    "objectID": "stokes.html#closed-surface",
+    "href": "stokes.html#closed-surface",
+    "title": "Stokes’ theorem",
+    "section": "Closed surface",
+    "text": "Closed surface\nA closed surface is one that has an “inside” and an “outside” - the surface forms a barrier in 3D space. Think of a bubble, or a donut.\nThink: What’s the boundary of a closed surface? How does Stokes’ theorem apply?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nIt doesn’t have a boundary! So the right-hand side of Stoke’s theorem is zero, and we just have \\[\n\\int_S (\\nabla \\times {\\mathbf{F}})\\cdot d{\\mathbf{S}} = 0\n\\]\n\n\n\nFor a closed surface, we sometimes use the symbol \\(\\oint\\). The theorem is \\[\n\\oint_S (\\nabla \\times {\\mathbf{F}})\\cdot d{\\mathbf{S}} = 0\n\\] and this is most obviously a connection between integration and differentiation: the flux integral and the curl are basically opposites for a closed surface.",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Stokes' theorem"
+    ]
+  },
+  {
+    "objectID": "stokes.html#example-1",
+    "href": "stokes.html#example-1",
+    "title": "Stokes’ theorem",
+    "section": "Example",
+    "text": "Example\nUsing Stokes’ theorem and the fact that \\[\n\\nabla \\times [xz,\\,xy,\\,yz] = [z,x,y],\n\\] evaluate the integral \\[\n\\oint_S [x+z,\\,y+x,\\,z+y]\\cdot d{\\mathbf{S}}\n\\] where \\(S\\) is the sphere \\(x^2+y^2+z^2=1\\).\n\n\n\n\n\n\nSolution\n\n\n\n\n\nObviously we could compute this integral directly, but the question wants us to use the theorem. It’s not exactly in the form we need, but notice \\[[x+z,\\,y+x,\\,z+y] = [x,y,z]+[z,x,y] = \\hat{{\\mathbf{n}}} + \\nabla \\times [xz,\\,xy,\\,yz].\\]\nSo then \\[\n\\oint_S [x+z,\\,y+x,\\,z+y]\\cdot d{\\mathbf{S}} = \\oint_S \\hat{{\\mathbf{n}}} \\cdot \\hat{{\\mathbf{n}}} dS + \\oint_S \\left(\\nabla \\times [xz,\\,xy,\\,yz]\\right) \\cdot d{\\mathbf{S}}.\n\\] The second integral is zero by the divergence theorem, because \\(S\\) is a closed surface.\nA unit vector dotted with itself is 1, so the first integral simplies to \\[\\oint_S  dS = 4\\pi,\\] the surface area of \\(S\\), which is the final answer.",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Stokes' theorem"
+    ]
+  },
+  {
+    "objectID": "stokes.html#footnotes",
+    "href": "stokes.html#footnotes",
+    "title": "Stokes’ theorem",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nWhy do we use the same symbol as for partial derivatives, you may wonder? This will require proper differential geometry to understand, for now it’s just a coincidence.↩︎",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Stokes' theorem"
+    ]
+  },
+  {
+    "objectID": "surfaceintegrals.html#special-case-surface-area",
+    "href": "surfaceintegrals.html#special-case-surface-area",
+    "title": "Surface integrals",
+    "section": "Special case: surface area",
+    "text": "Special case: surface area\nAs promised, we can now calculate the area of surfaces. This is simply the empty integral \\[\n\\int_S dS = \\int du \\int dv \\left|{\\frac{\\partial {\\mathbf{r}}}{\\partial u}}\\times{\\frac{\\partial {\\mathbf{r}}}{\\partial v}}\\right|\n\\]\n\nExample: surface area of a sphere\nCalculate the surface area of a sphere of radius \\(R\\).\n\n\n\n\n\n\nSolution\n\n\n\n\n\nWe’re not told the exact surface, but let’s assume the sphere is centred at the origin. Then we can parameterise by taking some inspiration from spherical polar co-ordinates: \\[[x,y,z] = [R\\cos u\\sin v,\\,R\\sin u\\sin v,\\,R\\cos v], \\qquad 0\\leq u &lt; 2\\pi,\\, 0\\leq v\\leq \\pi.\\] This isn’t exactly polar co-ordinates because \\(R\\) is a constant not a variable, and \\(u\\) and \\(v\\) just parameterise the surface not the whole of 3D space.\nNow we can just plug this into the formula above: \\[\n\\int_S dS = \\int_0^{2\\pi} du \\int_0^{\\pi} dv \\left|[-R\\sin u \\sin v,\\,R\\cos u\\sin v,\\,0]\\times[R\\cos u\\cos v,\\,R\\sin u\\cos v,-R\\sin v]\\right|\n\\] Pro-tip: take out as many factors from the cross product as you can before calculating it: \\[\n\\begin{aligned}\n\\int_S dS &= \\int_0^{2\\pi} du \\int_0^{\\pi} dv \\left|R^2 \\sin v\\right|\\cdot\\left|[-\\sin u,\\,\\cos u,\\,0]\\times[\\cos u\\cos v,\\,\\sin u\\cos v,-\\sin v]\\right| \\\\\n&= \\int_0^{2\\pi} du \\int_0^{\\pi} dv \\left|R^2 \\sin v\\right|\\cdot\\left|[-\\cos u \\sin v,\\,-\\sin u\\sin v,\\,-\\sin^2 u \\cos v -\\cos^2 u \\cos v]\\right| \\\\\n&= \\int_0^{2\\pi} du \\int_0^{\\pi} dv \\left|R^2 \\sin v\\right|\\cdot\\left|[\\cos u \\sin v,\\,\\sin u\\sin v,\\,\\cos v]\\right| \\\\\n&= \\int_0^{2\\pi} du \\int_0^{\\pi} dv \\left|R^2 \\sin v\\right|\n\\end{aligned}\n\\] where we used the fact that \\(\\left|[\\cos u \\sin v,\\,\\sin u\\sin v,\\,\\cos v]\\right| = 1\\) (this is good to remember).\nWe don’t need to worry about the absolute value of \\(\\sin v\\) because \\(v\\in[0,\\pi]\\) where sine is non-negative. There is no \\(u\\) in this expression so we can just mupltiply by \\(2\\pi\\) to give \\[\n\\begin{aligned}\n\\int_S dS = 2\\pi R^2 \\int_0^{\\pi} dv \\sin v = 2\\pi R^2 [-\\cos u]_0^{\\pi} = 4\\pi R^2.\n\\end{aligned}\n\\] But you knew that already.",
+    "crumbs": [
+      "Chapter 3: Integrals (Weeks 17/18)",
+      "Surface integrals"
+    ]
+  },
+  {
+    "objectID": "volumeintegrals.html",
+    "href": "volumeintegrals.html",
+    "title": "Volume integrals",
+    "section": "",
+    "text": "In some ways these are the easiest integrals we see in this module. It’s basically the same steps as before:\n\nParameterise the volume.\nFind the element \\(dV\\) for that parameterisation.\nReplace the integral \\(\\int_V\\) with ordinary integrals \\(\\int_a^b\\) with the correct limits.\nCompute the value of the triple integral.\n\nHowever, the parameterisation of 3D volume needs 3 parameters, and we already know how to parameterise 3D space: that’s a co-ordinate system. So it’s a case of choosing the co-ordinate system which best describes the volume you’re interested in, and working out the correct limits. The element \\(dV\\) for a given co-ordinate system is the product of the scale factors.\nFor Cartestians, \\[\ndV = h_x h_y h_z \\,dx\\,dy\\,dz = dx\\,dy\\,dz,\n\\] for cylindrical polars, \\[\ndV = h_\\rho h_\\phi h_z \\,d\\rho\\,d\\phi\\,dz = \\rho d\\rho\\,d\\phi\\,dz,\n\\] and for spherical polars, \\[\ndV = h_r h_\\phi h_\\theta \\,dr\\,d\\phi\\,d\\theta = r^2\\sin \\theta \\,dr\\,d\\phi\\,d\\theta.\n\\]\n\nExample: volume of a sphere\nCalculate the volume of the sphere \\(x^2+y^2+z^2 \\leq R^2\\).\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThe volume is the empty integral \\[\n\\text{Volume} = \\int_V dV.\n\\]\nWe use spherical polar coordinates, where \\(x = r\\sin\\theta\\cos\\phi\\), \\(y = r\\sin\\theta\\sin\\phi\\), \\(z = r\\cos\\theta\\), and \\(dV = r^2 \\sin\\theta \\, dr\\, d\\theta\\, d\\phi\\).\nThe limits are \\(0 \\leq r \\leq R\\), \\(0 \\leq \\theta \\leq \\pi\\), \\(0 \\leq \\phi \\leq 2\\pi\\).\nSo, \\[\n\\text{Volume} = \\int_0^{2\\pi} d\\phi \\int_0^\\pi d\\theta dr\\,\\int_0^R r^2  \\sin\\theta = (2\\pi) \\left( \\int_0^\\pi \\sin\\theta\\, d\\theta \\right) \\left( \\int_0^R r^2 dr \\right).\n\\] Notice how we can do each of the integrals separately in this case.\n\\(\\int_0^\\pi \\sin\\theta\\, d\\theta = 2\\), and \\(\\int_0^R r^2 dr = \\frac{R^3}{3}\\).\nTherefore, the volume is \\(2\\pi \\times 2 \\times \\frac{R^3}{3} = \\frac{4}{3}\\pi R^3\\).\n\n\n\n\n\nExample\nCalculate the volume integral \\[\n\\int_V z^3 dV\n\\] where \\(V = \\{(x,y,z)\\in\\mathbb{R}\\,|\\,0\\leq z\\leq 1,\\,x^2+y^2\\leq z^2\\}\\).\nHint: this is a cone.\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThe set is given in Cartesian co-ordinates, but don’t let that fool you: it will get very messy if you try to do this in Cartesians.\nThe \\(x^2+y^2\\) should make you think of cylindrical co-ordinates, since \\(\\rho^2=x^2+y^2\\). Then you get \\[V = \\{(\\rho,\\phi,z)\\,|\\,0\\leq z\\leq 1,\\,\\rho\\leq z\\},\\] which is more obviously a cone (sketch in the \\(\\phi=0\\) plane).\nImplicit in this definition is that \\(\\phi\\) can take any value between \\(0\\) and \\(2\\pi\\) as usual.\nSo now we can put it all together: \\[\n\\int_V z^3 dV = \\int_0^z d\\rho \\int_0^{2\\pi} d\\phi \\int_0^1 dz z^3 \\rho,\n\\] with the extra \\(\\rho\\) coming from thee scale factor \\(h_\\phi\\).\nThe \\(\\phi\\) integral is easy because \\(\\phi\\) does not appear in the integrand. We need to be careful with the order of the other two, because the limits for \\(\\rho\\) depend on \\(z\\): \\[\n\\int_V z^3 dV = 2\\pi  \\int_0^1 z^3 \\left(\\int_0^z \\rho d\\rho\\right) dz = 2\\pi \\int_0^1 z^3\\, \\frac{1}{2} z^2 dz = \\frac{\\pi}{6}\n\\]",
+    "crumbs": [
+      "Chapter 3: Integrals (Weeks 17/18)",
+      "Volume integrals"
+    ]
+  }
+]

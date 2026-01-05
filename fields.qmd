@@ -1,0 +1,93 @@
+---
+title: "Scalar and vector fields"
+---
+
+::: {.hidden}
+ \providecommand{\vv}[1]{{\mathbf{#1}}}
+ \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
+:::
+
+By this module, you should already be very comfortable with the idea of vectors as things which can be added and multiplied in certain ways, and as having both a direction and a magnitude.
+
+In this module, we will deal with vector _fields_ as well as scalar _fields_. Instead of being a single number, this is a vector or a scalar for every point in space.
+
+Before we move onto definitions, here are some examples to make the concepts clear:
+
+| Scalars | Vectors | Scalar Fields | Vector Fields |
+|---------|-----|------|-----|
+| Mass of an aeroplane      | Velocity of an aeroplane   | Temperature of air |  Velocity of air   |
+| Electric charge of a balloon | Force of gravity on a balloon | Gravitational potential | Gravitational field |
+| Energy | Force | Electric potential | Electric field |
+
+Mathematically, we can define a scalar field as a function which takes co-ordinates, and gives a single number. Mostly in this course we will deal with three dimensions, so the function takes three numbers and gives one. We can write this as
+$$
+\alpha : \mathbb{R}^3 \to \mathbb{R}.
+$$
+Very often we will use Greek letters for scalar fields.
+
+A vector field is a function which takes co-ordinates and gives us a vector. In 3D:
+$$
+\vv{u} : \mathbb{R}^3 \to \mathbb{R}^3.
+$$
+When printing, we use bold letters like $\vv{u}$ for vector fields. You should use an underline when you handwrite them.
+
+### Example
+Which of the following is a scalar field and which is a vector field? What do they look like?
+
+$$
+\beta = x^2 + y^2 + z^2,
+$$
+$$
+\vv{v} = [-x,-y,-z].
+$$
+
+::: {.callout-tip collapse="true"}
+## Solution
+The scalar field is $\beta$ because the answer is a single number for any choice of co-ordinates, whereas $\vv{v}$ gives a different vector at every point.
+
+$\beta$ is a field where the value at any point is the _distance squared_ from the origin.
+
+The vector field $\vv{v}$ has magnitude given by $\sqrt{x^2+y^2+z^2}$, so the vectors are bigger the further we are from the origin. The direction of all the vectors points _towards_ the origin.
+:::
+
+### Notation
+Here I've used square brackets $[,,]$ to indicate a vector. This is just a shorthand abbreviation for what I really mean:
+$$
+[a,b,c] = a \vv{e}_x + b \vv{e}_y + c \vv{e}_z.
+$$
+$\vv{e}_x$, $\vv{e}_y$ and $\vv{e}_z$ are the basis vectors for the co-ordinates $x$, $y$ and $z$. We can also write
+$$
+\vv{e}_x=[1,0,0],\;\vv{e}_y=[0,1,0],\;\vv{e}_z=[0,0,1].
+$$
+In Cartesian (i.e. normal) co-ordinates, these are easy, but soon we'll see _curviliear co-ordinates_ for which this all becomes more complicated.
+
+You can also use column vectors if you like, but I won't generally in the notes. We'll try to keep round backets $(,,)$ for co-ordinates, which look like vectors but aren't.
+
+## Making scalar fields from vector fields
+We'll soon see ways to differentiate fields which can produce scalar fields from vector fields and vice versa, but even without calculus we can do this.
+
+For example, given any two vector fields $\vv{a}$ and $\vv{b}$, we can take the dot product $\vv{a}\cdot\vv{b}$ which gives a scalar field, or the cross product $\vv{a}\times\vv{b}$ gives a different vector field. Or we can take the magnitude of a vector field to give a scalar field
+
+### Example
+A wind tunnel is decribed by Cartesian co-ordinates with $0\leq x \leq 1$, $0 \leq y \leq 1$, $z\in \mathbb{R}$.^[Here the range of $z$ is infinite. Wind tunnels aren't really infinitely long, but this is a common approximation if one dimension is much larger than the others. We are _neglecting_ the confinement in $z$.]
+The velocity of the air in a wind tunnel is given by the vector field $\mathbf{v} = [x(1-x)y(1-y), 0 ,0]$.^[As a mathematician I don't worry about units too much. Sometimes units are important, but for this module, you can safely ignore them.] 
+What is the windspeed, given as a scalar field? At what co-ordinates is the wind fastest? Where is there no wind?
+
+::: {.callout-tip collapse="true"}
+## Solution
+The speed is just the magnitude of the velocity, so we can work out
+$$
+|\mathbf{v}| = \sqrt{\left(x(1-x)y(1-y)\right)^2 + 0^2 + 0^2} = x(1-x)y(1-y).
+$$
+Note that this answer is non-negative, as required for a magnitude, because of the range of $x$ and $y$ we are considering.
+
+This is greatest when $x=1/2$ and $y=1/2$. The value of $z$ is not important. This is the centre of the wind tunnel.
+
+There is no wind when $x=0$ or $x=1$ or $y=0$ or $y=1$. This makes sense - these are the sidewalls of the tunnel.
+:::
+
+## The position vector
+A very special vector field is where at each point, we assign the position vector for that point. So at the point $(x,y,z)$, the vector field has value $[x,y,z]$. We notate this by $\vv{r}$. So (in Cartesian coordinates, at least)
+$$
+\vv{r}(x,y,z) = [x,y,z].
+$$

@@ -1,0 +1,75 @@
+project:
+  type: website
+
+website:
+  title: "MA22001 Core Mathematics IV"
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - href: index.qmd
+        text: Home
+      - section: "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)"
+        contents:
+        - text: "Scalar and vector fields"
+          href: fields.qmd
+        - text: "Coordinate systems"
+          href: coordinates.qmd
+        - text: "Derivatives of scalar fields"
+          href: scalarfields.qmd
+        - text: "Derivatives of vector fields"
+          href: vectorfields.qmd
+        - text: "Products & second derivatives"
+          href: secondderivs.qmd
+      - section: "Chapter 2: Curves, surfaces, volumes (Week 16)"
+        contents:
+        - text: "Volumes"
+          href: volumes.qmd
+        - text: "Surfaces"
+          href: surface.qmd
+        - text: "Curves"
+          href: curves.qmd
+      - section: "Chapter 3: Integrals (Weeks 17/18)"
+        contents:
+        - text: "Line integrals"
+          href: lineintegrals.qmd
+        - text: "Surface integrals"
+          href: surfaceintegrals.qmd
+        - text: "Volume integrals"
+          href: volumeintegrals.qmd
+      - section: "Chapter 4: Vector Calculus Theorems (Week 19)"
+        contents:
+        - text: "Stokes' theorem"
+          href: stokes.qmd
+        - text: "Divergence theorem"
+          href: divergence.qmd
+        - text: "Potentials"
+          href: potentials.qmd
+      - section: "Chapter 5: ODEs and PDEs (Weeks 20/21)"
+        contents:
+        - text: "Examples of ODEs" #Existence and uniqueness overview. linearity
+          href: odes.qmd
+        - text: "Examples of PDEs" #Discuss uniqueness, linearity, numerical solutions
+        - text: "Separation of variables"
+      - section: "Chapter 6: Fourier Series (Week 22)"
+        contents:
+        - text: ""
+        - text: ""
+        - text: "Application to ODEs and PDEs"
+      - section: "Chapter 7: Fourier Transforms (Week 23)"
+        contents:
+        - text: ""
+        - text: "Convolution"
+        - text: "Application to ODEs and PDEs"
+      - href: links.qmd
+  comments: 
+    hypothesis:
+      theme: clean
+      openSidebar: false
+      
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+jupyter: python3
