@@ -295,11 +295,17 @@ window.Quarto = {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Examples of PDEs</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./pdes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Examples of PDEs</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Separation of variables</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./separationofvariables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Separation of variables</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -350,6 +356,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a></li>
+  <li><a href="#volumes-in-curvilinear-co-ordinates" id="toc-volumes-in-curvilinear-co-ordinates" class="nav-link" data-scroll-target="#volumes-in-curvilinear-co-ordinates">Volumes in curvilinear co-ordinates</a></li>
   </ul>
 </nav>
     </div>
@@ -384,9 +391,10 @@ x\geq 0.
 \]</span> We haven’t mentioned <span class="math inline">\(y\)</span> or <span class="math inline">\(z\)</span>, so we assume they can take any values. Formally, we might write this as<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <span class="math display">\[
 S = \{(x,y,z)\in\mathbf{R}^3\,|\,x\geq 0\}.
 \]</span> This is an infinite volume, it’s all the points on one side of the <span class="math inline">\(y-z\)</span> plane.</p>
+<p>When we impose an inequality, we restrict a given set to a smaller region of the same dimension. If we instead we impose an equality, we reduce the dimension, as we shall see next time.</p>
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
-<p>What sort of set is <span class="math display">\[
+<p>Describe the set <span class="math display">\[
 A = \{(x,y,z)\in\mathbf{R}^3\,|\,x\geq 0,\,x^2+y^2+z^2\leq4\}.
 \]</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -419,6 +427,10 @@ Note
 <p>For the purposes of this module, it doesn’t really matter if the inequalities are strict (<span class="math inline">\(&lt;\)</span> or <span class="math inline">\(&gt;\)</span>) or non-strict (<span class="math inline">\(\leq\)</span> or <span class="math inline">\(\geq\)</span>), the maths will end up the same.</p>
 </div>
 </div>
+</section>
+<section id="volumes-in-curvilinear-co-ordinates" class="level2">
+<h2 class="anchored" data-anchor-id="volumes-in-curvilinear-co-ordinates">Volumes in curvilinear co-ordinates</h2>
+<p>TODO e.g.&nbsp;sphere, cylinder</p>
 
 
 </section>

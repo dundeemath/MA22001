@@ -1,0 +1,55 @@
+---
+title: "Examples of PDEs"
+---
+
+::: {.hidden}
+ \providecommand{\vv}[1]{{\mathbf{#1}}}
+ \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
+ \providecommand{\pdd}[2]{{\frac{\partial^2 #1}{\partial #2^2}}}
+:::
+
+PDEs are _partial differential equations_. These are equations which relate partial derivatives of a function with each other. Unlike ordinary differential equations (ODEs), which involve ordinary derivatives with respect to a single independent variable, PDEs involve functions of multiple independent variables and their partial derivatives.
+
+Two very famous examples of PDEs that are found in physics are the __Navier-Stokes equations__ (which describe fluid flow) 
+$$
+\begin{aligned}
+\frac{\partial \vv{u}}{\partial t} + (\vv{u}\cdot\nabla)\vv{u} &= -\frac{1}{\rho}\nabla p + \nu \nabla^2 \vv{u} + \vv{f},\\
+\nabla \cdot \vv{u} &= 0
+\end{aligned}
+$$  
+and __Maxwell's equations__ (which describe electromagnetism):
+$$
+\begin{aligned}
+\nabla \cdot \vv{E} &= \frac{\rho}{\epsilon_0} \quad\text{(Gauss's law)} \\
+\nabla \cdot \vv{B} &= 0 \quad\text{(No magnetic monopoles)} \\
+\nabla \times \vv{E} &= -\frac{\partial \vv{B}}{\partial t} \quad\text{(Faraday's law)} \\
+\nabla \times \vv{B} &= \mu_0\left(\vv{J} + \epsilon_0\frac{\partial \vv{E}}{\partial t}\right) \quad\text{(Ampère-Maxwell law)}
+\end{aligned}
+$$
+
+Each of these PDEs needs a whole module of its own, but we will see some very simple examples here.
+
+### The heat equation
+The one-dimensional _heat equation_^[Also called the _diffusion equation_] is
+$$
+\pd{u}{t} = \alpha \pdd{u}{x},
+$$
+where $u(x,t)$ is the temperature at position $x$ and time $t$, and $\alpha$ is a constant called the thermal diffusivity.
+
+### The wave equation
+The one-dimensional _wave equation_ is
+$$
+\pdd{u}{t} = c^2 \pdd{u}{x},
+$$
+where $u(x,t)$ is the displacement at position $x$ and time $t$, and $c$ is a constant representing the wave speed.
+
+## Existence and uniqueness of solutions
+TODO
+
+## Numerical solutions
+The main way that PDEs are solved in practice is using numerical methods. These involve discretizing the continuous variables (like space and time) into a grid, and then approximating the derivatives using finite differences or other techniques. This allows us to turn the PDE into a set of algebraic equations that can be solved using a computer.
+
+This is how, for example, the weather is predicted, via simulations of the atmosphere using numerical solutions to the Navier-Stokes equations. It is also widely used in financial modelling, engineering simulations, and many other fields.
+
+We won't actually see how to do this in this module, but it's important to know that this is how most PDEs are solved in practice. In your level 4 projects, you may well use numerical methods to solve PDEs related to your chosen topic.
+

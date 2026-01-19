@@ -50,7 +50,9 @@ website:
         - text: "Examples of ODEs" #Existence and uniqueness overview. linearity
           href: odes.qmd
         - text: "Examples of PDEs" #Discuss uniqueness, linearity, numerical solutions
+          href: pdes.qmd
         - text: "Separation of variables"
+          href: separationofvariables.qmd
       - section: "Chapter 6: Fourier Series (Week 22)"
         contents:
         - text: ""

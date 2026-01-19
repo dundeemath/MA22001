@@ -1,0 +1,12 @@
+---
+title: "Separation of variables for PDEs"
+---
+
+::: {.hidden}
+ \providecommand{\vv}[1]{{\mathbf{#1}}}
+ \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
+:::
+
+You have already seen a method called "separation of variables" for solving ordinary differential equations (ODEs). Another method, with the same name, but unfortunately different details, is used to find solutions to certain partial differential equations (PDEs). The basic idea is to "guess" the form of the solution as a product of functions, each depending on only one variable.
+
+### A basic Example

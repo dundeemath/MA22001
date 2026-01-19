@@ -1,0 +1,63 @@
+---
+title: "Fourier transforms"
+---
+
+::: {.hidden}
+ \providecommand{\vv}[1]{{\mathbf{#1}}}
+ \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
+:::
+
+Fourier series work great when we have a function which is perfectly periodic, or defined on a finite interval. But often in practice we have functions defined on the whole real line, when we use an approximation that something in infinitely big.
+
+In this case, there isn't an exact wavelength that fits perfectly, and instead we have to consider all possible wavelengths. This leads us to the _Fourier transform_.
+
+## Definition of the Fourier transform
+The _Fourier transform_ of a function $f(x)$ is defined as^[Lots of different conventions exist for the Fourier transform, this is one of the most common.]
+$$
+F(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x) e^{-ikx}\,dx,
+$$
+where $k$ is called the _wave number_.
+
+The _inverse Fourier transform_ is given by
+$$
+f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty F(k) e^{ikx}\,dk.
+$$
+These two equations are very similar in form to the Fourier series equations, but now we have integrals over all possible wave numbers $k$ instead of sums over discrete wavelengths.
+
+## Example
+Find the Fourier transform of
+$$
+f(x) = e^{-\frac{x^2}{2}}.
+$$
+::: {.callout-tip collapse="true"}
+## Solution
+We have
+$$
+F(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{x^2}{2}} e^{-ikx}\,dx.
+$$
+Combining the exponents gives
+$$
+F(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{x^2}{2} - ikx}\,dx = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{x^2 + 2ikx}{2}}\,dx.
+$$
+Completing the square in the exponent:
+$$
+x^2 + 2ikx = (x + ik)^2 - k^2,
+$$
+so
+$$
+F(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{(x + ik)^2 - k^2}{2}}\,dx = \frac{e^{\frac{k^2}{2}}}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{(x + ik)^2}{2}}\,dx.
+$$
+Now we can make the substitution $u = x + ik$, so $du = dx$. The limits of integration remain $-\infty$ to $\infty$ since shifting by a constant (even a complex one) doesn't change them. Thus,
+$$
+F(k) = \frac{e^{\frac{k^2}{2}}}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{u^2}{2}}\,du.
+$$
+The integral is just the standard Gaussian integral, which evaluates to $\sqrt{2\pi}$. Therefore,
+$$
+F(k) = \frac{e^{\frac{k^2}{2}}}{\sqrt{2\pi}} \cdot \sqrt{2\pi} = e^{\frac{k^2}{2}}.
+$$
+So the Fourier transform of $f(x) = e^{-\frac{x^2}{2
+}}$ is
+$$
+F(k) = e^{\frac{k^2}{2}}.
+$$
+:::

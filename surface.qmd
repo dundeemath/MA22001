@@ -14,7 +14,7 @@ $$
 This is exactly equivalent to $y=f(x)$ in 2D, and you can think of it as giving the height of the surface at any points $x$ and $y$.
 ![](figures/f4.jpg){width=50%}
 
-Actually, any single equation relating the variables $x$, $y$ and $z$ will in general describe a surface in 3D.
+Actually, any single equation (an equality constraint) relating the variables $x$, $y$ and $z$ will in general describe a surface in 3D.
 For example,
 $$
 x^2 + y^2 + z^2 = 1
@@ -28,7 +28,7 @@ is the plane parallel to the $y-z$ plane which goes through the point $[1,0,0]$.
 :::{.callout-note}
 If we're being careful we should write that
 $$
-\{ [x,y,z]\in\mathbb{R}^3 | x^2 + y^2 + z^2 = 1\}
+\{ (x,y,z)\in\mathbb{R}^3 \,|\, x^2 + y^2 + z^2 = 1\}
 $$
 is the sphere, rather than just the equation itself. Don't be afraid if you see this set notation.
 :::

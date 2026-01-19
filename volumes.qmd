@@ -19,8 +19,10 @@ S = \{(x,y,z)\in\mathbf{R}^3\,|\,x\geq 0\}.
 $$
 This is an infinite volume, it's all the points on one side of the $y-z$ plane.
 
+When we impose an inequality, we restrict a given set to a smaller region of the same dimension. If we instead we impose an equality, we reduce the dimension, as we shall see next time.
+
 ### Example
-What sort of set is
+Describe the set
 $$
 A = \{(x,y,z)\in\mathbf{R}^3\,|\,x\geq 0,\,x^2+y^2+z^2\leq4\}.
 $$
@@ -35,3 +37,6 @@ It's the half-ball of radius $2$ (because $2^2=4$), centred on the origin, lying
 ::: {.callout-note}
 For the purposes of this module, it doesn't really matter if the inequalities are strict ($<$ or $>$) or non-strict ($\leq$ or $\geq$), the maths will end up the same.
 :::
+
+## Volumes in curvilinear co-ordinates
+TODO e.g. sphere, cylinder

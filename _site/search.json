@@ -4,7 +4,18 @@
     "href": "volumes.html",
     "title": "Volumes in three dimensions",
     "section": "",
-    "text": "This part of the module deals with sets in 3D.1\nSets are defined by equalities and inequalities. The simplest type we will see are those sets which are defined only by inequalities and no equalities. For example, consider the set \\(S\\) where \\[\nx\\geq 0.\n\\] We haven’t mentioned \\(y\\) or \\(z\\), so we assume they can take any values. Formally, we might write this as2 \\[\nS = \\{(x,y,z)\\in\\mathbf{R}^3\\,|\\,x\\geq 0\\}.\n\\] This is an infinite volume, it’s all the points on one side of the \\(y-z\\) plane.",
+    "text": "This part of the module deals with sets in 3D.1\nSets are defined by equalities and inequalities. The simplest type we will see are those sets which are defined only by inequalities and no equalities. For example, consider the set \\(S\\) where \\[\nx\\geq 0.\n\\] We haven’t mentioned \\(y\\) or \\(z\\), so we assume they can take any values. Formally, we might write this as2 \\[\nS = \\{(x,y,z)\\in\\mathbf{R}^3\\,|\\,x\\geq 0\\}.\n\\] This is an infinite volume, it’s all the points on one side of the \\(y-z\\) plane.\nWhen we impose an inequality, we restrict a given set to a smaller region of the same dimension. If we instead we impose an equality, we reduce the dimension, as we shall see next time.",
+    "crumbs": [
+      "Chapter 2: Curves, surfaces, volumes (Week 16)",
+      "Volumes"
+    ]
+  },
+  {
+    "objectID": "volumes.html#volumes-in-curvilinear-co-ordinates",
+    "href": "volumes.html#volumes-in-curvilinear-co-ordinates",
+    "title": "Volumes in three dimensions",
+    "section": "Volumes in curvilinear co-ordinates",
+    "text": "Volumes in curvilinear co-ordinates\nTODO e.g. sphere, cylinder",
     "crumbs": [
       "Chapter 2: Curves, surfaces, volumes (Week 16)",
       "Volumes"
@@ -48,7 +59,7 @@
     "href": "surface.html",
     "title": "Surfaces",
     "section": "",
-    "text": "Curves in 3D can be seen as a generalisation of curves in 2D, but a different generalisation would be surfaces in 3D1. The easiest way to write down a surface is \\[\nz = f(x,y).\n\\] This is exactly equivalent to \\(y=f(x)\\) in 2D, and you can think of it as giving the height of the surface at any points \\(x\\) and \\(y\\).\nActually, any single equation relating the variables \\(x\\), \\(y\\) and \\(z\\) will in general describe a surface in 3D. For example, \\[\nx^2 + y^2 + z^2 = 1\n\\] is the sphere of radius 1 centred on the origin (MA12001), and \\[\nx = 1\n\\] is the plane parallel to the \\(y-z\\) plane which goes through the point \\([1,0,0]\\).",
+    "text": "Curves in 3D can be seen as a generalisation of curves in 2D, but a different generalisation would be surfaces in 3D1. The easiest way to write down a surface is \\[\nz = f(x,y).\n\\] This is exactly equivalent to \\(y=f(x)\\) in 2D, and you can think of it as giving the height of the surface at any points \\(x\\) and \\(y\\).\nActually, any single equation (an equality constraint) relating the variables \\(x\\), \\(y\\) and \\(z\\) will in general describe a surface in 3D. For example, \\[\nx^2 + y^2 + z^2 = 1\n\\] is the sphere of radius 1 centred on the origin (MA12001), and \\[\nx = 1\n\\] is the plane parallel to the \\(y-z\\) plane which goes through the point \\([1,0,0]\\).",
     "crumbs": [
       "Chapter 2: Curves, surfaces, volumes (Week 16)",
       "Surfaces"
@@ -66,102 +77,80 @@
     ]
   },
   {
-    "objectID": "secondderivs.html",
-    "href": "secondderivs.html",
-    "title": "Derivatives of products and second derivatives",
+    "objectID": "separationofvariables.html",
+    "href": "separationofvariables.html",
+    "title": "Separation of variables for PDEs",
     "section": "",
-    "text": "This chapter focuses on certain identities we can derive by combining the different 3D derivatives. You should get used to using these identities, but you also need to be able to prove them from the definitions.",
+    "text": "You have already seen a method called “separation of variables” for solving ordinary differential equations (ODEs). Another method, with the same name, but unfortunately different details, is used to find solutions to certain partial differential equations (PDEs). The basic idea is to “guess” the form of the solution as a product of functions, each depending on only one variable.\n\nA basic Example",
     "crumbs": [
-      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
-      "Products & second derivatives"
+      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Separation of variables"
     ]
   },
   {
-    "objectID": "secondderivs.html#derivatives-of-products",
-    "href": "secondderivs.html#derivatives-of-products",
-    "title": "Derivatives of products and second derivatives",
-    "section": "Derivatives of products",
-    "text": "Derivatives of products\nYou’re familiar with the product rule for ordinary derivatives: \\[\n\\frac{d}{dx}(fg) = \\frac{df}{dx}g + f\\frac{dg}{dx}.\n\\] How does this translate to our new grad, div and curl? The first thing to consider is what kinds of products we have.\nThink: What possible products exist between any two of scalar fields \\(\\phi\\) and \\(\\psi\\) and vector fields \\({\\mathbf{u}}\\) and \\({\\mathbf{v}}\\), and is the result a scalar or vector field?\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\(\\phi\\psi\\) is a scalar field\n\\(\\phi{\\mathbf{u}}\\) is a vector field\n\\({\\mathbf{u}}\\cdot{\\mathbf{v}}\\) is a scalar field\n\\({\\mathbf{u}}\\times{\\mathbf{v}}\\) is a vector field\n\n\n\nFor each product which is a scalar we can work out a formula for the gradient1, and for each vector we can work out formulas for the divergence and curl. Here is the list:\n\nGradient of a product of scalars: \\[\n\\nabla(\\phi\\psi) = (\\nabla\\phi)\\psi + \\phi(\\nabla\\psi)\n\\]\nGradient of a dot product: \\[\n\\nabla({\\mathbf{u}}\\cdot{\\mathbf{v}}) = ({\\mathbf{u}}\\cdot\\nabla){\\mathbf{v}} + ({\\mathbf{v}}\\cdot\\nabla){\\mathbf{u}} + {\\mathbf{u}}\\times(\\nabla\\times{\\mathbf{v}}) + {\\mathbf{v}}\\times(\\nabla\\times{\\mathbf{u}})\n\\]\nDivergence of a scalar times a vector: \\[\n\\nabla\\cdot(\\phi{\\mathbf{u}}) = {\\mathbf{u}}\\cdot\\nabla\\phi + \\phi\\nabla\\cdot{\\mathbf{u}}\n\\]\nDivergence of a cross product: \\[\n\\nabla\\cdot({\\mathbf{u}}\\times{\\mathbf{v}}) = {\\mathbf{v}}\\cdot(\\nabla\\times{\\mathbf{u}}) - {\\mathbf{u}}\\cdot(\\nabla\\times{\\mathbf{v}})\n\\]\nCurl of a scalar times a vector: \\[\n\\nabla\\times(\\phi{\\mathbf{u}}) = (\\nabla\\phi)\\times{\\mathbf{u}} + \\phi(\\nabla\\times{\\mathbf{u}})\n\\]\nCurl of a cross product: \\[\n\\nabla\\times({\\mathbf{u}}\\times{\\mathbf{v}}) = {\\mathbf{u}}(\\nabla\\cdot{\\mathbf{v}}) - {\\mathbf{v}}(\\nabla\\cdot{\\mathbf{u}}) + ({\\mathbf{v}}\\cdot\\nabla){\\mathbf{u}} - ({\\mathbf{u}}\\cdot\\nabla){\\mathbf{v}}\n\\]\n\n\nExample\nFor a general scalar field \\(\\phi\\) and vector field \\({\\mathbf{u}}\\), show that \\[\n\\nabla \\cdot \\left(\\phi{\\mathbf{u}}\\right) = {\\mathbf{u}}\\cdot \\nabla \\phi + \\phi \\nabla\\cdot{\\mathbf{u}}.\n\\]\n\n\n\n\n\n\nSolution\n\n\n\n\n\nLet \\(\\phi\\) be a scalar field and \\({\\mathbf{u}} = [u_1, u_2, u_3]\\) a vector field. Then, \\[\n\\begin{aligned}\n\\nabla \\cdot (\\phi {\\mathbf{u}}) &= {\\frac{\\partial }{\\partial x}}(\\phi u_1) + {\\frac{\\partial }{\\partial y}}(\\phi u_2) + {\\frac{\\partial }{\\partial z}}(\\phi u_3)\\\\\n&= u_1 {\\frac{\\partial \\phi}{\\partial x}} + \\phi {\\frac{\\partial u_1}{\\partial x}} + u_2 {\\frac{\\partial \\phi}{\\partial y}} + \\phi {\\frac{\\partial u_2}{\\partial y}} + u_3 {\\frac{\\partial \\phi}{\\partial z}} + \\phi {\\frac{\\partial u_3}{\\partial z}}\\\\\n&= u_1 {\\frac{\\partial \\phi}{\\partial x}} + u_2 {\\frac{\\partial \\phi}{\\partial y}} + u_3 {\\frac{\\partial \\phi}{\\partial z}} + \\phi \\left({\\frac{\\partial u_1}{\\partial x}} + {\\frac{\\partial u_2}{\\partial y}} + {\\frac{\\partial u_3}{\\partial z}}\\right)\\\\\n&= {\\mathbf{u}} \\cdot \\nabla \\phi + \\phi (\\nabla \\cdot {\\mathbf{u}}).\n\\end{aligned}\n\\]",
-    "crumbs": [
-      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
-      "Products & second derivatives"
-    ]
-  },
-  {
-    "objectID": "secondderivs.html#second-derivatives",
-    "href": "secondderivs.html#second-derivatives",
-    "title": "Derivatives of products and second derivatives",
-    "section": "Second derivatives",
-    "text": "Second derivatives\nFor normal derivatives, you know \\(\\frac{d}{dx} \\frac{dy}{dx} = \\frac{d^2y}{dx^2}\\) - this is basically just a definition.\nIn 3D, it’s more complicated. Of course, we can only take the gradient of a scalar field, and only take the divergence or curl of a vector field so the possibilities are, for a vector field \\({\\mathbf{u}}\\) and a scalar field \\(\\phi\\):\n\n\\(\\nabla\\cdot(\\nabla\\phi)\\) gives a scalar field\n\\(\\nabla\\times(\\nabla\\phi)\\) gives a vector field\n\\(\\nabla (\\nabla \\cdot {\\mathbf{u}})\\) gives a vector field\n\\(\\nabla \\times(\\nabla\\times {\\mathbf{u}})\\) gives a vector field\n\\(\\nabla \\cdot(\\nabla \\times{\\mathbf{u}})\\) gives a scalar field\n\nAny other combination, like \\(\\nabla\\cdot (\\nabla \\cdot {\\mathbf{u}})\\) is not defined.\nActually, there are two extra rules which you need to learn, and you can prove: \\[\\nabla\\cdot(\\nabla \\times {\\mathbf{u}}) = 0\\] \\[\\nabla\\times(\\nabla \\phi) = {\\mathbf{0}}\\]\n\nExample\nFor any scalar field \\(\\phi\\), show that \\(\\nabla\\times(\\nabla \\phi) = {\\mathbf{0}}\\).\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\[\n\\begin{aligned}\n\\nabla\\times(\\nabla \\phi) &= \\nabla\\times\\left[{\\frac{\\partial \\phi}{\\partial x}},\\,{\\frac{\\partial \\phi}{\\partial y}},\\,{\\frac{\\partial \\phi}{\\partial z}},\\,\\right] \\\\\n&= \\left[ {\\frac{\\partial }{\\partial y}}{\\frac{\\partial \\phi}{\\partial z}} - {\\frac{\\partial }{\\partial z}}{\\frac{\\partial \\phi}{\\partial y}},\\,{\\frac{\\partial }{\\partial z}}{\\frac{\\partial \\phi}{\\partial x}} - {\\frac{\\partial }{\\partial x}}{\\frac{\\partial \\phi}{\\partial z}},\\,{\\frac{\\partial }{\\partial x}}{\\frac{\\partial \\phi}{\\partial y}} - {\\frac{\\partial }{\\partial y}}{\\frac{\\partial \\phi}{\\partial x}}\\right] \\\\\n&= \\left[ {\\frac{\\partial }{\\partial y}}{\\frac{\\partial \\phi}{\\partial z}} - {\\frac{\\partial }{\\partial y}}{\\frac{\\partial \\phi}{\\partial z}},\\,{\\frac{\\partial }{\\partial z}}{\\frac{\\partial \\phi}{\\partial x}} - {\\frac{\\partial }{\\partial z}}{\\frac{\\partial \\phi}{\\partial x}},\\,{\\frac{\\partial }{\\partial x}}{\\frac{\\partial \\phi}{\\partial y}} - {\\frac{\\partial }{\\partial x}}{\\frac{\\partial \\phi}{\\partial y}}\\right]  \\\\\n&= \\left[0,0,0\\right]\\\\\n&= {\\mathbf{0}}.\n\\end{aligned}\n\\]\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe key with all of these proofs is the symmetry of a mixed partial derivatives, i.e. \\(\\frac{\\partial^2 f}{\\partial x\\partial y} = \\frac{\\partial^2 f}{\\partial y\\partial x}\\)2.",
-    "crumbs": [
-      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
-      "Products & second derivatives"
-    ]
-  },
-  {
-    "objectID": "secondderivs.html#the-laplacian",
-    "href": "secondderivs.html#the-laplacian",
-    "title": "Derivatives of products and second derivatives",
-    "section": "The Laplacian",
-    "text": "The Laplacian\nThe remaining three second derivatives, \\(\\nabla\\cdot(\\nabla\\phi)\\), \\(\\nabla \\times(\\nabla\\times {\\mathbf{u}})\\) and \\(\\nabla (\\nabla \\cdot {\\mathbf{u}})\\) are related to another operator called the Laplacian, which is given the symbol \\(\\Delta\\) or \\(\\nabla^2\\). We’ll use \\(\\Delta\\) in this module.3\nFor a scalar field \\(\\phi\\), \\[\n\\begin{aligned}\n\\nabla\\cdot(\\nabla\\phi) &= \\nabla\\cdot\\left[{\\frac{\\partial \\phi}{\\partial x}},{\\frac{\\partial \\phi}{\\partial y}},{\\frac{\\partial \\phi}{\\partial z}}\\right]\n\\\\&= {\\frac{\\partial }{\\partial x}}{\\frac{\\partial \\phi}{\\partial x}} + {\\frac{\\partial }{\\partial y}}{\\frac{\\partial \\phi}{\\partial y}} + {\\frac{\\partial }{\\partial z}}{\\frac{\\partial \\phi}{\\partial z}}\n\\\\&= \\frac{\\partial^2 \\phi}{\\partial x^2} + \\frac{\\partial^2 \\phi}{\\partial y^2}+ \\frac{\\partial^2 \\phi}{\\partial z^2}\n\\end{aligned}\n\\] This is what we define to be the \\(\\Delta \\phi\\), the (scalar) Laplacian of \\(\\phi\\).\nFor a vector field \\({\\mathbf{u}}\\),4 \\[\n\\begin{aligned}\n\\nabla(\\nabla\\cdot {\\mathbf{u}}) - \\nabla\\times(\\nabla\\times{\\mathbf{u}}) &= \\left[\\frac{\\partial^2 u_1}{\\partial x^2} + \\frac{\\partial^2 u_1}{\\partial y^2}+ \\frac{\\partial^2 u_1}{\\partial z^2},\\,\\frac{\\partial^2 u_2}{\\partial x^2} + \\frac{\\partial^2 u_2}{\\partial y^2}+ \\frac{\\partial^2 u_2}{\\partial z^2},\\,\\frac{\\partial^2 u_3}{\\partial x^2} + \\frac{\\partial^2 u_3}{\\partial y^2}+ \\frac{\\partial^2 u_3}{\\partial z^2}\\right]\\\\\n&= \\left[\\Delta u_1,\\,\\Delta u_2,\\,\\Delta u_3\\right].\n\\end{aligned}\n\\] This is what we define to be \\(\\Delta {\\mathbf{u}}\\), the (vector) Laplacian of \\({\\mathbf{u}}\\).\n\n\n\n\n\n\nImportant\n\n\n\nIn Cartesians, the vector Laplacian is the scalar Laplacian of each of the components. In curvilinear co-ordinates, this isn’t true.",
-    "crumbs": [
-      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
-      "Products & second derivatives"
-    ]
-  },
-  {
-    "objectID": "secondderivs.html#footnotes",
-    "href": "secondderivs.html#footnotes",
-    "title": "Derivatives of products and second derivatives",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nYou can do directional derivatives too but it’s basically the same.↩︎\nWhich holds as long as the second derivatives are continuous, which they always will be in this module.↩︎\nYou won’t get penalised if you prefer to write \\(\\nabla^2\\).↩︎\nTry this as an exercise, it takes a while.↩︎",
-    "crumbs": [
-      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
-      "Products & second derivatives"
-    ]
-  },
-  {
-    "objectID": "potentials.html",
-    "href": "potentials.html",
-    "title": "Vector and scalar potentials",
+    "objectID": "scalarfields.html",
+    "href": "scalarfields.html",
+    "title": "Derivatives of scalar fields",
     "section": "",
-    "text": "The final part of our module concerns special types of vector fields.\nWe call a field \\({\\mathbf{A}}\\) solenoidal if \\[\n\\nabla\\cdot {\\mathbf{A}} = 0\n\\] and we call a field \\({\\mathbf{B}}\\) irrotational if \\[\n\\nabla\\times{\\mathbf{B}} = {\\mathbf{0}}.\n\\]",
+    "text": "In this part of the module, we study how to differentiate fields. A field is another word for a function defined over space. This week, scalar fields: assigning to each point in space a scalar value. Think about a temperature field.\nFor example, the following could be a vector field \\[\nf({\\mathbf{r}}) = f(x,y,z) = x^2y +z.\n\\] If you know a point in space (given by co-ordinates or a position vector) then you know the value of \\(f\\) at that point.\nThere are different types of differentiation in higher dimensions, and they are generalisations of different interpretations of the normal derivative.",
     "crumbs": [
-      "Chapter 4: Vector Calculus Theorems (Week 19)",
-      "Potentials"
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Derivatives of scalar fields"
     ]
   },
   {
-    "objectID": "potentials.html#irrotational-fields",
-    "href": "potentials.html#irrotational-fields",
-    "title": "Vector and scalar potentials",
-    "section": "Irrotational fields",
-    "text": "Irrotational fields\nThese are sometimes called curl free fields, for obvious reasons. The key theorem is:\n\n\n\n\n\n\nImportant\n\n\n\n\\[\\nabla\\times{\\mathbf{A}} = {\\mathbf{0}} \\text{ if and only if }{\\mathbf{A}} = \\nabla \\phi\\text{ for some scalar field }\\phi.\\]\n\n\nWe call \\(\\phi\\) a scalar potential for \\({\\mathbf{A}}\\).\nProving \\(\\impliedby\\) is easy: If \\({\\mathbf{A}} = \\nabla \\phi\\) then \\[\n\\nabla\\times {\\mathbf{A}} = \\nabla \\times \\nabla \\phi = 0,\n\\] this was one of our second derivative identities.\nThe proof in the other direction is much more complicated, but for any given example you can make it work.\n\nExample\nFind a scalar potential for \\[\n{\\mathbf{A}} = [x^2,y^2,0].\n\\]\n\n\n\n\n\n\nSolution\n\n\n\n\n\nFirst check that \\(\\nabla\\times{\\mathbf{A}}={\\mathbf{0}}\\), otherwise it doesn’t work.\nThen we need to find \\(\\phi\\) such that \\(\\nabla \\phi = [x^2,y^2,0]\\).\nMaybe you can spot it directly, but otherwise we can break it down. We need to find \\(\\phi(x,y,z)\\) such that \\[\n\\begin{aligned}\n{\\frac{\\partial \\phi}{\\partial x}} &= x^2,\\qquad\\text{(1)} \\\\\n{\\frac{\\partial \\phi}{\\partial y}} &= y^2,\\qquad\\text{(2)}\\\\\n{\\frac{\\partial \\phi}{\\partial z}} &= 0.\\qquad\\text{(3)}\n\\end{aligned}\n\\]\nIntegrating the (1), we have \\[\\phi(x,y,z) = \\frac{1}{3} x^3 + C_1(y,z)\\] Here \\(C_1\\) is just a normal constant of integration, but because we integrated a partial derivative, this constant can depend on \\(y\\) and \\(z\\).\nThen (2) becomes \\[{\\frac{\\partial C_1}{\\partial y}} = y^2\\] so \\[\nC_1 = \\frac{1}{3} y^3 + C_2(z).\\] \\(C_1\\) depends only on \\(y\\) and \\(z\\), so the new constant of integration \\(C_2\\) depends only on \\(z\\). So we have \\[\n\\phi = \\frac{1}{3}x^3 + \\frac{1}{3}y^3 + C_2(z),\n\\] so (3) gives \\[\n\\frac{dC_2}{dz} = 0\n\\] so \\(C_2\\) is just a constant.\nSo finally we have \\[\n\\phi(x,y,z) = \\frac{1}{3}x^3 + \\frac{1}{3}y^3 + C_2,\n\\] where \\(C_2\\) is any constant.\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nScalar potentials are not unique - you can add any constant to \\(\\phi\\) and it’s still valid.",
-    "crumbs": [
-      "Chapter 4: Vector Calculus Theorems (Week 19)",
-      "Potentials"
-    ]
-  },
-  {
-    "objectID": "potentials.html#solenoidal-fields",
-    "href": "potentials.html#solenoidal-fields",
-    "title": "Vector and scalar potentials",
-    "section": "Solenoidal fields",
-    "text": "Solenoidal fields\nThese are also called incompressible or divergence free1. The key theorem here is:\n\n\n\n\n\n\nImportant\n\n\n\n\\[\\nabla\\cdot{\\mathbf{A}} = {\\mathbf{0}} \\text{ if and only if }{\\mathbf{A}} = \\nabla\\times {\\mathbf{B}}\\text{ for some vector field }{\\mathbf{B}}.\\]\n\n\nWe call \\({\\mathbf{B}}\\) a vector potential for \\({\\mathbf{A}}\\). Again, you can easily prove that \\(\\nabla\\times{\\mathbf{B}}\\) is solenoidal, but the other way is harder. You can also easily prove this:\n\n\n\n\n\n\nImportant\n\n\n\nVector potentials are not unique - If \\({\\mathbf{B}}\\) is a vector potential for \\({\\mathbf{A}}\\) then so is \\({\\mathbf{B}}+\\nabla\\phi\\) for any scalar field \\(\\phi\\).2\n\n\nThis non-uniqueness is very important, because it means we can choose properties we want \\({\\mathbf{B}}\\) to have. One convenient choice is often \\[B_3=0,\\] no component in the \\(z\\) direction.\n\nExample\nFind a vector potential for \\[\n{\\mathbf{A}} = [x+y^2, -y+z^2, y^2]\n\\]\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThis works the same as for scalar potentials, but it gets much messier. I strongly recommend staring at it for 30 seconds to see if you can guess a potential that works, before trying as follows:\nFirst, you could check it’s actually solenoidal. That’s quite quick in this case.\nWe need to find \\({\\mathbf{B}}=[B_1,B_2,B_3]\\) such that \\[\n[x+y^2, -y+z^2, y^2] = \\nabla\\times{\\mathbf{B}} = [{\\frac{\\partial B_3}{\\partial y}}-{\\frac{\\partial B_2}{\\partial z}},\\,{\\frac{\\partial B_1}{\\partial z}}-{\\frac{\\partial B_3}{\\partial x}},\\,{\\frac{\\partial B_2}{\\partial x}}-{\\frac{\\partial B_1}{\\partial y}}].\n\\]\nLet’s make the gauge choice that \\(B_3=0\\), so then we get \\[x+y^2 = -{\\frac{\\partial B_2}{\\partial z}},\\] \\[-y+z^2 = {\\frac{\\partial B_1}{\\partial z}},\\] \\[y^2 = {\\frac{\\partial B_2}{\\partial x}} - {\\frac{\\partial B_1}{\\partial y}}.\\]\nIntegrating the first two of these, we have: \\[\nB_2 = -x z - y^2 z + f(x, y)\n\\] and \\[\nB_1 = -y z + \\frac{1}{3} z^3 + g(x, y)\n\\] where \\(f\\) and \\(g\\) are some unknown integration constant functions.\nNow, substitute \\(B_1\\) and \\(B_2\\) into the third equation: \\[\ny^2 = (-z + {\\frac{\\partial f}{\\partial x}}) - (-z + {\\frac{\\partial g}{\\partial y}}) = {\\frac{\\partial f}{\\partial x}} - {\\frac{\\partial g}{\\partial y}}\n\\]\nWe still have some freedom here. A simple choice is \\(f(x, y) = 0\\) and \\(g(x, y) = -\\frac{1}{3} y^3\\): \\[\n{\\frac{\\partial f}{\\partial x}} = 0,\\quad {\\frac{\\partial g}{\\partial y}} = -y^2\n\\] So, \\[\ny^2 = 0 - (-y^2) = y^2\n\\] This works.\nTherefore, a vector potential is: \\[\n{\\mathbf{B}} = \\left[\n    -y z + \\frac{1}{3} z^3 - \\frac{1}{3} y^3,\\;\n    -x z - y^2 z,\\;\n    0.\n\\right]\n\\]\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nAs with many things in maths, finding the potentials is slow but checking they are valid is quick. Always check!",
-    "crumbs": [
-      "Chapter 4: Vector Calculus Theorems (Week 19)",
-      "Potentials"
-    ]
-  },
-  {
-    "objectID": "potentials.html#footnotes",
-    "href": "potentials.html#footnotes",
-    "title": "Vector and scalar potentials",
+    "objectID": "scalarfields.html#footnotes",
+    "href": "scalarfields.html#footnotes",
+    "title": "Derivatives of scalar fields",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nIn physics, the magnetic field is a solenoidal field. This is where the name comes from.↩︎\nThis is called gauge freedom in physics.↩︎",
+    "text": "Footnotes\n\n\nWe already saw this for calculating normals to surfaces.↩︎\nStrictly speaking the symbol \\(\\nabla\\) is called “nabla” or “del”, but we often call it “grad” in other settings.↩︎\nIn fact, we could see straight away that \\[\n\\nabla f \\neq {\\frac{\\partial f}{\\partial r}}{\\mathbf{e}}_r + {\\frac{\\partial f}{\\partial \\theta}}{\\mathbf{e}}_\\theta + {\\frac{\\partial f}{\\partial \\phi}}{\\mathbf{e}}_\\phi\n\\] because of the dimensions of the quantities. The dimensions of a derivative should be the dimensions of \\(f\\) divided by length, which is what the first expression has. But \\(\\theta\\) and \\(\\phi\\) are dimensionless, so we need to divide by a length to keep these ones consistent.↩︎",
     "crumbs": [
-      "Chapter 4: Vector Calculus Theorems (Week 19)",
-      "Potentials"
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Derivatives of scalar fields"
+    ]
+  },
+  {
+    "objectID": "pdes.html",
+    "href": "pdes.html",
+    "title": "Examples of PDEs",
+    "section": "",
+    "text": "PDEs are partial differential equations. These are equations which relate partial derivatives of a function with each other. Unlike ordinary differential equations (ODEs), which involve ordinary derivatives with respect to a single independent variable, PDEs involve functions of multiple independent variables and their partial derivatives.\nTwo very famous examples of PDEs that are found in physics are the Navier-Stokes equations (which describe fluid flow) \\[\n\\begin{aligned}\n\\frac{\\partial {\\mathbf{u}}}{\\partial t} + ({\\mathbf{u}}\\cdot\\nabla){\\mathbf{u}} &= -\\frac{1}{\\rho}\\nabla p + \\nu \\nabla^2 {\\mathbf{u}} + {\\mathbf{f}},\\\\\n\\nabla \\cdot {\\mathbf{u}} &= 0\n\\end{aligned}\n\\]\nand Maxwell’s equations (which describe electromagnetism): \\[\n\\begin{aligned}\n\\nabla \\cdot {\\mathbf{E}} &= \\frac{\\rho}{\\epsilon_0} \\quad\\text{(Gauss's law)} \\\\\n\\nabla \\cdot {\\mathbf{B}} &= 0 \\quad\\text{(No magnetic monopoles)} \\\\\n\\nabla \\times {\\mathbf{E}} &= -\\frac{\\partial {\\mathbf{B}}}{\\partial t} \\quad\\text{(Faraday's law)} \\\\\n\\nabla \\times {\\mathbf{B}} &= \\mu_0\\left({\\mathbf{J}} + \\epsilon_0\\frac{\\partial {\\mathbf{E}}}{\\partial t}\\right) \\quad\\text{(Ampère-Maxwell law)}\n\\end{aligned}\n\\]\nEach of these PDEs needs a whole module of its own, but we will see some very simple examples here.",
+    "crumbs": [
+      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Examples of PDEs"
+    ]
+  },
+  {
+    "objectID": "pdes.html#existence-and-uniqueness-of-solutions",
+    "href": "pdes.html#existence-and-uniqueness-of-solutions",
+    "title": "Examples of PDEs",
+    "section": "Existence and uniqueness of solutions",
+    "text": "Existence and uniqueness of solutions\nTODO",
+    "crumbs": [
+      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Examples of PDEs"
+    ]
+  },
+  {
+    "objectID": "pdes.html#numerical-solutions",
+    "href": "pdes.html#numerical-solutions",
+    "title": "Examples of PDEs",
+    "section": "Numerical solutions",
+    "text": "Numerical solutions\nThe main way that PDEs are solved in practice is using numerical methods. These involve discretizing the continuous variables (like space and time) into a grid, and then approximating the derivatives using finite differences or other techniques. This allows us to turn the PDE into a set of algebraic equations that can be solved using a computer.\nThis is how, for example, the weather is predicted, via simulations of the atmosphere using numerical solutions to the Navier-Stokes equations. It is also widely used in financial modelling, engineering simulations, and many other fields.\nWe won’t actually see how to do this in this module, but it’s important to know that this is how most PDEs are solved in practice. In your level 4 projects, you may well use numerical methods to solve PDEs related to your chosen topic.",
+    "crumbs": [
+      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Examples of PDEs"
+    ]
+  },
+  {
+    "objectID": "pdes.html#footnotes",
+    "href": "pdes.html#footnotes",
+    "title": "Examples of PDEs",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAlso called the diffusion equation↩︎",
+    "crumbs": [
+      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Examples of PDEs"
     ]
   },
   {
@@ -215,36 +204,69 @@
     ]
   },
   {
-    "objectID": "divergence.html",
-    "href": "divergence.html",
-    "title": "The divergence theorem",
+    "objectID": "fields.html",
+    "href": "fields.html",
+    "title": "Scalar and vector fields",
     "section": "",
-    "text": "The divergence theorem is similar to Stokes’ theorem, but it relates volumes and surfaces rather than surfaces and curves. As the name suggests, it uses the divergence: \\[\n\\int_V \\nabla\\cdot {\\mathbf{F}}({\\mathbf{r}}) dV = \\int_{\\partial V} {\\mathbf{F}}({\\mathbf{r}})\\cdot d{\\mathbf{S}}.\n\\]\nAs you may be able to guess, \\(\\partial V\\) is the boundary of the volume \\(V\\), with the normal facing out. Again, we may need to do the boundary in more than one piece.",
+    "text": "By this module, you should already be very comfortable with the idea of vectors as things which can be added and multiplied in certain ways, and as having both a direction and a magnitude.\nIn this module, we will deal with vector fields as well as scalar fields. Instead of being a single number, this is a vector or a scalar for every point in space.\nBefore we move onto definitions, here are some examples to make the concepts clear:\nMathematically, we can define a scalar field as a function which takes co-ordinates, and gives a single number. Mostly in this course we will deal with three dimensions, so the function takes three numbers and gives one. We can write this as \\[\n\\alpha : \\mathbb{R}^3 \\to \\mathbb{R}.\n\\] Very often we will use Greek letters for scalar fields.\nA vector field is a function which takes co-ordinates and gives us a vector. In 3D: \\[\n{\\mathbf{u}} : \\mathbb{R}^3 \\to \\mathbb{R}^3.\n\\] When printing, we use bold letters like \\({\\mathbf{u}}\\) for vector fields. You should use an underline when you handwrite them.",
     "crumbs": [
-      "Chapter 4: Vector Calculus Theorems (Week 19)",
-      "Divergence theorem"
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Scalar and vector fields"
     ]
   },
   {
-    "objectID": "divergence.html#greens-first-identity",
-    "href": "divergence.html#greens-first-identity",
-    "title": "The divergence theorem",
-    "section": "Green’s first identity",
-    "text": "Green’s first identity\nGreen’s first identity states that, for any scalar fields \\(f\\) and \\(g\\), \\[\n\\int_V \\left(g\\Delta f + \\nabla f \\cdot \\nabla g\\right)dV = \\int_{\\partial V} g\\nabla f \\cdot d{\\mathbf{S}}.\n\\]\nTo prove this, we obviously need to use the divergence theorem. It’s not clear how we can use that on the left-hand side, so let’s start with the right-hand side and use the product rule: \\[\n\\begin{aligned}\n\\int_{\\partial V} g\\nabla f \\cdot d{\\mathbf{S}} &= \\int_{V} \\nabla \\cdot \\left(g\\nabla f\\right) dV\n\\\\ &= \\int_{V} \\left(\\nabla g \\cdot \\nabla f + g\\nabla\\cdot\\nabla f \\right) dV\n\\end{aligned}\n\\] which is exactly what we wanted, when we remember that \\(\\Delta f = \\nabla\\cdot\\nabla f\\).",
+    "objectID": "fields.html#making-scalar-fields-from-vector-fields",
+    "href": "fields.html#making-scalar-fields-from-vector-fields",
+    "title": "Scalar and vector fields",
+    "section": "Making scalar fields from vector fields",
+    "text": "Making scalar fields from vector fields\nWe’ll soon see ways to differentiate fields which can produce scalar fields from vector fields and vice versa, but even without calculus we can do this.\nFor example, given any two vector fields \\({\\mathbf{a}}\\) and \\({\\mathbf{b}}\\), we can take the dot product \\({\\mathbf{a}}\\cdot{\\mathbf{b}}\\) which gives a scalar field, or the cross product \\({\\mathbf{a}}\\times{\\mathbf{b}}\\) gives a different vector field. Or we can take the magnitude of a vector field to give a scalar field\n\nExample\nA wind tunnel is decribed by Cartesian co-ordinates with \\(0\\leq x \\leq 1\\), \\(0 \\leq y \\leq 1\\), \\(z\\in \\mathbb{R}\\).1 The velocity of the air in a wind tunnel is given by the vector field \\(\\mathbf{v} = [x(1-x)y(1-y), 0 ,0]\\).2 What is the windspeed, given as a scalar field? At what co-ordinates is the wind fastest? Where is there no wind?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThe speed is just the magnitude of the velocity, so we can work out \\[\n|\\mathbf{v}| = \\sqrt{\\left(x(1-x)y(1-y)\\right)^2 + 0^2 + 0^2} = x(1-x)y(1-y).\n\\] Note that this answer is non-negative, as required for a magnitude, because of the range of \\(x\\) and \\(y\\) we are considering.\nThis is greatest when \\(x=1/2\\) and \\(y=1/2\\). The value of \\(z\\) is not important. This is the centre of the wind tunnel.\nThere is no wind when \\(x=0\\) or \\(x=1\\) or \\(y=0\\) or \\(y=1\\). This makes sense - these are the sidewalls of the tunnel.",
     "crumbs": [
-      "Chapter 4: Vector Calculus Theorems (Week 19)",
-      "Divergence theorem"
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Scalar and vector fields"
     ]
   },
   {
-    "objectID": "divergence.html#greens-second-identity",
-    "href": "divergence.html#greens-second-identity",
-    "title": "The divergence theorem",
-    "section": "Green’s second identity",
-    "text": "Green’s second identity\nGreen’s second identity states that, for any scalar fields \\(f\\) and \\(g\\), \\[\n\\int_V \\left(f\\Delta g - g\\Delta f\\right)dV = \\int_{\\partial V} \\left(f\\nabla g - g\\nabla f\\right) \\cdot d{\\mathbf{S}}.\n\\] You can get this one from subtracting the first identity from itself with \\(f\\) and \\(g\\) swapped.\nThis one is quite handy when you rearrange it: \\[\n\\int_V f\\Delta g\\ dV = \\int_{\\partial V} \\left(f\\nabla g - g\\nabla f\\right) \\cdot d{\\mathbf{S}} + \\int_V g\\Delta f\\ dV.\n\\] This is basically a form of integration by parts for the Laplacian \\(\\Delta\\).",
+    "objectID": "fields.html#the-position-vector",
+    "href": "fields.html#the-position-vector",
+    "title": "Scalar and vector fields",
+    "section": "The position vector",
+    "text": "The position vector\nA very special vector field is where at each point, we assign the position vector for that point. So at the point \\((x,y,z)\\), the vector field has value \\([x,y,z]\\). We notate this by \\({\\mathbf{r}}\\). So (in Cartesian coordinates, at least) \\[\n{\\mathbf{r}}(x,y,z) = [x,y,z].\n\\]",
     "crumbs": [
-      "Chapter 4: Vector Calculus Theorems (Week 19)",
-      "Divergence theorem"
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Scalar and vector fields"
+    ]
+  },
+  {
+    "objectID": "fields.html#footnotes",
+    "href": "fields.html#footnotes",
+    "title": "Scalar and vector fields",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nHere the range of \\(z\\) is infinite. Wind tunnels aren’t really infinitely long, but this is a common approximation if one dimension is much larger than the others. We are neglecting the confinement in \\(z\\).↩︎\nAs a mathematician I don’t worry about units too much. Sometimes units are important, but for this module, you can safely ignore them.↩︎",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Scalar and vector fields"
+    ]
+  },
+  {
+    "objectID": "curves.html",
+    "href": "curves.html",
+    "title": "Curves",
+    "section": "",
+    "text": "For the purpose of this module, a curve is a one-dimensional object in three-dimensional space. Imagine a hula hoop or a rope. In fact, we’ll generally assume:\nCurves have many important applications in maths and physics, for example, the path of an electron in a magnetic field, or the boundary of a circular disc.",
+    "crumbs": [
+      "Chapter 2: Curves, surfaces, volumes (Week 16)",
+      "Curves"
+    ]
+  },
+  {
+    "objectID": "curves.html#longer-example",
+    "href": "curves.html#longer-example",
+    "title": "Curves",
+    "section": "Longer example",
+    "text": "Longer example\nTo conclude this part of the notes, let’s see a more complicated example.\nFind the total arc-length of the curve which is parameterised as \\[\n{\\mathbf{r}}(t) = \\left[ \\cos t, \\sin t, t \\right], \\quad 0\\leq t\\leq 4\\pi.\n\\]\nThink: What is this shape?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nIn \\(x\\) and \\(y\\), it just traces out a circle twice. But as it does so, the \\(z\\) co-ordinate increases. So this is a helix, like a slinky.\n\n\n\n\nStep 1: Calculate the tangent vector\n\\[\n{\\mathbf{T}}(t) = \\frac{d{\\mathbf{r}}}{dt} = \\left[-\\sin t, \\cos t, 1\\right].\n\\]\n\n\nStep 2: Find its magnitude\n\\[\n\\left|{\\mathbf{T}}\\right| = \\sqrt{(-\\sin t)^2+(\\cos t)^2 + 1^2} = \\sqrt{2}.\n\\]\n\n\nStep 3: Integrate this\nHere we need to remember that the limits of the integral are the limits of the parameterisation \\[\n\\int_0^{4\\pi} \\sqrt{2} dt = 4\\pi \\sqrt{2}.\n\\]",
+    "crumbs": [
+      "Chapter 2: Curves, surfaces, volumes (Week 16)",
+      "Curves"
     ]
   },
   {
@@ -314,70 +336,65 @@
     ]
   },
   {
-    "objectID": "curves.html",
-    "href": "curves.html",
-    "title": "Curves",
+    "objectID": "divergence.html",
+    "href": "divergence.html",
+    "title": "The divergence theorem",
     "section": "",
-    "text": "For the purpose of this module, a curve is a one-dimensional object in three-dimensional space. Imagine a hula hoop or a rope. In fact, we’ll generally assume:\nCurves have many important applications in maths and physics, for example, the path of an electron in a magnetic field, or the boundary of a circular disc.",
+    "text": "The divergence theorem is similar to Stokes’ theorem, but it relates volumes and surfaces rather than surfaces and curves. As the name suggests, it uses the divergence: \\[\n\\int_V \\nabla\\cdot {\\mathbf{F}}({\\mathbf{r}}) dV = \\int_{\\partial V} {\\mathbf{F}}({\\mathbf{r}})\\cdot d{\\mathbf{S}}.\n\\]\nAs you may be able to guess, \\(\\partial V\\) is the boundary of the volume \\(V\\), with the normal facing out. Again, we may need to do the boundary in more than one piece.",
     "crumbs": [
-      "Chapter 2: Curves, surfaces, volumes (Week 16)",
-      "Curves"
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Divergence theorem"
     ]
   },
   {
-    "objectID": "curves.html#longer-example",
-    "href": "curves.html#longer-example",
-    "title": "Curves",
-    "section": "Longer example",
-    "text": "Longer example\nTo conclude this part of the notes, let’s see a more complicated example.\nFind the total arc-length of the curve which is parameterised as \\[\n{\\mathbf{r}}(t) = \\left[ \\cos t, \\sin t, t \\right], \\quad 0\\leq t\\leq 4\\pi.\n\\]\nThink: What is this shape?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nIn \\(x\\) and \\(y\\), it just traces out a circle twice. But as it does so, the \\(z\\) co-ordinate increases. So this is a helix, like a slinky.\n\n\n\n\nStep 1: Calculate the tangent vector\n\\[\n{\\mathbf{T}}(t) = \\frac{d{\\mathbf{r}}}{dt} = \\left[-\\sin t, \\cos t, 1\\right].\n\\]\n\n\nStep 2: Find its magnitude\n\\[\n\\left|{\\mathbf{T}}\\right| = \\sqrt{(-\\sin t)^2+(\\cos t)^2 + 1^2} = \\sqrt{2}.\n\\]\n\n\nStep 3: Integrate this\nHere we need to remember that the limits of the integral are the limits of the parameterisation \\[\n\\int_0^{4\\pi} \\sqrt{2} dt = 4\\pi \\sqrt{2}.\n\\]",
+    "objectID": "divergence.html#greens-first-identity",
+    "href": "divergence.html#greens-first-identity",
+    "title": "The divergence theorem",
+    "section": "Green’s first identity",
+    "text": "Green’s first identity\nGreen’s first identity states that, for any scalar fields \\(f\\) and \\(g\\), \\[\n\\int_V \\left(g\\Delta f + \\nabla f \\cdot \\nabla g\\right)dV = \\int_{\\partial V} g\\nabla f \\cdot d{\\mathbf{S}}.\n\\]\nTo prove this, we obviously need to use the divergence theorem. It’s not clear how we can use that on the left-hand side, so let’s start with the right-hand side and use the product rule: \\[\n\\begin{aligned}\n\\int_{\\partial V} g\\nabla f \\cdot d{\\mathbf{S}} &= \\int_{V} \\nabla \\cdot \\left(g\\nabla f\\right) dV\n\\\\ &= \\int_{V} \\left(\\nabla g \\cdot \\nabla f + g\\nabla\\cdot\\nabla f \\right) dV\n\\end{aligned}\n\\] which is exactly what we wanted, when we remember that \\(\\Delta f = \\nabla\\cdot\\nabla f\\).",
     "crumbs": [
-      "Chapter 2: Curves, surfaces, volumes (Week 16)",
-      "Curves"
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Divergence theorem"
     ]
   },
   {
-    "objectID": "fields.html",
-    "href": "fields.html",
-    "title": "Scalar and vector fields",
+    "objectID": "divergence.html#greens-second-identity",
+    "href": "divergence.html#greens-second-identity",
+    "title": "The divergence theorem",
+    "section": "Green’s second identity",
+    "text": "Green’s second identity\nGreen’s second identity states that, for any scalar fields \\(f\\) and \\(g\\), \\[\n\\int_V \\left(f\\Delta g - g\\Delta f\\right)dV = \\int_{\\partial V} \\left(f\\nabla g - g\\nabla f\\right) \\cdot d{\\mathbf{S}}.\n\\] You can get this one from subtracting the first identity from itself with \\(f\\) and \\(g\\) swapped.\nThis one is quite handy when you rearrange it: \\[\n\\int_V f\\Delta g\\ dV = \\int_{\\partial V} \\left(f\\nabla g - g\\nabla f\\right) \\cdot d{\\mathbf{S}} + \\int_V g\\Delta f\\ dV.\n\\] This is basically a form of integration by parts for the Laplacian \\(\\Delta\\).",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Divergence theorem"
+    ]
+  },
+  {
+    "objectID": "fouriertransforms.html",
+    "href": "fouriertransforms.html",
+    "title": "Fourier transforms",
     "section": "",
-    "text": "By this module, you should already be very comfortable with the idea of vectors as things which can be added and multiplied in certain ways, and as having both a direction and a magnitude.\nIn this module, we will deal with vector fields as well as scalar fields. Instead of being a single number, this is a vector or a scalar for every point in space.\nBefore we move onto definitions, here are some examples to make the concepts clear:\nMathematically, we can define a scalar field as a function which takes co-ordinates, and gives a single number. Mostly in this course we will deal with three dimensions, so the function takes three numbers and gives one. We can write this as \\[\n\\alpha : \\mathbb{R}^3 \\to \\mathbb{R}.\n\\] Very often we will use Greek letters for scalar fields.\nA vector field is a function which takes co-ordinates and gives us a vector. In 3D: \\[\n{\\mathbf{u}} : \\mathbb{R}^3 \\to \\mathbb{R}^3.\n\\] When printing, we use bold letters like \\({\\mathbf{u}}\\) for vector fields. You should use an underline when you handwrite them.",
-    "crumbs": [
-      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
-      "Scalar and vector fields"
-    ]
+    "text": "Fourier series work great when we have a function which is perfectly periodic, or defined on a finite interval. But often in practice we have functions defined on the whole real line, when we use an approximation that something in infinitely big.\nIn this case, there isn’t an exact wavelength that fits perfectly, and instead we have to consider all possible wavelengths. This leads us to the Fourier transform."
   },
   {
-    "objectID": "fields.html#making-scalar-fields-from-vector-fields",
-    "href": "fields.html#making-scalar-fields-from-vector-fields",
-    "title": "Scalar and vector fields",
-    "section": "Making scalar fields from vector fields",
-    "text": "Making scalar fields from vector fields\nWe’ll soon see ways to differentiate fields which can produce scalar fields from vector fields and vice versa, but even without calculus we can do this.\nFor example, given any two vector fields \\({\\mathbf{a}}\\) and \\({\\mathbf{b}}\\), we can take the dot product \\({\\mathbf{a}}\\cdot{\\mathbf{b}}\\) which gives a scalar field, or the cross product \\({\\mathbf{a}}\\times{\\mathbf{b}}\\) gives a different vector field. Or we can take the magnitude of a vector field to give a scalar field\n\nExample\nA wind tunnel is decribed by Cartesian co-ordinates with \\(0\\leq x \\leq 1\\), \\(0 \\leq y \\leq 1\\), \\(z\\in \\mathbb{R}\\).1 The velocity of the air in a wind tunnel is given by the vector field \\(\\mathbf{v} = [x(1-x)y(1-y), 0 ,0]\\).2 What is the windspeed, given as a scalar field? At what co-ordinates is the wind fastest? Where is there no wind?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThe speed is just the magnitude of the velocity, so we can work out \\[\n|\\mathbf{v}| = \\sqrt{\\left(x(1-x)y(1-y)\\right)^2 + 0^2 + 0^2} = x(1-x)y(1-y).\n\\] Note that this answer is non-negative, as required for a magnitude, because of the range of \\(x\\) and \\(y\\) we are considering.\nThis is greatest when \\(x=1/2\\) and \\(y=1/2\\). The value of \\(z\\) is not important. This is the centre of the wind tunnel.\nThere is no wind when \\(x=0\\) or \\(x=1\\) or \\(y=0\\) or \\(y=1\\). This makes sense - these are the sidewalls of the tunnel.",
-    "crumbs": [
-      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
-      "Scalar and vector fields"
-    ]
+    "objectID": "fouriertransforms.html#definition-of-the-fourier-transform",
+    "href": "fouriertransforms.html#definition-of-the-fourier-transform",
+    "title": "Fourier transforms",
+    "section": "Definition of the Fourier transform",
+    "text": "Definition of the Fourier transform\nThe Fourier transform of a function \\(f(x)\\) is defined as1 \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty f(x) e^{-ikx}\\,dx,\n\\] where \\(k\\) is called the wave number.\nThe inverse Fourier transform is given by \\[\nf(x) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty F(k) e^{ikx}\\,dk.\n\\] These two equations are very similar in form to the Fourier series equations, but now we have integrals over all possible wave numbers \\(k\\) instead of sums over discrete wavelengths."
   },
   {
-    "objectID": "fields.html#the-position-vector",
-    "href": "fields.html#the-position-vector",
-    "title": "Scalar and vector fields",
-    "section": "The position vector",
-    "text": "The position vector\nA very special vector field is where at each point, we assign the position vector for that point. So at the point \\((x,y,z)\\), the vector field has value \\([x,y,z]\\). We notate this by \\({\\mathbf{r}}\\). So (in Cartesian coordinates, at least) \\[\n{\\mathbf{r}}(x,y,z) = [x,y,z].\n\\]",
-    "crumbs": [
-      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
-      "Scalar and vector fields"
-    ]
+    "objectID": "fouriertransforms.html#example",
+    "href": "fouriertransforms.html#example",
+    "title": "Fourier transforms",
+    "section": "Example",
+    "text": "Example\nFind the Fourier transform of \\[\nf(x) = e^{-\\frac{x^2}{2}}.\n\\] ::: {.callout-tip collapse=“true”} ## Solution We have \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{x^2}{2}} e^{-ikx}\\,dx.\n\\] Combining the exponents gives \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{x^2}{2} - ikx}\\,dx = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{x^2 + 2ikx}{2}}\\,dx.\n\\] Completing the square in the exponent: \\[\nx^2 + 2ikx = (x + ik)^2 - k^2,\n\\] so \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{(x + ik)^2 - k^2}{2}}\\,dx = \\frac{e^{\\frac{k^2}{2}}}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{(x + ik)^2}{2}}\\,dx.\n\\] Now we can make the substitution \\(u = x + ik\\), so \\(du = dx\\). The limits of integration remain \\(-\\infty\\) to \\(\\infty\\) since shifting by a constant (even a complex one) doesn’t change them. Thus, \\[\nF(k) = \\frac{e^{\\frac{k^2}{2}}}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{u^2}{2}}\\,du.\n\\] The integral is just the standard Gaussian integral, which evaluates to \\(\\sqrt{2\\pi}\\). Therefore, \\[\nF(k) = \\frac{e^{\\frac{k^2}{2}}}{\\sqrt{2\\pi}} \\cdot \\sqrt{2\\pi} = e^{\\frac{k^2}{2}}.\n\\] So the Fourier transform of \\(f(x) = e^{-\\frac{x^2}{2\n}}\\) is \\[\nF(k) = e^{\\frac{k^2}{2}}.\n\\] :::"
   },
   {
-    "objectID": "fields.html#footnotes",
-    "href": "fields.html#footnotes",
-    "title": "Scalar and vector fields",
+    "objectID": "fouriertransforms.html#footnotes",
+    "href": "fouriertransforms.html#footnotes",
+    "title": "Fourier transforms",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nHere the range of \\(z\\) is infinite. Wind tunnels aren’t really infinitely long, but this is a common approximation if one dimension is much larger than the others. We are neglecting the confinement in \\(z\\).↩︎\nAs a mathematician I don’t worry about units too much. Sometimes units are important, but for this module, you can safely ignore them.↩︎",
-    "crumbs": [
-      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
-      "Scalar and vector fields"
-    ]
+    "text": "Footnotes\n\n\nLots of different conventions exist for the Fourier transform, this is one of the most common.↩︎"
   },
   {
     "objectID": "lineintegrals.html",
@@ -402,25 +419,146 @@
     ]
   },
   {
-    "objectID": "scalarfields.html",
-    "href": "scalarfields.html",
-    "title": "Derivatives of scalar fields",
+    "objectID": "odes.html",
+    "href": "odes.html",
+    "title": "Examples of ODEs",
     "section": "",
-    "text": "In this part of the module, we study how to differentiate fields. A field is another word for a function defined over space. This week, scalar fields: assigning to each point in space a scalar value. Think about a temperature field.\nFor example, the following could be a vector field \\[\nf({\\mathbf{r}}) = f(x,y,z) = x^2y +z.\n\\] If you know a point in space (given by co-ordinates or a position vector) then you know the value of \\(f\\) at that point.\nThere are different types of differentiation in higher dimensions, and they are generalisations of different interpretations of the normal derivative.",
+    "text": "ODEs are ordinary differential equations. These are equations which relate ordinary derivatives (not partial derivatives) of a function with each other. You’ve seen these many times before. Because they are ordinary derivatives, there is only one independent variable, which we typically call either \\(x\\) (when talking about space) or \\(t\\) (when talking about time). However, we can have more than one dependent variable.\nHere are some famous examples: \\[\n\\frac{d^2x}{dt^2} = -\\frac{k}{m}x \\quad\\text{(Simple harmonic motion)}\n\\] This describes, for example, a mass on a spring, or a pendulum undergoing small oscillations. The solutions are sinusoidal functions.\n\\[\n\\frac{dT}{dt} = -k(T - T_{\\text{amb}}) \\quad\\text{(Newton's law of cooling)}\n\\] This describes how an object cools down (or heats up) to the ambient temperature. The solution is an exponential decay (or growth) towards the ambient temperature.\n\\[\n\\frac{dN}{dt} = rN\\left(1-\\frac{N}{K}\\right) \\quad\\text{(Logistic equation for population growth)}\n\\] This describes how a population grows rapidly at first, then slows down as it approaches a maximum sustainable population \\(K\\). The solution is an S-shaped curve called a logistic function.\nThe following is a ‘system’ of ODEs, meaning there are several dependent variables which depend on the same independent variable. Here, \\(x\\), \\(y\\) and \\(z\\) all depend on the time \\(t\\): \\[\n\\begin{aligned}\n\\frac{dx}{dt} &= \\sigma(y - x) \\\\\n\\frac{dy}{dt} &= x(\\rho - z) - y \\\\\n\\frac{dz}{dt} &= xy - \\beta z \\quad\\text{(Lorenz equations for convection)}\n\\end{aligned}\n\\] This system is famous for exhibiting chaotic behaviour for certain values of the parameters \\(\\sigma\\), \\(\\rho\\) and \\(\\beta\\). It was originally derived as a simplified model of atmospheric convection.",
     "crumbs": [
-      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
-      "Derivatives of scalar fields"
+      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Examples of ODEs"
     ]
   },
   {
-    "objectID": "scalarfields.html#footnotes",
-    "href": "scalarfields.html#footnotes",
-    "title": "Derivatives of scalar fields",
+    "objectID": "odes.html#linear-and-non-linear-odes",
+    "href": "odes.html#linear-and-non-linear-odes",
+    "title": "Examples of ODEs",
+    "section": "Linear and non-linear ODEs",
+    "text": "Linear and non-linear ODEs\nAn ODE is called linear if the dependent variable(s) and all their derivatives appear to the first power only, and are not multiplied together. Of those above, the first two are linear, and the last two are non-linear.\nIn many cases, you can solve linear ODEs exactly, using methods you may have seen before. Non-linear ODEs are much harder to solve, and in many cases you can’t find an exact solution at all. Instead, you have to use numerical methods to find approximate solutions.\nIt is important to be able to distinguish the two types, especially as we progress to PDEs.",
+    "crumbs": [
+      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Examples of ODEs"
+    ]
+  },
+  {
+    "objectID": "odes.html#constant-coefficient-odes",
+    "href": "odes.html#constant-coefficient-odes",
+    "title": "Examples of ODEs",
+    "section": "Constant coefficient ODEs",
+    "text": "Constant coefficient ODEs\nA linear ODE is said to have constant coefficients if the coefficients (the numbers multiplying the dependent variable and its derivatives) are constants, not functions of the independent variable. For example, in the simple harmonic motion equation above, \\(k\\) and \\(m\\) are constants, so it has constant coefficients.\nIn the case TODO",
+    "crumbs": [
+      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Examples of ODEs"
+    ]
+  },
+  {
+    "objectID": "odes.html#existence-and-uniqueness-of-solutions",
+    "href": "odes.html#existence-and-uniqueness-of-solutions",
+    "title": "Examples of ODEs",
+    "section": "Existence and uniqueness of solutions",
+    "text": "Existence and uniqueness of solutions\nTODO",
+    "crumbs": [
+      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Examples of ODEs"
+    ]
+  },
+  {
+    "objectID": "potentials.html",
+    "href": "potentials.html",
+    "title": "Vector and scalar potentials",
+    "section": "",
+    "text": "The final part of this chapter concerns special types of vector fields.\nWe call a field \\({\\mathbf{A}}\\) solenoidal if \\[\n\\nabla\\cdot {\\mathbf{A}} = 0\n\\] and we call a field \\({\\mathbf{B}}\\) irrotational if \\[\n\\nabla\\times{\\mathbf{B}} = {\\mathbf{0}}.\n\\]",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Potentials"
+    ]
+  },
+  {
+    "objectID": "potentials.html#irrotational-fields",
+    "href": "potentials.html#irrotational-fields",
+    "title": "Vector and scalar potentials",
+    "section": "Irrotational fields",
+    "text": "Irrotational fields\nThese are sometimes called curl free fields, for obvious reasons. The key theorem is:\n\n\n\n\n\n\nImportant\n\n\n\n\\[\\nabla\\times{\\mathbf{A}} = {\\mathbf{0}} \\text{ if and only if }{\\mathbf{A}} = \\nabla \\phi\\text{ for some scalar field }\\phi.\\]\n\n\nWe call \\(\\phi\\) a scalar potential for \\({\\mathbf{A}}\\).\nProving \\(\\impliedby\\) is easy: If \\({\\mathbf{A}} = \\nabla \\phi\\) then \\[\n\\nabla\\times {\\mathbf{A}} = \\nabla \\times \\nabla \\phi = 0,\n\\] this was one of our second derivative identities.\nThe proof in the other direction is much more complicated, but for any given example you can make it work.\n\nExample\nFind a scalar potential for \\[\n{\\mathbf{A}} = [x^2,y^2,0].\n\\]\n\n\n\n\n\n\nSolution\n\n\n\n\n\nFirst check that \\(\\nabla\\times{\\mathbf{A}}={\\mathbf{0}}\\), otherwise it doesn’t work.\nThen we need to find \\(\\phi\\) such that \\(\\nabla \\phi = [x^2,y^2,0]\\).\nMaybe you can spot it directly, but otherwise we can break it down. We need to find \\(\\phi(x,y,z)\\) such that \\[\n\\begin{aligned}\n{\\frac{\\partial \\phi}{\\partial x}} &= x^2,\\qquad\\text{(1)} \\\\\n{\\frac{\\partial \\phi}{\\partial y}} &= y^2,\\qquad\\text{(2)}\\\\\n{\\frac{\\partial \\phi}{\\partial z}} &= 0.\\qquad\\text{(3)}\n\\end{aligned}\n\\]\nIntegrating the (1), we have \\[\\phi(x,y,z) = \\frac{1}{3} x^3 + C_1(y,z)\\] Here \\(C_1\\) is just a normal constant of integration, but because we integrated a partial derivative, this constant can depend on \\(y\\) and \\(z\\).\nThen (2) becomes \\[{\\frac{\\partial C_1}{\\partial y}} = y^2\\] so \\[\nC_1 = \\frac{1}{3} y^3 + C_2(z).\\] \\(C_1\\) depends only on \\(y\\) and \\(z\\), so the new constant of integration \\(C_2\\) depends only on \\(z\\). So we have \\[\n\\phi = \\frac{1}{3}x^3 + \\frac{1}{3}y^3 + C_2(z),\n\\] so (3) gives \\[\n\\frac{dC_2}{dz} = 0\n\\] so \\(C_2\\) is just a constant.\nSo finally we have \\[\n\\phi(x,y,z) = \\frac{1}{3}x^3 + \\frac{1}{3}y^3 + C_2,\n\\] where \\(C_2\\) is any constant.\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nScalar potentials are not unique - you can add any constant to \\(\\phi\\) and it’s still valid.",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Potentials"
+    ]
+  },
+  {
+    "objectID": "potentials.html#solenoidal-fields",
+    "href": "potentials.html#solenoidal-fields",
+    "title": "Vector and scalar potentials",
+    "section": "Solenoidal fields",
+    "text": "Solenoidal fields\nThese are also called incompressible or divergence free1. The key theorem here is:\n\n\n\n\n\n\nImportant\n\n\n\n\\[\\nabla\\cdot{\\mathbf{A}} = {\\mathbf{0}} \\text{ if and only if }{\\mathbf{A}} = \\nabla\\times {\\mathbf{B}}\\text{ for some vector field }{\\mathbf{B}}.\\]\n\n\nWe call \\({\\mathbf{B}}\\) a vector potential for \\({\\mathbf{A}}\\). Again, you can easily prove that \\(\\nabla\\times{\\mathbf{B}}\\) is solenoidal, but the other way is harder. You can also easily prove this:\n\n\n\n\n\n\nImportant\n\n\n\nVector potentials are not unique - If \\({\\mathbf{B}}\\) is a vector potential for \\({\\mathbf{A}}\\) then so is \\({\\mathbf{B}}+\\nabla\\phi\\) for any scalar field \\(\\phi\\).2\n\n\nThis non-uniqueness is very important, because it means we can choose properties we want \\({\\mathbf{B}}\\) to have. One convenient choice is often \\[B_3=0,\\] no component in the \\(z\\) direction.\n\nExample\nFind a vector potential for \\[\n{\\mathbf{A}} = [x+y^2, -y+z^2, y^2]\n\\]\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThis works the same as for scalar potentials, but it gets much messier. I strongly recommend staring at it for 30 seconds to see if you can guess a potential that works, before trying as follows:\nFirst, you could check it’s actually solenoidal. That’s quite quick in this case.\nWe need to find \\({\\mathbf{B}}=[B_1,B_2,B_3]\\) such that \\[\n[x+y^2, -y+z^2, y^2] = \\nabla\\times{\\mathbf{B}} = [{\\frac{\\partial B_3}{\\partial y}}-{\\frac{\\partial B_2}{\\partial z}},\\,{\\frac{\\partial B_1}{\\partial z}}-{\\frac{\\partial B_3}{\\partial x}},\\,{\\frac{\\partial B_2}{\\partial x}}-{\\frac{\\partial B_1}{\\partial y}}].\n\\]\nLet’s make the gauge choice that \\(B_3=0\\), so then we get \\[x+y^2 = -{\\frac{\\partial B_2}{\\partial z}},\\] \\[-y+z^2 = {\\frac{\\partial B_1}{\\partial z}},\\] \\[y^2 = {\\frac{\\partial B_2}{\\partial x}} - {\\frac{\\partial B_1}{\\partial y}}.\\]\nIntegrating the first two of these, we have: \\[\nB_2 = -x z - y^2 z + f(x, y)\n\\] and \\[\nB_1 = -y z + \\frac{1}{3} z^3 + g(x, y)\n\\] where \\(f\\) and \\(g\\) are some unknown integration constant functions.\nNow, substitute \\(B_1\\) and \\(B_2\\) into the third equation: \\[\ny^2 = (-z + {\\frac{\\partial f}{\\partial x}}) - (-z + {\\frac{\\partial g}{\\partial y}}) = {\\frac{\\partial f}{\\partial x}} - {\\frac{\\partial g}{\\partial y}}\n\\]\nWe still have some freedom here. A simple choice is \\(f(x, y) = 0\\) and \\(g(x, y) = -\\frac{1}{3} y^3\\): \\[\n{\\frac{\\partial f}{\\partial x}} = 0,\\quad {\\frac{\\partial g}{\\partial y}} = -y^2\n\\] So, \\[\ny^2 = 0 - (-y^2) = y^2\n\\] This works.\nTherefore, a vector potential is: \\[\n{\\mathbf{B}} = \\left[\n    -y z + \\frac{1}{3} z^3 - \\frac{1}{3} y^3,\\;\n    -x z - y^2 z,\\;\n    0.\n\\right]\n\\]\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nAs with many things in maths, finding the potentials is slow but checking they are valid is quick. Always check!",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Potentials"
+    ]
+  },
+  {
+    "objectID": "potentials.html#footnotes",
+    "href": "potentials.html#footnotes",
+    "title": "Vector and scalar potentials",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nWe already saw this for calculating normals to surfaces.↩︎\nStrictly speaking the symbol \\(\\nabla\\) is called “nabla” or “del”, but we often call it “grad” in other settings.↩︎\nIn fact, we could see straight away that \\[\n\\nabla f \\neq {\\frac{\\partial f}{\\partial r}}{\\mathbf{e}}_r + {\\frac{\\partial f}{\\partial \\theta}}{\\mathbf{e}}_\\theta + {\\frac{\\partial f}{\\partial \\phi}}{\\mathbf{e}}_\\phi\n\\] because of the dimensions of the quantities. The dimensions of a derivative should be the dimensions of \\(f\\) divided by length, which is what the first expression has. But \\(\\theta\\) and \\(\\phi\\) are dimensionless, so we need to divide by a length to keep these ones consistent.↩︎",
+    "text": "Footnotes\n\n\nIn physics, the magnetic field is a solenoidal field. This is where the name comes from.↩︎\nThis is called gauge freedom in physics.↩︎",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Potentials"
+    ]
+  },
+  {
+    "objectID": "secondderivs.html",
+    "href": "secondderivs.html",
+    "title": "Derivatives of products and second derivatives",
+    "section": "",
+    "text": "This chapter focuses on certain identities we can derive by combining the different 3D derivatives. You should get used to using these identities, but you also need to be able to prove them from the definitions.",
     "crumbs": [
       "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
-      "Derivatives of scalar fields"
+      "Products & second derivatives"
+    ]
+  },
+  {
+    "objectID": "secondderivs.html#derivatives-of-products",
+    "href": "secondderivs.html#derivatives-of-products",
+    "title": "Derivatives of products and second derivatives",
+    "section": "Derivatives of products",
+    "text": "Derivatives of products\nYou’re familiar with the product rule for ordinary derivatives: \\[\n\\frac{d}{dx}(fg) = \\frac{df}{dx}g + f\\frac{dg}{dx}.\n\\] How does this translate to our new grad, div and curl? The first thing to consider is what kinds of products we have.\nThink: What possible products exist between any two of scalar fields \\(\\phi\\) and \\(\\psi\\) and vector fields \\({\\mathbf{u}}\\) and \\({\\mathbf{v}}\\), and is the result a scalar or vector field?\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\(\\phi\\psi\\) is a scalar field\n\\(\\phi{\\mathbf{u}}\\) is a vector field\n\\({\\mathbf{u}}\\cdot{\\mathbf{v}}\\) is a scalar field\n\\({\\mathbf{u}}\\times{\\mathbf{v}}\\) is a vector field\n\n\n\nFor each product which is a scalar we can work out a formula for the gradient1, and for each vector we can work out formulas for the divergence and curl. Here is the list:\n\nGradient of a product of scalars: \\[\n\\nabla(\\phi\\psi) = (\\nabla\\phi)\\psi + \\phi(\\nabla\\psi)\n\\]\nGradient of a dot product: \\[\n\\nabla({\\mathbf{u}}\\cdot{\\mathbf{v}}) = ({\\mathbf{u}}\\cdot\\nabla){\\mathbf{v}} + ({\\mathbf{v}}\\cdot\\nabla){\\mathbf{u}} + {\\mathbf{u}}\\times(\\nabla\\times{\\mathbf{v}}) + {\\mathbf{v}}\\times(\\nabla\\times{\\mathbf{u}})\n\\]\nDivergence of a scalar times a vector: \\[\n\\nabla\\cdot(\\phi{\\mathbf{u}}) = {\\mathbf{u}}\\cdot\\nabla\\phi + \\phi\\nabla\\cdot{\\mathbf{u}}\n\\]\nDivergence of a cross product: \\[\n\\nabla\\cdot({\\mathbf{u}}\\times{\\mathbf{v}}) = {\\mathbf{v}}\\cdot(\\nabla\\times{\\mathbf{u}}) - {\\mathbf{u}}\\cdot(\\nabla\\times{\\mathbf{v}})\n\\]\nCurl of a scalar times a vector: \\[\n\\nabla\\times(\\phi{\\mathbf{u}}) = (\\nabla\\phi)\\times{\\mathbf{u}} + \\phi(\\nabla\\times{\\mathbf{u}})\n\\]\nCurl of a cross product: \\[\n\\nabla\\times({\\mathbf{u}}\\times{\\mathbf{v}}) = {\\mathbf{u}}(\\nabla\\cdot{\\mathbf{v}}) - {\\mathbf{v}}(\\nabla\\cdot{\\mathbf{u}}) + ({\\mathbf{v}}\\cdot\\nabla){\\mathbf{u}} - ({\\mathbf{u}}\\cdot\\nabla){\\mathbf{v}}\n\\]\n\n\nExample\nFor a general scalar field \\(\\phi\\) and vector field \\({\\mathbf{u}}\\), show that \\[\n\\nabla \\cdot \\left(\\phi{\\mathbf{u}}\\right) = {\\mathbf{u}}\\cdot \\nabla \\phi + \\phi \\nabla\\cdot{\\mathbf{u}}.\n\\]\n\n\n\n\n\n\nSolution\n\n\n\n\n\nLet \\(\\phi\\) be a scalar field and \\({\\mathbf{u}} = [u_1, u_2, u_3]\\) a vector field. Then, \\[\n\\begin{aligned}\n\\nabla \\cdot (\\phi {\\mathbf{u}}) &= {\\frac{\\partial }{\\partial x}}(\\phi u_1) + {\\frac{\\partial }{\\partial y}}(\\phi u_2) + {\\frac{\\partial }{\\partial z}}(\\phi u_3)\\\\\n&= u_1 {\\frac{\\partial \\phi}{\\partial x}} + \\phi {\\frac{\\partial u_1}{\\partial x}} + u_2 {\\frac{\\partial \\phi}{\\partial y}} + \\phi {\\frac{\\partial u_2}{\\partial y}} + u_3 {\\frac{\\partial \\phi}{\\partial z}} + \\phi {\\frac{\\partial u_3}{\\partial z}}\\\\\n&= u_1 {\\frac{\\partial \\phi}{\\partial x}} + u_2 {\\frac{\\partial \\phi}{\\partial y}} + u_3 {\\frac{\\partial \\phi}{\\partial z}} + \\phi \\left({\\frac{\\partial u_1}{\\partial x}} + {\\frac{\\partial u_2}{\\partial y}} + {\\frac{\\partial u_3}{\\partial z}}\\right)\\\\\n&= {\\mathbf{u}} \\cdot \\nabla \\phi + \\phi (\\nabla \\cdot {\\mathbf{u}}).\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Products & second derivatives"
+    ]
+  },
+  {
+    "objectID": "secondderivs.html#second-derivatives",
+    "href": "secondderivs.html#second-derivatives",
+    "title": "Derivatives of products and second derivatives",
+    "section": "Second derivatives",
+    "text": "Second derivatives\nFor normal derivatives, you know \\(\\frac{d}{dx} \\frac{dy}{dx} = \\frac{d^2y}{dx^2}\\) - this is basically just a definition.\nIn 3D, it’s more complicated. Of course, we can only take the gradient of a scalar field, and only take the divergence or curl of a vector field so the possibilities are, for a vector field \\({\\mathbf{u}}\\) and a scalar field \\(\\phi\\):\n\n\\(\\nabla\\cdot(\\nabla\\phi)\\) gives a scalar field\n\\(\\nabla\\times(\\nabla\\phi)\\) gives a vector field\n\\(\\nabla (\\nabla \\cdot {\\mathbf{u}})\\) gives a vector field\n\\(\\nabla \\times(\\nabla\\times {\\mathbf{u}})\\) gives a vector field\n\\(\\nabla \\cdot(\\nabla \\times{\\mathbf{u}})\\) gives a scalar field\n\nAny other combination, like \\(\\nabla\\cdot (\\nabla \\cdot {\\mathbf{u}})\\) is not defined.\nActually, there are two extra rules which you need to learn, and you can prove: \\[\\nabla\\cdot(\\nabla \\times {\\mathbf{u}}) = 0\\] \\[\\nabla\\times(\\nabla \\phi) = {\\mathbf{0}}\\]\n\nExample\nFor any scalar field \\(\\phi\\), show that \\(\\nabla\\times(\\nabla \\phi) = {\\mathbf{0}}\\).\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\[\n\\begin{aligned}\n\\nabla\\times(\\nabla \\phi) &= \\nabla\\times\\left[{\\frac{\\partial \\phi}{\\partial x}},\\,{\\frac{\\partial \\phi}{\\partial y}},\\,{\\frac{\\partial \\phi}{\\partial z}},\\,\\right] \\\\\n&= \\left[ {\\frac{\\partial }{\\partial y}}{\\frac{\\partial \\phi}{\\partial z}} - {\\frac{\\partial }{\\partial z}}{\\frac{\\partial \\phi}{\\partial y}},\\,{\\frac{\\partial }{\\partial z}}{\\frac{\\partial \\phi}{\\partial x}} - {\\frac{\\partial }{\\partial x}}{\\frac{\\partial \\phi}{\\partial z}},\\,{\\frac{\\partial }{\\partial x}}{\\frac{\\partial \\phi}{\\partial y}} - {\\frac{\\partial }{\\partial y}}{\\frac{\\partial \\phi}{\\partial x}}\\right] \\\\\n&= \\left[ {\\frac{\\partial }{\\partial y}}{\\frac{\\partial \\phi}{\\partial z}} - {\\frac{\\partial }{\\partial y}}{\\frac{\\partial \\phi}{\\partial z}},\\,{\\frac{\\partial }{\\partial z}}{\\frac{\\partial \\phi}{\\partial x}} - {\\frac{\\partial }{\\partial z}}{\\frac{\\partial \\phi}{\\partial x}},\\,{\\frac{\\partial }{\\partial x}}{\\frac{\\partial \\phi}{\\partial y}} - {\\frac{\\partial }{\\partial x}}{\\frac{\\partial \\phi}{\\partial y}}\\right]  \\\\\n&= \\left[0,0,0\\right]\\\\\n&= {\\mathbf{0}}.\n\\end{aligned}\n\\]\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe key with all of these proofs is the symmetry of a mixed partial derivatives, i.e. \\(\\frac{\\partial^2 f}{\\partial x\\partial y} = \\frac{\\partial^2 f}{\\partial y\\partial x}\\)2.",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Products & second derivatives"
+    ]
+  },
+  {
+    "objectID": "secondderivs.html#the-laplacian",
+    "href": "secondderivs.html#the-laplacian",
+    "title": "Derivatives of products and second derivatives",
+    "section": "The Laplacian",
+    "text": "The Laplacian\nThe remaining three second derivatives, \\(\\nabla\\cdot(\\nabla\\phi)\\), \\(\\nabla \\times(\\nabla\\times {\\mathbf{u}})\\) and \\(\\nabla (\\nabla \\cdot {\\mathbf{u}})\\) are related to another operator called the Laplacian, which is given the symbol \\(\\Delta\\) or \\(\\nabla^2\\). We’ll use \\(\\Delta\\) in this module.3\nFor a scalar field \\(\\phi\\), \\[\n\\begin{aligned}\n\\nabla\\cdot(\\nabla\\phi) &= \\nabla\\cdot\\left[{\\frac{\\partial \\phi}{\\partial x}},{\\frac{\\partial \\phi}{\\partial y}},{\\frac{\\partial \\phi}{\\partial z}}\\right]\n\\\\&= {\\frac{\\partial }{\\partial x}}{\\frac{\\partial \\phi}{\\partial x}} + {\\frac{\\partial }{\\partial y}}{\\frac{\\partial \\phi}{\\partial y}} + {\\frac{\\partial }{\\partial z}}{\\frac{\\partial \\phi}{\\partial z}}\n\\\\&= \\frac{\\partial^2 \\phi}{\\partial x^2} + \\frac{\\partial^2 \\phi}{\\partial y^2}+ \\frac{\\partial^2 \\phi}{\\partial z^2}\n\\end{aligned}\n\\] This is what we define to be the \\(\\Delta \\phi\\), the (scalar) Laplacian of \\(\\phi\\).\nFor a vector field \\({\\mathbf{u}}\\),4 \\[\n\\begin{aligned}\n\\nabla(\\nabla\\cdot {\\mathbf{u}}) - \\nabla\\times(\\nabla\\times{\\mathbf{u}}) &= \\left[\\frac{\\partial^2 u_1}{\\partial x^2} + \\frac{\\partial^2 u_1}{\\partial y^2}+ \\frac{\\partial^2 u_1}{\\partial z^2},\\,\\frac{\\partial^2 u_2}{\\partial x^2} + \\frac{\\partial^2 u_2}{\\partial y^2}+ \\frac{\\partial^2 u_2}{\\partial z^2},\\,\\frac{\\partial^2 u_3}{\\partial x^2} + \\frac{\\partial^2 u_3}{\\partial y^2}+ \\frac{\\partial^2 u_3}{\\partial z^2}\\right]\\\\\n&= \\left[\\Delta u_1,\\,\\Delta u_2,\\,\\Delta u_3\\right].\n\\end{aligned}\n\\] This is what we define to be \\(\\Delta {\\mathbf{u}}\\), the (vector) Laplacian of \\({\\mathbf{u}}\\).\n\n\n\n\n\n\nImportant\n\n\n\nIn Cartesians, the vector Laplacian is the scalar Laplacian of each of the components. In curvilinear co-ordinates, this isn’t true.",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Products & second derivatives"
+    ]
+  },
+  {
+    "objectID": "secondderivs.html#footnotes",
+    "href": "secondderivs.html#footnotes",
+    "title": "Derivatives of products and second derivatives",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nYou can do directional derivatives too but it’s basically the same.↩︎\nWhich holds as long as the second derivatives are continuous, which they always will be in this module.↩︎\nYou won’t get penalised if you prefer to write \\(\\nabla^2\\).↩︎\nTry this as an exercise, it takes a while.↩︎",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Products & second derivatives"
     ]
   },
   {
