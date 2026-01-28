@@ -29,6 +29,7 @@ Find the Fourier transform of
 $$
 f(x) = e^{-\frac{x^2}{2}}.
 $$
+
 ::: {.callout-tip collapse="true"}
 ## Solution
 We have

@@ -56,11 +56,14 @@ website:
       - section: "Chapter 6: Fourier Series (Week 22)"
         contents:
         - text: ""
+          href: fourierseries.qmd
         - text: ""
         - text: "Application to ODEs and PDEs"
+          href: fourierdes.qmd
       - section: "Chapter 7: Fourier Transforms (Week 23)"
         contents:
         - text: ""
+          href: fouriertransforms.qmd
         - text: "Convolution"
         - text: "Application to ODEs and PDEs"
       - href: links.qmd

@@ -318,8 +318,17 @@ window.Quarto = {
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">Application to ODEs and PDEs</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./fourierseries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier series</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fourierdes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Application to ODEs and PDEs</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -331,6 +340,12 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fouriertransforms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier transforms</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
  <span class="menu-text">Convolution</span>
   </li>
@@ -429,7 +444,7 @@ x = \rho \cos \phi,\qquad y=\rho\sin\phi.
 \\ &amp;= [1,0].
 \end{aligned}
 \]</span></p>
-<p>We also define the scale factors <span class="math inline">\(h_\rho\)</span> and <span class="math inline">\(h_\phi\)</span> as the magnitude of the derivatives <span class="math display">\[h_\rho = \left|\frac{\partial {\mathbf{r}}}{\partial \phi}\right| = 1,\]</span> <span class="math display">\[h_\phi = \left|\frac{\partial {\mathbf{r}}}{\partial \phi}\right| = \rho.\]</span></p>
+<p>We also define the scale factors <span class="math inline">\(h_\rho\)</span> and <span class="math inline">\(h_\phi\)</span> as the magnitude of the derivatives <span class="math display">\[h_\rho = \left|\frac{\partial {\mathbf{r}}}{\partial \rho}\right| = 1,\]</span> <span class="math display">\[h_\phi = \left|\frac{\partial {\mathbf{r}}}{\partial \phi}\right| = \rho.\]</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -505,7 +520,7 @@ h_\rho = 1,\,h_\phi=\rho,\,h_z=1.
 <p>You can derive the following: <span class="math display">\[
 \begin{aligned}
 {\mathbf{e}}_r &amp;= [\cos\phi\sin\theta,\,\sin\phi\sin\theta,\,\cos\theta],\\
-{\mathbf{e}}_\theta &amp;= [\cos\phi\cos\theta,\,\sin\phi\cos\theta,\,-\sin\theta],
+{\mathbf{e}}_\theta &amp;= [\cos\phi\cos\theta,\,\sin\phi\cos\theta,\,-\sin\theta],\\
 {\mathbf{e}}_\phi &amp;= [-\sin\phi,\,\cos\phi,\,0],\\
 \end{aligned}
 \]</span> <span class="math display">\[

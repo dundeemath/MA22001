@@ -1,0 +1,11 @@
+---
+title: "Fourier series for ODEs and PDEs"
+---
+
+::: {.hidden}
+ \providecommand{\vv}[1]{{\mathbf{#1}}}
+ \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
+ \providecommand{\pdd}[2]{{\frac{\partial^2 #1}{\partial #2^2}}}
+ \providecommand{\dd}[2]{{\frac{\mathrm{d} #1}{\mathrm{d} #2}}}
+ \providecommand{\ddd}[2]{{\frac{\mathrm{d}^2 #1}{\mathrm{d} #2^2}}}
+:::

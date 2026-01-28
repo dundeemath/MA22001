@@ -120,9 +120,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      MA22001 Core Mathematics IV
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fouriertransforms.html">Chapter 7: Fourier Transforms (Week 23)</a></li><li class="breadcrumb-item"><a href="./fouriertransforms.html">Fourier transforms</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -320,8 +318,17 @@ window.Quarto = {
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">Application to ODEs and PDEs</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./fourierseries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier series</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fourierdes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Application to ODEs and PDEs</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -333,6 +340,12 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fouriertransforms.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Fourier transforms</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
  <span class="menu-text">Convolution</span>
   </li>
@@ -365,7 +378,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fouriertransforms.html">Chapter 7: Fourier Transforms (Week 23)</a></li><li class="breadcrumb-item"><a href="./fouriertransforms.html">Fourier transforms</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Fourier transforms</h1>
 </div>
@@ -402,7 +415,20 @@ f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty F(k) e^{ikx}\,dk.
 <h2 class="anchored" data-anchor-id="example">Example</h2>
 <p>Find the Fourier transform of <span class="math display">\[
 f(x) = e^{-\frac{x^2}{2}}.
-\]</span> ::: {.callout-tip collapse=“true”} ## Solution We have <span class="math display">\[
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We have <span class="math display">\[
 F(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{x^2}{2}} e^{-ikx}\,dx.
 \]</span> Combining the exponents gives <span class="math display">\[
 F(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{x^2}{2} - ikx}\,dx = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{x^2 + 2ikx}{2}}\,dx.
@@ -417,7 +443,10 @@ F(k) = \frac{e^{\frac{k^2}{2}}}{\sqrt{2\pi}} \cdot \sqrt{2\pi} = e^{\frac{k^2}{2
 \]</span> So the Fourier transform of <span class="math inline">\(f(x) = e^{-\frac{x^2}{2
 }}\)</span> is <span class="math display">\[
 F(k) = e^{\frac{k^2}{2}}.
-\]</span> :::</p>
+\]</span></p>
+</div>
+</div>
+</div>
 
 
 </section>

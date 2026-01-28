@@ -81,7 +81,7 @@
     "href": "separationofvariables.html",
     "title": "Separation of variables for PDEs",
     "section": "",
-    "text": "You have already seen a method called “separation of variables” for solving ordinary differential equations (ODEs). Another method, with the same name, but unfortunately different details, is used to find solutions to certain partial differential equations (PDEs). The basic idea is to “guess” the form of the solution as a product of functions, each depending on only one variable.\n\nA basic Example",
+    "text": "You have already seen a method called “separation of variables” for solving ordinary differential equations (ODEs). Another method, with the same name, but almost completely unrelated, is used to find solutions to certain partial differential equations (PDEs). The basic idea is to “guess” the form of the solution as a product of functions, each depending on only one variable.\n\nA basic example",
     "crumbs": [
       "Chapter 5: ODEs and PDEs (Weeks 20/21)",
       "Separation of variables"
@@ -204,6 +204,39 @@
     ]
   },
   {
+    "objectID": "fourierseries.html",
+    "href": "fourierseries.html",
+    "title": "Fourier series",
+    "section": "",
+    "text": "The Fourier series of a periodic function allows us to express that function as a sum of sines and cosines. As long as a function is exactly periodic, that is \\(f(x + L) = f(x)\\) for some period \\(L\\), and it is “nice” enough (piecewise continuous, etc.), we can represent it as a Fourier series.\nWe write that \\[\nf(x) = \\frac{a_0}{2} + \\sum_{n=1}^\\infty \\left[ a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right],\n\\] where the \\(a_n\\) and \\(b_n\\) are the Fourier coefficients.\nConsider the function \\(f(x) = \\sin x\\). This is periodic with period \\(L = 2\\pi\\). It is already in the form of a Fourier series, with coefficients \\[\na_0 = 0, \\quad a_n = 0 \\text{ for all } n, \\quad b_1 = 1, \\quad b_n = 0 \\text{ for } n \\neq 1.\n\\]",
+    "crumbs": [
+      "Chapter 6: Fourier Series (Week 22)",
+      "Fourier series"
+    ]
+  },
+  {
+    "objectID": "fourierseries.html#finding-the-fourier-coefficients",
+    "href": "fourierseries.html#finding-the-fourier-coefficients",
+    "title": "Fourier series",
+    "section": "Finding the Fourier coefficients",
+    "text": "Finding the Fourier coefficients",
+    "crumbs": [
+      "Chapter 6: Fourier Series (Week 22)",
+      "Fourier series"
+    ]
+  },
+  {
+    "objectID": "fourierseries.html#complex-form-of-the-fourier-series",
+    "href": "fourierseries.html#complex-form-of-the-fourier-series",
+    "title": "Fourier series",
+    "section": "Complex form of the Fourier series",
+    "text": "Complex form of the Fourier series\nThere are various ways to transform between real trigonometric functions and complex exponentials. Using Euler’s formula, we can rewrite the Fourier series in terms of complex exponentials: \\[\nf(x) = \\sum_{n=-\\infty}^\\infty c_n e^{i \\frac{2\\pi n x}{L}},\n\\] where the complex Fourier coefficients \\(c_n\\) are related to the real coefficients by \\[\nc_0 = \\frac{a_0}{2}, \\quad c_n = \\frac{a_n - i b_n}{2} \\text{ for } n &gt; 0, \\quad c_{-n} = \\frac{a_n + i b_n}{2} \\text{ for } n &gt; 0.\n\\] Even if we are dealing with a purely real function, using the complex form can often simplify calculations, especially when dealing with differential equations or integrals, and it is this form that naturally leads us to the Fourier transform when we consider non-periodic functions.",
+    "crumbs": [
+      "Chapter 6: Fourier Series (Week 22)",
+      "Fourier series"
+    ]
+  },
+  {
     "objectID": "fields.html",
     "href": "fields.html",
     "title": "Scalar and vector fields",
@@ -296,7 +329,7 @@
     "href": "coordinates.html#basis-vectors-scale-factors",
     "title": "Co-ordinate systems",
     "section": "Basis vectors & scale factors",
-    "text": "Basis vectors & scale factors\nThe definition of a basis vector is the direction you move from a point in space if you increase a particular co-ordinate. So moving in the direction of \\({\\mathbf{e}}_x\\) increases the value of \\(x\\) but keeps \\(y\\) constant. It’s usually assumed to be a unit vector.\nIn practice, the definition is to differentiate \\({\\mathbf{r}}\\) with respect to the variable and then normalise3: \\[\n\\begin{aligned}\n{\\mathbf{e}}_\\rho &= \\frac{\\partial {\\mathbf{r}}}{\\partial \\rho}/\\left|\\frac{\\partial {\\mathbf{r}}}{\\partial \\rho}\\right|\n\\\\ &= \\frac{\\partial}{\\partial \\rho} [\\rho \\cos \\phi,\\,\\rho\\sin\\phi] / \\left|\\frac{\\partial}{\\partial \\rho} [\\rho \\cos \\phi,\\,\\rho\\sin\\phi]\\right|\n\\\\ &= [\\cos\\phi,\\,\\sin\\phi] / \\sqrt{\\cos^2 \\phi + \\sin^2 \\phi}\n\\\\ &= [\\cos\\phi,\\,\\sin\\phi]\n\\end{aligned}\n\\] and \\[\n\\begin{aligned}\n{\\mathbf{e}}_\\phi &= \\frac{\\partial {\\mathbf{r}}}{\\partial \\phi}/\\left|\\frac{\\partial {\\mathbf{r}}}{\\partial \\phi}\\right|\n\\\\ &= \\frac{\\partial}{\\partial \\phi} [\\rho \\cos \\phi,\\,\\rho\\sin\\phi] / \\left|\\frac{\\partial}{\\partial \\phi} [\\rho \\cos \\phi,\\,\\rho\\sin\\phi]\\right|\n\\\\ &= [-\\rho\\sin\\phi,\\,\\rho\\cos\\phi] / \\sqrt{\\rho^2\\cos^2 \\phi + \\rho^2\\sin^2 \\phi}\n\\\\ &= [-\\sin\\phi,\\,\\cos\\phi].\n\\end{aligned}\n\\]\nNote that this also works for Cartestian co-ordinates \\[\n\\begin{aligned}\n{\\mathbf{e}}_x &= \\frac{\\partial {\\mathbf{r}}}{\\partial x}/\\left|\\frac{\\partial {\\mathbf{r}}}{\\partial x}\\right|\n\\\\ &= \\frac{\\partial}{\\partial x} [x,\\,y] / \\left|\\frac{\\partial}{\\partial x} [x,\\,y]\\right|\n\\\\ &= [1,0] / \\sqrt{1^2 + 0^2}\n\\\\ &= [1,0].\n\\end{aligned}\n\\]\nWe also define the scale factors \\(h_\\rho\\) and \\(h_\\phi\\) as the magnitude of the derivatives \\[h_\\rho = \\left|\\frac{\\partial {\\mathbf{r}}}{\\partial \\phi}\\right| = 1,\\] \\[h_\\phi = \\left|\\frac{\\partial {\\mathbf{r}}}{\\partial \\phi}\\right| = \\rho.\\]\n\n\n\n\n\n\nNote\n\n\n\nScale factors will be useful later in the module. For now just get used to the formulas.",
+    "text": "Basis vectors & scale factors\nThe definition of a basis vector is the direction you move from a point in space if you increase a particular co-ordinate. So moving in the direction of \\({\\mathbf{e}}_x\\) increases the value of \\(x\\) but keeps \\(y\\) constant. It’s usually assumed to be a unit vector.\nIn practice, the definition is to differentiate \\({\\mathbf{r}}\\) with respect to the variable and then normalise3: \\[\n\\begin{aligned}\n{\\mathbf{e}}_\\rho &= \\frac{\\partial {\\mathbf{r}}}{\\partial \\rho}/\\left|\\frac{\\partial {\\mathbf{r}}}{\\partial \\rho}\\right|\n\\\\ &= \\frac{\\partial}{\\partial \\rho} [\\rho \\cos \\phi,\\,\\rho\\sin\\phi] / \\left|\\frac{\\partial}{\\partial \\rho} [\\rho \\cos \\phi,\\,\\rho\\sin\\phi]\\right|\n\\\\ &= [\\cos\\phi,\\,\\sin\\phi] / \\sqrt{\\cos^2 \\phi + \\sin^2 \\phi}\n\\\\ &= [\\cos\\phi,\\,\\sin\\phi]\n\\end{aligned}\n\\] and \\[\n\\begin{aligned}\n{\\mathbf{e}}_\\phi &= \\frac{\\partial {\\mathbf{r}}}{\\partial \\phi}/\\left|\\frac{\\partial {\\mathbf{r}}}{\\partial \\phi}\\right|\n\\\\ &= \\frac{\\partial}{\\partial \\phi} [\\rho \\cos \\phi,\\,\\rho\\sin\\phi] / \\left|\\frac{\\partial}{\\partial \\phi} [\\rho \\cos \\phi,\\,\\rho\\sin\\phi]\\right|\n\\\\ &= [-\\rho\\sin\\phi,\\,\\rho\\cos\\phi] / \\sqrt{\\rho^2\\cos^2 \\phi + \\rho^2\\sin^2 \\phi}\n\\\\ &= [-\\sin\\phi,\\,\\cos\\phi].\n\\end{aligned}\n\\]\nNote that this also works for Cartestian co-ordinates \\[\n\\begin{aligned}\n{\\mathbf{e}}_x &= \\frac{\\partial {\\mathbf{r}}}{\\partial x}/\\left|\\frac{\\partial {\\mathbf{r}}}{\\partial x}\\right|\n\\\\ &= \\frac{\\partial}{\\partial x} [x,\\,y] / \\left|\\frac{\\partial}{\\partial x} [x,\\,y]\\right|\n\\\\ &= [1,0] / \\sqrt{1^2 + 0^2}\n\\\\ &= [1,0].\n\\end{aligned}\n\\]\nWe also define the scale factors \\(h_\\rho\\) and \\(h_\\phi\\) as the magnitude of the derivatives \\[h_\\rho = \\left|\\frac{\\partial {\\mathbf{r}}}{\\partial \\rho}\\right| = 1,\\] \\[h_\\phi = \\left|\\frac{\\partial {\\mathbf{r}}}{\\partial \\phi}\\right| = \\rho.\\]\n\n\n\n\n\n\nNote\n\n\n\nScale factors will be useful later in the module. For now just get used to the formulas.",
     "crumbs": [
       "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
       "Coordinate systems"
@@ -373,28 +406,44 @@
     "href": "fouriertransforms.html",
     "title": "Fourier transforms",
     "section": "",
-    "text": "Fourier series work great when we have a function which is perfectly periodic, or defined on a finite interval. But often in practice we have functions defined on the whole real line, when we use an approximation that something in infinitely big.\nIn this case, there isn’t an exact wavelength that fits perfectly, and instead we have to consider all possible wavelengths. This leads us to the Fourier transform."
+    "text": "Fourier series work great when we have a function which is perfectly periodic, or defined on a finite interval. But often in practice we have functions defined on the whole real line, when we use an approximation that something in infinitely big.\nIn this case, there isn’t an exact wavelength that fits perfectly, and instead we have to consider all possible wavelengths. This leads us to the Fourier transform.",
+    "crumbs": [
+      "Chapter 7: Fourier Transforms (Week 23)",
+      "Fourier transforms"
+    ]
   },
   {
     "objectID": "fouriertransforms.html#definition-of-the-fourier-transform",
     "href": "fouriertransforms.html#definition-of-the-fourier-transform",
     "title": "Fourier transforms",
     "section": "Definition of the Fourier transform",
-    "text": "Definition of the Fourier transform\nThe Fourier transform of a function \\(f(x)\\) is defined as1 \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty f(x) e^{-ikx}\\,dx,\n\\] where \\(k\\) is called the wave number.\nThe inverse Fourier transform is given by \\[\nf(x) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty F(k) e^{ikx}\\,dk.\n\\] These two equations are very similar in form to the Fourier series equations, but now we have integrals over all possible wave numbers \\(k\\) instead of sums over discrete wavelengths."
+    "text": "Definition of the Fourier transform\nThe Fourier transform of a function \\(f(x)\\) is defined as1 \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty f(x) e^{-ikx}\\,dx,\n\\] where \\(k\\) is called the wave number.\nThe inverse Fourier transform is given by \\[\nf(x) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty F(k) e^{ikx}\\,dk.\n\\] These two equations are very similar in form to the Fourier series equations, but now we have integrals over all possible wave numbers \\(k\\) instead of sums over discrete wavelengths.",
+    "crumbs": [
+      "Chapter 7: Fourier Transforms (Week 23)",
+      "Fourier transforms"
+    ]
   },
   {
     "objectID": "fouriertransforms.html#example",
     "href": "fouriertransforms.html#example",
     "title": "Fourier transforms",
     "section": "Example",
-    "text": "Example\nFind the Fourier transform of \\[\nf(x) = e^{-\\frac{x^2}{2}}.\n\\] ::: {.callout-tip collapse=“true”} ## Solution We have \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{x^2}{2}} e^{-ikx}\\,dx.\n\\] Combining the exponents gives \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{x^2}{2} - ikx}\\,dx = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{x^2 + 2ikx}{2}}\\,dx.\n\\] Completing the square in the exponent: \\[\nx^2 + 2ikx = (x + ik)^2 - k^2,\n\\] so \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{(x + ik)^2 - k^2}{2}}\\,dx = \\frac{e^{\\frac{k^2}{2}}}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{(x + ik)^2}{2}}\\,dx.\n\\] Now we can make the substitution \\(u = x + ik\\), so \\(du = dx\\). The limits of integration remain \\(-\\infty\\) to \\(\\infty\\) since shifting by a constant (even a complex one) doesn’t change them. Thus, \\[\nF(k) = \\frac{e^{\\frac{k^2}{2}}}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{u^2}{2}}\\,du.\n\\] The integral is just the standard Gaussian integral, which evaluates to \\(\\sqrt{2\\pi}\\). Therefore, \\[\nF(k) = \\frac{e^{\\frac{k^2}{2}}}{\\sqrt{2\\pi}} \\cdot \\sqrt{2\\pi} = e^{\\frac{k^2}{2}}.\n\\] So the Fourier transform of \\(f(x) = e^{-\\frac{x^2}{2\n}}\\) is \\[\nF(k) = e^{\\frac{k^2}{2}}.\n\\] :::"
+    "text": "Example\nFind the Fourier transform of \\[\nf(x) = e^{-\\frac{x^2}{2}}.\n\\]\n\n\n\n\n\n\nSolution\n\n\n\n\n\nWe have \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{x^2}{2}} e^{-ikx}\\,dx.\n\\] Combining the exponents gives \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{x^2}{2} - ikx}\\,dx = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{x^2 + 2ikx}{2}}\\,dx.\n\\] Completing the square in the exponent: \\[\nx^2 + 2ikx = (x + ik)^2 - k^2,\n\\] so \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{(x + ik)^2 - k^2}{2}}\\,dx = \\frac{e^{\\frac{k^2}{2}}}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{(x + ik)^2}{2}}\\,dx.\n\\] Now we can make the substitution \\(u = x + ik\\), so \\(du = dx\\). The limits of integration remain \\(-\\infty\\) to \\(\\infty\\) since shifting by a constant (even a complex one) doesn’t change them. Thus, \\[\nF(k) = \\frac{e^{\\frac{k^2}{2}}}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{u^2}{2}}\\,du.\n\\] The integral is just the standard Gaussian integral, which evaluates to \\(\\sqrt{2\\pi}\\). Therefore, \\[\nF(k) = \\frac{e^{\\frac{k^2}{2}}}{\\sqrt{2\\pi}} \\cdot \\sqrt{2\\pi} = e^{\\frac{k^2}{2}}.\n\\] So the Fourier transform of \\(f(x) = e^{-\\frac{x^2}{2\n}}\\) is \\[\nF(k) = e^{\\frac{k^2}{2}}.\n\\]",
+    "crumbs": [
+      "Chapter 7: Fourier Transforms (Week 23)",
+      "Fourier transforms"
+    ]
   },
   {
     "objectID": "fouriertransforms.html#footnotes",
     "href": "fouriertransforms.html#footnotes",
     "title": "Fourier transforms",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nLots of different conventions exist for the Fourier transform, this is one of the most common.↩︎"
+    "text": "Footnotes\n\n\nLots of different conventions exist for the Fourier transform, this is one of the most common.↩︎",
+    "crumbs": [
+      "Chapter 7: Fourier Transforms (Week 23)",
+      "Fourier transforms"
+    ]
   },
   {
     "objectID": "lineintegrals.html",
@@ -423,7 +472,7 @@
     "href": "odes.html",
     "title": "Examples of ODEs",
     "section": "",
-    "text": "ODEs are ordinary differential equations. These are equations which relate ordinary derivatives (not partial derivatives) of a function with each other. You’ve seen these many times before. Because they are ordinary derivatives, there is only one independent variable, which we typically call either \\(x\\) (when talking about space) or \\(t\\) (when talking about time). However, we can have more than one dependent variable.\nHere are some famous examples: \\[\n\\frac{d^2x}{dt^2} = -\\frac{k}{m}x \\quad\\text{(Simple harmonic motion)}\n\\] This describes, for example, a mass on a spring, or a pendulum undergoing small oscillations. The solutions are sinusoidal functions.\n\\[\n\\frac{dT}{dt} = -k(T - T_{\\text{amb}}) \\quad\\text{(Newton's law of cooling)}\n\\] This describes how an object cools down (or heats up) to the ambient temperature. The solution is an exponential decay (or growth) towards the ambient temperature.\n\\[\n\\frac{dN}{dt} = rN\\left(1-\\frac{N}{K}\\right) \\quad\\text{(Logistic equation for population growth)}\n\\] This describes how a population grows rapidly at first, then slows down as it approaches a maximum sustainable population \\(K\\). The solution is an S-shaped curve called a logistic function.\nThe following is a ‘system’ of ODEs, meaning there are several dependent variables which depend on the same independent variable. Here, \\(x\\), \\(y\\) and \\(z\\) all depend on the time \\(t\\): \\[\n\\begin{aligned}\n\\frac{dx}{dt} &= \\sigma(y - x) \\\\\n\\frac{dy}{dt} &= x(\\rho - z) - y \\\\\n\\frac{dz}{dt} &= xy - \\beta z \\quad\\text{(Lorenz equations for convection)}\n\\end{aligned}\n\\] This system is famous for exhibiting chaotic behaviour for certain values of the parameters \\(\\sigma\\), \\(\\rho\\) and \\(\\beta\\). It was originally derived as a simplified model of atmospheric convection.",
+    "text": "ODEs are ordinary differential equations. These are equations which relate ordinary derivatives (not partial derivatives) of a function with each other. You’ve seen these many times before. Because they are ordinary derivatives, there is only one independent variable, which we typically call either \\(x\\) (when talking about space) or \\(t\\) (when talking about time). However, we can have more than one dependent variable.\nHere are some famous examples: \\[\n{\\frac{\\mathrm{d}^2 x}{\\mathrm{d} t^2}} = -\\frac{k}{m}x \\quad\\text{(Simple harmonic motion)}\n\\] This describes, for example, a mass on a spring, or a pendulum undergoing small oscillations. The solutions are sinusoidal functions.\n\\[\n{\\frac{\\mathrm{d} T}{\\mathrm{d} t}} = -k(T - T_{\\text{amb}}) \\quad\\text{(Newton's law of cooling)}\n\\] This describes how an object cools down (or heats up) to the ambient temperature. The solution is an exponential decay (or growth) towards the ambient temperature.\n\\[\n{\\frac{\\mathrm{d} N}{\\mathrm{d} t}} = rN\\left(1-\\frac{N}{K}\\right) \\quad\\text{(Logistic equation for population growth)}\n\\] This describes how a population grows rapidly at first, then slows down as it approaches a maximum sustainable population \\(K\\). The solution is an S-shaped curve called a logistic function.\nThe following is a ‘system’ of ODEs, meaning there are several dependent variables which depend on the same independent variable. Here, \\(x\\), \\(y\\) and \\(z\\) all depend on the time \\(t\\): \\[\n\\begin{aligned}\n{\\frac{\\mathrm{d} x}{\\mathrm{d} t}} &= \\sigma(y - x) \\\\\n{\\frac{\\mathrm{d} y}{\\mathrm{d} t}} &= x(\\rho - z) - y \\\\\n{\\frac{\\mathrm{d} z}{\\mathrm{d} t}} &= xy - \\beta z \\quad\\text{(Lorenz equations for convection)}\n\\end{aligned}\n\\] This system is famous for exhibiting chaotic behaviour for certain values of the parameters \\(\\sigma\\), \\(\\rho\\) and \\(\\beta\\). It was originally derived as a simplified model of atmospheric convection.",
     "crumbs": [
       "Chapter 5: ODEs and PDEs (Weeks 20/21)",
       "Examples of ODEs"
@@ -445,7 +494,7 @@
     "href": "odes.html#constant-coefficient-odes",
     "title": "Examples of ODEs",
     "section": "Constant coefficient ODEs",
-    "text": "Constant coefficient ODEs\nA linear ODE is said to have constant coefficients if the coefficients (the numbers multiplying the dependent variable and its derivatives) are constants, not functions of the independent variable. For example, in the simple harmonic motion equation above, \\(k\\) and \\(m\\) are constants, so it has constant coefficients.\nIn the case TODO",
+    "text": "Constant coefficient ODEs\nA linear ODE is said to have constant coefficients if the coefficients (the numbers multiplying the dependent variable and its derivatives) are constants, not functions of the independent variable. For example, in the simple harmonic motion equation above, \\(k\\) and \\(m\\) are constants, so it has constant coefficients.\nA general first order linear, homogeneous ODE with constant coefficients has the form \\[\na{\\frac{\\mathrm{d} y}{\\mathrm{d} x}} + by = 0,\n\\] and this has the solution \\[\ny(x) = C e^{-\\frac{b}{a}x},\n\\] where \\(C\\) is an arbitrary constant.\nA general second order linear, homogeneous ODE with constant coefficients has the form \\[\na{\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}} + b{\\frac{\\mathrm{d} y}{\\mathrm{d} x}} + cy = 0,\n\\] and this has the solution \\[\ny(x) = C_1 e^{r_1 x} + C_2 e^{r_2 x},\n\\] where \\(C_1\\) and \\(C_2\\) are arbitrary constants, and \\(r_1\\) and \\(r_2\\) are the roots of the characteristic equation \\[\nar^2 + br + c = 0.\n\\] which may be real or complex.\nNotice the exponentials in both cases. If in doubt, try an exponential function as a solution!\n\n\n\n\n\n\nNote\n\n\n\nThis stuff shouldn’t be new to you, but we’ll see it a lot when we’re solving more complicated equations, so it’s worth making sure you understand it.",
     "crumbs": [
       "Chapter 5: ODEs and PDEs (Weeks 20/21)",
       "Examples of ODEs"
@@ -456,7 +505,7 @@
     "href": "odes.html#existence-and-uniqueness-of-solutions",
     "title": "Examples of ODEs",
     "section": "Existence and uniqueness of solutions",
-    "text": "Existence and uniqueness of solutions\nTODO",
+    "text": "Existence and uniqueness of solutions\nWhen we turn to PDEs, it becomes very important to know whether a given equation has a solution, and whether that solution is unique. For ODEs, and especially for those second order, constant coefficient ODEs, there are well-established theorems that give conditions for existence and uniqueness of solutions.\nIt is important, however, to think about what boundary or initial conditions you need to specify in order to get a unique solution. For example, for a second order ODE, you typically need to specify two conditions, such specifying both the value of the function and its first derivative at a particular point, but this may not always be the case.\nFor example, consider the equation \\[\n{\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}} + {\\frac{\\mathrm{d} y}{\\mathrm{d} x}} = 0.\n\\] This is a second order ODE, so we need two conditions to specify a unique solution.\nThe general solution to this ODE is \\[\ny(x) = C_1 + C_2 e^{-x},\n\\] where \\(C_1\\) and \\(C_2\\) are arbitrary constants.\nIf we specify \\[\ny(0) = 1, \\quad {\\frac{\\mathrm{d} y}{\\mathrm{d} x}}(0) = -1,\n\\] then we find the unique solution \\[\ny(x) = 1 - e^{-x}.\n\\]\nHowever, if we instead specify that \\[\n{\\frac{\\mathrm{d} y}{\\mathrm{d} x}}(0) = -1, \\quad {\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}}(0) = 1,\n\\] then we can have any solution of the form \\[\ny(x) = C_1 + e^{-x},\n\\] where \\(C_1\\) can be any constant. Thus, the solution is not unique in this case.\nOn the other hand, if we specify \\[\n{\\frac{\\mathrm{d} y}{\\mathrm{d} x}}(0) = -1, \\quad {\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}}(0) = -1,\n\\] then there is no solution that satisfies both conditions, so in this case a solution does not exist.\n\n\n\n\n\n\nNote\n\n\n\nI won’t ever ask you to solve an equation that has no solution, though I might ask you to identify when this is the case.",
     "crumbs": [
       "Chapter 5: ODEs and PDEs (Weeks 20/21)",
       "Examples of ODEs"

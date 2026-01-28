@@ -1,0 +1,52 @@
+---
+title: "Fourier series"
+---
+
+::: {.hidden}
+ \providecommand{\vv}[1]{{\mathbf{#1}}}
+ \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
+:::
+
+The Fourier series of a periodic function allows us to express that function as a sum of sines and cosines. As long as a function is exactly periodic, that is $f(x + L) = f(x)$ for some period $L$, and it is "nice" enough (piecewise continuous, etc.), we can represent it as a Fourier series.
+
+We write that
+$$
+f(x) = \frac{a_0}{2} + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right],
+$$
+where the $a_n$ and $b_n$ are the _Fourier coefficients_.
+
+Consider the function $f(x) = \sin x$. This is periodic with period $L = 2\pi$. It is already in the form of a Fourier series, with coefficients
+$$
+a_0 = 0, \quad a_n = 0 \text{ for all } n, \quad b_1 = 1, \quad b_n = 0 \text{ for } n \neq 1.
+$$
+
+### Example
+Find the period and the Fourier coefficients for the function $f(x) = \sin^2 x$.
+
+::: {.callout-tip collapse="true"}
+## Solution
+The function $\sin^2 x$ has period $L = \pi$, since
+$$\sin^2(x + \pi) = (\sin x \cos \pi + \cos x \sin \pi)^2 = (-\sin x)^2 = \sin^2 x.$$
+
+To find the Fourier coefficients, we can use the trigonometric identity $\cos 2x = 1 - 2\sin^2 x$, which can be rearranged to give $\sin^2 x = \frac{1 - \cos 2x}{2}$. Thus, we can write
+$$
+f(x) = \frac{1}{2} - \frac{1}{2} \cos(2x) = \frac{1}{2} - \frac{1}{2} \cos\left(\frac{2\pi x}{\pi}\right).
+$$
+From this, we can read off the Fourier coefficients:
+$$
+a_0 = 1, \quad a_1 = -\frac{1}{2}, \quad a_n = 0 \text{ for } n > 1, \quad b_n = 0 \text{ for all } n.
+$$
+:::
+
+## Finding the Fourier coefficients
+
+## Complex form of the Fourier series
+There are various ways to transform between real trigonometric functions and complex exponentials. Using Euler's formula, we can rewrite the Fourier series in terms of complex exponentials:
+$$
+f(x) = \sum_{n=-\infty}^\infty c_n e^{i \frac{2\pi n x}{L}},
+$$
+where the _complex_ Fourier coefficients $c_n$ are related to the real coefficients by
+$$
+c_0 = \frac{a_0}{2}, \quad c_n = \frac{a_n - i b_n}{2} \text{ for } n > 0, \quad c_{-n} = \frac{a_n + i b_n}{2} \text{ for } n > 0.
+$$
+Even if we are dealing with a purely real function, using the complex form can often simplify calculations, especially when dealing with differential equations or integrals, and it is this form that naturally leads us to the Fourier transform when we consider non-periodic functions.

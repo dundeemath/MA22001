@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Volume integrals – MA22001 Core Mathematics IV</title>
+<title>Fourier series – MA22001 Core Mathematics IV</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lineintegrals.html">Chapter 3: Integrals (Weeks 17/18)</a></li><li class="breadcrumb-item"><a href="./volumeintegrals.html">Volume integrals</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fourierseries.html">Chapter 6: Fourier Series (Week 22)</a></li><li class="breadcrumb-item"><a href="./fourierseries.html">Fourier series</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -244,7 +244,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./volumeintegrals.html" class="sidebar-item-text sidebar-link active">
+  <a href="./volumeintegrals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Volume integrals</span></a>
   </div>
 </li>
@@ -319,7 +319,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fourierseries.html" class="sidebar-item-text sidebar-link">
+  <a href="./fourierseries.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Fourier series</span></a>
   </div>
 </li>
@@ -370,17 +370,18 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#example-volume-of-a-sphere" id="toc-example-volume-of-a-sphere" class="nav-link active" data-scroll-target="#example-volume-of-a-sphere">Example: volume of a sphere</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a></li>
+  <li><a href="#finding-the-fourier-coefficients" id="toc-finding-the-fourier-coefficients" class="nav-link" data-scroll-target="#finding-the-fourier-coefficients">Finding the Fourier coefficients</a></li>
+  <li><a href="#complex-form-of-the-fourier-series" id="toc-complex-form-of-the-fourier-series" class="nav-link" data-scroll-target="#complex-form-of-the-fourier-series">Complex form of the Fourier series</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lineintegrals.html">Chapter 3: Integrals (Weeks 17/18)</a></li><li class="breadcrumb-item"><a href="./volumeintegrals.html">Volume integrals</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fourierseries.html">Chapter 6: Fourier Series (Week 22)</a></li><li class="breadcrumb-item"><a href="./fourierseries.html">Fourier series</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Volume integrals</h1>
+<h1 class="title">Fourier series</h1>
 </div>
 
 
@@ -400,24 +401,16 @@ window.Quarto = {
 <div class="hidden">
 
 </div>
-<p>In some ways these are the easiest integrals we see in this module. It’s basically the same steps as before:</p>
-<ol type="1">
-<li>Parameterise the volume.</li>
-<li>Find the element <span class="math inline">\(dV\)</span> for that parameterisation.</li>
-<li>Replace the integral <span class="math inline">\(\int_V\)</span> with ordinary integrals <span class="math inline">\(\int_a^b\)</span> with the correct limits.</li>
-<li>Compute the value of the triple integral.</li>
-</ol>
-<p>However, the parameterisation of 3D volume needs 3 parameters, and we already know how to parameterise 3D space: that’s a co-ordinate system. So it’s a case of choosing the co-ordinate system which best describes the volume you’re interested in, and working out the correct limits. The element <span class="math inline">\(dV\)</span> for a given co-ordinate system is the product of the scale factors.</p>
-<p>For Cartestians, <span class="math display">\[
-dV = h_x h_y h_z \,dx\,dy\,dz = dx\,dy\,dz,
-\]</span> for cylindrical polars, <span class="math display">\[
-dV = h_\rho h_\phi h_z \,d\rho\,d\phi\,dz = \rho d\rho\,d\phi\,dz,
-\]</span> and for spherical polars, <span class="math display">\[
-dV = h_r h_\phi h_\theta \,dr\,d\phi\,d\theta = r^2\sin \theta \,dr\,d\phi\,d\theta.
+<p>The Fourier series of a periodic function allows us to express that function as a sum of sines and cosines. As long as a function is exactly periodic, that is <span class="math inline">\(f(x + L) = f(x)\)</span> for some period <span class="math inline">\(L\)</span>, and it is “nice” enough (piecewise continuous, etc.), we can represent it as a Fourier series.</p>
+<p>We write that <span class="math display">\[
+f(x) = \frac{a_0}{2} + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right],
+\]</span> where the <span class="math inline">\(a_n\)</span> and <span class="math inline">\(b_n\)</span> are the <em>Fourier coefficients</em>.</p>
+<p>Consider the function <span class="math inline">\(f(x) = \sin x\)</span>. This is periodic with period <span class="math inline">\(L = 2\pi\)</span>. It is already in the form of a Fourier series, with coefficients <span class="math display">\[
+a_0 = 0, \quad a_n = 0 \text{ for all } n, \quad b_1 = 1, \quad b_n = 0 \text{ for } n \neq 1.
 \]</span></p>
-<section id="example-volume-of-a-sphere" class="level3">
-<h3 class="anchored" data-anchor-id="example-volume-of-a-sphere">Example: volume of a sphere</h3>
-<p>Calculate the volume of the sphere <span class="math inline">\(x^2+y^2+z^2 \leq R^2\)</span>.</p>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<p>Find the period and the Fourier coefficients for the function <span class="math inline">\(f(x) = \sin^2 x\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -430,50 +423,26 @@ Solution
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The volume is the empty integral <span class="math display">\[
-\text{Volume} = \int_V dV.
+<p>The function <span class="math inline">\(\sin^2 x\)</span> has period <span class="math inline">\(L = \pi\)</span>, since <span class="math display">\[\sin^2(x + \pi) = (\sin x \cos \pi + \cos x \sin \pi)^2 = (-\sin x)^2 = \sin^2 x.\]</span></p>
+<p>To find the Fourier coefficients, we can use the trigonometric identity <span class="math inline">\(\cos 2x = 1 - 2\sin^2 x\)</span>, which can be rearranged to give <span class="math inline">\(\sin^2 x = \frac{1 - \cos 2x}{2}\)</span>. Thus, we can write <span class="math display">\[
+f(x) = \frac{1}{2} - \frac{1}{2} \cos(2x) = \frac{1}{2} - \frac{1}{2} \cos\left(\frac{2\pi x}{\pi}\right).
+\]</span> From this, we can read off the Fourier coefficients: <span class="math display">\[
+a_0 = 1, \quad a_1 = -\frac{1}{2}, \quad a_n = 0 \text{ for } n &gt; 1, \quad b_n = 0 \text{ for all } n.
 \]</span></p>
-<p>We use spherical polar coordinates, where <span class="math inline">\(x = r\sin\theta\cos\phi\)</span>, <span class="math inline">\(y = r\sin\theta\sin\phi\)</span>, <span class="math inline">\(z = r\cos\theta\)</span>, and <span class="math inline">\(dV = r^2 \sin\theta \, dr\, d\theta\, d\phi\)</span>.</p>
-<p>The limits are <span class="math inline">\(0 \leq r \leq R\)</span>, <span class="math inline">\(0 \leq \theta \leq \pi\)</span>, <span class="math inline">\(0 \leq \phi \leq 2\pi\)</span>.</p>
-<p>So, <span class="math display">\[
-\text{Volume} = \int_0^{2\pi} d\phi \int_0^\pi d\theta dr\,\int_0^R r^2  \sin\theta = (2\pi) \left( \int_0^\pi \sin\theta\, d\theta \right) \left( \int_0^R r^2 dr \right).
-\]</span> Notice how we can do each of the integrals separately in this case.</p>
-<p><span class="math inline">\(\int_0^\pi \sin\theta\, d\theta = 2\)</span>, and <span class="math inline">\(\int_0^R r^2 dr = \frac{R^3}{3}\)</span>.</p>
-<p>Therefore, the volume is <span class="math inline">\(2\pi \times 2 \times \frac{R^3}{3} = \frac{4}{3}\pi R^3\)</span>.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="example" class="level3">
-<h3 class="anchored" data-anchor-id="example">Example</h3>
-<p>Calculate the volume integral <span class="math display">\[
-\int_V z^3 dV
-\]</span> where <span class="math inline">\(V = \{(x,y,z)\in\mathbb{R}\,|\,0\leq z\leq 1,\,x^2+y^2\leq z^2\}\)</span>.</p>
-<p>Hint: this is a cone.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The set is given in Cartesian co-ordinates, but don’t let that fool you: it will get very messy if you try to do this in Cartesians.</p>
-<p>The <span class="math inline">\(x^2+y^2\)</span> should make you think of cylindrical co-ordinates, since <span class="math inline">\(\rho^2=x^2+y^2\)</span>. Then you get <span class="math display">\[V = \{(\rho,\phi,z)\,|\,0\leq z\leq 1,\,\rho\leq z\},\]</span> which is more obviously a cone (sketch in the <span class="math inline">\(\phi=0\)</span> plane).</p>
-<p>Implicit in this definition is that <span class="math inline">\(\phi\)</span> can take any value between <span class="math inline">\(0\)</span> and <span class="math inline">\(2\pi\)</span> as usual.</p>
-<p>So now we can put it all together: <span class="math display">\[
-\int_V z^3 dV = \int_0^z d\rho \int_0^{2\pi} d\phi \int_0^1 dz z^3 \rho,
-\]</span> with the extra <span class="math inline">\(\rho\)</span> coming from thee scale factor <span class="math inline">\(h_\phi\)</span>.</p>
-<p>The <span class="math inline">\(\phi\)</span> integral is easy because <span class="math inline">\(\phi\)</span> does not appear in the integrand. We need to be careful with the order of the other two, because the limits for <span class="math inline">\(\rho\)</span> depend on <span class="math inline">\(z\)</span>: <span class="math display">\[
-\int_V z^3 dV = 2\pi  \int_0^1 z^3 \left(\int_0^z \rho d\rho\right) dz = 2\pi \int_0^1 z^3\, \frac{1}{2} z^2 dz = \frac{\pi}{6}
-\]</span></p>
-</div>
-</div>
-</div>
+<section id="finding-the-fourier-coefficients" class="level2">
+<h2 class="anchored" data-anchor-id="finding-the-fourier-coefficients">Finding the Fourier coefficients</h2>
+</section>
+<section id="complex-form-of-the-fourier-series" class="level2">
+<h2 class="anchored" data-anchor-id="complex-form-of-the-fourier-series">Complex form of the Fourier series</h2>
+<p>There are various ways to transform between real trigonometric functions and complex exponentials. Using Euler’s formula, we can rewrite the Fourier series in terms of complex exponentials: <span class="math display">\[
+f(x) = \sum_{n=-\infty}^\infty c_n e^{i \frac{2\pi n x}{L}},
+\]</span> where the <em>complex</em> Fourier coefficients <span class="math inline">\(c_n\)</span> are related to the real coefficients by <span class="math display">\[
+c_0 = \frac{a_0}{2}, \quad c_n = \frac{a_n - i b_n}{2} \text{ for } n &gt; 0, \quad c_{-n} = \frac{a_n + i b_n}{2} \text{ for } n &gt; 0.
+\]</span> Even if we are dealing with a purely real function, using the complex form can often simplify calculations, especially when dealing with differential equations or integrals, and it is this form that naturally leads us to the Fourier transform when we consider non-periodic functions.</p>
 
 
 </section>

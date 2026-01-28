@@ -64,7 +64,7 @@ $$
 $$
 
 We also define the scale factors $h_\rho$ and $h_\phi$ as the magnitude of the derivatives
-$$h_\rho = \left|\frac{\partial \vv{r}}{\partial \phi}\right| = 1,$$
+$$h_\rho = \left|\frac{\partial \vv{r}}{\partial \rho}\right| = 1,$$
 $$h_\phi = \left|\frac{\partial \vv{r}}{\partial \phi}\right| = \rho.$$
 
 :::{.callout-note}
@@ -146,7 +146,7 @@ You can derive the following:
 $$
 \begin{aligned}
 \vv{e}_r &= [\cos\phi\sin\theta,\,\sin\phi\sin\theta,\,\cos\theta],\\
-\vv{e}_\theta &= [\cos\phi\cos\theta,\,\sin\phi\cos\theta,\,-\sin\theta],
+\vv{e}_\theta &= [\cos\phi\cos\theta,\,\sin\phi\cos\theta,\,-\sin\theta],\\
 \vv{e}_\phi &= [-\sin\phi,\,\cos\phi,\,0],\\
 \end{aligned}
 $$

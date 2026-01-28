@@ -5,32 +5,35 @@ title: "Examples of ODEs"
 ::: {.hidden}
  \providecommand{\vv}[1]{{\mathbf{#1}}}
  \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
+ \providecommand{\pdd}[2]{{\frac{\partial^2 #1}{\partial #2^2}}}
+ \providecommand{\dd}[2]{{\frac{\mathrm{d} #1}{\mathrm{d} #2}}}
+ \providecommand{\ddd}[2]{{\frac{\mathrm{d}^2 #1}{\mathrm{d} #2^2}}}
 :::
 
 ODEs are _ordinary differential equations_. These are equations which relate ordinary derivatives (not partial derivatives) of a function with each other. You've seen these many times before. Because they are ordinary derivatives, there is only one independent variable, which we typically call either $x$ (when talking about space) or $t$ (when talking about time). However, we can have more than one dependent variable.
 
 Here are some famous examples:
 $$
-\frac{d^2x}{dt^2} = -\frac{k}{m}x \quad\text{(Simple harmonic motion)}
+\ddd{x}{t} = -\frac{k}{m}x \quad\text{(Simple harmonic motion)}
 $$
 This describes, for example, a mass on a spring, or a pendulum undergoing small oscillations. The solutions are sinusoidal functions.
 
 $$
-\frac{dT}{dt} = -k(T - T_{\text{amb}}) \quad\text{(Newton's law of cooling)}
+\dd{T}{t} = -k(T - T_{\text{amb}}) \quad\text{(Newton's law of cooling)}
 $$
 This describes how an object cools down (or heats up) to the ambient temperature. The solution is an exponential decay (or growth) towards the ambient temperature.
 
 $$
-\frac{dN}{dt} = rN\left(1-\frac{N}{K}\right) \quad\text{(Logistic equation for population growth)}
+\dd{N}{t} = rN\left(1-\frac{N}{K}\right) \quad\text{(Logistic equation for population growth)}
 $$
 This describes how a population grows rapidly at first, then slows down as it approaches a maximum sustainable population $K$. The solution is an S-shaped curve called a logistic function.
 
 The following is a 'system' of ODEs, meaning there are several dependent variables which depend on the same independent variable. Here, $x$, $y$ and $z$ all depend on the time $t$:
 $$
 \begin{aligned}
-\frac{dx}{dt} &= \sigma(y - x) \\
-\frac{dy}{dt} &= x(\rho - z) - y \\
-\frac{dz}{dt} &= xy - \beta z \quad\text{(Lorenz equations for convection)}
+\dd{x}{t} &= \sigma(y - x) \\
+\dd{y}{t} &= x(\rho - z) - y \\
+\dd{z}{t} &= xy - \beta z \quad\text{(Lorenz equations for convection)}
 \end{aligned}
 $$
 This system is famous for exhibiting chaotic behaviour for certain values of the parameters $\sigma$, $\rho$ and $\beta$. It was originally derived as a simplified model of atmospheric convection.
@@ -45,8 +48,79 @@ It is important to be able to distinguish the two types, especially as we progre
 ## Constant coefficient ODEs
 A linear ODE is said to have _constant coefficients_ if the coefficients (the numbers multiplying the dependent variable and its derivatives) are constants, not functions of the independent variable. For example, in the simple harmonic motion equation above, $k$ and $m$ are constants, so it has constant coefficients.
 
-In the case TODO
+A general first order linear, _homogeneous_ ODE with constant coefficients has the form
+$$
+a\dd{y}{x} + by = 0,
+$$
+and this has the solution
+$$
+y(x) = C e^{-\frac{b}{a}x}, 
+$$
+where $C$ is an arbitrary constant.
 
+A general second order linear, homogeneous ODE with constant coefficients has the form
+$$
+a\ddd{y}{x} + b\dd{y}{x} + cy = 0,
+$$
+and this has the solution
+$$
+y(x) = C_1 e^{r_1 x} + C_2 e^{r_2 x},
+$$
+where $C_1$ and $C_2$ are arbitrary constants, and $r_1$ and $r_2$ are the roots of the characteristic equation
+$$
+ar^2 + br + c = 0.
+$$
+which may be real or complex.
+
+Notice the exponentials in both cases. If in doubt, try an exponential function as a solution!
+
+
+::: {.callout-note}
+This stuff shouldn't be new to you, but we'll see it a lot when we're solving more complicated equations, so it's worth making sure you understand it.
+:::
 
 ## Existence and uniqueness of solutions
-TODO
+When we turn to PDEs, it becomes very important to know whether a given equation has a solution, and whether that solution is unique. For ODEs, and especially for those second order, constant coefficient ODEs, there are well-established theorems that give conditions for existence and uniqueness of solutions.
+
+It is important, however, to think about what boundary or initial conditions you need to specify in order to get a unique solution. For example, for a second order ODE, you typically need to specify two conditions, such specifying both the value of the function and its first derivative at a particular point, but this may not always be the case.
+
+For example, consider the equation
+$$
+\ddd{y}{x} + \dd{y}{x} = 0.
+$$
+This is a second order ODE, so we need two conditions to specify a unique solution.
+
+The general solution to this ODE is
+$$
+y(x) = C_1 + C_2 e^{-x},
+$$
+where $C_1$ and $C_2$ are arbitrary constants.
+
+If we specify
+$$
+y(0) = 1, \quad \dd{y}{x}(0) = -1,
+$$
+then we find the unique solution
+$$
+y(x) = 1 - e^{-x}.
+$$
+
+However, if we instead specify that
+$$
+\dd{y}{x}(0) = -1, \quad \ddd{y}{x}(0) = 1,
+$$
+then we can have any solution of the form
+$$
+y(x) = C_1 + e^{-x},
+$$
+where $C_1$ can be any constant. Thus, the solution is not unique in this case.
+
+On the other hand, if we specify
+$$
+\dd{y}{x}(0) = -1, \quad \ddd{y}{x}(0) = -1,
+$$
+then there is no solution that satisfies both conditions, so in this case a solution does not exist.
+
+::: {.callout-note}
+I won't ever ask you to solve an equation that has no solution, though I might ask you to identify when this is the case.
+:::

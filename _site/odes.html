@@ -318,8 +318,17 @@ window.Quarto = {
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">Application to ODEs and PDEs</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./fourierseries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier series</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fourierdes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Application to ODEs and PDEs</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -331,6 +340,12 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fouriertransforms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier transforms</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
  <span class="menu-text">Convolution</span>
   </li>
@@ -388,19 +403,19 @@ window.Quarto = {
 </div>
 <p>ODEs are <em>ordinary differential equations</em>. These are equations which relate ordinary derivatives (not partial derivatives) of a function with each other. You’ve seen these many times before. Because they are ordinary derivatives, there is only one independent variable, which we typically call either <span class="math inline">\(x\)</span> (when talking about space) or <span class="math inline">\(t\)</span> (when talking about time). However, we can have more than one dependent variable.</p>
 <p>Here are some famous examples: <span class="math display">\[
-\frac{d^2x}{dt^2} = -\frac{k}{m}x \quad\text{(Simple harmonic motion)}
+{\frac{\mathrm{d}^2 x}{\mathrm{d} t^2}} = -\frac{k}{m}x \quad\text{(Simple harmonic motion)}
 \]</span> This describes, for example, a mass on a spring, or a pendulum undergoing small oscillations. The solutions are sinusoidal functions.</p>
 <p><span class="math display">\[
-\frac{dT}{dt} = -k(T - T_{\text{amb}}) \quad\text{(Newton's law of cooling)}
+{\frac{\mathrm{d} T}{\mathrm{d} t}} = -k(T - T_{\text{amb}}) \quad\text{(Newton's law of cooling)}
 \]</span> This describes how an object cools down (or heats up) to the ambient temperature. The solution is an exponential decay (or growth) towards the ambient temperature.</p>
 <p><span class="math display">\[
-\frac{dN}{dt} = rN\left(1-\frac{N}{K}\right) \quad\text{(Logistic equation for population growth)}
+{\frac{\mathrm{d} N}{\mathrm{d} t}} = rN\left(1-\frac{N}{K}\right) \quad\text{(Logistic equation for population growth)}
 \]</span> This describes how a population grows rapidly at first, then slows down as it approaches a maximum sustainable population <span class="math inline">\(K\)</span>. The solution is an S-shaped curve called a logistic function.</p>
 <p>The following is a ‘system’ of ODEs, meaning there are several dependent variables which depend on the same independent variable. Here, <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span> all depend on the time <span class="math inline">\(t\)</span>: <span class="math display">\[
 \begin{aligned}
-\frac{dx}{dt} &amp;= \sigma(y - x) \\
-\frac{dy}{dt} &amp;= x(\rho - z) - y \\
-\frac{dz}{dt} &amp;= xy - \beta z \quad\text{(Lorenz equations for convection)}
+{\frac{\mathrm{d} x}{\mathrm{d} t}} &amp;= \sigma(y - x) \\
+{\frac{\mathrm{d} y}{\mathrm{d} t}} &amp;= x(\rho - z) - y \\
+{\frac{\mathrm{d} z}{\mathrm{d} t}} &amp;= xy - \beta z \quad\text{(Lorenz equations for convection)}
 \end{aligned}
 \]</span> This system is famous for exhibiting chaotic behaviour for certain values of the parameters <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\rho\)</span> and <span class="math inline">\(\beta\)</span>. It was originally derived as a simplified model of atmospheric convection.</p>
 <section id="linear-and-non-linear-odes" class="level2">
@@ -412,11 +427,69 @@ window.Quarto = {
 <section id="constant-coefficient-odes" class="level2">
 <h2 class="anchored" data-anchor-id="constant-coefficient-odes">Constant coefficient ODEs</h2>
 <p>A linear ODE is said to have <em>constant coefficients</em> if the coefficients (the numbers multiplying the dependent variable and its derivatives) are constants, not functions of the independent variable. For example, in the simple harmonic motion equation above, <span class="math inline">\(k\)</span> and <span class="math inline">\(m\)</span> are constants, so it has constant coefficients.</p>
-<p>In the case TODO</p>
+<p>A general first order linear, <em>homogeneous</em> ODE with constant coefficients has the form <span class="math display">\[
+a{\frac{\mathrm{d} y}{\mathrm{d} x}} + by = 0,
+\]</span> and this has the solution <span class="math display">\[
+y(x) = C e^{-\frac{b}{a}x},
+\]</span> where <span class="math inline">\(C\)</span> is an arbitrary constant.</p>
+<p>A general second order linear, homogeneous ODE with constant coefficients has the form <span class="math display">\[
+a{\frac{\mathrm{d}^2 y}{\mathrm{d} x^2}} + b{\frac{\mathrm{d} y}{\mathrm{d} x}} + cy = 0,
+\]</span> and this has the solution <span class="math display">\[
+y(x) = C_1 e^{r_1 x} + C_2 e^{r_2 x},
+\]</span> where <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> are arbitrary constants, and <span class="math inline">\(r_1\)</span> and <span class="math inline">\(r_2\)</span> are the roots of the characteristic equation <span class="math display">\[
+ar^2 + br + c = 0.
+\]</span> which may be real or complex.</p>
+<p>Notice the exponentials in both cases. If in doubt, try an exponential function as a solution!</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This stuff shouldn’t be new to you, but we’ll see it a lot when we’re solving more complicated equations, so it’s worth making sure you understand it.</p>
+</div>
+</div>
 </section>
 <section id="existence-and-uniqueness-of-solutions" class="level2">
 <h2 class="anchored" data-anchor-id="existence-and-uniqueness-of-solutions">Existence and uniqueness of solutions</h2>
-<p>TODO</p>
+<p>When we turn to PDEs, it becomes very important to know whether a given equation has a solution, and whether that solution is unique. For ODEs, and especially for those second order, constant coefficient ODEs, there are well-established theorems that give conditions for existence and uniqueness of solutions.</p>
+<p>It is important, however, to think about what boundary or initial conditions you need to specify in order to get a unique solution. For example, for a second order ODE, you typically need to specify two conditions, such specifying both the value of the function and its first derivative at a particular point, but this may not always be the case.</p>
+<p>For example, consider the equation <span class="math display">\[
+{\frac{\mathrm{d}^2 y}{\mathrm{d} x^2}} + {\frac{\mathrm{d} y}{\mathrm{d} x}} = 0.
+\]</span> This is a second order ODE, so we need two conditions to specify a unique solution.</p>
+<p>The general solution to this ODE is <span class="math display">\[
+y(x) = C_1 + C_2 e^{-x},
+\]</span> where <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> are arbitrary constants.</p>
+<p>If we specify <span class="math display">\[
+y(0) = 1, \quad {\frac{\mathrm{d} y}{\mathrm{d} x}}(0) = -1,
+\]</span> then we find the unique solution <span class="math display">\[
+y(x) = 1 - e^{-x}.
+\]</span></p>
+<p>However, if we instead specify that <span class="math display">\[
+{\frac{\mathrm{d} y}{\mathrm{d} x}}(0) = -1, \quad {\frac{\mathrm{d}^2 y}{\mathrm{d} x^2}}(0) = 1,
+\]</span> then we can have any solution of the form <span class="math display">\[
+y(x) = C_1 + e^{-x},
+\]</span> where <span class="math inline">\(C_1\)</span> can be any constant. Thus, the solution is not unique in this case.</p>
+<p>On the other hand, if we specify <span class="math display">\[
+{\frac{\mathrm{d} y}{\mathrm{d} x}}(0) = -1, \quad {\frac{\mathrm{d}^2 y}{\mathrm{d} x^2}}(0) = -1,
+\]</span> then there is no solution that satisfies both conditions, so in this case a solution does not exist.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I won’t ever ask you to solve an equation that has no solution, though I might ask you to identify when this is the case.</p>
+</div>
+</div>
 
 
 </section>
