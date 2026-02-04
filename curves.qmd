@@ -18,7 +18,7 @@ Curves have many important applications in maths and physics, for example, the p
 
 In two dimensions, you're used to seeing a curve described as $y = f(x)$. In three dimensions, if we tried to do this
 $$ z = f(x,y) $$
-then we'd have a surface, not a curve (more on this next week). Instead, we use a _parameterisation_ for each of the three co-ordinates
+then we'd have a surface, not a curve (see previous page). Instead, we use a _parameterisation_ for each of the three co-ordinates
 $$ x = f(t), y = g(t), z = h(t)$$
 where $f$, $g$ and $h$ are some functions, and $t$ is the _parameter_. Occasionally we'll use a different letter for the parameter, like $\theta$ or $s$, but I'll try to stick to $t$ usually.
 

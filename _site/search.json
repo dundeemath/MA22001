@@ -4,7 +4,7 @@
     "href": "volumes.html",
     "title": "Volumes in three dimensions",
     "section": "",
-    "text": "This part of the module deals with sets in 3D.1\nSets are defined by equalities and inequalities. The simplest type we will see are those sets which are defined only by inequalities and no equalities. For example, consider the set \\(S\\) where \\[\nx\\geq 0.\n\\] We haven’t mentioned \\(y\\) or \\(z\\), so we assume they can take any values. Formally, we might write this as2 \\[\nS = \\{(x,y,z)\\in\\mathbf{R}^3\\,|\\,x\\geq 0\\}.\n\\] This is an infinite volume, it’s all the points on one side of the \\(y-z\\) plane.\nWhen we impose an inequality, we restrict a given set to a smaller region of the same dimension. If we instead we impose an equality, we reduce the dimension, as we shall see next time.",
+    "text": "This part of the module deals with sets in 3D.1\nSets are defined by equalities and inequalities. The simplest type we will see are those sets which are defined only by inequalities and no equalities. For example, consider the set \\(S\\) where \\[\nx\\geq 0.\n\\] We haven’t mentioned \\(y\\) or \\(z\\), so we assume they can take any values. Formally, we might write this as2 \\[\nS = \\{(x,y,z)\\in\\mathbb{R}^3\\,|\\,x\\geq 0\\}.\n\\] This is an infinite volume, it’s all the points on one side of the \\(y-z\\) plane.\nWhen we impose an inequality, we restrict a given set to a smaller region of the same dimension. If we instead we impose an equality, we reduce the dimension, as we shall see next time.",
     "crumbs": [
       "Chapter 2: Curves, surfaces, volumes (Week 16)",
       "Volumes"
@@ -15,7 +15,7 @@
     "href": "volumes.html#volumes-in-curvilinear-co-ordinates",
     "title": "Volumes in three dimensions",
     "section": "Volumes in curvilinear co-ordinates",
-    "text": "Volumes in curvilinear co-ordinates\nTODO e.g. sphere, cylinder",
+    "text": "Volumes in curvilinear co-ordinates\nIt’s often useful to describe volumes in curvilinear co-ordinates, for example spherical or cylindrical co-ordinates. The inequalities will then be in terms of the curvilinear co-ordinates.\n\nExample\nDescribe the set given in spherical co-ordinates by \\[\nB = \\{(r,\\theta,\\phi)\\,|\\,0\\leq r&lt;\\infty,\\,0\\leq \\theta &lt; 2\\pi,\\,0\\leq \\phi \\leq \\pi/4\\}.\n\\]\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThis set is defined by three inequalities but no equalities, so it’s a volume.\nIt’s the inside of an infinite cone around the \\(z\\)-axis, with half-angle \\(\\pi/4\\).\n\n\n\n\n\nExample\nChoose a better parameterisation for the volume \\[\nC = \\{(x,y,z)\\in\\mathbb{R}^3\\,|\\,x^2+y^2+z^2\\leq a^2,\\,z\\geq 0\\}.\n\\]\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThe volume \\(C\\) is the upper half of a ball of radius \\(a\\) centred at the origin. A better parameterisation is in spherical coordinates: \\[\nC = \\{(r,\\theta,\\phi)\\,|\\,0\\leq r\\leq a,\\,0\\leq \\theta &lt; 2\\pi,\\,0\\leq \\phi \\leq \\pi/2\\}.\n\\]",
     "crumbs": [
       "Chapter 2: Curves, surfaces, volumes (Week 16)",
       "Volumes"

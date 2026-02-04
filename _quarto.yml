@@ -47,9 +47,9 @@ website:
           href: potentials.qmd
       - section: "Chapter 5: ODEs and PDEs (Weeks 20/21)"
         contents:
-        - text: "Examples of ODEs" #Existence and uniqueness overview. linearity
+        - text: "Examples of ODEs" 
           href: odes.qmd
-        - text: "Examples of PDEs" #Discuss uniqueness, linearity, numerical solutions
+        - text: "Examples of PDEs" #Discuss numerical solutions
           href: pdes.qmd
         - text: "Separation of variables"
           href: separationofvariables.qmd

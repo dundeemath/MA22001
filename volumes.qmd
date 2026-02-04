@@ -15,7 +15,7 @@ x\geq 0.
 $$
 We haven't mentioned $y$ or $z$, so we assume they can take any values. Formally, we might write this as^[Read this as "S is the set of x y z in R three such that x is non-negative"]
 $$
-S = \{(x,y,z)\in\mathbf{R}^3\,|\,x\geq 0\}.
+S = \{(x,y,z)\in\mathbb{R}^3\,|\,x\geq 0\}.
 $$
 This is an infinite volume, it's all the points on one side of the $y-z$ plane.
 
@@ -24,7 +24,7 @@ When we impose an inequality, we restrict a given set to a smaller region of the
 ### Example
 Describe the set
 $$
-A = \{(x,y,z)\in\mathbf{R}^3\,|\,x\geq 0,\,x^2+y^2+z^2\leq4\}.
+A = \{(x,y,z)\in\mathbb{R}^3\,|\,x\geq 0,\,x^2+y^2+z^2\leq4\}.
 $$
 
 ::: {.callout-tip collapse="true"}
@@ -39,4 +39,31 @@ For the purposes of this module, it doesn't really matter if the inequalities ar
 :::
 
 ## Volumes in curvilinear co-ordinates
-TODO e.g. sphere, cylinder
+It's often useful to describe volumes in curvilinear co-ordinates, for example spherical or cylindrical co-ordinates. The inequalities will then be in terms of the curvilinear co-ordinates.
+
+### Example
+Describe the set given in spherical co-ordinates by
+$$
+B = \{(r,\theta,\phi)\,|\,0\leq r<\infty,\,0\leq \theta < 2\pi,\,0\leq \phi \leq \pi/4\}.
+$$
+
+::: {.callout-tip collapse="true"}
+## Solution
+This set is defined by three inequalities but no equalities, so it's a volume.
+
+It's the inside of an infinite cone around the $z$-axis, with half-angle $\pi/4$.
+:::
+
+### Example
+Choose a better parameterisation for the volume
+$$
+C = \{(x,y,z)\in\mathbb{R}^3\,|\,x^2+y^2+z^2\leq a^2,\,z\geq 0\}.
+$$
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+The volume $C$ is the upper half of a ball of radius $a$ centred at the origin. A better parameterisation is in spherical coordinates:
+$$
+C = \{(r,\theta,\phi)\,|\,0\leq r\leq a,\,0\leq \theta < 2\pi,\,0\leq \phi \leq \pi/2\}.
+$$

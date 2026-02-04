@@ -371,7 +371,11 @@ window.Quarto = {
    
   <ul>
   <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a></li>
-  <li><a href="#volumes-in-curvilinear-co-ordinates" id="toc-volumes-in-curvilinear-co-ordinates" class="nav-link" data-scroll-target="#volumes-in-curvilinear-co-ordinates">Volumes in curvilinear co-ordinates</a></li>
+  <li><a href="#volumes-in-curvilinear-co-ordinates" id="toc-volumes-in-curvilinear-co-ordinates" class="nav-link" data-scroll-target="#volumes-in-curvilinear-co-ordinates">Volumes in curvilinear co-ordinates</a>
+  <ul class="collapse">
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -404,13 +408,13 @@ window.Quarto = {
 <p>Sets are defined by <em>equalities</em> and <em>inequalities</em>. The simplest type we will see are those sets which are defined only by inequalities and no equalities. For example, consider the set <span class="math inline">\(S\)</span> where <span class="math display">\[
 x\geq 0.
 \]</span> We haven’t mentioned <span class="math inline">\(y\)</span> or <span class="math inline">\(z\)</span>, so we assume they can take any values. Formally, we might write this as<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <span class="math display">\[
-S = \{(x,y,z)\in\mathbf{R}^3\,|\,x\geq 0\}.
+S = \{(x,y,z)\in\mathbb{R}^3\,|\,x\geq 0\}.
 \]</span> This is an infinite volume, it’s all the points on one side of the <span class="math inline">\(y-z\)</span> plane.</p>
 <p>When we impose an inequality, we restrict a given set to a smaller region of the same dimension. If we instead we impose an equality, we reduce the dimension, as we shall see next time.</p>
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
 <p>Describe the set <span class="math display">\[
-A = \{(x,y,z)\in\mathbf{R}^3\,|\,x\geq 0,\,x^2+y^2+z^2\leq4\}.
+A = \{(x,y,z)\in\mathbb{R}^3\,|\,x\geq 0,\,x^2+y^2+z^2\leq4\}.
 \]</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -445,9 +449,56 @@ Note
 </section>
 <section id="volumes-in-curvilinear-co-ordinates" class="level2">
 <h2 class="anchored" data-anchor-id="volumes-in-curvilinear-co-ordinates">Volumes in curvilinear co-ordinates</h2>
-<p>TODO e.g.&nbsp;sphere, cylinder</p>
+<p>It’s often useful to describe volumes in curvilinear co-ordinates, for example spherical or cylindrical co-ordinates. The inequalities will then be in terms of the curvilinear co-ordinates.</p>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example</h3>
+<p>Describe the set given in spherical co-ordinates by <span class="math display">\[
+B = \{(r,\theta,\phi)\,|\,0\leq r&lt;\infty,\,0\leq \theta &lt; 2\pi,\,0\leq \phi \leq \pi/4\}.
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This set is defined by three inequalities but no equalities, so it’s a volume.</p>
+<p>It’s the inside of an infinite cone around the <span class="math inline">\(z\)</span>-axis, with half-angle <span class="math inline">\(\pi/4\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-2">Example</h3>
+<p>Choose a better parameterisation for the volume <span class="math display">\[
+C = \{(x,y,z)\in\mathbb{R}^3\,|\,x^2+y^2+z^2\leq a^2,\,z\geq 0\}.
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The volume <span class="math inline">\(C\)</span> is the upper half of a ball of radius <span class="math inline">\(a\)</span> centred at the origin. A better parameterisation is in spherical coordinates: <span class="math display">\[
+C = \{(r,\theta,\phi)\,|\,0\leq r\leq a,\,0\leq \theta &lt; 2\pi,\,0\leq \phi \leq \pi/2\}.
+\]</span></p>
 
 
+</div>
+</div>
+</div>
+</section>
 </section>
 
 
