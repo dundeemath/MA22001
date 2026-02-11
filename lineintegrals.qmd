@@ -59,9 +59,9 @@ $$\vv{r}(t) = [2\cos t,\,2\sin t,\,2],\qquad 0\leq t<2\pi.$$
 
 ### Step 2: Calculate $ds$
 We have
-$$ \frac{d \vv{r}}{dt} = [2\sin t,\,-2\cos 2,\,0] $$
+$$ \frac{d \vv{r}}{dt} = [-2\sin t,\,2\cos t,\,0] $$
 so
-$$ ds = \left| \frac{d \vv{r}}{dt}\right| dt = \sqrt{(2\sin t)^2+(2\cos t)^2+0^2} dt = 2dt. $$
+$$ ds = \left| \frac{d \vv{r}}{dt}\right| dt = \sqrt{(-2\sin t)^2+(2\cos t)^2+0^2} dt = 2dt. $$
 
 ### Step 3: Rewrite the integration
 $$

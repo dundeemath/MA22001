@@ -161,7 +161,7 @@ But you knew that already.
 This integral has a special name and comes up a lot in physics. It is the rate at which a vector field 'goes through' a surface. 
 
 :::{.callout-important}
-Like line integrals of scalar fields, the __direction matters__. In this case, it is the direction of the normal (in or out, up or down, ...) which affects the sign of the final answer.
+Like line integrals of vector fields, the __direction matters__. In this case, it is the direction of the normal (in or out, up or down, ...) which affects the sign of the final answer.
 :::
 
 There are two equivalent notations

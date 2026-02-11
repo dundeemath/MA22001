@@ -25,10 +25,10 @@ website:
         contents:
         - text: "Volumes"
           href: volumes.qmd
-        - text: "Surfaces"
-          href: surface.qmd
         - text: "Curves"
           href: curves.qmd
+        - text: "Surfaces"
+          href: surface.qmd
       - section: "Chapter 3: Integrals (Weeks 17/18)"
         contents:
         - text: "Line integrals"

@@ -49,7 +49,7 @@ $$
 To apply the divergence theorem, we need to find some $\vv{F}$ such that $\nabla\cdot\vv{F}=2z$.
 
 $$\vv{F} = [0,0,z^2]$$
-works (more on this next week).
+works (more on this next time).
 So we need to calculate
 $$
 \int_{\partial V} [0,0,z^2]\cdot d\vv{S}

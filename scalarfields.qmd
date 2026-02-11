@@ -7,9 +7,9 @@ title: "Derivatives of scalar fields"
  \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
 :::
 
-In this part of the module, we study how to differentiate fields. A field is another word for a function defined over space. This week, _scalar fields_: assigning to each point in space a scalar value. Think about a temperature field.
+In this part of the module, we study how to differentiate fields. A field is another word for a function defined over space. Starting with _scalar fields_: assigning to each point in space a scalar value. Think about a temperature field.
 
-For example, the following could be a vector field
+For example, the following could be a scalar field
 $$
 f(\vv{r}) = f(x,y,z) = x^2y +z.
 $$
@@ -57,7 +57,7 @@ This is just the usual dot product with the gradient. Why does it get a special 
 
 The interpretation is to imagine travelling at a speed $v{a}$ and checking how quickly the function $f$ is changing at our current position.
 
-The "direction" $\vv{a}$ doesn't need to be a fixed vector, it could also be a vector field. This comes up a lot in physics, like in the Navier-Sokes equations and Maxwell's equations. We'll see this a bit more next week.
+The "direction" $\vv{a}$ doesn't need to be a fixed vector, it could also be a vector field. This comes up a lot in physics, like in the Navier-Sokes equations and Maxwell's equations.
 
 :::{.callout-important}
 Some people define the directional derivative only for unit vectors, including in the old version of the notes. We'll assume that $\vv{a}$ can be any vector or vector field.
