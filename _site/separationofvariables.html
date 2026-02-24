@@ -79,6 +79,35 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -305,7 +334,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Chapter 7: Fourier Transforms (Week 23)</span></a>
+ <span class="menu-text">Chapter 7: Fourier Transforms and Delta Functions (Week 23)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -317,6 +346,9 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Fourier transforms</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Delta functions</span>
+  </li>
           <li class="sidebar-item">
  <span class="menu-text">Convolution</span>
   </li>
@@ -341,7 +373,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-basic-example" id="toc-a-basic-example" class="nav-link active" data-scroll-target="#a-basic-example">A basic example</a></li>
+  <li><a href="#a-basic-example" id="toc-a-basic-example" class="nav-link active" data-scroll-target="#a-basic-example">A basic example</a>
+  <ul class="collapse">
+  <li><a href="#using-the-boundary-conditions-to-determine-lambda" id="toc-using-the-boundary-conditions-to-determine-lambda" class="nav-link" data-scroll-target="#using-the-boundary-conditions-to-determine-lambda">Using the boundary conditions to determine <span class="math inline">\(\lambda\)</span></a></li>
+  <li><a href="#matching-the-initial-condition" id="toc-matching-the-initial-condition" class="nav-link" data-scroll-target="#matching-the-initial-condition">Matching the initial condition</a></li>
+  <li><a href="#different-initial-conditions" id="toc-different-initial-conditions" class="nav-link" data-scroll-target="#different-initial-conditions">Different initial conditions</a></li>
+  </ul></li>
+  <li><a href="#mixed-partial-derivatives" id="toc-mixed-partial-derivatives" class="nav-link" data-scroll-target="#mixed-partial-derivatives">Mixed partial derivatives</a></li>
+  <li><a href="#nonlinear-pdes" id="toc-nonlinear-pdes" class="nav-link" data-scroll-target="#nonlinear-pdes">Nonlinear PDEs</a></li>
   </ul>
 </nav>
     </div>
@@ -370,14 +409,135 @@ ul.task-list li input[type="checkbox"] {
 <div class="hidden">
 
 </div>
-<p>You have already seen a method called “separation of variables” for solving ordinary differential equations (ODEs). Another method, with the same name, but almost completely unrelated, is used to find solutions to certain partial differential equations (PDEs). The basic idea is to “guess” the form of the solution as a product of functions, each depending on only one variable.</p>
-<section id="a-basic-example" class="level3">
-<h3 class="anchored" data-anchor-id="a-basic-example">A basic example</h3>
+<p>You have already seen a method called <em>separation of variables</em> for solving ordinary differential equations (ODEs). Another method, with the same name, but almost completely unrelated, is used to find solutions to certain partial differential equations (PDEs). The basic idea is to <strong>guess</strong> the form of the solution as a product of functions, each depending on only one variable.</p>
+<p>For example, if we have a PDE for <span class="math inline">\(u(x,t)\)</span> in two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(t\)</span>, we might guess that the solution has the form <span class="math display">\[
+u(x,t) = X(x)T(t),
+\]</span> where <span class="math inline">\(X(x)\)</span> is a function of <span class="math inline">\(x\)</span> alone, and <span class="math inline">\(T(t)\)</span> is a function of <span class="math inline">\(t\)</span> alone. We can then substitute this guess into the PDE and see if we can separate the variables so that we get two ordinary differential equations, one for <span class="math inline">\(X(x)\)</span> and one for <span class="math inline">\(T(t)\)</span>.</p>
+<section id="a-basic-example" class="level2">
+<h2 class="anchored" data-anchor-id="a-basic-example">A basic example</h2>
+<p>Suppose that we want to solve the one-dimensional heat equation <span class="math display">\[
+{\frac{\partial u}{\partial t}} = {\frac{\partial^2 u}{\partial x^2}},
+\]</span> subject to boundary conditions <span class="math inline">\(u(0,t) = u(\pi,t) = 0\)</span> for all <span class="math inline">\(t\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, and an initial condition <span class="math inline">\(u(x,0) = \sin x\)</span>.</p>
+<p>We try separation of variables by guessing <span class="math display">\[
+u(x,t) = X(x)T(t).
+\]</span></p>
+<p>Substituting into the PDE gives <span class="math display">\[
+X(x)T'(t) = T(t)X''(x),
+\]</span> where the prime denotes differentiation with respect to the relevant variable.</p>
+<p>If <span class="math inline">\(X(x)\neq 0\)</span> and <span class="math inline">\(T(t)\neq 0\)</span> we can divide both sides by <span class="math inline">\(X(x)T(t)\)</span> to get <span class="math display">\[
+\frac{T'(t)}{T(t)} = \frac{X''(x)}{X(x)}.
+\]</span></p>
+<p>The left-hand side depends only on <span class="math inline">\(t\)</span> and the right-hand side depends only on <span class="math inline">\(x\)</span>, so <strong>both sides must be equal to the same constant</strong>. It is convenient to call this constant <span class="math inline">\(-\lambda\)</span>: <span class="math display">\[
+\frac{T'(t)}{T(t)} = \frac{X''(x)}{X(x)} = -\lambda.
+\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is the crucial step!</p>
+</div>
+</div>
+<p>This gives two ODEs: <span class="math display">\[
+\begin{aligned}
+T'(t) + \lambda T(t) &amp;= 0,\\
+X''(x) + \lambda X(x) &amp;= 0.
+\end{aligned}
+\]</span></p>
+<p>The first equation has solution <span class="math display">\[
+T(t)=Ae^{-\lambda t}.
+\]</span></p>
+<p>For <span class="math inline">\(X\)</span> we must consider different signs of <span class="math inline">\(\lambda\)</span>, and (crucially) we must now impose the boundary conditions.</p>
+<section id="using-the-boundary-conditions-to-determine-lambda" class="level3">
+<h3 class="anchored" data-anchor-id="using-the-boundary-conditions-to-determine-lambda">Using the boundary conditions to determine <span class="math inline">\(\lambda\)</span></h3>
+<ul>
+<li><p><strong>Case <span class="math inline">\(\lambda = 0\)</span>.</strong> Then <span class="math inline">\(X''=0\)</span>, so <span class="math inline">\(X(x)=ax+b\)</span>. The boundary condition <span class="math inline">\(X(0)=0\)</span> gives <span class="math inline">\(b=0\)</span>, and <span class="math inline">\(X(\pi)=0\)</span> gives <span class="math inline">\(a=0\)</span>. Hence <span class="math inline">\(X\equiv 0\)</span>, so this produces only the trivial solution <span class="math inline">\(u\equiv 0\)</span>.</p></li>
+<li><p><strong>Case <span class="math inline">\(\lambda&lt;0\)</span>.</strong> Write <span class="math inline">\(\lambda=-\mu^2\)</span> with <span class="math inline">\(\mu&gt;0\)</span>. Then <span class="math inline">\(X''-\mu^2 X=0\)</span>, so <span class="math display">\[
+X(x)=Be^{\mu x}+Ce^{-\mu x}.
+\]</span> Imposing <span class="math inline">\(X(0)=0\)</span> gives <span class="math inline">\(B+C=0\)</span>, so <span class="math inline">\(X(x)=B(e^{\mu x}-e^{-\mu x})\)</span>. Then <span class="math inline">\(X(\pi)=0\)</span> forces <span class="math inline">\(B=0\)</span>, again giving only the trivial solution.</p></li>
+<li><p><strong>Case <span class="math inline">\(\lambda&gt;0\)</span>.</strong> Write <span class="math inline">\(\lambda=\mu^2\)</span> with <span class="math inline">\(\mu&gt;0\)</span>. Then <span class="math display">\[
+X(x)=B\sin(\mu x)+C\cos(\mu x).
+\]</span> Imposing <span class="math inline">\(X(0)=0\)</span> gives <span class="math inline">\(C=0\)</span>, so <span class="math inline">\(X(x)=B\sin(\mu x)\)</span>. Imposing <span class="math inline">\(X(\pi)=0\)</span> then gives <span class="math display">\[
+\sin(\mu\pi)=0 \quad\Longrightarrow\quad \mu = n \in \mathbb{N}.
+\]</span> Hence <span class="math display">\[
+\lambda = n^2,\qquad X_n(x)=\sin(nx).
+\]</span></p></li>
+</ul>
+<p>So the separated solutions that satisfy the boundary conditions are <span class="math display">\[
+u_n(x,t)=e^{-n^2 t}\sin(nx),\qquad n=1,2,3,\dots
+\]</span> (Here we have absorbed any overall constant into the coefficient in front of <span class="math inline">\(\sin(nx)\)</span>.)</p>
+</section>
+<section id="matching-the-initial-condition" class="level3">
+<h3 class="anchored" data-anchor-id="matching-the-initial-condition">Matching the initial condition</h3>
+<p>For the initial condition <span class="math inline">\(u(x,0)=\sin x\)</span>, we simply take <span class="math inline">\(n=1\)</span>, giving <span class="math display">\[
+u(x,t)=e^{-t}\sin x,
+\]</span> which satisfies the PDE, the boundary conditions, and the initial condition.</p>
+</section>
+<section id="different-initial-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="different-initial-conditions">Different initial conditions</h3>
+<p>Now suppose the initial condition is <span class="math display">\[
+u(x,0)=2\sin(2x)-\sin(3x).
+\]</span> We use the corresponding separated solutions <span class="math inline">\(u_2\)</span> and <span class="math inline">\(u_3\)</span>: <span class="math display">\[
+u_2(x,t)=e^{-4t}\sin(2x),\qquad u_3(x,t)=e^{-9t}\sin(3x).
+\]</span> Because the heat equation is linear, any linear combination of solutions is also a solution, so <span class="math display">\[
+u(x,t)=2e^{-4t}\sin(2x)-e^{-9t}\sin(3x)
+\]</span> solves the PDE and boundary conditions, and it matches the initial condition at <span class="math inline">\(t=0\)</span>.</p>
+</section>
+</section>
+<section id="mixed-partial-derivatives" class="level2">
+<h2 class="anchored" data-anchor-id="mixed-partial-derivatives">Mixed partial derivatives</h2>
+<p>Consider the PDE <span class="math display">\[ {\frac{\partial^2 u}{\partial x^2}} + {\frac{\partial^2 u}{\partial y^2}} - \frac{\partial^2 u}{\partial x \partial y} = 0. \]</span> If we try the separation of variables method by guessing that the solution has the form <span class="math inline">\(u(x,y) = X(x)Y(y)\)</span>, then we get <span class="math display">\[ X''(x)Y(y) + X(x)Y''(y) - X'(x)Y'(y) = 0. \]</span> If <span class="math inline">\(X(x) \neq 0\)</span> and <span class="math inline">\(Y(y) \neq 0\)</span>, then we can divide through by <span class="math inline">\(X(x)Y(y)\)</span> and rearrange to get <span class="math display">\[ \frac{X''(x)}{X(x)} + \frac{Y''(y)}{Y(y)} - \frac{X'(x)}{X(x)} \frac{Y'(y)}{Y(y)} = 0. \]</span> We cannot easily separate the variables in this case. However, if we differentiate this equation with respect to <span class="math inline">\(x\)</span>, we get <span class="math display">\[ \frac{X'''(x)X(x) -X''(x)X'(x)}{X(x)^2} - \frac{X''(x)X(x) -X'(x)X'(x)}{X(x)^2}\frac{Y'(y)}{Y(y)} = 0, \]</span> which can be rearranged to get <span class="math display">\[ \frac{X'''(x)X(x) -X''(x)X'(x)}{X''(x)X(x) -X'(x)X'(x)} = \frac{Y'(y)}{Y(y)}. \]</span> This is now separated, and we can proceed as before to get two ODEs that we can solve to get a solution to the original PDE. However, the resulting ODE for <span class="math inline">\(X(x)\)</span> is quite complicated.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+</section>
+<section id="nonlinear-pdes" class="level2">
+<h2 class="anchored" data-anchor-id="nonlinear-pdes">Nonlinear PDEs</h2>
+<p>The examples above are linear PDEs, so sums of solutions are still solutions. Occasionally, separation of variables can also produce special solutions for nonlinear PDEs, but <strong>superposition does not work</strong> in general.</p>
+<p>Consider the inviscid Burgers’ equation <span class="math display">\[
+{\frac{\partial u}{\partial t}} + u {\frac{\partial u}{\partial x}} = 0.
+\]</span> Try <span class="math inline">\(u(x,t)=X(x)T(t)\)</span>. Then <span class="math display">\[
+u_t=X T',\qquad u_x=X'T,\qquad u\,u_x=(XT)(X'T)=XX' T^2,
+\]</span> so the PDE becomes <span class="math display">\[
+X(x)T'(t) + X(x)X'(x)T(t)^2 = 0.
+\]</span> If <span class="math inline">\(X\neq 0\)</span> and <span class="math inline">\(T\neq 0\)</span>, divide by <span class="math inline">\(X(x)T(t)^2\)</span>: <span class="math display">\[
+\frac{T'(t)}{T(t)^2} = -X'(x).
+\]</span> As usual, one side depends only on <span class="math inline">\(t\)</span> and the other only on <span class="math inline">\(x\)</span>, so both must be equal to a constant, say <span class="math inline">\(\lambda\)</span>: <span class="math display">\[
+\frac{T'(t)}{T(t)^2} = \lambda,\qquad X'(x) = -\lambda.
+\]</span></p>
+<p>These ODEs can be solved explicitly: - From <span class="math inline">\(X'=-\lambda\)</span>, we get <span class="math inline">\(X(x)=-\lambda x + B\)</span>. - From <span class="math inline">\(T'/T^2=\lambda\)</span>, we get <span class="math inline">\(-1/T = \lambda t + C\)</span>, so <span class="math display">\[
+  T(t)= -\frac{1}{\lambda t + C}.
+  \]</span></p>
+<p>Putting this together (for <span class="math inline">\(\lambda\neq 0\)</span>), <span class="math display">\[
+u(x,t)=X(x)T(t)=\frac{\lambda x - B}{\lambda t + C}.
+\]</span> (There is also the <span class="math inline">\(\lambda=0\)</span> case, which gives constant solutions <span class="math inline">\(u\equiv \text{constant}\)</span>.)</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These are special separated solutions. The general solution of inviscid Burgers’ equation is usually found using the <em>method of characteristics</em>, and solutions can develop shocks (discontinuities) even from smooth initial data.</p>
+</div>
+</div>
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>These boundary conditions mean that the temperature is fixed at 0 at both ends of the rod. We could also consider boundary conditions where the first derivative is fixed, e.g.&nbsp;<span class="math inline">\({\frac{\partial u}{\partial x}}(0,t) = {\frac{\partial u}{\partial x}}(L,t) = 0\)</span>, which mean that no heat is flowing in or out at the ends of the rod.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>This is just an example to show that sometimes you can still use separation of variables even if the PDE has mixed partial derivatives, but it is not a method that I would recommend in general. In this case, we could change variables to <span class="math inline">\(u(x,y)=v(x+y,x-y)\)</span>, which would give a much simpler PDE for <span class="math inline">\(v\)</span>, which we could then solve using separation of variables.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -334,7 +334,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Chapter 7: Fourier Transforms (Week 23)</span></a>
+ <span class="menu-text">Chapter 7: Fourier Transforms and Delta Functions (Week 23)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -346,6 +346,9 @@ window.Quarto = {
  <span class="menu-text">Fourier transforms</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Delta functions</span>
+  </li>
           <li class="sidebar-item">
  <span class="menu-text">Convolution</span>
   </li>
@@ -372,7 +375,12 @@ window.Quarto = {
   <ul>
   <li><a href="#the-heat-equation" id="toc-the-heat-equation" class="nav-link active" data-scroll-target="#the-heat-equation">The heat equation</a></li>
   <li><a href="#the-wave-equation" id="toc-the-wave-equation" class="nav-link" data-scroll-target="#the-wave-equation">The wave equation</a></li>
-  <li><a href="#existence-and-uniqueness-of-solutions" id="toc-existence-and-uniqueness-of-solutions" class="nav-link" data-scroll-target="#existence-and-uniqueness-of-solutions">Existence and uniqueness of solutions</a></li>
+  <li><a href="#the-laplace-equation" id="toc-the-laplace-equation" class="nav-link" data-scroll-target="#the-laplace-equation">The Laplace equation</a></li>
+  <li><a href="#the-inviscid-burgers-equation" id="toc-the-inviscid-burgers-equation" class="nav-link" data-scroll-target="#the-inviscid-burgers-equation">The inviscid Burgers’ equation</a></li>
+  <li><a href="#existence-and-uniqueness-of-solutions" id="toc-existence-and-uniqueness-of-solutions" class="nav-link" data-scroll-target="#existence-and-uniqueness-of-solutions">Existence and uniqueness of solutions</a>
+  <ul class="collapse">
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  </ul></li>
   <li><a href="#numerical-solutions" id="toc-numerical-solutions" class="nav-link" data-scroll-target="#numerical-solutions">Numerical solutions</a></li>
   </ul>
 </nav>
@@ -429,10 +437,50 @@ and <strong>Maxwell’s equations</strong> (which describe electromagnetism): <s
 <p>The one-dimensional <em>wave equation</em> is <span class="math display">\[
 {\frac{\partial^2 u}{\partial t^2}} = c^2 {\frac{\partial^2 u}{\partial x^2}},
 \]</span> where <span class="math inline">\(u(x,t)\)</span> is the displacement at position <span class="math inline">\(x\)</span> and time <span class="math inline">\(t\)</span>, and <span class="math inline">\(c\)</span> is a constant representing the wave speed.</p>
+<p>Both of these equations are linear PDEs, and they have well-known solutions that can be found using methods like separation of variables, which we will see in the next section.</p>
+</section>
+<section id="the-laplace-equation" class="level3">
+<h3 class="anchored" data-anchor-id="the-laplace-equation">The Laplace equation</h3>
+<p>The <em>Laplace equation</em> is <span class="math display">\[
+\nabla^2 u = 0,
+\]</span> where <span class="math inline">\(u(x,y,z)\)</span> is a function of three spatial variables, and <span class="math inline">\(\nabla^2\)</span> is the Laplacian operator. This equation arises in many contexts, such as electrostatics, fluid flow, and potential theory. It is a linear PDE, and its solutions are called harmonic functions.</p>
+</section>
+<section id="the-inviscid-burgers-equation" class="level3">
+<h3 class="anchored" data-anchor-id="the-inviscid-burgers-equation">The inviscid Burgers’ equation</h3>
+<p>The <em>inviscid Burgers’ equation</em> is <span class="math display">\[
+{\frac{\partial u}{\partial t}} + u {\frac{\partial u}{\partial x}} = 0,
+\]</span> where <span class="math inline">\(u(x,t)\)</span> is a function of space and time. This is a non-linear PDE, and it is a simplified model for fluid flow. It can exhibit shock waves, which are discontinuities in the solution that can form in finite time.</p>
 </section>
 <section id="existence-and-uniqueness-of-solutions" class="level2">
 <h2 class="anchored" data-anchor-id="existence-and-uniqueness-of-solutions">Existence and uniqueness of solutions</h2>
-<p>TODO</p>
+<p>For many PDEs, it is not always clear whether a solution exists, or whether it is unique. This is a very important question, because if there are multiple solutions, then we need some way to determine which one is the ‘correct’ solution for a given physical situation. For <em>linear</em> PDEs, there are often well-established methods for proving existence and uniqueness of solutions. For <em>non-linear</em> PDEs, this is much harder, and in many cases it is still an open question whether solutions exist or are unique.</p>
+<p>For example, the Navier-Stokes equations are known to have solutions, but it is not known whether these solutions are always smooth (i.e.&nbsp;free of singularities) or whether they can develop singularities in finite time. This is one of the most famous open problems in mathematics, and it is one of the seven Millennium Prize Problems, worth one million dollars.</p>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<p>For the linear PDE <span class="math display">\[
+{\frac{\partial u}{\partial t}} = \alpha {\frac{\partial^2 u}{\partial x^2}},
+\]</span> subject to the boundary conditions <span class="math inline">\(u(0,t) = u(L,t) = 0\)</span> for all <span class="math inline">\(t\)</span>, and the initial condition <span class="math inline">\(u(x,0) = f(x)\)</span> for some function <span class="math inline">\(f(x)\)</span>, show that the solution is unique.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Suppose there are two solutions <span class="math inline">\(u_1(x,t)\)</span> and <span class="math inline">\(u_2(x,t)\)</span> to the PDE with the same boundary and initial conditions. Then the difference <span class="math inline">\(v(x,t) = u_1(x,t) - u_2(x,t)\)</span> satisfies the PDE <span class="math display">\[
+{\frac{\partial v}{\partial t}} = {\frac{\partial u_1}{\partial t}} - {\frac{\partial u_2}{\partial t}} = \alpha {\frac{\partial^2 u_1}{\partial x^2}} - \alpha {\frac{\partial^2 u_2}{\partial x^2}} = \alpha {\frac{\partial^2 v}{\partial x^2}},
+\]</span> with the boundary conditions <span class="math inline">\(v(0,t) = u_1(0,t) - u_2(0,t) = 0\)</span> and <span class="math inline">\(v(L,t) = u_1(L,t) - u_2(L,t) = 0\)</span>, and the initial condition <span class="math inline">\(v(x,0) = u_1(x,0) - u_2(x,0) = f(x) - f(x) = 0\)</span>.</p>
+<p>So if we can show that the only solution to this PDE with these boundary and initial conditions is the trivial solution <span class="math inline">\(v(x,t) = 0\)</span>, then we will have shown that <span class="math inline">\(u_1(x,t) = u_2(x,t)\)</span>, and hence the solution is unique.</p>
+<p>To complete this proof, we can use the method of separation of variables, which we will see in the next section.</p>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="numerical-solutions" class="level2">
 <h2 class="anchored" data-anchor-id="numerical-solutions">Numerical solutions</h2>

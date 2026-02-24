@@ -43,8 +43,47 @@ $$
 $$
 where $u(x,t)$ is the displacement at position $x$ and time $t$, and $c$ is a constant representing the wave speed.
 
+Both of these equations are linear PDEs, and they have well-known solutions that can be found using methods like separation of variables, which we will see in the next section.
+
+### The Laplace equation
+The _Laplace equation_ is
+$$
+\nabla^2 u = 0,
+$$
+where $u(x,y,z)$ is a function of three spatial variables, and $\nabla^2$ is the Laplacian operator. This equation arises in many contexts, such as electrostatics, fluid flow, and potential theory. It is a linear PDE, and its solutions are called harmonic functions. 
+
+### The inviscid Burgers' equation
+The _inviscid Burgers' equation_ is
+$$
+\pd{u}{t} + u \pd{u}{x} = 0,
+$$
+where $u(x,t)$ is a function of space and time. This is a non-linear PDE, and it is a simplified model for fluid flow. It can exhibit shock waves, which are discontinuities in the solution that can form in finite time.
+
 ## Existence and uniqueness of solutions
-TODO
+For many PDEs, it is not always clear whether a solution exists, or whether it is unique. This is a very important question, because if there are multiple solutions, then we need some way to determine which one is the 'correct' solution for a given physical situation. 
+For _linear_ PDEs, there are often well-established methods for proving existence and uniqueness of solutions. For _non-linear_ PDEs, this is much harder, and in many cases it is still an open question whether solutions exist or are unique.
+
+For example, the Navier-Stokes equations are known to have solutions, but it is not known whether these solutions are always smooth (i.e. free of singularities) or whether they can develop singularities in finite time. This is one of the most famous open problems in mathematics, and it is one of the seven Millennium Prize Problems, worth one million dollars.
+
+### Example
+For the linear PDE
+$$
+\pd{u}{t} = \alpha \pdd{u}{x},
+$$
+subject to the boundary conditions $u(0,t) = u(L,t) = 0$ for all $t$, and the initial condition $u(x,0) = f(x)$ for some function $f(x)$, show that the solution is unique.
+
+::: {.callout-tip collapse="true"}
+## Solution
+Suppose there are two solutions $u_1(x,t)$ and $u_2(x,t)$ to the PDE with the same boundary and initial conditions. Then the difference $v(x,t) = u_1(x,t) - u_2(x,t)$ satisfies the PDE
+$$
+\pd{v}{t} = \pd{u_1}{t} - \pd{u_2}{t} = \alpha \pdd{u_1}{x} - \alpha \pdd{u_2}{x} = \alpha \pdd{v}{x},
+$$
+with the boundary conditions $v(0,t) = u_1(0,t) - u_2(0,t) = 0$ and $v(L,t) = u_1(L,t) - u_2(L,t) = 0$, and the initial condition $v(x,0) = u_1(x,0) - u_2(x,0) = f(x) - f(x) = 0$.
+
+So if we can show that the only solution to this PDE with these boundary and initial conditions is the trivial solution $v(x,t) = 0$, then we will have shown that $u_1(x,t) = u_2(x,t)$, and hence the solution is unique.
+
+To complete this proof, we can use the method of separation of variables, which we will see in the next section.
+:::
 
 ## Numerical solutions
 The main way that PDEs are solved in practice is using numerical methods. These involve discretizing the continuous variables (like space and time) into a grid, and then approximating the derivatives using finite differences or other techniques. This allows us to turn the PDE into a set of algebraic equations that can be solved using a computer.

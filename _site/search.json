@@ -81,7 +81,51 @@
     "href": "separationofvariables.html",
     "title": "Separation of variables for PDEs",
     "section": "",
-    "text": "You have already seen a method called “separation of variables” for solving ordinary differential equations (ODEs). Another method, with the same name, but almost completely unrelated, is used to find solutions to certain partial differential equations (PDEs). The basic idea is to “guess” the form of the solution as a product of functions, each depending on only one variable.\n\nA basic example",
+    "text": "You have already seen a method called separation of variables for solving ordinary differential equations (ODEs). Another method, with the same name, but almost completely unrelated, is used to find solutions to certain partial differential equations (PDEs). The basic idea is to guess the form of the solution as a product of functions, each depending on only one variable.\nFor example, if we have a PDE for \\(u(x,t)\\) in two variables \\(x\\) and \\(t\\), we might guess that the solution has the form \\[\nu(x,t) = X(x)T(t),\n\\] where \\(X(x)\\) is a function of \\(x\\) alone, and \\(T(t)\\) is a function of \\(t\\) alone. We can then substitute this guess into the PDE and see if we can separate the variables so that we get two ordinary differential equations, one for \\(X(x)\\) and one for \\(T(t)\\).",
+    "crumbs": [
+      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Separation of variables"
+    ]
+  },
+  {
+    "objectID": "separationofvariables.html#a-basic-example",
+    "href": "separationofvariables.html#a-basic-example",
+    "title": "Separation of variables for PDEs",
+    "section": "A basic example",
+    "text": "A basic example\nSuppose that we want to solve the one-dimensional heat equation \\[\n{\\frac{\\partial u}{\\partial t}} = {\\frac{\\partial^2 u}{\\partial x^2}},\n\\] subject to boundary conditions \\(u(0,t) = u(\\pi,t) = 0\\) for all \\(t\\)1, and an initial condition \\(u(x,0) = \\sin x\\).\nWe try separation of variables by guessing \\[\nu(x,t) = X(x)T(t).\n\\]\nSubstituting into the PDE gives \\[\nX(x)T'(t) = T(t)X''(x),\n\\] where the prime denotes differentiation with respect to the relevant variable.\nIf \\(X(x)\\neq 0\\) and \\(T(t)\\neq 0\\) we can divide both sides by \\(X(x)T(t)\\) to get \\[\n\\frac{T'(t)}{T(t)} = \\frac{X''(x)}{X(x)}.\n\\]\nThe left-hand side depends only on \\(t\\) and the right-hand side depends only on \\(x\\), so both sides must be equal to the same constant. It is convenient to call this constant \\(-\\lambda\\): \\[\n\\frac{T'(t)}{T(t)} = \\frac{X''(x)}{X(x)} = -\\lambda.\n\\]\n\n\n\n\n\n\nImportant\n\n\n\nThis is the crucial step!\n\n\nThis gives two ODEs: \\[\n\\begin{aligned}\nT'(t) + \\lambda T(t) &= 0,\\\\\nX''(x) + \\lambda X(x) &= 0.\n\\end{aligned}\n\\]\nThe first equation has solution \\[\nT(t)=Ae^{-\\lambda t}.\n\\]\nFor \\(X\\) we must consider different signs of \\(\\lambda\\), and (crucially) we must now impose the boundary conditions.\n\nUsing the boundary conditions to determine \\(\\lambda\\)\n\nCase \\(\\lambda = 0\\). Then \\(X''=0\\), so \\(X(x)=ax+b\\). The boundary condition \\(X(0)=0\\) gives \\(b=0\\), and \\(X(\\pi)=0\\) gives \\(a=0\\). Hence \\(X\\equiv 0\\), so this produces only the trivial solution \\(u\\equiv 0\\).\nCase \\(\\lambda&lt;0\\). Write \\(\\lambda=-\\mu^2\\) with \\(\\mu&gt;0\\). Then \\(X''-\\mu^2 X=0\\), so \\[\nX(x)=Be^{\\mu x}+Ce^{-\\mu x}.\n\\] Imposing \\(X(0)=0\\) gives \\(B+C=0\\), so \\(X(x)=B(e^{\\mu x}-e^{-\\mu x})\\). Then \\(X(\\pi)=0\\) forces \\(B=0\\), again giving only the trivial solution.\nCase \\(\\lambda&gt;0\\). Write \\(\\lambda=\\mu^2\\) with \\(\\mu&gt;0\\). Then \\[\nX(x)=B\\sin(\\mu x)+C\\cos(\\mu x).\n\\] Imposing \\(X(0)=0\\) gives \\(C=0\\), so \\(X(x)=B\\sin(\\mu x)\\). Imposing \\(X(\\pi)=0\\) then gives \\[\n\\sin(\\mu\\pi)=0 \\quad\\Longrightarrow\\quad \\mu = n \\in \\mathbb{N}.\n\\] Hence \\[\n\\lambda = n^2,\\qquad X_n(x)=\\sin(nx).\n\\]\n\nSo the separated solutions that satisfy the boundary conditions are \\[\nu_n(x,t)=e^{-n^2 t}\\sin(nx),\\qquad n=1,2,3,\\dots\n\\] (Here we have absorbed any overall constant into the coefficient in front of \\(\\sin(nx)\\).)\n\n\nMatching the initial condition\nFor the initial condition \\(u(x,0)=\\sin x\\), we simply take \\(n=1\\), giving \\[\nu(x,t)=e^{-t}\\sin x,\n\\] which satisfies the PDE, the boundary conditions, and the initial condition.\n\n\nDifferent initial conditions\nNow suppose the initial condition is \\[\nu(x,0)=2\\sin(2x)-\\sin(3x).\n\\] We use the corresponding separated solutions \\(u_2\\) and \\(u_3\\): \\[\nu_2(x,t)=e^{-4t}\\sin(2x),\\qquad u_3(x,t)=e^{-9t}\\sin(3x).\n\\] Because the heat equation is linear, any linear combination of solutions is also a solution, so \\[\nu(x,t)=2e^{-4t}\\sin(2x)-e^{-9t}\\sin(3x)\n\\] solves the PDE and boundary conditions, and it matches the initial condition at \\(t=0\\).",
+    "crumbs": [
+      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Separation of variables"
+    ]
+  },
+  {
+    "objectID": "separationofvariables.html#mixed-partial-derivatives",
+    "href": "separationofvariables.html#mixed-partial-derivatives",
+    "title": "Separation of variables for PDEs",
+    "section": "Mixed partial derivatives",
+    "text": "Mixed partial derivatives\nConsider the PDE \\[ {\\frac{\\partial^2 u}{\\partial x^2}} + {\\frac{\\partial^2 u}{\\partial y^2}} - \\frac{\\partial^2 u}{\\partial x \\partial y} = 0. \\] If we try the separation of variables method by guessing that the solution has the form \\(u(x,y) = X(x)Y(y)\\), then we get \\[ X''(x)Y(y) + X(x)Y''(y) - X'(x)Y'(y) = 0. \\] If \\(X(x) \\neq 0\\) and \\(Y(y) \\neq 0\\), then we can divide through by \\(X(x)Y(y)\\) and rearrange to get \\[ \\frac{X''(x)}{X(x)} + \\frac{Y''(y)}{Y(y)} - \\frac{X'(x)}{X(x)} \\frac{Y'(y)}{Y(y)} = 0. \\] We cannot easily separate the variables in this case. However, if we differentiate this equation with respect to \\(x\\), we get \\[ \\frac{X'''(x)X(x) -X''(x)X'(x)}{X(x)^2} - \\frac{X''(x)X(x) -X'(x)X'(x)}{X(x)^2}\\frac{Y'(y)}{Y(y)} = 0, \\] which can be rearranged to get \\[ \\frac{X'''(x)X(x) -X''(x)X'(x)}{X''(x)X(x) -X'(x)X'(x)} = \\frac{Y'(y)}{Y(y)}. \\] This is now separated, and we can proceed as before to get two ODEs that we can solve to get a solution to the original PDE. However, the resulting ODE for \\(X(x)\\) is quite complicated.2",
+    "crumbs": [
+      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Separation of variables"
+    ]
+  },
+  {
+    "objectID": "separationofvariables.html#nonlinear-pdes",
+    "href": "separationofvariables.html#nonlinear-pdes",
+    "title": "Separation of variables for PDEs",
+    "section": "Nonlinear PDEs",
+    "text": "Nonlinear PDEs\nThe examples above are linear PDEs, so sums of solutions are still solutions. Occasionally, separation of variables can also produce special solutions for nonlinear PDEs, but superposition does not work in general.\nConsider the inviscid Burgers’ equation \\[\n{\\frac{\\partial u}{\\partial t}} + u {\\frac{\\partial u}{\\partial x}} = 0.\n\\] Try \\(u(x,t)=X(x)T(t)\\). Then \\[\nu_t=X T',\\qquad u_x=X'T,\\qquad u\\,u_x=(XT)(X'T)=XX' T^2,\n\\] so the PDE becomes \\[\nX(x)T'(t) + X(x)X'(x)T(t)^2 = 0.\n\\] If \\(X\\neq 0\\) and \\(T\\neq 0\\), divide by \\(X(x)T(t)^2\\): \\[\n\\frac{T'(t)}{T(t)^2} = -X'(x).\n\\] As usual, one side depends only on \\(t\\) and the other only on \\(x\\), so both must be equal to a constant, say \\(\\lambda\\): \\[\n\\frac{T'(t)}{T(t)^2} = \\lambda,\\qquad X'(x) = -\\lambda.\n\\]\nThese ODEs can be solved explicitly: - From \\(X'=-\\lambda\\), we get \\(X(x)=-\\lambda x + B\\). - From \\(T'/T^2=\\lambda\\), we get \\(-1/T = \\lambda t + C\\), so \\[\n  T(t)= -\\frac{1}{\\lambda t + C}.\n  \\]\nPutting this together (for \\(\\lambda\\neq 0\\)), \\[\nu(x,t)=X(x)T(t)=\\frac{\\lambda x - B}{\\lambda t + C}.\n\\] (There is also the \\(\\lambda=0\\) case, which gives constant solutions \\(u\\equiv \\text{constant}\\).)\n\n\n\n\n\n\nNote\n\n\n\nThese are special separated solutions. The general solution of inviscid Burgers’ equation is usually found using the method of characteristics, and solutions can develop shocks (discontinuities) even from smooth initial data.",
+    "crumbs": [
+      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Separation of variables"
+    ]
+  },
+  {
+    "objectID": "separationofvariables.html#footnotes",
+    "href": "separationofvariables.html#footnotes",
+    "title": "Separation of variables for PDEs",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThese boundary conditions mean that the temperature is fixed at 0 at both ends of the rod. We could also consider boundary conditions where the first derivative is fixed, e.g. \\({\\frac{\\partial u}{\\partial x}}(0,t) = {\\frac{\\partial u}{\\partial x}}(L,t) = 0\\), which mean that no heat is flowing in or out at the ends of the rod.↩︎\nThis is just an example to show that sometimes you can still use separation of variables even if the PDE has mixed partial derivatives, but it is not a method that I would recommend in general. In this case, we could change variables to \\(u(x,y)=v(x+y,x-y)\\), which would give a much simpler PDE for \\(v\\), which we could then solve using separation of variables.↩︎",
     "crumbs": [
       "Chapter 5: ODEs and PDEs (Weeks 20/21)",
       "Separation of variables"
@@ -125,7 +169,7 @@
     "href": "pdes.html#existence-and-uniqueness-of-solutions",
     "title": "Examples of PDEs",
     "section": "Existence and uniqueness of solutions",
-    "text": "Existence and uniqueness of solutions\nTODO",
+    "text": "Existence and uniqueness of solutions\nFor many PDEs, it is not always clear whether a solution exists, or whether it is unique. This is a very important question, because if there are multiple solutions, then we need some way to determine which one is the ‘correct’ solution for a given physical situation. For linear PDEs, there are often well-established methods for proving existence and uniqueness of solutions. For non-linear PDEs, this is much harder, and in many cases it is still an open question whether solutions exist or are unique.\nFor example, the Navier-Stokes equations are known to have solutions, but it is not known whether these solutions are always smooth (i.e. free of singularities) or whether they can develop singularities in finite time. This is one of the most famous open problems in mathematics, and it is one of the seven Millennium Prize Problems, worth one million dollars.\n\nExample\nFor the linear PDE \\[\n{\\frac{\\partial u}{\\partial t}} = \\alpha {\\frac{\\partial^2 u}{\\partial x^2}},\n\\] subject to the boundary conditions \\(u(0,t) = u(L,t) = 0\\) for all \\(t\\), and the initial condition \\(u(x,0) = f(x)\\) for some function \\(f(x)\\), show that the solution is unique.\n\n\n\n\n\n\nSolution\n\n\n\n\n\nSuppose there are two solutions \\(u_1(x,t)\\) and \\(u_2(x,t)\\) to the PDE with the same boundary and initial conditions. Then the difference \\(v(x,t) = u_1(x,t) - u_2(x,t)\\) satisfies the PDE \\[\n{\\frac{\\partial v}{\\partial t}} = {\\frac{\\partial u_1}{\\partial t}} - {\\frac{\\partial u_2}{\\partial t}} = \\alpha {\\frac{\\partial^2 u_1}{\\partial x^2}} - \\alpha {\\frac{\\partial^2 u_2}{\\partial x^2}} = \\alpha {\\frac{\\partial^2 v}{\\partial x^2}},\n\\] with the boundary conditions \\(v(0,t) = u_1(0,t) - u_2(0,t) = 0\\) and \\(v(L,t) = u_1(L,t) - u_2(L,t) = 0\\), and the initial condition \\(v(x,0) = u_1(x,0) - u_2(x,0) = f(x) - f(x) = 0\\).\nSo if we can show that the only solution to this PDE with these boundary and initial conditions is the trivial solution \\(v(x,t) = 0\\), then we will have shown that \\(u_1(x,t) = u_2(x,t)\\), and hence the solution is unique.\nTo complete this proof, we can use the method of separation of variables, which we will see in the next section.",
     "crumbs": [
       "Chapter 5: ODEs and PDEs (Weeks 20/21)",
       "Examples of PDEs"
@@ -408,7 +452,7 @@
     "section": "",
     "text": "Fourier series work great when we have a function which is perfectly periodic, or defined on a finite interval. But often in practice we have functions defined on the whole real line, when we use an approximation that something in infinitely big.\nIn this case, there isn’t an exact wavelength that fits perfectly, and instead we have to consider all possible wavelengths. This leads us to the Fourier transform.",
     "crumbs": [
-      "Chapter 7: Fourier Transforms (Week 23)",
+      "Chapter 7: Fourier Transforms and Delta Functions (Week 23)",
       "Fourier transforms"
     ]
   },
@@ -419,7 +463,7 @@
     "section": "Definition of the Fourier transform",
     "text": "Definition of the Fourier transform\nThe Fourier transform of a function \\(f(x)\\) is defined as1 \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty f(x) e^{-ikx}\\,dx,\n\\] where \\(k\\) is called the wave number.\nThe inverse Fourier transform is given by \\[\nf(x) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty F(k) e^{ikx}\\,dk.\n\\] These two equations are very similar in form to the Fourier series equations, but now we have integrals over all possible wave numbers \\(k\\) instead of sums over discrete wavelengths.",
     "crumbs": [
-      "Chapter 7: Fourier Transforms (Week 23)",
+      "Chapter 7: Fourier Transforms and Delta Functions (Week 23)",
       "Fourier transforms"
     ]
   },
@@ -430,7 +474,7 @@
     "section": "Example",
     "text": "Example\nFind the Fourier transform of \\[\nf(x) = e^{-\\frac{x^2}{2}}.\n\\]\n\n\n\n\n\n\nSolution\n\n\n\n\n\nWe have \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{x^2}{2}} e^{-ikx}\\,dx.\n\\] Combining the exponents gives \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{x^2}{2} - ikx}\\,dx = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{x^2 + 2ikx}{2}}\\,dx.\n\\] Completing the square in the exponent: \\[\nx^2 + 2ikx = (x + ik)^2 - k^2,\n\\] so \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{(x + ik)^2 - k^2}{2}}\\,dx = \\frac{e^{\\frac{k^2}{2}}}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{(x + ik)^2}{2}}\\,dx.\n\\] Now we can make the substitution \\(u = x + ik\\), so \\(du = dx\\). The limits of integration remain \\(-\\infty\\) to \\(\\infty\\) since shifting by a constant (even a complex one) doesn’t change them. Thus, \\[\nF(k) = \\frac{e^{\\frac{k^2}{2}}}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{u^2}{2}}\\,du.\n\\] The integral is just the standard Gaussian integral, which evaluates to \\(\\sqrt{2\\pi}\\). Therefore, \\[\nF(k) = \\frac{e^{\\frac{k^2}{2}}}{\\sqrt{2\\pi}} \\cdot \\sqrt{2\\pi} = e^{\\frac{k^2}{2}}.\n\\] So the Fourier transform of \\(f(x) = e^{-\\frac{x^2}{2\n}}\\) is \\[\nF(k) = e^{\\frac{k^2}{2}}.\n\\]",
     "crumbs": [
-      "Chapter 7: Fourier Transforms (Week 23)",
+      "Chapter 7: Fourier Transforms and Delta Functions (Week 23)",
       "Fourier transforms"
     ]
   },
@@ -441,7 +485,7 @@
     "section": "Footnotes",
     "text": "Footnotes\n\n\nLots of different conventions exist for the Fourier transform, this is one of the most common.↩︎",
     "crumbs": [
-      "Chapter 7: Fourier Transforms (Week 23)",
+      "Chapter 7: Fourier Transforms and Delta Functions (Week 23)",
       "Fourier transforms"
     ]
   },
@@ -505,7 +549,7 @@
     "href": "odes.html#existence-and-uniqueness-of-solutions",
     "title": "Examples of ODEs",
     "section": "Existence and uniqueness of solutions",
-    "text": "Existence and uniqueness of solutions\nWhen we turn to PDEs, it becomes very important to know whether a given equation has a solution, and whether that solution is unique. For ODEs, and especially for those second order, constant coefficient ODEs, there are well-established theorems that give conditions for existence and uniqueness of solutions.\nIt is important, however, to think about what boundary or initial conditions you need to specify in order to get a unique solution. For example, for a second order ODE, you typically need to specify two conditions, such specifying both the value of the function and its first derivative at a particular point, but this may not always be the case.\nFor example, consider the equation \\[\n{\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}} + {\\frac{\\mathrm{d} y}{\\mathrm{d} x}} = 0.\n\\] This is a second order ODE, so we need two conditions to specify a unique solution.\nThe general solution to this ODE is \\[\ny(x) = C_1 + C_2 e^{-x},\n\\] where \\(C_1\\) and \\(C_2\\) are arbitrary constants.\nIf we specify \\[\ny(0) = 1, \\quad {\\frac{\\mathrm{d} y}{\\mathrm{d} x}}(0) = -1,\n\\] then we find the unique solution \\[\ny(x) = 1 - e^{-x}.\n\\]\nHowever, if we instead specify that \\[\n{\\frac{\\mathrm{d} y}{\\mathrm{d} x}}(0) = -1, \\quad {\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}}(0) = 1,\n\\] then we can have any solution of the form \\[\ny(x) = C_1 + e^{-x},\n\\] where \\(C_1\\) can be any constant. Thus, the solution is not unique in this case.\nOn the other hand, if we specify \\[\n{\\frac{\\mathrm{d} y}{\\mathrm{d} x}}(0) = -1, \\quad {\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}}(0) = -1,\n\\] then there is no solution that satisfies both conditions, so in this case a solution does not exist.\n\n\n\n\n\n\nNote\n\n\n\nI won’t ever ask you to solve an equation that has no solution, though I might ask you to identify when this is the case.",
+    "text": "Existence and uniqueness of solutions\nWhen we turn to PDEs, it becomes very important to know whether a given equation has a solution, and whether that solution is unique. For ODEs, and especially for those second order, constant coefficient ODEs, there are well-established theorems that give conditions for existence and uniqueness of solutions.\nIt is important, however, to think about what boundary or initial conditions you need to specify in order to get a unique solution. For example, for a second order ODE, you typically need to specify two conditions, such specifying both the value of the function and its first derivative at a particular point, but this may not always be the case.\nFor example, consider the equation \\[\n{\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}} + {\\frac{\\mathrm{d} y}{\\mathrm{d} x}} = 0.\n\\] This is a second order ODE, so we need two conditions to specify a unique solution.\nThe general solution to this ODE is \\[\ny(x) = C_1 + C_2 e^{-x},\n\\] where \\(C_1\\) and \\(C_2\\) are arbitrary constants.\nIf we specify \\[\ny(0) = 1, \\quad {\\frac{\\mathrm{d} y}{\\mathrm{d} x}}(0) = -1,\n\\] then we find the unique solution \\[\ny(x) = 1 - e^{-x}.\n\\]\nHowever, if we instead specify that \\[\n{\\frac{\\mathrm{d} y}{\\mathrm{d} x}}(0) = -1, \\quad {\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}}(0) = 1,\n\\] then we can have any solution of the form \\[\ny(x) = C_1 + e^{-x},\n\\] where \\(C_1\\) can be any constant. Thus, the solution is not unique in this case.\nOn the other hand, if we specify \\[\n{\\frac{\\mathrm{d} y}{\\mathrm{d} x}}(0) = -1, \\quad {\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}}(0) = -1,\n\\] then there is no solution that satisfies both conditions, so in this case a solution does not exist.\n\n\n\n\n\n\nNote\n\n\n\nI won’t ever ask you to solve an equation that has no solution, though I might ask you to identify when this is the case.\n\n\n\nExample\nFor the linear ODE \\[\n{\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}} = -y,\n\\] subject to the boundary conditions \\(y(0) = 0\\) and \\(y'(0) = 1\\) for some constant \\(L\\), find a solution and show that it is unique.\n\n\n\n\n\n\nSolution\n\n\n\n\n\nWe can guess a solution to this ODE \\[\ny(x) = sin(x),\n\\] which satisfies the ODE and the boundary conditions.\nTo show that this solution is unique, suppose there is another solution \\(y_2(x)\\) that also satisfies the ODE and the boundary conditions. Then the difference \\(v(x) = y(x) - y_2(x)\\) satisfies the ODE \\[\n{\\frac{\\mathrm{d}^2 v}{\\mathrm{d} x^2}} = -v,\n\\] with the boundary conditions \\(v(0) = y(0) - y_2(0) = 0\\) and \\(v'(0) = y'(0) - y_2'(0) = 0\\).\nThe general solution to this ODE is \\[\nv(x) = C_1 \\sin(x) + C_2 \\cos(x),\n\\] where \\(C_1\\) and \\(C_2\\) are arbitrary constants. Applying the boundary conditions gives \\(C_1 = 0\\) and \\(C_2 = 0\\), so the only solution is the trivial solution \\(v(x) = 0\\). Therefore, we have shown that \\(y(x) = y_2(x)\\), and hence the solution is unique.",
     "crumbs": [
       "Chapter 5: ODEs and PDEs (Weeks 20/21)",
       "Examples of ODEs"

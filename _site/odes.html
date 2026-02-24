@@ -334,7 +334,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Chapter 7: Fourier Transforms (Week 23)</span></a>
+ <span class="menu-text">Chapter 7: Fourier Transforms and Delta Functions (Week 23)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -346,6 +346,9 @@ window.Quarto = {
  <span class="menu-text">Fourier transforms</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+ <span class="menu-text">Delta functions</span>
+  </li>
           <li class="sidebar-item">
  <span class="menu-text">Convolution</span>
   </li>
@@ -372,7 +375,10 @@ window.Quarto = {
   <ul>
   <li><a href="#linear-and-non-linear-odes" id="toc-linear-and-non-linear-odes" class="nav-link active" data-scroll-target="#linear-and-non-linear-odes">Linear and non-linear ODEs</a></li>
   <li><a href="#constant-coefficient-odes" id="toc-constant-coefficient-odes" class="nav-link" data-scroll-target="#constant-coefficient-odes">Constant coefficient ODEs</a></li>
-  <li><a href="#existence-and-uniqueness-of-solutions" id="toc-existence-and-uniqueness-of-solutions" class="nav-link" data-scroll-target="#existence-and-uniqueness-of-solutions">Existence and uniqueness of solutions</a></li>
+  <li><a href="#existence-and-uniqueness-of-solutions" id="toc-existence-and-uniqueness-of-solutions" class="nav-link" data-scroll-target="#existence-and-uniqueness-of-solutions">Existence and uniqueness of solutions</a>
+  <ul class="collapse">
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -490,8 +496,38 @@ Note
 <p>I won’t ever ask you to solve an equation that has no solution, though I might ask you to identify when this is the case.</p>
 </div>
 </div>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<p>For the linear ODE <span class="math display">\[
+{\frac{\mathrm{d}^2 y}{\mathrm{d} x^2}} = -y,
+\]</span> subject to the boundary conditions <span class="math inline">\(y(0) = 0\)</span> and <span class="math inline">\(y'(0) = 1\)</span> for some constant <span class="math inline">\(L\)</span>, find a solution and show that it is unique.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We can guess a solution to this ODE <span class="math display">\[
+y(x) = sin(x),
+\]</span> which satisfies the ODE and the boundary conditions.</p>
+<p>To show that this solution is unique, suppose there is another solution <span class="math inline">\(y_2(x)\)</span> that also satisfies the ODE and the boundary conditions. Then the difference <span class="math inline">\(v(x) = y(x) - y_2(x)\)</span> satisfies the ODE <span class="math display">\[
+{\frac{\mathrm{d}^2 v}{\mathrm{d} x^2}} = -v,
+\]</span> with the boundary conditions <span class="math inline">\(v(0) = y(0) - y_2(0) = 0\)</span> and <span class="math inline">\(v'(0) = y'(0) - y_2'(0) = 0\)</span>.</p>
+<p>The general solution to this ODE is <span class="math display">\[
+v(x) = C_1 \sin(x) + C_2 \cos(x),
+\]</span> where <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> are arbitrary constants. Applying the boundary conditions gives <span class="math inline">\(C_1 = 0\)</span> and <span class="math inline">\(C_2 = 0\)</span>, so the only solution is the trivial solution <span class="math inline">\(v(x) = 0\)</span>. Therefore, we have shown that <span class="math inline">\(y(x) = y_2(x)\)</span>, and hence the solution is unique.</p>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

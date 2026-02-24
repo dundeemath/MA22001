@@ -124,3 +124,31 @@ then there is no solution that satisfies both conditions, so in this case a solu
 ::: {.callout-note}
 I won't ever ask you to solve an equation that has no solution, though I might ask you to identify when this is the case.
 :::
+
+### Example
+For the linear ODE
+$$ 
+\ddd{y}{x} = -y,
+$$ 
+subject to the boundary conditions $y(0) = 0$ and $y'(0) = 1$ for some constant $L$, find a solution and show that it is unique.
+
+::: {.callout-tip collapse="true"}
+## Solution
+We can guess a solution to this ODE
+$$
+y(x) = sin(x),
+$$
+which satisfies the ODE and the boundary conditions. 
+
+To show that this solution is unique, suppose there is another solution $y_2(x)$ that also satisfies the ODE and the boundary conditions. Then the difference $v(x) = y(x) - y_2(x)$ satisfies the ODE
+$$
+\ddd{v}{x} = -v,
+$$
+with the boundary conditions $v(0) = y(0) - y_2(0) = 0$ and $v'(0) = y'(0) - y_2'(0) = 0$.
+
+The general solution to this ODE is
+$$
+v(x) = C_1 \sin(x) + C_2 \cos(x),
+$$
+where $C_1$ and $C_2$ are arbitrary constants. Applying the boundary conditions gives $C_1 = 0$ and $C_2 = 0$, so the only solution is the trivial solution $v(x) = 0$. Therefore, we have shown that $y(x) = y_2(x)$, and hence the solution is unique.
+:::

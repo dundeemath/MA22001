@@ -5,8 +5,154 @@ title: "Separation of variables for PDEs"
 ::: {.hidden}
  \providecommand{\vv}[1]{{\mathbf{#1}}}
  \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
+ \providecommand{\pdd}[2]{{\frac{\partial^2 #1}{\partial #2^2}}}
 :::
 
-You have already seen a method called "separation of variables" for solving ordinary differential equations (ODEs). Another method, with the same name, but almost completely unrelated, is used to find solutions to certain partial differential equations (PDEs). The basic idea is to "guess" the form of the solution as a product of functions, each depending on only one variable.
+You have already seen a method called *separation of variables* for solving ordinary differential equations (ODEs). Another method, with the same name, but almost completely unrelated, is used to find solutions to certain partial differential equations (PDEs). The basic idea is to **guess** the form of the solution as a product of functions, each depending on only one variable.
 
-### A basic example
+For example, if we have a PDE for $u(x,t)$ in two variables $x$ and $t$, we might guess that the solution has the form
+$$
+u(x,t) = X(x)T(t),
+$$
+where $X(x)$ is a function of $x$ alone, and $T(t)$ is a function of $t$ alone. We can then substitute this guess into the PDE and see if we can separate the variables so that we get two ordinary differential equations, one for $X(x)$ and one for $T(t)$.
+
+## A basic example
+Suppose that we want to solve the one-dimensional heat equation
+$$
+\pd{u}{t} = \pdd{u}{x},
+$$
+subject to boundary conditions $u(0,t) = u(\pi,t) = 0$ for all $t$^[These boundary conditions mean that the temperature is fixed at 0 at both ends of the rod. We could also consider boundary conditions where the first derivative is fixed, e.g. $\pd{u}{x}(0,t) = \pd{u}{x}(L,t) = 0$, which mean that no heat is flowing in or out at the ends of the rod.], and an initial condition $u(x,0) = \sin x$.
+
+We try separation of variables by guessing
+$$
+u(x,t) = X(x)T(t).
+$$
+
+Substituting into the PDE gives
+$$
+X(x)T'(t) = T(t)X''(x),
+$$
+where the prime denotes differentiation with respect to the relevant variable.
+
+If $X(x)\neq 0$ and $T(t)\neq 0$ we can divide both sides by $X(x)T(t)$ to get
+$$
+\frac{T'(t)}{T(t)} = \frac{X''(x)}{X(x)}.
+$$
+
+The left-hand side depends only on $t$ and the right-hand side depends only on $x$, so **both sides must be equal to the same constant**. It is convenient to call this constant $-\lambda$:
+$$
+\frac{T'(t)}{T(t)} = \frac{X''(x)}{X(x)} = -\lambda.
+$$
+
+::: {.callout-important}
+This is the crucial step!
+:::
+
+This gives two ODEs:
+$$
+\begin{aligned}
+T'(t) + \lambda T(t) &= 0,\\
+X''(x) + \lambda X(x) &= 0.
+\end{aligned}
+$$
+
+The first equation has solution
+$$
+T(t)=Ae^{-\lambda t}.
+$$
+
+For $X$ we must consider different signs of $\lambda$, and (crucially) we must now impose the boundary conditions.
+
+### Using the boundary conditions to determine $\lambda$
+- **Case $\lambda = 0$.** Then $X''=0$, so $X(x)=ax+b$. The boundary condition $X(0)=0$ gives $b=0$, and $X(\pi)=0$ gives $a=0$. Hence $X\equiv 0$, so this produces only the trivial solution $u\equiv 0$.
+
+- **Case $\lambda<0$.** Write $\lambda=-\mu^2$ with $\mu>0$. Then $X''-\mu^2 X=0$, so
+  $$
+  X(x)=Be^{\mu x}+Ce^{-\mu x}.
+  $$
+  Imposing $X(0)=0$ gives $B+C=0$, so $X(x)=B(e^{\mu x}-e^{-\mu x})$. Then $X(\pi)=0$ forces $B=0$, again giving only the trivial solution.
+
+- **Case $\lambda>0$.** Write $\lambda=\mu^2$ with $\mu>0$. Then
+  $$
+  X(x)=B\sin(\mu x)+C\cos(\mu x).
+  $$
+  Imposing $X(0)=0$ gives $C=0$, so $X(x)=B\sin(\mu x)$. Imposing $X(\pi)=0$ then gives
+  $$
+  \sin(\mu\pi)=0 \quad\Longrightarrow\quad \mu = n \in \mathbb{N}.
+  $$
+  Hence
+  $$
+  \lambda = n^2,\qquad X_n(x)=\sin(nx).
+  $$
+
+So the separated solutions that satisfy the boundary conditions are
+$$
+u_n(x,t)=e^{-n^2 t}\sin(nx),\qquad n=1,2,3,\dots
+$$
+(Here we have absorbed any overall constant into the coefficient in front of $\sin(nx)$.)
+
+### Matching the initial condition
+For the initial condition $u(x,0)=\sin x$, we simply take $n=1$, giving
+$$
+u(x,t)=e^{-t}\sin x,
+$$
+which satisfies the PDE, the boundary conditions, and the initial condition.
+
+### Different initial conditions
+Now suppose the initial condition is
+$$
+u(x,0)=2\sin(2x)-\sin(3x).
+$$
+We use the corresponding separated solutions $u_2$ and $u_3$:
+$$
+u_2(x,t)=e^{-4t}\sin(2x),\qquad u_3(x,t)=e^{-9t}\sin(3x).
+$$
+Because the heat equation is linear, any linear combination of solutions is also a solution, so
+$$
+u(x,t)=2e^{-4t}\sin(2x)-e^{-9t}\sin(3x)
+$$
+solves the PDE and boundary conditions, and it matches the initial condition at $t=0$.
+
+## Mixed partial derivatives
+ Consider the PDE $$ \pdd{u}{x} + \pdd{u}{y} - \frac{\partial^2 u}{\partial x \partial y} = 0. $$ If we try the separation of variables method by guessing that the solution has the form $u(x,y) = X(x)Y(y)$, then we get $$ X''(x)Y(y) + X(x)Y''(y) - X'(x)Y'(y) = 0. $$ If $X(x) \neq 0$ and $Y(y) \neq 0$, then we can divide through by $X(x)Y(y)$ and rearrange to get $$ \frac{X''(x)}{X(x)} + \frac{Y''(y)}{Y(y)} - \frac{X'(x)}{X(x)} \frac{Y'(y)}{Y(y)} = 0. $$ We cannot easily separate the variables in this case. However, if we differentiate this equation with respect to $x$, we get $$ \frac{X'''(x)X(x) -X''(x)X'(x)}{X(x)^2} - \frac{X''(x)X(x) -X'(x)X'(x)}{X(x)^2}\frac{Y'(y)}{Y(y)} = 0, $$ which can be rearranged to get $$ \frac{X'''(x)X(x) -X''(x)X'(x)}{X''(x)X(x) -X'(x)X'(x)} = \frac{Y'(y)}{Y(y)}. $$ This is now separated, and we can proceed as before to get two ODEs that we can solve to get a solution to the original PDE. However, the resulting ODE for $X(x)$ is quite complicated.^[This is just an example to show that sometimes you can still use separation of variables even if the PDE has mixed partial derivatives, but it is not a method that I would recommend in general. In this case, we could change variables to $u(x,y)=v(x+y,x-y)$, which would give a much simpler PDE for $v$, which we could then solve using separation of variables.]
+
+## Nonlinear PDEs
+The examples above are linear PDEs, so sums of solutions are still solutions. Occasionally, separation of variables can also produce special solutions for nonlinear PDEs, but **superposition does not work** in general.
+
+Consider the inviscid Burgers' equation
+$$
+\pd{u}{t} + u \pd{u}{x} = 0.
+$$
+Try $u(x,t)=X(x)T(t)$. Then
+$$
+u_t=X T',\qquad u_x=X'T,\qquad u\,u_x=(XT)(X'T)=XX' T^2,
+$$
+so the PDE becomes
+$$
+X(x)T'(t) + X(x)X'(x)T(t)^2 = 0.
+$$
+If $X\neq 0$ and $T\neq 0$, divide by $X(x)T(t)^2$:
+$$
+\frac{T'(t)}{T(t)^2} = -X'(x).
+$$
+As usual, one side depends only on $t$ and the other only on $x$, so both must be equal to a constant, say $\lambda$:
+$$
+\frac{T'(t)}{T(t)^2} = \lambda,\qquad X'(x) = -\lambda.
+$$
+
+These ODEs can be solved explicitly:
+- From $X'=-\lambda$, we get $X(x)=-\lambda x + B$.
+- From $T'/T^2=\lambda$, we get $-1/T = \lambda t + C$, so
+  $$
+  T(t)= -\frac{1}{\lambda t + C}.
+  $$
+
+Putting this together (for $\lambda\neq 0$),
+$$
+u(x,t)=X(x)T(t)=\frac{\lambda x - B}{\lambda t + C}.
+$$
+(There is also the $\lambda=0$ case, which gives constant solutions $u\equiv \text{constant}$.)
+
+::: {.callout-note}
+These are special separated solutions. The general solution of inviscid Burgers' equation is usually found using the _method of characteristics_, and solutions can develop shocks (discontinuities) even from smooth initial data.
+:::

@@ -60,10 +60,11 @@ website:
         - text: ""
         - text: "Application to ODEs and PDEs"
           href: fourierdes.qmd
-      - section: "Chapter 7: Fourier Transforms (Week 23)"
+      - section: "Chapter 7: Fourier Transforms and Delta Functions (Week 23)"
         contents:
         - text: ""
           href: fouriertransforms.qmd
+        - text: "Delta functions" 
         - text: "Convolution"
         - text: "Application to ODEs and PDEs"
       - href: links.qmd
