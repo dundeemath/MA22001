@@ -9,11 +9,15 @@ title: "Fourier series"
 
 The Fourier series of a periodic function allows us to express that function as a sum of sines and cosines. As long as a function is exactly periodic, that is $f(x + L) = f(x)$ for some period $L$, and it is "nice" enough (piecewise continuous, etc.), we can represent it as a Fourier series.
 
-We write that
+We write that^[There are various conventions for the Fourier series, but this is the one we will use in this module.]
 $$
-f(x) = \frac{a_0}{2} + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right],
+f(x) = a_0 + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right],
 $$
 where the $a_n$ and $b_n$ are the _Fourier coefficients_.
+
+::: {.callout-note}
+What this really says is that if we have a function that exactly repeats itself after some distance $L$, then we can write it as a sum of sines and cosines with wavelengths that are integer fractions of $L$. The Fourier coefficients tell us how much of each sine and cosine we need to add together to get back our original function.
+:::
 
 Consider the function $f(x) = \sin x$. This is periodic with period $L = 2\pi$. It is already in the form of a Fourier series, with coefficients
 $$
@@ -34,11 +38,139 @@ f(x) = \frac{1}{2} - \frac{1}{2} \cos(2x) = \frac{1}{2} - \frac{1}{2} \cos\left(
 $$
 From this, we can read off the Fourier coefficients:
 $$
-a_0 = 1, \quad a_1 = -\frac{1}{2}, \quad a_n = 0 \text{ for } n > 1, \quad b_n = 0 \text{ for all } n.
+a_0 = \frac{1}{2}, \quad a_1 = -\frac{1}{2}, \quad a_n = 0 \text{ for } n > 1, \quad b_n = 0 \text{ for all } n.
 $$
 :::
 
+## Orthogonality of sines and cosines
+For two vectors $\vv{u}$ and $\vv{v}$, we say they are orthogonal if their dot product is zero, that is $\vv{u} \cdot \vv{v} = 0$. This means that the two vectors are perpendicular to each other in some sense.
+
+We can generalise the dot product to an _inner product_ defined as an integral.
+For periodic functions $f(x)$ and $g(x)$ with period $L$, we define the inner product as
+$$
+\langle f(x), g(x) \rangle = \int_0^L f(x) g(x) dx.
+$$
+Note that this satisfies $\langle f(x), g(x) + h(x) \rangle = \langle f(x), g(x) \rangle + \langle f(x), h(x) \rangle$, and $\langle f(x), c g(x) \rangle = c \langle f(x), g(x) \rangle$ for any constant $c$. We will use these rules later.
+
+Two functions are called _orthogonal_ if their inner product is zero, that is $\langle f, g \rangle = 0$.
+
+Sine and cosine are both periodic functions with period $2\pi$, and they are orthogonal because
+$$
+\langle \cos x, \sin x \rangle = \int_0^{2\pi} \cos x \sin x \,dx = \int_0^{2\pi} \frac{1}{2} \sin(2x) \,dx = 0.
+$$
+
+In fact, for any period $L$ and any integers $m$ and $n$, we have
+$$
+\begin{aligned}
+\left\langle \cos\left(\frac{2\pi m x}{L}\right), \sin\left(\frac{2\pi n x}{L}\right) \right\rangle &= \int_0^L \cos\left(\frac{2\pi m x}{L}\right) \sin\left(\frac{2\pi n x}{L}\right) dx &= 0, \\
+\left\langle \cos\left(\frac{2\pi m x}{L}\right), \cos\left(\frac{2\pi n x}{L}\right) \right\rangle &= \int_0^L \cos\left(\frac{2\pi m x}{L}\right) \cos\left(\frac{2\pi n x}{L}\right) dx &= \begin{cases}
+L & m = n = 0 \\
+\frac{L}{2} & m = n > 0 \\
+0 & m \neq n
+\end{cases},\\
+\left\langle \sin\left(\frac{2\pi m x}{L}\right), \sin\left(\frac{2\pi n x}{L}\right) \right\rangle &= \int_0^L \sin\left(\frac{2\pi m x}{L}\right) \sin\left(\frac{2\pi n x}{L}\right) dx &= \begin{cases}
+0 & m = 0 \\
+\frac{L}{2} & m = n > 0 \\
+0 & m \neq n
+\end{cases}
+\end{aligned}
+$$
+
+This means that the set
+$$
+\left\{ 1, \cos\left(\frac{2\pi x}{L}\right), \sin\left(\frac{2\pi x}{L}\right), \cos\left(\frac{4\pi x}{L}\right), \sin\left(\frac{4\pi x}{L}\right), \ldots \right\}
+$$
+is an orthogonal set of functions which are all periodic with period $L$, and it is this property that allows us to find the Fourier coefficients using the inner product.
+
+
 ## Finding the Fourier coefficients
+Above, we saw some very simple examples where we could read off the Fourier coefficients by inspection. In general, we need to use the orthogonality of sines and cosines to find the coefficients. This gives a formula
+$$
+\begin{aligned}
+a_n &= \begin{cases}
+\frac{1}{L} \int_0^L f(x)  dx & n = 0\\
+\frac{2}{L} \int_0^L f(x) \cos\left(\frac{2\pi n x}{L}\right) dx & n > 0
+\end{cases}\\
+b_n &= \frac{2}{L} \int_0^L f(x)
+\sin\left(\frac{2\pi n x}{L}\right) dx 
+\end{aligned}
+$$
+
+::: {.callout-note}
+This is a very important formula, because it allows us to find the Fourier coefficients for any periodic function, as long as we can evaluate the integrals. In practice, these integrals can often be evaluated using standard techniques of integration, such as substitution, integration by parts, or using known integrals of trigonometric functions.
+:::
+
+### Proof (Non-examinable)
+Using the definition of the Fourier series above, we have
+$$
+\begin{aligned}
+\frac{1}{L} \int_0^L f(x)  dx &= \frac{1}{L} \left\langle f(x), 1 \right\rangle = \frac{1}{L} \left\langle a_0 + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right], 1 \right\rangle \\&= \frac{a_0}{L}\left\langle 1, 1 \right\rangle  + \sum_{n=1}^\infty \left[ a_n \left\langle \cos\left(\frac{2\pi n x}{L}\right), 1 \right\rangle + b_n \left\langle \sin\left(\frac{2\pi n x}{L}\right), 1 \right\rangle \right] \\&= a_0.
+\end{aligned}
+$$
+Similarly we have
+$$
+\begin{aligned}
+\frac{2}{L} \int_0^L f(x) \cos\left(\frac{2\pi n x}{L}\right) dx &= \frac{2}{L} \left\langle f(x), \cos\left(\frac{2\pi n x}{L}\right) \right\rangle \\&= \frac{2}{L} \left\langle a_0 + \sum_{m=1}^\infty \left[ a_m \cos\left(\frac{2\pi m x}{L}\right) + b_m \sin\left(\frac{2\pi m x}{L}\right) \right], \cos\left(\frac{2\pi n x}{L}\right) \right\rangle \\&= a_n,
+\end{aligned}
+$$
+and exactly the same with $\sin\left(\frac{2\pi n x}{L}\right)$ to get $b_n$.
+
+### Example
+Find the Fourier coefficients for the _triangle wave_
+$$
+f(x) = \begin{cases}
+\frac{2x}{L} & 0 \leq x < \frac{L}{2} \\
+\frac{2(L-x)}{L} & \frac{L}{2} \leq x \leq L
+\end{cases}
+$$
+which is periodic with period $L$.
+
+::: {.callout-tip collapse="true"}
+## Solution
+For the constant term,
+$$
+a_0=\frac{1}{L}\int_0^L f(x)\,dx
+=\frac{1}{L}\left(\int_0^{L/2}\frac{2x}{L}\,dx+\int_{L/2}^L\frac{2(L-x)}{L}\,dx\right)
+=\frac{1}{2}.
+$$
+
+For $n\ge1$,
+$$
+a_n=\frac{2}{L}\int_0^L f(x)\cos\!\left(\frac{2\pi n x}{L}\right)\,dx.
+$$
+Using the symmetry $f(x)=f(L-x)$ and $\cos\!\left(\frac{2\pi n (L-x)}{L}\right)=\cos\!\left(\frac{2\pi n x}{L}\right)$, this becomes
+$$
+a_n=\frac{4}{L}\int_0^{L/2}\frac{2x}{L}\cos\!\left(\frac{2\pi n x}{L}\right)\,dx
+=\frac{8}{L^2}\int_0^{L/2}x\cos(kx)\,dx,
+\quad k=\frac{2\pi n}{L}.
+$$
+Since $\int x\cos(kx)\,dx=\frac{x\sin(kx)}{k}+\frac{\cos(kx)}{k^2}$, evaluating from $0$ to $L/2$ gives
+$$
+\int_0^{L/2}x\cos(kx)\,dx=\frac{(-1)^n-1}{k^2},
+$$
+and hence
+$$
+a_n=\frac{2}{\pi^2 n^2}\bigl((-1)^n-1\bigr)
+=
+\begin{cases}
+-\dfrac{4}{\pi^2 n^2} & n\ \text{odd},\\[6pt]
+0 & n\ \text{even}.
+\end{cases}
+$$
+
+For the sine coefficients,
+$$
+b_n=\frac{2}{L}\int_0^L f(x)\sin\!\left(\frac{2\pi n x}{L}\right)\,dx=0
+\quad\text{for all }n,
+$$
+again by the symmetry $f(x)=f(L-x)$ and $\sin\!\left(\frac{2\pi n (L-x)}{L}\right)=-\sin\!\left(\frac{2\pi n x}{L}\right)$.
+
+So the Fourier series is
+$$
+f(x)=\frac{1}{2}-\frac{4}{\pi^2}\sum_{\substack{n=1\\ n\ \text{odd}}}^\infty
+\frac{1}{n^2}\cos\!\left(\frac{2\pi n x}{L}\right).
+$$
+:::
 
 ## Complex form of the Fourier series
 There are various ways to transform between real trigonometric functions and complex exponentials. Using Euler's formula, we can rewrite the Fourier series in terms of complex exponentials:
@@ -47,6 +179,8 @@ f(x) = \sum_{n=-\infty}^\infty c_n e^{i \frac{2\pi n x}{L}},
 $$
 where the _complex_ Fourier coefficients $c_n$ are related to the real coefficients by
 $$
-c_0 = \frac{a_0}{2}, \quad c_n = \frac{a_n - i b_n}{2} \text{ for } n > 0, \quad c_{-n} = \frac{a_n + i b_n}{2} \text{ for } n > 0.
+c_0 = a_0,\quad
+c_n = \frac{a_n - i b_n}{2}\ \text{ for } n>0,\quad
+c_{-n} = \frac{a_n + i b_n}{2}\ \text{ for } n>0.
 $$
 Even if we are dealing with a purely real function, using the complex form can often simplify calculations, especially when dealing with differential equations or integrals, and it is this form that naturally leads us to the Fourier transform when we consider non-periodic functions.

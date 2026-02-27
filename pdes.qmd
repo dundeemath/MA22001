@@ -6,6 +6,7 @@ title: "Examples of PDEs"
  \providecommand{\vv}[1]{{\mathbf{#1}}}
  \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
  \providecommand{\pdd}[2]{{\frac{\partial^2 #1}{\partial #2^2}}}
+ \providecommand{\pddd}[2]{{\frac{\partial^3 #1}{\partial #2^3}}}}
 :::
 
 PDEs are _partial differential equations_. These are equations which relate partial derivatives of a function with each other. Unlike ordinary differential equations (ODEs), which involve ordinary derivatives with respect to a single independent variable, PDEs involve functions of multiple independent variables and their partial derivatives.
@@ -52,12 +53,37 @@ $$
 $$
 where $u(x,y,z)$ is a function of three spatial variables, and $\nabla^2$ is the Laplacian operator. This equation arises in many contexts, such as electrostatics, fluid flow, and potential theory. It is a linear PDE, and its solutions are called harmonic functions. 
 
+These three equations are the classic examples of linear PDEs. Things get much more interesting when we look at non-linear PDEs, which are much harder to solve, and can exhibit much more complex behaviour:
+
 ### The inviscid Burgers' equation
 The _inviscid Burgers' equation_ is
 $$
 \pd{u}{t} + u \pd{u}{x} = 0,
 $$
 where $u(x,t)$ is a function of space and time. This is a non-linear PDE, and it is a simplified model for fluid flow. It can exhibit shock waves, which are discontinuities in the solution that can form in finite time.
+
+### The Korteweg-de Vries (KdV) equation
+The _Korteweg-de Vries (KdV) equation_ is
+$$
+\pd{u}{t} + 6u \pd{u}{x} + \pdd{u}{x} = 0,
+$$
+where $u(x,t)$ is a function of space and time. This is a non-linear PDE that describes shallow water waves. It has soliton solutions, which are stable, localized waves that can interact with each other without changing shape.
+
+### The Kuramoto-Sivashinsky equation
+The _Kuramoto-Sivashinsky equation_ is
+$$
+\pd{u}{t} + u \pd{u}{x} + \pdd{u}{x} + \pddd{u}{x} = 0,
+$$
+where $u(x,t)$ is a function of space and time. This is a non-linear PDE that describes certain types of instabilities in fluid flow. It can exhibit chaotic behaviour, and it is often used as a simple model for studying turbulence.
+
+You will notice that these PDEs all look similar^[they are one-dimensional time-evolution equations featuring a self-advection term], but they have very different behaviour. The linear PDEs have well-known solutions that can be found using standard methods, while the non-linear PDEs can exhibit a wide range of behaviours, including shock waves, solitons, and chaos. This is one of the reasons why PDEs are so interesting and important in physics and mathematics. Different real-world systems are described by different PDEs, and the resulting behaviour can be very different depending on small changes to the form of the PDE.
+
+## ODEs from PDEs
+PDEs, even linear ones, are often very difficult to solve directly. However, by making certain assumptions about the form of the solution, we can reduce a PDE to an ODE, which is much easier to solve. For example, in the heat equation $\pd{u}{t} = \pdd{u}{x}$, if we assume that the solution is independent of space, i.e. $u(x,t) = u(t)$, then the PDE reduces to the ODE $\pd{u}{t} = 0$, which has the solution $u(t) = C$ for some constant $C$. Similarly we could assume that the solution is independent of time, i.e. $u(x,t) = u(x)$, which reduces the PDE to the ODE $\pdd{u}{x} = 0$, which has the solution $u(x) = C_1 x + C_2$ for some constants $C_1$ and $C_2$.
+
+By making a very slightly more general assumption about the form of the solution, we arrive at the method of separation of variables, which we will see in the next section.
+
+In all of these cases, we are just guessing a solution of a particular form, and then checking that it satisfies the PDE. This is a very common technique for solving PDEs, and it is often the first step in finding a solution to a PDE. But this means that it is very important to check whether the solution we have found is unique, and whether it satisfies the boundary and initial conditions that we have specified.
 
 ## Existence and uniqueness of solutions
 For many PDEs, it is not always clear whether a solution exists, or whether it is unique. This is a very important question, because if there are multiple solutions, then we need some way to determine which one is the 'correct' solution for a given physical situation. 
@@ -85,10 +111,10 @@ So if we can show that the only solution to this PDE with these boundary and ini
 To complete this proof, we can use the method of separation of variables, which we will see in the next section.
 :::
 
+
 ## Numerical solutions
 The main way that PDEs are solved in practice is using numerical methods. These involve discretizing the continuous variables (like space and time) into a grid, and then approximating the derivatives using finite differences or other techniques. This allows us to turn the PDE into a set of algebraic equations that can be solved using a computer.
 
 This is how, for example, the weather is predicted, via simulations of the atmosphere using numerical solutions to the Navier-Stokes equations. It is also widely used in financial modelling, engineering simulations, and many other fields.
 
 We won't actually see how to do this in this module, but it's important to know that this is how most PDEs are solved in practice. In your level 4 projects, you may well use numerical methods to solve PDEs related to your chosen topic.
-

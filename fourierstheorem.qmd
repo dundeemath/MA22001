@@ -1,0 +1,56 @@
+---
+title: "Theorems about Fourier series"
+---
+
+::: {.hidden}
+ \providecommand{\vv}[1]{{\mathbf{#1}}}
+ \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
+ \providecommand{\pdd}[2]{{\frac{\partial^2 #1}{\partial #2^2}}}
+ \providecommand{\dd}[2]{{\frac{\mathrm{d} #1}{\mathrm{d} #2}}}
+ \providecommand{\ddd}[2]{{\frac{\mathrm{d}^2 #1}{\mathrm{d} #2^2}}}
+:::
+
+Fourier analysis (both series and transforms, which we will see in the next section) is a vast area of mathematics, and there are many theorems. We will only cover two of the most important ones here. We will later see versions of these theorems for Fourier transforms. 
+
+Again, we use the convention that
+$$
+f(x) = a_0 + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right],
+$$
+where $L$ is the period of the function $f$.
+
+## Convolution theorem (Non-examinable)
+Consider two periodic functions $f(x)$ and $g(x)$, with the same period $L$, and with Fourier coefficients $a_n, b_n$ and $c_n, d_n$ respectively. We can define the _convolution_ of these two functions as
+$$
+(f * g)(x) = \frac{1}{L}\int_0^L f(y) g(x - y) \, dy.
+$$
+Here $f * g$ is a new function, which is also periodic with period $L$. Functions like this arise in many contexts, such as signal processing, probability theory, and the study of PDEs.
+Versions of this are particularly important in modern machine learning, where they are used in convolutional neural networks (CNNs).
+
+The convolution theorem states that the Fourier coefficients $A_n$ and $B_n$ of the function $f * g$ are given by
+$$
+\begin{aligned}
+A_n &= a_n c_n - b_n d_n, \\
+B_n &= a_n d_n + b_n c_n.
+\end{aligned}
+$$
+
+This can be proved using the definition of the convolution and the Fourier coefficient formulas.
+
+## Parseval's theorem
+Parseval's theorem states that the Fourier coefficients of a function $f$ satisfy
+$$
+\frac{1}{L} \int_0^L |f(x)|^2
+= a_0^2 + \frac{1}{2} \sum_{n=1}^\infty (a_n^2 + b_n^2).
+$$
+This is a very important result, because it tells us that the Fourier coefficients contain all the information about the function $f$. In particular, it tells us that the sum of the squares of the Fourier coefficients is equal to the average value of the square of the function. This is a kind of "energy conservation" principle, which is very useful in many applications.
+
+### Proof (Non-examinable)
+Here we can again use the inner product.
+$$
+\begin{aligned}
+\frac{1}{L} \int_0^L |f(x)|^2 dx &= \frac{1}{L} \langle f(x), f(x) \rangle \\
+&= \frac{1}{L} \left\langle a_0 + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right], a_0 + \sum_{m=1}^\infty \left[ a_m \cos\left(\frac{2\pi m x}{L}\right) + b_m \sin\left(\frac{2\pi m x}{L}\right) \right] \right\rangle \\
+&= \frac{a_0^2}{L} \langle 1, 1 \rangle + \sum_{n=1}^\infty \left[ \frac{a_n^2}{L} \langle \cos\left(\frac{2\pi n x}{L}\right), \cos\left(\frac{2\pi n x}{L}\right) \rangle + \frac{b_n^2}{L} \langle \sin\left(\frac{2\pi n x}{L}\right), \sin\left(\frac{2\pi n x}{L}\right) \rangle \right] \\&= a_0^2 + \frac{1}{2} \sum_{n=1}^\infty (a_n^2 + b_n^2).
+\end{aligned}
+$$
+where we have used the facts that $\langle 1, 1 \rangle = L$, $\langle \cos\left(\frac{2\pi n x}{L}\right), \cos\left(\frac{2\pi n x}{L}\right) \rangle = \frac{L}{2}$, and $\langle \sin\left(\frac{2\pi n x}{L}\right), \sin\left(\frac{2\pi n x}{L}\right) \rangle = \frac{L}{2}$, with all the other inner products being zero.

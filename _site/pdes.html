@@ -120,7 +120,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./odes.html">Chapter 5: ODEs and PDEs (Weeks 20/21)</a></li><li class="breadcrumb-item"><a href="./pdes.html">Examples of PDEs</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./odes.html">Chapter 5: ODEs and PDEs (Week 20)</a></li><li class="breadcrumb-item"><a href="./pdes.html">Examples of PDEs</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -282,7 +282,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Chapter 5: ODEs and PDEs (Weeks 20/21)</span></a>
+ <span class="menu-text">Chapter 5: ODEs and PDEs (Week 20)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -311,7 +311,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Chapter 6: Fourier Series (Week 22)</span></a>
+ <span class="menu-text">Chapter 6: Fourier Series (Week 21)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -320,7 +320,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./fourierseries.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fourier series</span></a>
+ <span class="menu-text">Fourier Series</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -329,12 +329,18 @@ window.Quarto = {
  <span class="menu-text">Application to ODEs and PDEs</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fourierstheorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier series theorems</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Chapter 7: Fourier Transforms and Delta Functions (Week 23)</span></a>
+ <span class="menu-text">Chapter 7: Fourier Transforms and Delta Functions (Weeks 22/23)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -377,6 +383,9 @@ window.Quarto = {
   <li><a href="#the-wave-equation" id="toc-the-wave-equation" class="nav-link" data-scroll-target="#the-wave-equation">The wave equation</a></li>
   <li><a href="#the-laplace-equation" id="toc-the-laplace-equation" class="nav-link" data-scroll-target="#the-laplace-equation">The Laplace equation</a></li>
   <li><a href="#the-inviscid-burgers-equation" id="toc-the-inviscid-burgers-equation" class="nav-link" data-scroll-target="#the-inviscid-burgers-equation">The inviscid Burgers’ equation</a></li>
+  <li><a href="#the-korteweg-de-vries-kdv-equation" id="toc-the-korteweg-de-vries-kdv-equation" class="nav-link" data-scroll-target="#the-korteweg-de-vries-kdv-equation">The Korteweg-de Vries (KdV) equation</a></li>
+  <li><a href="#the-kuramoto-sivashinsky-equation" id="toc-the-kuramoto-sivashinsky-equation" class="nav-link" data-scroll-target="#the-kuramoto-sivashinsky-equation">The Kuramoto-Sivashinsky equation</a></li>
+  <li><a href="#odes-from-pdes" id="toc-odes-from-pdes" class="nav-link" data-scroll-target="#odes-from-pdes">ODEs from PDEs</a></li>
   <li><a href="#existence-and-uniqueness-of-solutions" id="toc-existence-and-uniqueness-of-solutions" class="nav-link" data-scroll-target="#existence-and-uniqueness-of-solutions">Existence and uniqueness of solutions</a>
   <ul class="collapse">
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
@@ -388,7 +397,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./odes.html">Chapter 5: ODEs and PDEs (Weeks 20/21)</a></li><li class="breadcrumb-item"><a href="./pdes.html">Examples of PDEs</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./odes.html">Chapter 5: ODEs and PDEs (Week 20)</a></li><li class="breadcrumb-item"><a href="./pdes.html">Examples of PDEs</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Examples of PDEs</h1>
 </div>
@@ -408,7 +417,7 @@ window.Quarto = {
 
 
 <div class="hidden">
-
+<p>}</p>
 </div>
 <p>PDEs are <em>partial differential equations</em>. These are equations which relate partial derivatives of a function with each other. Unlike ordinary differential equations (ODEs), which involve ordinary derivatives with respect to a single independent variable, PDEs involve functions of multiple independent variables and their partial derivatives.</p>
 <p>Two very famous examples of PDEs that are found in physics are the <strong>Navier-Stokes equations</strong> (which describe fluid flow) <span class="math display">\[
@@ -444,12 +453,32 @@ and <strong>Maxwell’s equations</strong> (which describe electromagnetism): <s
 <p>The <em>Laplace equation</em> is <span class="math display">\[
 \nabla^2 u = 0,
 \]</span> where <span class="math inline">\(u(x,y,z)\)</span> is a function of three spatial variables, and <span class="math inline">\(\nabla^2\)</span> is the Laplacian operator. This equation arises in many contexts, such as electrostatics, fluid flow, and potential theory. It is a linear PDE, and its solutions are called harmonic functions.</p>
+<p>These three equations are the classic examples of linear PDEs. Things get much more interesting when we look at non-linear PDEs, which are much harder to solve, and can exhibit much more complex behaviour:</p>
 </section>
 <section id="the-inviscid-burgers-equation" class="level3">
 <h3 class="anchored" data-anchor-id="the-inviscid-burgers-equation">The inviscid Burgers’ equation</h3>
 <p>The <em>inviscid Burgers’ equation</em> is <span class="math display">\[
 {\frac{\partial u}{\partial t}} + u {\frac{\partial u}{\partial x}} = 0,
 \]</span> where <span class="math inline">\(u(x,t)\)</span> is a function of space and time. This is a non-linear PDE, and it is a simplified model for fluid flow. It can exhibit shock waves, which are discontinuities in the solution that can form in finite time.</p>
+</section>
+<section id="the-korteweg-de-vries-kdv-equation" class="level3">
+<h3 class="anchored" data-anchor-id="the-korteweg-de-vries-kdv-equation">The Korteweg-de Vries (KdV) equation</h3>
+<p>The <em>Korteweg-de Vries (KdV) equation</em> is <span class="math display">\[
+{\frac{\partial u}{\partial t}} + 6u {\frac{\partial u}{\partial x}} + {\frac{\partial^2 u}{\partial x^2}} = 0,
+\]</span> where <span class="math inline">\(u(x,t)\)</span> is a function of space and time. This is a non-linear PDE that describes shallow water waves. It has soliton solutions, which are stable, localized waves that can interact with each other without changing shape.</p>
+</section>
+<section id="the-kuramoto-sivashinsky-equation" class="level3">
+<h3 class="anchored" data-anchor-id="the-kuramoto-sivashinsky-equation">The Kuramoto-Sivashinsky equation</h3>
+<p>The <em>Kuramoto-Sivashinsky equation</em> is <span class="math display">\[
+{\frac{\partial u}{\partial t}} + u {\frac{\partial u}{\partial x}} + {\frac{\partial^2 u}{\partial x^2}} + {\frac{\partial^3 u}{\partial x^3}} = 0,
+\]</span> where <span class="math inline">\(u(x,t)\)</span> is a function of space and time. This is a non-linear PDE that describes certain types of instabilities in fluid flow. It can exhibit chaotic behaviour, and it is often used as a simple model for studying turbulence.</p>
+<p>You will notice that these PDEs all look similar<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, but they have very different behaviour. The linear PDEs have well-known solutions that can be found using standard methods, while the non-linear PDEs can exhibit a wide range of behaviours, including shock waves, solitons, and chaos. This is one of the reasons why PDEs are so interesting and important in physics and mathematics. Different real-world systems are described by different PDEs, and the resulting behaviour can be very different depending on small changes to the form of the PDE.</p>
+</section>
+<section id="odes-from-pdes" class="level2">
+<h2 class="anchored" data-anchor-id="odes-from-pdes">ODEs from PDEs</h2>
+<p>PDEs, even linear ones, are often very difficult to solve directly. However, by making certain assumptions about the form of the solution, we can reduce a PDE to an ODE, which is much easier to solve. For example, in the heat equation <span class="math inline">\({\frac{\partial u}{\partial t}} = {\frac{\partial^2 u}{\partial x^2}}\)</span>, if we assume that the solution is independent of space, i.e.&nbsp;<span class="math inline">\(u(x,t) = u(t)\)</span>, then the PDE reduces to the ODE <span class="math inline">\({\frac{\partial u}{\partial t}} = 0\)</span>, which has the solution <span class="math inline">\(u(t) = C\)</span> for some constant <span class="math inline">\(C\)</span>. Similarly we could assume that the solution is independent of time, i.e.&nbsp;<span class="math inline">\(u(x,t) = u(x)\)</span>, which reduces the PDE to the ODE <span class="math inline">\({\frac{\partial^2 u}{\partial x^2}} = 0\)</span>, which has the solution <span class="math inline">\(u(x) = C_1 x + C_2\)</span> for some constants <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>.</p>
+<p>By making a very slightly more general assumption about the form of the solution, we arrive at the method of separation of variables, which we will see in the next section.</p>
+<p>In all of these cases, we are just guessing a solution of a particular form, and then checking that it satisfies the PDE. This is a very common technique for solving PDEs, and it is often the first step in finding a solution to a PDE. But this means that it is very important to check whether the solution we have found is unique, and whether it satisfies the boundary and initial conditions that we have specified.</p>
 </section>
 <section id="existence-and-uniqueness-of-solutions" class="level2">
 <h2 class="anchored" data-anchor-id="existence-and-uniqueness-of-solutions">Existence and uniqueness of solutions</h2>
@@ -496,6 +525,7 @@ Solution
 
 <ol>
 <li id="fn1"><p>Also called the <em>diffusion equation</em><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>they are one-dimensional time-evolution equations featuring a self-advection term<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

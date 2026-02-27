@@ -120,7 +120,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fourierseries.html">Chapter 6: Fourier Series (Week 22)</a></li><li class="breadcrumb-item"><a href="./fourierseries.html">Fourier series</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fourierseries.html">Chapter 6: Fourier Series (Week 21)</a></li><li class="breadcrumb-item"><a href="./fourierseries.html">Fourier Series</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -282,7 +282,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Chapter 5: ODEs and PDEs (Weeks 20/21)</span></a>
+ <span class="menu-text">Chapter 5: ODEs and PDEs (Week 20)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -311,7 +311,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Chapter 6: Fourier Series (Week 22)</span></a>
+ <span class="menu-text">Chapter 6: Fourier Series (Week 21)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -320,7 +320,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./fourierseries.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Fourier series</span></a>
+ <span class="menu-text">Fourier Series</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -329,12 +329,18 @@ window.Quarto = {
  <span class="menu-text">Application to ODEs and PDEs</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fourierstheorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier series theorems</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Chapter 7: Fourier Transforms and Delta Functions (Week 23)</span></a>
+ <span class="menu-text">Chapter 7: Fourier Transforms and Delta Functions (Weeks 22/23)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -374,7 +380,12 @@ window.Quarto = {
    
   <ul>
   <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a></li>
-  <li><a href="#finding-the-fourier-coefficients" id="toc-finding-the-fourier-coefficients" class="nav-link" data-scroll-target="#finding-the-fourier-coefficients">Finding the Fourier coefficients</a></li>
+  <li><a href="#orthogonality-of-sines-and-cosines" id="toc-orthogonality-of-sines-and-cosines" class="nav-link" data-scroll-target="#orthogonality-of-sines-and-cosines">Orthogonality of sines and cosines</a></li>
+  <li><a href="#finding-the-fourier-coefficients" id="toc-finding-the-fourier-coefficients" class="nav-link" data-scroll-target="#finding-the-fourier-coefficients">Finding the Fourier coefficients</a>
+  <ul class="collapse">
+  <li><a href="#proof-non-examinable" id="toc-proof-non-examinable" class="nav-link" data-scroll-target="#proof-non-examinable">Proof (Non-examinable)</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
+  </ul></li>
   <li><a href="#complex-form-of-the-fourier-series" id="toc-complex-form-of-the-fourier-series" class="nav-link" data-scroll-target="#complex-form-of-the-fourier-series">Complex form of the Fourier series</a></li>
   </ul>
 </nav>
@@ -382,7 +393,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fourierseries.html">Chapter 6: Fourier Series (Week 22)</a></li><li class="breadcrumb-item"><a href="./fourierseries.html">Fourier series</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fourierseries.html">Chapter 6: Fourier Series (Week 21)</a></li><li class="breadcrumb-item"><a href="./fourierseries.html">Fourier Series</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Fourier series</h1>
 </div>
@@ -405,9 +416,22 @@ window.Quarto = {
 
 </div>
 <p>The Fourier series of a periodic function allows us to express that function as a sum of sines and cosines. As long as a function is exactly periodic, that is <span class="math inline">\(f(x + L) = f(x)\)</span> for some period <span class="math inline">\(L\)</span>, and it is “nice” enough (piecewise continuous, etc.), we can represent it as a Fourier series.</p>
-<p>We write that <span class="math display">\[
-f(x) = \frac{a_0}{2} + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right],
+<p>We write that<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math display">\[
+f(x) = a_0 + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right],
 \]</span> where the <span class="math inline">\(a_n\)</span> and <span class="math inline">\(b_n\)</span> are the <em>Fourier coefficients</em>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What this really says is that if we have a function that exactly repeats itself after some distance <span class="math inline">\(L\)</span>, then we can write it as a sum of sines and cosines with wavelengths that are integer fractions of <span class="math inline">\(L\)</span>. The Fourier coefficients tell us how much of each sine and cosine we need to add together to get back our original function.</p>
+</div>
+</div>
 <p>Consider the function <span class="math inline">\(f(x) = \sin x\)</span>. This is periodic with period <span class="math inline">\(L = 2\pi\)</span>. It is already in the form of a Fourier series, with coefficients <span class="math display">\[
 a_0 = 0, \quad a_n = 0 \text{ for all } n, \quad b_1 = 1, \quad b_n = 0 \text{ for } n \neq 1.
 \]</span></p>
@@ -415,7 +439,7 @@ a_0 = 0, \quad a_n = 0 \text{ for all } n, \quad b_1 = 1, \quad b_n = 0 \text{ f
 <h3 class="anchored" data-anchor-id="example">Example</h3>
 <p>Find the period and the Fourier coefficients for the function <span class="math inline">\(f(x) = \sin^2 x\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -424,33 +448,158 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The function <span class="math inline">\(\sin^2 x\)</span> has period <span class="math inline">\(L = \pi\)</span>, since <span class="math display">\[\sin^2(x + \pi) = (\sin x \cos \pi + \cos x \sin \pi)^2 = (-\sin x)^2 = \sin^2 x.\]</span></p>
 <p>To find the Fourier coefficients, we can use the trigonometric identity <span class="math inline">\(\cos 2x = 1 - 2\sin^2 x\)</span>, which can be rearranged to give <span class="math inline">\(\sin^2 x = \frac{1 - \cos 2x}{2}\)</span>. Thus, we can write <span class="math display">\[
 f(x) = \frac{1}{2} - \frac{1}{2} \cos(2x) = \frac{1}{2} - \frac{1}{2} \cos\left(\frac{2\pi x}{\pi}\right).
 \]</span> From this, we can read off the Fourier coefficients: <span class="math display">\[
-a_0 = 1, \quad a_1 = -\frac{1}{2}, \quad a_n = 0 \text{ for } n &gt; 1, \quad b_n = 0 \text{ for all } n.
+a_0 = \frac{1}{2}, \quad a_1 = -\frac{1}{2}, \quad a_n = 0 \text{ for } n &gt; 1, \quad b_n = 0 \text{ for all } n.
 \]</span></p>
 </div>
 </div>
 </div>
 </section>
+<section id="orthogonality-of-sines-and-cosines" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonality-of-sines-and-cosines">Orthogonality of sines and cosines</h2>
+<p>For two vectors <span class="math inline">\({\mathbf{u}}\)</span> and <span class="math inline">\({\mathbf{v}}\)</span>, we say they are orthogonal if their dot product is zero, that is <span class="math inline">\({\mathbf{u}} \cdot {\mathbf{v}} = 0\)</span>. This means that the two vectors are perpendicular to each other in some sense.</p>
+<p>We can generalise the dot product to an <em>inner product</em> defined as an integral. For periodic functions <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(g(x)\)</span> with period <span class="math inline">\(L\)</span>, we define the inner product as <span class="math display">\[
+\langle f(x), g(x) \rangle = \int_0^L f(x) g(x) dx.
+\]</span> Note that this satisfies <span class="math inline">\(\langle f(x), g(x) + h(x) \rangle = \langle f(x), g(x) \rangle + \langle f(x), h(x) \rangle\)</span>, and <span class="math inline">\(\langle f(x), c g(x) \rangle = c \langle f(x), g(x) \rangle\)</span> for any constant <span class="math inline">\(c\)</span>. We will use these rules later.</p>
+<p>Two functions are called <em>orthogonal</em> if their inner product is zero, that is <span class="math inline">\(\langle f, g \rangle = 0\)</span>.</p>
+<p>Sine and cosine are both periodic functions with period <span class="math inline">\(2\pi\)</span>, and they are orthogonal because <span class="math display">\[
+\langle \cos x, \sin x \rangle = \int_0^{2\pi} \cos x \sin x \,dx = \int_0^{2\pi} \frac{1}{2} \sin(2x) \,dx = 0.
+\]</span></p>
+<p>In fact, for any period <span class="math inline">\(L\)</span> and any integers <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span>, we have <span class="math display">\[
+\begin{aligned}
+\left\langle \cos\left(\frac{2\pi m x}{L}\right), \sin\left(\frac{2\pi n x}{L}\right) \right\rangle &amp;= \int_0^L \cos\left(\frac{2\pi m x}{L}\right) \sin\left(\frac{2\pi n x}{L}\right) dx &amp;= 0, \\
+\left\langle \cos\left(\frac{2\pi m x}{L}\right), \cos\left(\frac{2\pi n x}{L}\right) \right\rangle &amp;= \int_0^L \cos\left(\frac{2\pi m x}{L}\right) \cos\left(\frac{2\pi n x}{L}\right) dx &amp;= \begin{cases}
+L &amp; m = n = 0 \\
+\frac{L}{2} &amp; m = n &gt; 0 \\
+0 &amp; m \neq n
+\end{cases},\\
+\left\langle \sin\left(\frac{2\pi m x}{L}\right), \sin\left(\frac{2\pi n x}{L}\right) \right\rangle &amp;= \int_0^L \sin\left(\frac{2\pi m x}{L}\right) \sin\left(\frac{2\pi n x}{L}\right) dx &amp;= \begin{cases}
+0 &amp; m = 0 \\
+\frac{L}{2} &amp; m = n &gt; 0 \\
+0 &amp; m \neq n
+\end{cases}
+\end{aligned}
+\]</span></p>
+<p>This means that the set <span class="math display">\[
+\left\{ 1, \cos\left(\frac{2\pi x}{L}\right), \sin\left(\frac{2\pi x}{L}\right), \cos\left(\frac{4\pi x}{L}\right), \sin\left(\frac{4\pi x}{L}\right), \ldots \right\}
+\]</span> is an orthogonal set of functions which are all periodic with period <span class="math inline">\(L\)</span>, and it is this property that allows us to find the Fourier coefficients using the inner product.</p>
+</section>
 <section id="finding-the-fourier-coefficients" class="level2">
 <h2 class="anchored" data-anchor-id="finding-the-fourier-coefficients">Finding the Fourier coefficients</h2>
+<p>Above, we saw some very simple examples where we could read off the Fourier coefficients by inspection. In general, we need to use the orthogonality of sines and cosines to find the coefficients. This gives a formula <span class="math display">\[
+\begin{aligned}
+a_n &amp;= \begin{cases}
+\frac{1}{L} \int_0^L f(x)  dx &amp; n = 0\\
+\frac{2}{L} \int_0^L f(x) \cos\left(\frac{2\pi n x}{L}\right) dx &amp; n &gt; 0
+\end{cases}\\
+b_n &amp;= \frac{2}{L} \int_0^L f(x)
+\sin\left(\frac{2\pi n x}{L}\right) dx
+\end{aligned}
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is a very important formula, because it allows us to find the Fourier coefficients for any periodic function, as long as we can evaluate the integrals. In practice, these integrals can often be evaluated using standard techniques of integration, such as substitution, integration by parts, or using known integrals of trigonometric functions.</p>
+</div>
+</div>
+<section id="proof-non-examinable" class="level3">
+<h3 class="anchored" data-anchor-id="proof-non-examinable">Proof (Non-examinable)</h3>
+<p>Using the definition of the Fourier series above, we have <span class="math display">\[
+\begin{aligned}
+\frac{1}{L} \int_0^L f(x)  dx &amp;= \frac{1}{L} \left\langle f(x), 1 \right\rangle = \frac{1}{L} \left\langle a_0 + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right], 1 \right\rangle \\&amp;= \frac{a_0}{L}\left\langle 1, 1 \right\rangle  + \sum_{n=1}^\infty \left[ a_n \left\langle \cos\left(\frac{2\pi n x}{L}\right), 1 \right\rangle + b_n \left\langle \sin\left(\frac{2\pi n x}{L}\right), 1 \right\rangle \right] \\&amp;= a_0.
+\end{aligned}
+\]</span> Similarly we have <span class="math display">\[
+\begin{aligned}
+\frac{2}{L} \int_0^L f(x) \cos\left(\frac{2\pi n x}{L}\right) dx &amp;= \frac{2}{L} \left\langle f(x), \cos\left(\frac{2\pi n x}{L}\right) \right\rangle \\&amp;= \frac{2}{L} \left\langle a_0 + \sum_{m=1}^\infty \left[ a_m \cos\left(\frac{2\pi m x}{L}\right) + b_m \sin\left(\frac{2\pi m x}{L}\right) \right], \cos\left(\frac{2\pi n x}{L}\right) \right\rangle \\&amp;= a_n,
+\end{aligned}
+\]</span> and exactly the same with <span class="math inline">\(\sin\left(\frac{2\pi n x}{L}\right)\)</span> to get <span class="math inline">\(b_n\)</span>.</p>
+</section>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example</h3>
+<p>Find the Fourier coefficients for the <em>triangle wave</em> <span class="math display">\[
+f(x) = \begin{cases}
+\frac{2x}{L} &amp; 0 \leq x &lt; \frac{L}{2} \\
+\frac{2(L-x)}{L} &amp; \frac{L}{2} \leq x \leq L
+\end{cases}
+\]</span> which is periodic with period <span class="math inline">\(L\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>For the constant term, <span class="math display">\[
+a_0=\frac{1}{L}\int_0^L f(x)\,dx
+=\frac{1}{L}\left(\int_0^{L/2}\frac{2x}{L}\,dx+\int_{L/2}^L\frac{2(L-x)}{L}\,dx\right)
+=\frac{1}{2}.
+\]</span></p>
+<p>For <span class="math inline">\(n\ge1\)</span>, <span class="math display">\[
+a_n=\frac{2}{L}\int_0^L f(x)\cos\!\left(\frac{2\pi n x}{L}\right)\,dx.
+\]</span> Using the symmetry <span class="math inline">\(f(x)=f(L-x)\)</span> and <span class="math inline">\(\cos\!\left(\frac{2\pi n (L-x)}{L}\right)=\cos\!\left(\frac{2\pi n x}{L}\right)\)</span>, this becomes <span class="math display">\[
+a_n=\frac{4}{L}\int_0^{L/2}\frac{2x}{L}\cos\!\left(\frac{2\pi n x}{L}\right)\,dx
+=\frac{8}{L^2}\int_0^{L/2}x\cos(kx)\,dx,
+\quad k=\frac{2\pi n}{L}.
+\]</span> Since <span class="math inline">\(\int x\cos(kx)\,dx=\frac{x\sin(kx)}{k}+\frac{\cos(kx)}{k^2}\)</span>, evaluating from <span class="math inline">\(0\)</span> to <span class="math inline">\(L/2\)</span> gives <span class="math display">\[
+\int_0^{L/2}x\cos(kx)\,dx=\frac{(-1)^n-1}{k^2},
+\]</span> and hence <span class="math display">\[
+a_n=\frac{2}{\pi^2 n^2}\bigl((-1)^n-1\bigr)
+=
+\begin{cases}
+-\dfrac{4}{\pi^2 n^2} &amp; n\ \text{odd},\\[6pt]
+0 &amp; n\ \text{even}.
+\end{cases}
+\]</span></p>
+<p>For the sine coefficients, <span class="math display">\[
+b_n=\frac{2}{L}\int_0^L f(x)\sin\!\left(\frac{2\pi n x}{L}\right)\,dx=0
+\quad\text{for all }n,
+\]</span> again by the symmetry <span class="math inline">\(f(x)=f(L-x)\)</span> and <span class="math inline">\(\sin\!\left(\frac{2\pi n (L-x)}{L}\right)=-\sin\!\left(\frac{2\pi n x}{L}\right)\)</span>.</p>
+<p>So the Fourier series is <span class="math display">\[
+f(x)=\frac{1}{2}-\frac{4}{\pi^2}\sum_{\substack{n=1\\ n\ \text{odd}}}^\infty
+\frac{1}{n^2}\cos\!\left(\frac{2\pi n x}{L}\right).
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="complex-form-of-the-fourier-series" class="level2">
 <h2 class="anchored" data-anchor-id="complex-form-of-the-fourier-series">Complex form of the Fourier series</h2>
 <p>There are various ways to transform between real trigonometric functions and complex exponentials. Using Euler’s formula, we can rewrite the Fourier series in terms of complex exponentials: <span class="math display">\[
 f(x) = \sum_{n=-\infty}^\infty c_n e^{i \frac{2\pi n x}{L}},
 \]</span> where the <em>complex</em> Fourier coefficients <span class="math inline">\(c_n\)</span> are related to the real coefficients by <span class="math display">\[
-c_0 = \frac{a_0}{2}, \quad c_n = \frac{a_n - i b_n}{2} \text{ for } n &gt; 0, \quad c_{-n} = \frac{a_n + i b_n}{2} \text{ for } n &gt; 0.
+c_0 = a_0,\quad
+c_n = \frac{a_n - i b_n}{2}\ \text{ for } n&gt;0,\quad
+c_{-n} = \frac{a_n + i b_n}{2}\ \text{ for } n&gt;0.
 \]</span> Even if we are dealing with a purely real function, using the complex form can often simplify calculations, especially when dealing with differential equations or integrals, and it is this form that naturally leads us to the Fourier transform when we consider non-periodic functions.</p>
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>There are various conventions for the Fourier series, but this is the one we will use in this module.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

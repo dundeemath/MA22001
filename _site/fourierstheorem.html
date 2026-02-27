@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Fourier series for ODEs and PDEs – MA22001 Core Mathematics IV</title>
+<title>Theorems about Fourier series – MA22001 Core Mathematics IV</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fourierseries.html">Chapter 6: Fourier Series (Week 21)</a></li><li class="breadcrumb-item"><a href="./fourierdes.html">Application to ODEs and PDEs</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fourierseries.html">Chapter 6: Fourier Series (Week 21)</a></li><li class="breadcrumb-item"><a href="./fourierstheorem.html">Fourier series theorems</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -325,13 +325,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fourierdes.html" class="sidebar-item-text sidebar-link active">
+  <a href="./fourierdes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Application to ODEs and PDEs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fourierstheorem.html" class="sidebar-item-text sidebar-link">
+  <a href="./fourierstheorem.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Fourier series theorems</span></a>
   </div>
 </li>
@@ -379,11 +379,10 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#example-separation-of-variables" id="toc-example-separation-of-variables" class="nav-link active" data-scroll-target="#example-separation-of-variables">Example (separation of variables)</a></li>
-  <li><a href="#fourier-series-and-differentiation" id="toc-fourier-series-and-differentiation" class="nav-link" data-scroll-target="#fourier-series-and-differentiation">Fourier series and differentiation</a>
+  <li><a href="#convolution-theorem-non-examinable" id="toc-convolution-theorem-non-examinable" class="nav-link active" data-scroll-target="#convolution-theorem-non-examinable">Convolution theorem (Non-examinable)</a></li>
+  <li><a href="#parsevals-theorem" id="toc-parsevals-theorem" class="nav-link" data-scroll-target="#parsevals-theorem">Parseval’s theorem</a>
   <ul class="collapse">
-  <li><a href="#example-ode" id="toc-example-ode" class="nav-link" data-scroll-target="#example-ode">Example (ODE)</a></li>
-  <li><a href="#example-pde" id="toc-example-pde" class="nav-link" data-scroll-target="#example-pde">Example (PDE)</a></li>
+  <li><a href="#proof-non-examinable" id="toc-proof-non-examinable" class="nav-link" data-scroll-target="#proof-non-examinable">Proof (Non-examinable)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -391,9 +390,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fourierseries.html">Chapter 6: Fourier Series (Week 21)</a></li><li class="breadcrumb-item"><a href="./fourierdes.html">Application to ODEs and PDEs</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fourierseries.html">Chapter 6: Fourier Series (Week 21)</a></li><li class="breadcrumb-item"><a href="./fourierstheorem.html">Fourier series theorems</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Fourier series for ODEs and PDEs</h1>
+<h1 class="title">Theorems about Fourier series</h1>
 </div>
 
 
@@ -413,131 +412,38 @@ window.Quarto = {
 <div class="hidden">
 
 </div>
-<p>Our main reason for introducing Fourier series in this module is to use them to solve differential equations. Firstly, Fourier series arise automatically when we use separation of variables.</p>
-<section id="example-separation-of-variables" class="level3">
-<h3 class="anchored" data-anchor-id="example-separation-of-variables">Example (separation of variables)</h3>
-<p>Consider the one-dimensional heat equation <span class="math display">\[
-{\frac{\partial u}{\partial t}} = \alpha {\frac{\partial^2 u}{\partial x^2}}.
-\]</span> Find a solution <span class="math inline">\(u(x,t)\)</span> subject to the boundary conditions <span class="math inline">\(u(0,t) = u(L/2,t) = 0\)</span> for all <span class="math inline">\(t\)</span>, and the initial condition <span class="math inline">\(u(x,0) = f(x)\)</span> for some function <span class="math inline">\(f\)</span>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>We can try to solve this using separation of variables, by writing <span class="math inline">\(u(x,t) = X(x)T(t)\)</span> for some functions <span class="math inline">\(X\)</span> and <span class="math inline">\(T\)</span>. Substituting into the heat equation, we get <span class="math display">\[
-X(x) \frac{dT}{dt} = \alpha T(t) \frac{d^2 X}{dx^2}.
-\]</span> Dividing both sides by <span class="math inline">\(\alpha X(x) T(t)\)</span>, we get <span class="math display">\[
-\frac{1}{\alpha T(t)} \frac{dT}{dt} = \frac{1}{X(x)} \frac{d^2 X}{dx^2}.
-\]</span> The left-hand side is a function of <span class="math inline">\(t\)</span> only, and the right-hand side is a function of <span class="math inline">\(x\)</span> only. The only way this can be true for all <span class="math inline">\(x\)</span> and <span class="math inline">\(t\)</span> is if both sides are equal to the same constant, which we will call <span class="math inline">\(-\lambda\)</span>. This gives us two ordinary differential equations: <span class="math display">\[
-\begin{aligned}
-\frac{dT}{dt} + \alpha \lambda T &amp;= 0, \\
-\frac{d^2 X}{dx^2} + \lambda X &amp;= 0
-\end{aligned}
-\]</span> When <span class="math inline">\(\lambda&gt;0\)</span>, the first equation gives us exponential decay <span class="math inline">\(T(t) = e^{-\alpha \lambda t}\)</span>, and the second equation gives us <span class="math inline">\(X(x) = A \cos(\sqrt{\lambda} x) + B \sin(\sqrt{\lambda} x)\)</span> for some constants <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. The boundary conditions <span class="math inline">\(u(0,t) = 0\)</span> and <span class="math inline">\(u(L/2,t) = 0\)</span> imply that <span class="math inline">\(A = 0\)</span> and <span class="math inline">\(\sqrt{\lambda} L/2 = n\pi\)</span> for some integer <span class="math inline">\(n\)</span>, so we have <span class="math inline">\(\lambda = \left(\frac{2n\pi}{L}\right)^2\)</span>. Thus, we have a family of solutions <span class="math display">\[
-u_n(x,t) = e^{-\alpha \left(\frac{2n\pi}{L}\right)^2 t} \sin\left(\frac{2n\pi x}{L}\right).
-\]</span></p>
-<p>The general solution is a linear combination of these solutions: <span class="math display">\[
-u(x,t) = \sum_{n=1}^\infty c_n e^{-\alpha \left(\frac{2n\pi}{L}\right)^2 t} \sin\left(\frac{2n\pi x}{L}\right).
-\]</span></p>
-<p>To satisfy the initial condition <span class="math inline">\(u(x,0) = f(x)\)</span>, we need to choose the coefficients <span class="math inline">\(c_n\)</span> such that <span class="math display">\[
-f(x) = \sum_{n=1}^\infty c_n \sin\left(\frac{2n\pi x}{L}\right).
-\]</span></p>
-<p>This is exactly a Fourier series with only sine terms, so we can use the Fourier coefficients of <span class="math inline">\(f\)</span> to find the coefficients <span class="math inline">\(c_n\)</span>.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="fourier-series-and-differentiation" class="level2">
-<h2 class="anchored" data-anchor-id="fourier-series-and-differentiation">Fourier series and differentiation</h2>
-<p>More generally, we can use Fourier series to solve ODEs and PDEs by writing the solution as a Fourier series, and then using the properties of Fourier series to turn the differential equation into an algebraic equation for the Fourier coefficients.</p>
-<p>We can do this because of one important property. If <span class="math display">\[
+<p>Fourier analysis (both series and transforms, which we will see in the next section) is a vast area of mathematics, and there are many theorems. We will only cover two of the most important ones here. We will later see versions of these theorems for Fourier transforms.</p>
+<p>Again, we use the convention that <span class="math display">\[
 f(x) = a_0 + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right],
-\]</span> then we can differentiate this term by term, to get <span class="math display">\[
-f'(x) = \sum_{n=1}^\infty \left[ -\frac{2\pi n}{L} a_n \sin\left(\frac{2\pi n x}{L}\right) + \frac{2\pi n}{L} b_n \cos\left(\frac{2\pi n x}{L}\right) \right],
-\]</span> and therefore the Fourier coefficients of <span class="math inline">\(f'\)</span> are <span class="math display">\[
+\]</span> where <span class="math inline">\(L\)</span> is the period of the function <span class="math inline">\(f\)</span>.</p>
+<section id="convolution-theorem-non-examinable" class="level2">
+<h2 class="anchored" data-anchor-id="convolution-theorem-non-examinable">Convolution theorem (Non-examinable)</h2>
+<p>Consider two periodic functions <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(g(x)\)</span>, with the same period <span class="math inline">\(L\)</span>, and with Fourier coefficients <span class="math inline">\(a_n, b_n\)</span> and <span class="math inline">\(c_n, d_n\)</span> respectively. We can define the <em>convolution</em> of these two functions as <span class="math display">\[
+(f * g)(x) = \frac{1}{L}\int_0^L f(y) g(x - y) \, dy.
+\]</span> Here <span class="math inline">\(f * g\)</span> is a new function, which is also periodic with period <span class="math inline">\(L\)</span>. Functions like this arise in many contexts, such as signal processing, probability theory, and the study of PDEs. Versions of this are particularly important in modern machine learning, where they are used in convolutional neural networks (CNNs).</p>
+<p>The convolution theorem states that the Fourier coefficients <span class="math inline">\(A_n\)</span> and <span class="math inline">\(B_n\)</span> of the function <span class="math inline">\(f * g\)</span> are given by <span class="math display">\[
 \begin{aligned}
-c_n &amp;= \frac{2\pi n}{L} b_n, \\
-d_n &amp;= -\frac{2\pi n}{L} a_n.
+A_n &amp;= a_n c_n - b_n d_n, \\
+B_n &amp;= a_n d_n + b_n c_n.
 \end{aligned}
 \]</span></p>
-<p>Similarly, the second derivative of <span class="math inline">\(f\)</span> is <span class="math display">\[
-f''(x) = \sum_{n=1}^\infty \left[ -\left(\frac{2\pi n}{L}\right)^2 a_n \cos\left(\frac{2\pi n x}{L}\right) - \left(\frac{2\pi n}{L}\right)^2 b_n \sin\left(\frac{2\pi n x}{L}\right) \right],
-\]</span> and so the Fourier coefficients of <span class="math inline">\(f''\)</span> are the same as those of <span class="math inline">\(f\)</span>, but multiplied by <span class="math inline">\(-\left(\frac{2\pi n}{L}\right)^2\)</span>.</p>
-<section id="example-ode" class="level3">
-<h3 class="anchored" data-anchor-id="example-ode">Example (ODE)</h3>
-<p>Consider the equation <span class="math display">\[
-f''(x) + f(x) = g(x),
-\]</span> where <span class="math inline">\(g(x)\)</span> is a known function, and we are looking for a solution <span class="math inline">\(f(x)\)</span>.</p>
-<p>We can write <span class="math inline">\(g(x)\)</span> as a Fourier series: <span class="math display">\[
-g(x) = c_0 + \sum_{n=1}^\infty \left[ c_n \cos\left(\frac{2\pi n x}{L}\right) + d_n \sin\left(\frac{2\pi n x}{L}\right) \right].
-\]</span></p>
-<p>If we write <span class="math inline">\(f(x)\)</span> as a Fourier series: <span class="math display">\[
-f(x) = a_0 +\sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right],
-\]</span> then the second derivative of <span class="math inline">\(f\)</span> is: <span class="math display">\[
-f''(x) = \sum_{n=1}^\infty \left[ -\left(\frac{2\pi n}{L}\right)^2 a_n \cos\left(\frac{2\pi n x}{L}\right) - \left(\frac{2\pi n}{L}\right)^2 b_n \sin\left(\frac{2\pi n x}{L}\right) \right].
-\]</span></p>
-<p>Substituting into the differential equation, we get: <span class="math display">\[
-\begin{aligned}
-&amp;\sum_{n=1}^\infty \left[ -\left(\frac{2\pi n}{L}\right)^2 a_n \cos\left(\frac{2\pi n x}{L}\right) - \left(\frac{2\pi n}{L}\right)^2 b_n \sin\left(\frac{2\pi n x}{L}\right) \right] + a_0 + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right] \\&amp;= c_0 + \sum_{n=1}^\infty \left[ c_n \cos\left(\frac{2\pi n x}{L}\right) + d_n \sin\left(\frac{2\pi n x}{L}\right) \right].
-\end{aligned}
-\]</span> Because of the orthogonality of sines and cosines, we can <em>compare coefficients</em> to get different equations for the Fourier coefficients: <span class="math display">\[
-\begin{aligned}
-a_0 &amp;= c_0, \\
-\left(1 - \left(\frac{2\pi n}{L}\right)^2\right) a_n &amp;= c_n, \\
-\left(1 - \left(\frac{2\pi n}{L}\right)^2\right) b_n &amp;= d_n.
-\end{aligned}
-\]</span> If we know the Fourier coefficients of <span class="math inline">\(g\)</span>, then we can solve for the Fourier coefficients of <span class="math inline">\(f\)</span>, and hence find <span class="math inline">\(f\)</span> itself.</p>
-<p>For example, if <span class="math inline">\(g(x) = \cos\left(\frac{2\pi m x}{L}\right)\)</span> for some integer <span class="math inline">\(m\)</span>, then the Fourier coefficients of <span class="math inline">\(g\)</span> are <span class="math inline">\(c_m = 1\)</span> and all the other coefficients are zero. In this case, we have <span class="math display">\[
-\begin{aligned}
-a_0 &amp;= 0, \\
-a_n &amp;= \frac{1}{1 - \left(\frac{2\pi n}{L}\right)^2} \quad\text{for } n = m, \\
-a_n &amp;= 0 \quad\text{for } n \neq m, \\
-b_n &amp;= 0 \quad\text{for all } n,
-\end{aligned}
-\]</span> which then tells us that <span class="math display">\[
-f(x) = \frac{\cos\left(\frac{2\pi m x}{L}\right)}{1 - \left(\frac{2\pi m}{L}\right)^2}.
-\]</span></p>
-<p>Substituting this back into the original equation, we can check that it is indeed a solution: <span class="math display">\[
-\begin{aligned}
-f''(x) + f(x) &amp;= -\left(\frac{2\pi m}{L}\right)^2 \frac{\cos\left(\frac{2\pi m x}{L}\right)}{1 - \left(\frac{2\pi m}{L}\right)^2} + \frac{\cos\left(\frac{2\pi m x}{L}\right)}{1 - \left(\frac{2\pi m}{L}\right)^2} \\&amp;= \cos\left(\frac{2\pi m x}{L}\right).
-\end{aligned}
-\]</span></p>
+<p>This can be proved using the definition of the convolution and the Fourier coefficient formulas.</p>
 </section>
-<section id="example-pde" class="level3">
-<h3 class="anchored" data-anchor-id="example-pde">Example (PDE)</h3>
-<p>Consider the hyperdiffusion equation <span class="math display">\[
-{\frac{\partial u}{\partial t}} = -\alpha {\frac{\partial^4 u}{\partial x^4}},
-\]</span> where <span class="math inline">\(\alpha\)</span> is a positive constant. Let’s look for a solution <span class="math inline">\(u(x,t)\)</span> and the initial condition <span class="math inline">\(u(x,0) = f(x)\)</span> for some periodic function <span class="math inline">\(f\)</span> with period <span class="math inline">\(L\)</span>.</p>
-<p>We could use separation of variables to solve this, but it is easier to write <span class="math inline">\(u\)</span> as a Fourier series (assuming the solution is always periodic with period <span class="math inline">\(L\)</span>), and then use the properties of Fourier series to turn the PDE into an ODE for the Fourier coefficients.</p>
-<p>We write <span class="math display">\[
-u(x,t) = a_0(t) + \sum_{n=1}^\infty \left[ a_n(t) \cos\left(\frac{2\pi n x}{L}\right) + b_n(t) \sin\left(\frac{2\pi n x}{L}\right) \right].
-\]</span> Notice that the Fourier coefficients are now functions of <span class="math inline">\(t\)</span>, because <span class="math inline">\(u\)</span> is a function of both <span class="math inline">\(x\)</span> and <span class="math inline">\(t\)</span>.</p>
-<p>Then the fourth derivative of <span class="math inline">\(u\)</span> with respect to <span class="math inline">\(x\)</span> is <span class="math display">\[
-{\frac{\partial^4 u}{\partial x^4}} = \sum_{n=1}^\infty \left[ \left(\frac{2\pi n}{L}\right)^4 a_n(t) \cos\left(\frac{2\pi n x}{L}\right) + \left(\frac{2\pi n}{L}\right)^4 b_n(t) \sin\left(\frac{2\pi n x}{L}\right) \right].
-\]</span></p>
-<p>Substituting into the PDE and comparing coefficients of sines and cosines, we get <span class="math display">\[
+<section id="parsevals-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="parsevals-theorem">Parseval’s theorem</h2>
+<p>Parseval’s theorem states that the Fourier coefficients of a function <span class="math inline">\(f\)</span> satisfy <span class="math display">\[
+\frac{1}{L} \int_0^L |f(x)|^2
+= a_0^2 + \frac{1}{2} \sum_{n=1}^\infty (a_n^2 + b_n^2).
+\]</span> This is a very important result, because it tells us that the Fourier coefficients contain all the information about the function <span class="math inline">\(f\)</span>. In particular, it tells us that the sum of the squares of the Fourier coefficients is equal to the average value of the square of the function. This is a kind of “energy conservation” principle, which is very useful in many applications.</p>
+<section id="proof-non-examinable" class="level3">
+<h3 class="anchored" data-anchor-id="proof-non-examinable">Proof (Non-examinable)</h3>
+<p>Here we can again use the inner product. <span class="math display">\[
 \begin{aligned}
-\frac{da_0}{dt} &amp;= 0, \\
-\frac{da_n}{dt} &amp;= -\alpha \left(\frac{2\pi n}{L}\right)^4 a_n, \\
-\frac{db_n}{dt} &amp;= -\alpha \left(\frac{2\pi n}{L}\right)^4 b_n,
+\frac{1}{L} \int_0^L |f(x)|^2 dx &amp;= \frac{1}{L} \langle f(x), f(x) \rangle \\
+&amp;= \frac{1}{L} \left\langle a_0 + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right], a_0 + \sum_{m=1}^\infty \left[ a_m \cos\left(\frac{2\pi m x}{L}\right) + b_m \sin\left(\frac{2\pi m x}{L}\right) \right] \right\rangle \\
+&amp;= \frac{a_0^2}{L} \langle 1, 1 \rangle + \sum_{n=1}^\infty \left[ \frac{a_n^2}{L} \langle \cos\left(\frac{2\pi n x}{L}\right), \cos\left(\frac{2\pi n x}{L}\right) \rangle + \frac{b_n^2}{L} \langle \sin\left(\frac{2\pi n x}{L}\right), \sin\left(\frac{2\pi n x}{L}\right) \rangle \right] \\&amp;= a_0^2 + \frac{1}{2} \sum_{n=1}^\infty (a_n^2 + b_n^2).
 \end{aligned}
-\]</span> which is a family of ODEs for the Fourier coefficients. We can solve these ODEs to get <span class="math display">\[
-\begin{aligned}
-a_0(t) &amp;= a_0(0), \\
-a_n(t) &amp;= a_n(0) e^{-\alpha \left(\frac{2\pi n}{L}\right)^4 t}, \\
-b_n(t) &amp;= b_n(0) e^{-\alpha \left(\frac{2\pi n}{L}\right)^4 t}.
-\end{aligned}
-\]</span></p>
-<p>To satisfy the initial condition <span class="math inline">\(u(x,0) = f(x)\)</span>, we need to choose the Fourier coefficients at time <span class="math inline">\(t=0\)</span> such that <span class="math display">\[
-f(x) = a_0(0) + \sum_{n=1}^\infty \left[ a_n(0) \cos\left(\frac{2\pi n x}{L}\right) + b_n(0) \sin\left(\frac{2\pi n x}{L}\right) \right].
-\]</span> This is exactly a Fourier series, so we can use the Fourier coefficients of <span class="math inline">\(f\)</span> to find the initial values of the Fourier coefficients of <span class="math inline">\(u\)</span>, and hence find <span class="math inline">\(u\)</span> itself.</p>
+\]</span> where we have used the facts that <span class="math inline">\(\langle 1, 1 \rangle = L\)</span>, <span class="math inline">\(\langle \cos\left(\frac{2\pi n x}{L}\right), \cos\left(\frac{2\pi n x}{L}\right) \rangle = \frac{L}{2}\)</span>, and <span class="math inline">\(\langle \sin\left(\frac{2\pi n x}{L}\right), \sin\left(\frac{2\pi n x}{L}\right) \rangle = \frac{L}{2}\)</span>, with all the other inner products being zero.</p>
 
 
 </section>

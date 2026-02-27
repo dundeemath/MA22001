@@ -6,6 +6,180 @@ title: "Fourier series for ODEs and PDEs"
  \providecommand{\vv}[1]{{\mathbf{#1}}}
  \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
  \providecommand{\pdd}[2]{{\frac{\partial^2 #1}{\partial #2^2}}}
+ \providecommand{\pdddd}[2]{{\frac{\partial^4 #1}{\partial #2^4}}}
  \providecommand{\dd}[2]{{\frac{\mathrm{d} #1}{\mathrm{d} #2}}}
  \providecommand{\ddd}[2]{{\frac{\mathrm{d}^2 #1}{\mathrm{d} #2^2}}}
 :::
+
+Our main reason for introducing Fourier series in this module is to use them to solve differential equations. Firstly, Fourier series arise automatically when we use separation of variables.
+
+### Example (separation of variables)
+Consider the one-dimensional heat equation
+$$
+\pd{u}{t} = \alpha \pdd{u}{x}.
+$$
+Find a solution $u(x,t)$ subject to the boundary conditions $u(0,t) = u(L/2,t) = 0$ for all $t$, and the initial condition $u(x,0) = f(x)$ for some function $f$.
+
+::: {.callout-tip collapse="true"}
+## Solution
+We can try to solve this using separation of variables, by writing $u(x,t) = X(x)T(t)$ for some functions $X$ and $T$. Substituting into the heat equation, we get
+$$
+X(x) \frac{dT}{dt} = \alpha T(t) \frac{d^2 X}{dx^2}.
+$$
+Dividing both sides by $\alpha X(x) T(t)$, we get
+$$
+\frac{1}{\alpha T(t)} \frac{dT}{dt} = \frac{1}{X(x)} \frac{d^2 X}{dx^2}.
+$$
+The left-hand side is a function of $t$ only, and the right-hand side is a function of $x$ only. The only way this can be true for all $x$ and $t$ is if both sides are equal to the same constant, which we will call $-\lambda$. This gives us two ordinary differential equations:
+$$
+\begin{aligned}
+\frac{dT}{dt} + \alpha \lambda T &= 0, \\
+\frac{d^2 X}{dx^2} + \lambda X &= 0
+\end{aligned}
+$$
+When $\lambda>0$, the first equation gives us exponential decay $T(t) = e^{-\alpha \lambda t}$, and the second equation gives us $X(x) = A \cos(\sqrt{\lambda} x) + B \sin(\sqrt{\lambda} x)$ for some constants $A$ and $B$. The boundary conditions $u(0,t) = 0$ and $u(L/2,t) = 0$ imply that $A = 0$ and $\sqrt{\lambda} L/2 = n\pi$ for some integer $n$, so we have $\lambda = \left(\frac{2n\pi}{L}\right)^2$. Thus, we have a family of solutions
+$$
+u_n(x,t) = e^{-\alpha \left(\frac{2n\pi}{L}\right)^2 t} \sin\left(\frac{2n\pi x}{L}\right).
+$$
+
+The general solution is a linear combination of these solutions:
+$$
+u(x,t) = \sum_{n=1}^\infty c_n e^{-\alpha \left(\frac{2n\pi}{L}\right)^2 t} \sin\left(\frac{2n\pi x}{L}\right).
+$$
+
+To satisfy the initial condition $u(x,0) = f(x)$, we need to choose the coefficients $c_n$ such that
+$$
+f(x) = \sum_{n=1}^\infty c_n \sin\left(\frac{2n\pi x}{L}\right).
+$$
+
+This is exactly a Fourier series with only sine terms, so we can use the Fourier coefficients of $f$ to find the coefficients $c_n$.
+:::
+
+## Fourier series and differentiation
+More generally, we can use Fourier series to solve ODEs and PDEs by writing the solution as a Fourier series, and then using the properties of Fourier series to turn the differential equation into an algebraic equation for the Fourier coefficients.
+
+We can do this because of one important property.
+If
+$$
+f(x) = a_0 + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right],
+$$
+then we can differentiate this term by term, to get
+$$
+f'(x) = \sum_{n=1}^\infty \left[ -\frac{2\pi n}{L} a_n \sin\left(\frac{2\pi n x}{L}\right) + \frac{2\pi n}{L} b_n \cos\left(\frac{2\pi n x}{L}\right) \right],
+$$
+and therefore the Fourier coefficients of $f'$ are
+$$
+\begin{aligned}
+c_n &= \frac{2\pi n}{L} b_n, \\
+d_n &= -\frac{2\pi n}{L} a_n.
+\end{aligned}
+$$
+
+Similarly, the second derivative of $f$ is
+$$
+f''(x) = \sum_{n=1}^\infty \left[ -\left(\frac{2\pi n}{L}\right)^2 a_n \cos\left(\frac{2\pi n x}{L}\right) - \left(\frac{2\pi n}{L}\right)^2 b_n \sin\left(\frac{2\pi n x}{L}\right) \right],
+$$
+and so the Fourier coefficients of $f''$ are the same as those of $f$, but multiplied by $-\left(\frac{2\pi n}{L}\right)^2$.
+
+### Example (ODE)
+Consider the equation
+$$
+f''(x) + f(x) = g(x),
+$$
+where $g(x)$ is a known function, and we are looking for a solution $f(x)$.
+
+We can write $g(x)$ as a Fourier series:
+$$
+g(x) = c_0 + \sum_{n=1}^\infty \left[ c_n \cos\left(\frac{2\pi n x}{L}\right) + d_n \sin\left(\frac{2\pi n x}{L}\right) \right].
+$$
+
+If we write $f(x)$ as a Fourier series:
+$$
+f(x) = a_0 +\sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right],
+$$
+then the second derivative of $f$ is:
+$$
+f''(x) = \sum_{n=1}^\infty \left[ -\left(\frac{2\pi n}{L}\right)^2 a_n \cos\left(\frac{2\pi n x}{L}\right) - \left(\frac{2\pi n}{L}\right)^2 b_n \sin\left(\frac{2\pi n x}{L}\right) \right].
+$$
+
+Substituting into the differential equation, we get:
+$$
+\begin{aligned}
+&\sum_{n=1}^\infty \left[ -\left(\frac{2\pi n}{L}\right)^2 a_n \cos\left(\frac{2\pi n x}{L}\right) - \left(\frac{2\pi n}{L}\right)^2 b_n \sin\left(\frac{2\pi n x}{L}\right) \right] + a_0 + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right] \\&= c_0 + \sum_{n=1}^\infty \left[ c_n \cos\left(\frac{2\pi n x}{L}\right) + d_n \sin\left(\frac{2\pi n x}{L}\right) \right].
+\end{aligned}
+$$
+Because of the orthogonality of sines and cosines, we can _compare coefficients_ to get different equations for the Fourier coefficients:
+$$
+\begin{aligned}
+a_0 &= c_0, \\
+\left(1 - \left(\frac{2\pi n}{L}\right)^2\right) a_n &= c_n, \\
+\left(1 - \left(\frac{2\pi n}{L}\right)^2\right) b_n &= d_n.
+\end{aligned}
+$$
+If we know the Fourier coefficients of $g$, then we can solve for the Fourier coefficients of $f$, and hence find $f$ itself.
+
+For example, if $g(x) = \cos\left(\frac{2\pi m x}{L}\right)$ for some integer $m$, then the Fourier coefficients of $g$ are $c_m = 1$ and all the other coefficients are zero. In this case, we have
+$$
+\begin{aligned}
+a_0 &= 0, \\
+a_n &= \frac{1}{1 - \left(\frac{2\pi n}{L}\right)^2} \quad\text{for } n = m, \\
+a_n &= 0 \quad\text{for } n \neq m, \\
+b_n &= 0 \quad\text{for all } n,
+\end{aligned}
+$$
+which then tells us that
+$$
+f(x) = \frac{\cos\left(\frac{2\pi m x}{L}\right)}{1 - \left(\frac{2\pi m}{L}\right)^2}.
+$$
+
+Substituting this back into the original equation, we can check that it is indeed a solution:
+$$
+\begin{aligned}
+f''(x) + f(x) &= -\left(\frac{2\pi m}{L}\right)^2 \frac{\cos\left(\frac{2\pi m x}{L}\right)}{1 - \left(\frac{2\pi m}{L}\right)^2} + \frac{\cos\left(\frac{2\pi m x}{L}\right)}{1 - \left(\frac{2\pi m}{L}\right)^2} \\&= \cos\left(\frac{2\pi m x}{L}\right).
+\end{aligned}
+$$
+
+### Example (PDE)
+Consider the hyperdiffusion equation
+$$
+\pd{u}{t} = -\alpha \pdddd{u}{x},
+$$
+where $\alpha$ is a positive constant. Let's look for a solution $u(x,t)$ and the initial condition $u(x,0) = f(x)$ for some periodic function $f$ with period $L$.
+
+We could use separation of variables to solve this, but it is easier to write $u$ as a Fourier series (assuming the solution is always periodic with period $L$), and then use the properties of Fourier series to turn the PDE into an ODE for the Fourier coefficients.
+
+We write
+$$
+u(x,t) = a_0(t) + \sum_{n=1}^\infty \left[ a_n(t) \cos\left(\frac{2\pi n x}{L}\right) + b_n(t) \sin\left(\frac{2\pi n x}{L}\right) \right].
+$$
+Notice that the Fourier coefficients are now functions of $t$, because $u$ is a function of both $x$ and $t$.
+
+Then the fourth derivative of $u$ with respect to $x$ is
+$$
+\pdddd{u}{x} = \sum_{n=1}^\infty \left[ \left(\frac{2\pi n}{L}\right)^4 a_n(t) \cos\left(\frac{2\pi n x}{L}\right) + \left(\frac{2\pi n}{L}\right)^4 b_n(t) \sin\left(\frac{2\pi n x}{L}\right) \right].
+$$
+
+Substituting into the PDE and comparing coefficients of sines and cosines, we get
+$$
+\begin{aligned}
+\frac{da_0}{dt} &= 0, \\
+\frac{da_n}{dt} &= -\alpha \left(\frac{2\pi n}{L}\right)^4 a_n, \\
+\frac{db_n}{dt} &= -\alpha \left(\frac{2\pi n}{L}\right)^4 b_n,
+\end{aligned}
+$$
+which is a family of ODEs for the Fourier coefficients. We can solve these ODEs to get
+$$
+\begin{aligned}
+a_0(t) &= a_0(0), \\
+a_n(t) &= a_n(0) e^{-\alpha \left(\frac{2\pi n}{L}\right)^4 t}, \\
+b_n(t) &= b_n(0) e^{-\alpha \left(\frac{2\pi n}{L}\right)^4 t}.
+\end{aligned}
+$$
+
+To satisfy the initial condition $u(x,0) = f(x)$, we need to choose the Fourier coefficients at time $t=0$ such that
+$$
+f(x) = a_0(0) + \sum_{n=1}^\infty \left[ a_n(0) \cos\left(\frac{2\pi n x}{L}\right) + b_n(0) \sin\left(\frac{2\pi n x}{L}\right) \right].
+$$
+This is exactly a Fourier series, so we can use the Fourier coefficients of $f$ to find the initial values of the Fourier coefficients of $u$, and hence find $u$ itself.
+
+
