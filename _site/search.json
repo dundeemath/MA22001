@@ -83,7 +83,7 @@
     "section": "",
     "text": "You have already seen a method called separation of variables for solving ordinary differential equations (ODEs). Another method, with the same name, but almost completely unrelated, is used to find solutions to certain partial differential equations (PDEs). The basic idea is to guess the form of the solution as a product of functions, each depending on only one variable.\nFor example, if we have a PDE for \\(u(x,t)\\) in two variables \\(x\\) and \\(t\\), we might guess that the solution has the form \\[\nu(x,t) = X(x)T(t),\n\\] where \\(X(x)\\) is a function of \\(x\\) alone, and \\(T(t)\\) is a function of \\(t\\) alone. We can then substitute this guess into the PDE and see if we can separate the variables so that we get two ordinary differential equations, one for \\(X(x)\\) and one for \\(T(t)\\).",
     "crumbs": [
-      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Chapter 5: ODEs and PDEs (Week 20)",
       "Separation of variables"
     ]
   },
@@ -94,7 +94,7 @@
     "section": "A basic example",
     "text": "A basic example\nSuppose that we want to solve the one-dimensional heat equation \\[\n{\\frac{\\partial u}{\\partial t}} = {\\frac{\\partial^2 u}{\\partial x^2}},\n\\] subject to boundary conditions \\(u(0,t) = u(\\pi,t) = 0\\) for all \\(t\\)1, and an initial condition \\(u(x,0) = \\sin x\\).\nWe try separation of variables by guessing \\[\nu(x,t) = X(x)T(t).\n\\]\nSubstituting into the PDE gives \\[\nX(x)T'(t) = T(t)X''(x),\n\\] where the prime denotes differentiation with respect to the relevant variable.\nIf \\(X(x)\\neq 0\\) and \\(T(t)\\neq 0\\) we can divide both sides by \\(X(x)T(t)\\) to get \\[\n\\frac{T'(t)}{T(t)} = \\frac{X''(x)}{X(x)}.\n\\]\nThe left-hand side depends only on \\(t\\) and the right-hand side depends only on \\(x\\), so both sides must be equal to the same constant. It is convenient to call this constant \\(-\\lambda\\): \\[\n\\frac{T'(t)}{T(t)} = \\frac{X''(x)}{X(x)} = -\\lambda.\n\\]\n\n\n\n\n\n\nImportant\n\n\n\nThis is the crucial step!\n\n\nThis gives two ODEs: \\[\n\\begin{aligned}\nT'(t) + \\lambda T(t) &= 0,\\\\\nX''(x) + \\lambda X(x) &= 0.\n\\end{aligned}\n\\]\nThe first equation has solution \\[\nT(t)=Ae^{-\\lambda t}.\n\\]\nFor \\(X\\) we must consider different signs of \\(\\lambda\\), and (crucially) we must now impose the boundary conditions.\n\nUsing the boundary conditions to determine \\(\\lambda\\)\n\nCase \\(\\lambda = 0\\). Then \\(X''=0\\), so \\(X(x)=ax+b\\). The boundary condition \\(X(0)=0\\) gives \\(b=0\\), and \\(X(\\pi)=0\\) gives \\(a=0\\). Hence \\(X\\equiv 0\\), so this produces only the trivial solution \\(u\\equiv 0\\).\nCase \\(\\lambda&lt;0\\). Write \\(\\lambda=-\\mu^2\\) with \\(\\mu&gt;0\\). Then \\(X''-\\mu^2 X=0\\), so \\[\nX(x)=Be^{\\mu x}+Ce^{-\\mu x}.\n\\] Imposing \\(X(0)=0\\) gives \\(B+C=0\\), so \\(X(x)=B(e^{\\mu x}-e^{-\\mu x})\\). Then \\(X(\\pi)=0\\) forces \\(B=0\\), again giving only the trivial solution.\nCase \\(\\lambda&gt;0\\). Write \\(\\lambda=\\mu^2\\) with \\(\\mu&gt;0\\). Then \\[\nX(x)=B\\sin(\\mu x)+C\\cos(\\mu x).\n\\] Imposing \\(X(0)=0\\) gives \\(C=0\\), so \\(X(x)=B\\sin(\\mu x)\\). Imposing \\(X(\\pi)=0\\) then gives \\[\n\\sin(\\mu\\pi)=0 \\quad\\Longrightarrow\\quad \\mu = n \\in \\mathbb{N}.\n\\] Hence \\[\n\\lambda = n^2,\\qquad X_n(x)=\\sin(nx).\n\\]\n\nSo the separated solutions that satisfy the boundary conditions are \\[\nu_n(x,t)=e^{-n^2 t}\\sin(nx),\\qquad n=1,2,3,\\dots\n\\] (Here we have absorbed any overall constant into the coefficient in front of \\(\\sin(nx)\\).)\n\n\nMatching the initial condition\nFor the initial condition \\(u(x,0)=\\sin x\\), we simply take \\(n=1\\), giving \\[\nu(x,t)=e^{-t}\\sin x,\n\\] which satisfies the PDE, the boundary conditions, and the initial condition.\n\n\nDifferent initial conditions\nNow suppose the initial condition is \\[\nu(x,0)=2\\sin(2x)-\\sin(3x).\n\\] We use the corresponding separated solutions \\(u_2\\) and \\(u_3\\): \\[\nu_2(x,t)=e^{-4t}\\sin(2x),\\qquad u_3(x,t)=e^{-9t}\\sin(3x).\n\\] Because the heat equation is linear, any linear combination of solutions is also a solution, so \\[\nu(x,t)=2e^{-4t}\\sin(2x)-e^{-9t}\\sin(3x)\n\\] solves the PDE and boundary conditions, and it matches the initial condition at \\(t=0\\).",
     "crumbs": [
-      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Chapter 5: ODEs and PDEs (Week 20)",
       "Separation of variables"
     ]
   },
@@ -105,7 +105,7 @@
     "section": "Mixed partial derivatives",
     "text": "Mixed partial derivatives\nConsider the PDE \\[ {\\frac{\\partial^2 u}{\\partial x^2}} + {\\frac{\\partial^2 u}{\\partial y^2}} - \\frac{\\partial^2 u}{\\partial x \\partial y} = 0. \\] If we try the separation of variables method by guessing that the solution has the form \\(u(x,y) = X(x)Y(y)\\), then we get \\[ X''(x)Y(y) + X(x)Y''(y) - X'(x)Y'(y) = 0. \\] If \\(X(x) \\neq 0\\) and \\(Y(y) \\neq 0\\), then we can divide through by \\(X(x)Y(y)\\) and rearrange to get \\[ \\frac{X''(x)}{X(x)} + \\frac{Y''(y)}{Y(y)} - \\frac{X'(x)}{X(x)} \\frac{Y'(y)}{Y(y)} = 0. \\] We cannot easily separate the variables in this case. However, if we differentiate this equation with respect to \\(x\\), we get \\[ \\frac{X'''(x)X(x) -X''(x)X'(x)}{X(x)^2} - \\frac{X''(x)X(x) -X'(x)X'(x)}{X(x)^2}\\frac{Y'(y)}{Y(y)} = 0, \\] which can be rearranged to get \\[ \\frac{X'''(x)X(x) -X''(x)X'(x)}{X''(x)X(x) -X'(x)X'(x)} = \\frac{Y'(y)}{Y(y)}. \\] This is now separated, and we can proceed as before to get two ODEs that we can solve to get a solution to the original PDE. However, the resulting ODE for \\(X(x)\\) is quite complicated.2",
     "crumbs": [
-      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Chapter 5: ODEs and PDEs (Week 20)",
       "Separation of variables"
     ]
   },
@@ -116,7 +116,7 @@
     "section": "Nonlinear PDEs",
     "text": "Nonlinear PDEs\nThe examples above are linear PDEs, so sums of solutions are still solutions. Occasionally, separation of variables can also produce special solutions for nonlinear PDEs, but superposition does not work in general.\nConsider the inviscid Burgers’ equation \\[\n{\\frac{\\partial u}{\\partial t}} + u {\\frac{\\partial u}{\\partial x}} = 0.\n\\] Try \\(u(x,t)=X(x)T(t)\\). Then \\[\nu_t=X T',\\qquad u_x=X'T,\\qquad u\\,u_x=(XT)(X'T)=XX' T^2,\n\\] so the PDE becomes \\[\nX(x)T'(t) + X(x)X'(x)T(t)^2 = 0.\n\\] If \\(X\\neq 0\\) and \\(T\\neq 0\\), divide by \\(X(x)T(t)^2\\): \\[\n\\frac{T'(t)}{T(t)^2} = -X'(x).\n\\] As usual, one side depends only on \\(t\\) and the other only on \\(x\\), so both must be equal to a constant, say \\(\\lambda\\): \\[\n\\frac{T'(t)}{T(t)^2} = \\lambda,\\qquad X'(x) = -\\lambda.\n\\]\nThese ODEs can be solved explicitly: - From \\(X'=-\\lambda\\), we get \\(X(x)=-\\lambda x + B\\). - From \\(T'/T^2=\\lambda\\), we get \\(-1/T = \\lambda t + C\\), so \\[\n  T(t)= -\\frac{1}{\\lambda t + C}.\n  \\]\nPutting this together (for \\(\\lambda\\neq 0\\)), \\[\nu(x,t)=X(x)T(t)=\\frac{\\lambda x - B}{\\lambda t + C}.\n\\] (There is also the \\(\\lambda=0\\) case, which gives constant solutions \\(u\\equiv \\text{constant}\\).)\n\n\n\n\n\n\nNote\n\n\n\nThese are special separated solutions. The general solution of inviscid Burgers’ equation is usually found using the method of characteristics, and solutions can develop shocks (discontinuities) even from smooth initial data.",
     "crumbs": [
-      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Chapter 5: ODEs and PDEs (Week 20)",
       "Separation of variables"
     ]
   },
@@ -127,7 +127,7 @@
     "section": "Footnotes",
     "text": "Footnotes\n\n\nThese boundary conditions mean that the temperature is fixed at 0 at both ends of the rod. We could also consider boundary conditions where the first derivative is fixed, e.g. \\({\\frac{\\partial u}{\\partial x}}(0,t) = {\\frac{\\partial u}{\\partial x}}(L,t) = 0\\), which mean that no heat is flowing in or out at the ends of the rod.↩︎\nThis is just an example to show that sometimes you can still use separation of variables even if the PDE has mixed partial derivatives, but it is not a method that I would recommend in general. In this case, we could change variables to \\(u(x,y)=v(x+y,x-y)\\), which would give a much simpler PDE for \\(v\\), which we could then solve using separation of variables.↩︎",
     "crumbs": [
-      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Chapter 5: ODEs and PDEs (Week 20)",
       "Separation of variables"
     ]
   },
@@ -159,6 +159,17 @@
     "title": "Examples of PDEs",
     "section": "",
     "text": "}\nPDEs are partial differential equations. These are equations which relate partial derivatives of a function with each other. Unlike ordinary differential equations (ODEs), which involve ordinary derivatives with respect to a single independent variable, PDEs involve functions of multiple independent variables and their partial derivatives.\nTwo very famous examples of PDEs that are found in physics are the Navier-Stokes equations (which describe fluid flow) \\[\n\\begin{aligned}\n\\frac{\\partial {\\mathbf{u}}}{\\partial t} + ({\\mathbf{u}}\\cdot\\nabla){\\mathbf{u}} &= -\\frac{1}{\\rho}\\nabla p + \\nu \\nabla^2 {\\mathbf{u}} + {\\mathbf{f}},\\\\\n\\nabla \\cdot {\\mathbf{u}} &= 0\n\\end{aligned}\n\\]\nand Maxwell’s equations (which describe electromagnetism): \\[\n\\begin{aligned}\n\\nabla \\cdot {\\mathbf{E}} &= \\frac{\\rho}{\\epsilon_0} \\quad\\text{(Gauss's law)} \\\\\n\\nabla \\cdot {\\mathbf{B}} &= 0 \\quad\\text{(No magnetic monopoles)} \\\\\n\\nabla \\times {\\mathbf{E}} &= -\\frac{\\partial {\\mathbf{B}}}{\\partial t} \\quad\\text{(Faraday's law)} \\\\\n\\nabla \\times {\\mathbf{B}} &= \\mu_0\\left({\\mathbf{J}} + \\epsilon_0\\frac{\\partial {\\mathbf{E}}}{\\partial t}\\right) \\quad\\text{(Ampère-Maxwell law)}\n\\end{aligned}\n\\]\nEach of these PDEs needs a whole module of its own, but we will see some very simple examples here.",
+    "crumbs": [
+      "Chapter 5: ODEs and PDEs (Week 20)",
+      "Examples of PDEs"
+    ]
+  },
+  {
+    "objectID": "pdes.html#odes-from-pdes",
+    "href": "pdes.html#odes-from-pdes",
+    "title": "Examples of PDEs",
+    "section": "ODEs from PDEs",
+    "text": "ODEs from PDEs\nPDEs, even linear ones, are often very difficult to solve directly. However, by making certain assumptions about the form of the solution, we can reduce a PDE to an ODE, which is much easier to solve. For example, in the heat equation \\({\\frac{\\partial u}{\\partial t}} = {\\frac{\\partial^2 u}{\\partial x^2}}\\), if we assume that the solution is independent of space, i.e. \\(u(x,t) = u(t)\\), then the PDE reduces to the ODE \\({\\frac{\\partial u}{\\partial t}} = 0\\), which has the solution \\(u(t) = C\\) for some constant \\(C\\). Similarly we could assume that the solution is independent of time, i.e. \\(u(x,t) = u(x)\\), which reduces the PDE to the ODE \\({\\frac{\\partial^2 u}{\\partial x^2}} = 0\\), which has the solution \\(u(x) = C_1 x + C_2\\) for some constants \\(C_1\\) and \\(C_2\\).\nBy making a very slightly more general assumption about the form of the solution, we arrive at the method of separation of variables, which we will see in the next section.\nIn all of these cases, we are just guessing a solution of a particular form, and then checking that it satisfies the PDE. This is a very common technique for solving PDEs, and it is often the first step in finding a solution to a PDE. But this means that it is very important to check whether the solution we have found is unique, and whether it satisfies the boundary and initial conditions that we have specified.",
     "crumbs": [
       "Chapter 5: ODEs and PDEs (Week 20)",
       "Examples of PDEs"
@@ -248,102 +259,91 @@
     ]
   },
   {
-    "objectID": "fourierseries.html",
-    "href": "fourierseries.html",
-    "title": "Fourier series",
+    "objectID": "fourierstheorem.html",
+    "href": "fourierstheorem.html",
+    "title": "Theorems about Fourier series",
     "section": "",
-    "text": "The Fourier series of a periodic function allows us to express that function as a sum of sines and cosines. As long as a function is exactly periodic, that is \\(f(x + L) = f(x)\\) for some period \\(L\\), and it is “nice” enough (piecewise continuous, etc.), we can represent it as a Fourier series.\nWe write that1 \\[\nf(x) = a_0 + \\sum_{n=1}^\\infty \\left[ a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right],\n\\] where the \\(a_n\\) and \\(b_n\\) are the Fourier coefficients.\nConsider the function \\(f(x) = \\sin x\\). This is periodic with period \\(L = 2\\pi\\). It is already in the form of a Fourier series, with coefficients \\[\na_0 = 0, \\quad a_n = 0 \\text{ for all } n, \\quad b_1 = 1, \\quad b_n = 0 \\text{ for } n \\neq 1.\n\\]",
+    "text": "Fourier analysis (both series and transforms, which we will see in the next section) is a vast area of mathematics, and there are many theorems. We will only cover two of the most important ones here. We will later see versions of these theorems for Fourier transforms.\nAgain, we use the convention that \\[\nf(x) = a_0 + \\sum_{n=1}^\\infty \\left[ a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right],\n\\] where \\(L\\) is the period of the function \\(f\\).",
     "crumbs": [
       "Chapter 6: Fourier Series (Week 21)",
-      "Fourier Series"
+      "Fourier series theorems"
     ]
   },
   {
-    "objectID": "fourierseries.html#finding-the-fourier-coefficients",
-    "href": "fourierseries.html#finding-the-fourier-coefficients",
-    "title": "Fourier series",
-    "section": "Finding the Fourier coefficients",
-    "text": "Finding the Fourier coefficients\nAbove, we saw some very simple examples where we could read off the Fourier coefficients by inspection. In general, we need to use the orthogonality of sines and cosines to find the coefficients. This gives a formula \\[\n\\begin{aligned}\na_n &= \\begin{cases}\n\\frac{1}{L} \\int_0^L f(x)  dx & n = 0\\\\\n\\frac{2}{L} \\int_0^L f(x) \\cos\\left(\\frac{2\\pi n x}{L}\\right) dx & n &gt; 0\n\\end{cases}\\\\\nb_n &= \\frac{2}{L} \\int_0^L f(x)\n\\sin\\left(\\frac{2\\pi n x}{L}\\right) dx\n\\end{aligned}\n\\]\n\n\n\n\n\n\nNote\n\n\n\nThis is a very important formula, because it allows us to find the Fourier coefficients for any periodic function, as long as we can evaluate the integrals. In practice, these integrals can often be evaluated using standard techniques of integration, such as substitution, integration by parts, or using known integrals of trigonometric functions.\n\n\n\nProof (Non-examinable)\nUsing the definition of the Fourier series above, we have \\[\n\\begin{aligned}\n\\frac{1}{L} \\int_0^L f(x)  dx &= \\frac{1}{L} \\left\\langle f(x), 1 \\right\\rangle = \\frac{1}{L} \\left\\langle a_0 + \\sum_{n=1}^\\infty \\left[ a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right], 1 \\right\\rangle \\\\&= \\frac{a_0}{L}\\left\\langle 1, 1 \\right\\rangle  + \\sum_{n=1}^\\infty \\left[ a_n \\left\\langle \\cos\\left(\\frac{2\\pi n x}{L}\\right), 1 \\right\\rangle + b_n \\left\\langle \\sin\\left(\\frac{2\\pi n x}{L}\\right), 1 \\right\\rangle \\right] \\\\&= a_0.\n\\end{aligned}\n\\] Similarly we have \\[\n\\begin{aligned}\n\\frac{2}{L} \\int_0^L f(x) \\cos\\left(\\frac{2\\pi n x}{L}\\right) dx &= \\frac{2}{L} \\left\\langle f(x), \\cos\\left(\\frac{2\\pi n x}{L}\\right) \\right\\rangle \\\\&= \\frac{2}{L} \\left\\langle a_0 + \\sum_{m=1}^\\infty \\left[ a_m \\cos\\left(\\frac{2\\pi m x}{L}\\right) + b_m \\sin\\left(\\frac{2\\pi m x}{L}\\right) \\right], \\cos\\left(\\frac{2\\pi n x}{L}\\right) \\right\\rangle \\\\&= a_n,\n\\end{aligned}\n\\] and exactly the same with \\(\\sin\\left(\\frac{2\\pi n x}{L}\\right)\\) to get \\(b_n\\).\n\n\nExample\nFind the Fourier coefficients for the triangle wave \\[\nf(x) = \\begin{cases}\n\\frac{2x}{L} & 0 \\leq x &lt; \\frac{L}{2} \\\\\n\\frac{2(L-x)}{L} & \\frac{L}{2} \\leq x \\leq L\n\\end{cases}\n\\] which is periodic with period \\(L\\).\n\n\n\n\n\n\nSolution\n\n\n\n\n\nFor the constant term, \\[\na_0=\\frac{1}{L}\\int_0^L f(x)\\,dx\n=\\frac{1}{L}\\left(\\int_0^{L/2}\\frac{2x}{L}\\,dx+\\int_{L/2}^L\\frac{2(L-x)}{L}\\,dx\\right)\n=\\frac{1}{2}.\n\\]\nFor \\(n\\ge1\\), \\[\na_n=\\frac{2}{L}\\int_0^L f(x)\\cos\\!\\left(\\frac{2\\pi n x}{L}\\right)\\,dx.\n\\] Using the symmetry \\(f(x)=f(L-x)\\) and \\(\\cos\\!\\left(\\frac{2\\pi n (L-x)}{L}\\right)=\\cos\\!\\left(\\frac{2\\pi n x}{L}\\right)\\), this becomes \\[\na_n=\\frac{4}{L}\\int_0^{L/2}\\frac{2x}{L}\\cos\\!\\left(\\frac{2\\pi n x}{L}\\right)\\,dx\n=\\frac{8}{L^2}\\int_0^{L/2}x\\cos(kx)\\,dx,\n\\quad k=\\frac{2\\pi n}{L}.\n\\] Since \\(\\int x\\cos(kx)\\,dx=\\frac{x\\sin(kx)}{k}+\\frac{\\cos(kx)}{k^2}\\), evaluating from \\(0\\) to \\(L/2\\) gives \\[\n\\int_0^{L/2}x\\cos(kx)\\,dx=\\frac{(-1)^n-1}{k^2},\n\\] and hence \\[\na_n=\\frac{2}{\\pi^2 n^2}\\bigl((-1)^n-1\\bigr)\n=\n\\begin{cases}\n-\\dfrac{4}{\\pi^2 n^2} & n\\ \\text{odd},\\\\[6pt]\n0 & n\\ \\text{even}.\n\\end{cases}\n\\]\nFor the sine coefficients, \\[\nb_n=\\frac{2}{L}\\int_0^L f(x)\\sin\\!\\left(\\frac{2\\pi n x}{L}\\right)\\,dx=0\n\\quad\\text{for all }n,\n\\] again by the symmetry \\(f(x)=f(L-x)\\) and \\(\\sin\\!\\left(\\frac{2\\pi n (L-x)}{L}\\right)=-\\sin\\!\\left(\\frac{2\\pi n x}{L}\\right)\\).\nSo the Fourier series is \\[\nf(x)=\\frac{1}{2}-\\frac{4}{\\pi^2}\\sum_{\\substack{n=1\\\\ n\\ \\text{odd}}}^\\infty\n\\frac{1}{n^2}\\cos\\!\\left(\\frac{2\\pi n x}{L}\\right).\n\\]",
+    "objectID": "fourierstheorem.html#convolution-theorem-non-examinable",
+    "href": "fourierstheorem.html#convolution-theorem-non-examinable",
+    "title": "Theorems about Fourier series",
+    "section": "Convolution theorem (Non-examinable)",
+    "text": "Convolution theorem (Non-examinable)\nConsider two periodic functions \\(f(x)\\) and \\(g(x)\\), with the same period \\(L\\), and with Fourier coefficients \\(a_n, b_n\\) and \\(c_n, d_n\\) respectively. We can define the convolution of these two functions as \\[\n(f * g)(x) = \\frac{1}{L}\\int_0^L f(y) g(x - y) \\, dy.\n\\] Here \\(f * g\\) is a new function, which is also periodic with period \\(L\\). Functions like this arise in many contexts, such as signal processing, probability theory, and the study of PDEs. Versions of this are particularly important in modern machine learning, where they are used in convolutional neural networks (CNNs).\nThe convolution theorem states that the Fourier coefficients \\(A_n\\) and \\(B_n\\) of the function \\(f * g\\) are given by \\[\n\\begin{aligned}\nA_n &= a_n c_n - b_n d_n, \\\\\nB_n &= a_n d_n + b_n c_n.\n\\end{aligned}\n\\]\nThis can be proved using the definition of the convolution and the Fourier coefficient formulas.",
     "crumbs": [
       "Chapter 6: Fourier Series (Week 21)",
-      "Fourier Series"
+      "Fourier series theorems"
     ]
   },
   {
-    "objectID": "fourierseries.html#complex-form-of-the-fourier-series",
-    "href": "fourierseries.html#complex-form-of-the-fourier-series",
-    "title": "Fourier series",
-    "section": "Complex form of the Fourier series",
-    "text": "Complex form of the Fourier series\nThere are various ways to transform between real trigonometric functions and complex exponentials. Using Euler’s formula, we can rewrite the Fourier series in terms of complex exponentials: \\[\nf(x) = \\sum_{n=-\\infty}^\\infty c_n e^{i \\frac{2\\pi n x}{L}},\n\\] where the complex Fourier coefficients \\(c_n\\) are related to the real coefficients by \\[\nc_0 = a_0,\\quad\nc_n = \\frac{a_n - i b_n}{2}\\ \\text{ for } n&gt;0,\\quad\nc_{-n} = \\frac{a_n + i b_n}{2}\\ \\text{ for } n&gt;0.\n\\] Even if we are dealing with a purely real function, using the complex form can often simplify calculations, especially when dealing with differential equations or integrals, and it is this form that naturally leads us to the Fourier transform when we consider non-periodic functions.",
+    "objectID": "fourierstheorem.html#parsevals-theorem",
+    "href": "fourierstheorem.html#parsevals-theorem",
+    "title": "Theorems about Fourier series",
+    "section": "Parseval’s theorem",
+    "text": "Parseval’s theorem\nParseval’s theorem states that the Fourier coefficients of a function \\(f\\) satisfy \\[\n\\frac{1}{L} \\int_0^L |f(x)|^2\n= a_0^2 + \\frac{1}{2} \\sum_{n=1}^\\infty (a_n^2 + b_n^2).\n\\] This is a very important result, because it tells us that the Fourier coefficients contain all the information about the function \\(f\\). In particular, it tells us that the sum of the squares of the Fourier coefficients is equal to the average value of the square of the function. This is a kind of “energy conservation” principle, which is very useful in many applications.\n\nProof (Non-examinable)\nHere we can again use the inner product. \\[\n\\begin{aligned}\n\\frac{1}{L} \\int_0^L |f(x)|^2 dx &= \\frac{1}{L} \\langle f(x), f(x) \\rangle \\\\\n&= \\frac{1}{L} \\left\\langle a_0 + \\sum_{n=1}^\\infty \\left[ a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right], a_0 + \\sum_{m=1}^\\infty \\left[ a_m \\cos\\left(\\frac{2\\pi m x}{L}\\right) + b_m \\sin\\left(\\frac{2\\pi m x}{L}\\right) \\right] \\right\\rangle \\\\\n&= \\frac{a_0^2}{L} \\langle 1, 1 \\rangle + \\sum_{n=1}^\\infty \\left[ \\frac{a_n^2}{L} \\langle \\cos\\left(\\frac{2\\pi n x}{L}\\right), \\cos\\left(\\frac{2\\pi n x}{L}\\right) \\rangle + \\frac{b_n^2}{L} \\langle \\sin\\left(\\frac{2\\pi n x}{L}\\right), \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\rangle \\right] \\\\&= a_0^2 + \\frac{1}{2} \\sum_{n=1}^\\infty (a_n^2 + b_n^2).\n\\end{aligned}\n\\] where we have used the facts that \\(\\langle 1, 1 \\rangle = L\\), \\(\\langle \\cos\\left(\\frac{2\\pi n x}{L}\\right), \\cos\\left(\\frac{2\\pi n x}{L}\\right) \\rangle = \\frac{L}{2}\\), and \\(\\langle \\sin\\left(\\frac{2\\pi n x}{L}\\right), \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\rangle = \\frac{L}{2}\\), with all the other inner products being zero.",
     "crumbs": [
       "Chapter 6: Fourier Series (Week 21)",
-      "Fourier Series"
+      "Fourier series theorems"
     ]
   },
   {
-    "objectID": "fields.html",
-    "href": "fields.html",
-    "title": "Scalar and vector fields",
+    "objectID": "fourierdes.html",
+    "href": "fourierdes.html",
+    "title": "Fourier series for ODEs and PDEs",
     "section": "",
-    "text": "By this module, you should already be very comfortable with the idea of vectors as things which can be added and multiplied in certain ways, and as having both a direction and a magnitude.\nIn this module, we will deal with vector fields as well as scalar fields. Instead of being a single number, this is a vector or a scalar for every point in space.\nBefore we move onto definitions, here are some examples to make the concepts clear:\nMathematically, we can define a scalar field as a function which takes co-ordinates, and gives a single number. Mostly in this course we will deal with three dimensions, so the function takes three numbers and gives one. We can write this as \\[\n\\alpha : \\mathbb{R}^3 \\to \\mathbb{R}.\n\\] Very often we will use Greek letters for scalar fields.\nA vector field is a function which takes co-ordinates and gives us a vector. In 3D: \\[\n{\\mathbf{u}} : \\mathbb{R}^3 \\to \\mathbb{R}^3.\n\\] When printing, we use bold letters like \\({\\mathbf{u}}\\) for vector fields. You should use an underline when you handwrite them.",
+    "text": "Our main reason for introducing Fourier series in this module is to use them to solve differential equations. Firstly, Fourier series arise automatically when we use separation of variables.",
     "crumbs": [
-      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
-      "Scalar and vector fields"
+      "Chapter 6: Fourier Series (Week 21)",
+      "Application to ODEs and PDEs"
     ]
   },
   {
-    "objectID": "fields.html#making-scalar-fields-from-vector-fields",
-    "href": "fields.html#making-scalar-fields-from-vector-fields",
-    "title": "Scalar and vector fields",
-    "section": "Making scalar fields from vector fields",
-    "text": "Making scalar fields from vector fields\nWe’ll soon see ways to differentiate fields which can produce scalar fields from vector fields and vice versa, but even without calculus we can do this.\nFor example, given any two vector fields \\({\\mathbf{a}}\\) and \\({\\mathbf{b}}\\), we can take the dot product \\({\\mathbf{a}}\\cdot{\\mathbf{b}}\\) which gives a scalar field, or the cross product \\({\\mathbf{a}}\\times{\\mathbf{b}}\\) gives a different vector field. Or we can take the magnitude of a vector field to give a scalar field\n\nExample\nA wind tunnel is decribed by Cartesian co-ordinates with \\(0\\leq x \\leq 1\\), \\(0 \\leq y \\leq 1\\), \\(z\\in \\mathbb{R}\\).1 The velocity of the air in a wind tunnel is given by the vector field \\(\\mathbf{v} = [x(1-x)y(1-y), 0 ,0]\\).2 What is the windspeed, given as a scalar field? At what co-ordinates is the wind fastest? Where is there no wind?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThe speed is just the magnitude of the velocity, so we can work out \\[\n|\\mathbf{v}| = \\sqrt{\\left(x(1-x)y(1-y)\\right)^2 + 0^2 + 0^2} = x(1-x)y(1-y).\n\\] Note that this answer is non-negative, as required for a magnitude, because of the range of \\(x\\) and \\(y\\) we are considering.\nThis is greatest when \\(x=1/2\\) and \\(y=1/2\\). The value of \\(z\\) is not important. This is the centre of the wind tunnel.\nThere is no wind when \\(x=0\\) or \\(x=1\\) or \\(y=0\\) or \\(y=1\\). This makes sense - these are the sidewalls of the tunnel.",
+    "objectID": "fourierdes.html#fourier-series-and-differentiation",
+    "href": "fourierdes.html#fourier-series-and-differentiation",
+    "title": "Fourier series for ODEs and PDEs",
+    "section": "Fourier series and differentiation",
+    "text": "Fourier series and differentiation\nMore generally, we can use Fourier series to solve ODEs and PDEs by writing the solution as a Fourier series, and then using the properties of Fourier series to turn the differential equation into an algebraic equation for the Fourier coefficients.\nWe can do this because of one important property. If \\[\nf(x) = a_0 + \\sum_{n=1}^\\infty \\left[ a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right],\n\\] then we can differentiate this term by term, to get \\[\nf'(x) = \\sum_{n=1}^\\infty \\left[ -\\frac{2\\pi n}{L} a_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) + \\frac{2\\pi n}{L} b_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) \\right],\n\\] and therefore the Fourier coefficients of \\(f'\\) are \\[\n\\begin{aligned}\nc_n &= \\frac{2\\pi n}{L} b_n, \\\\\nd_n &= -\\frac{2\\pi n}{L} a_n.\n\\end{aligned}\n\\]\nSimilarly, the second derivative of \\(f\\) is \\[\nf''(x) = \\sum_{n=1}^\\infty \\left[ -\\left(\\frac{2\\pi n}{L}\\right)^2 a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) - \\left(\\frac{2\\pi n}{L}\\right)^2 b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right],\n\\] and so the Fourier coefficients of \\(f''\\) are the same as those of \\(f\\), but multiplied by \\(-\\left(\\frac{2\\pi n}{L}\\right)^2\\).\n\nExample (ODE)\nConsider the equation \\[\nf''(x) + f(x) = g(x),\n\\] where \\(g(x)\\) is a known function, and we are looking for a solution \\(f(x)\\).\nWe can write \\(g(x)\\) as a Fourier series: \\[\ng(x) = c_0 + \\sum_{n=1}^\\infty \\left[ c_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + d_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right].\n\\]\nIf we write \\(f(x)\\) as a Fourier series: \\[\nf(x) = a_0 +\\sum_{n=1}^\\infty \\left[ a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right],\n\\] then the second derivative of \\(f\\) is: \\[\nf''(x) = \\sum_{n=1}^\\infty \\left[ -\\left(\\frac{2\\pi n}{L}\\right)^2 a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) - \\left(\\frac{2\\pi n}{L}\\right)^2 b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right].\n\\]\nSubstituting into the differential equation, we get: \\[\n\\begin{aligned}\n&\\sum_{n=1}^\\infty \\left[ -\\left(\\frac{2\\pi n}{L}\\right)^2 a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) - \\left(\\frac{2\\pi n}{L}\\right)^2 b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right] + a_0 + \\sum_{n=1}^\\infty \\left[ a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right] \\\\&= c_0 + \\sum_{n=1}^\\infty \\left[ c_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + d_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right].\n\\end{aligned}\n\\] Because of the orthogonality of sines and cosines, we can compare coefficients to get different equations for the Fourier coefficients: \\[\n\\begin{aligned}\na_0 &= c_0, \\\\\n\\left(1 - \\left(\\frac{2\\pi n}{L}\\right)^2\\right) a_n &= c_n, \\\\\n\\left(1 - \\left(\\frac{2\\pi n}{L}\\right)^2\\right) b_n &= d_n.\n\\end{aligned}\n\\] If we know the Fourier coefficients of \\(g\\), then we can solve for the Fourier coefficients of \\(f\\), and hence find \\(f\\) itself.\nFor example, if \\(g(x) = \\cos\\left(\\frac{2\\pi m x}{L}\\right)\\) for some integer \\(m\\), then the Fourier coefficients of \\(g\\) are \\(c_m = 1\\) and all the other coefficients are zero. In this case, we have \\[\n\\begin{aligned}\na_0 &= 0, \\\\\na_n &= \\frac{1}{1 - \\left(\\frac{2\\pi n}{L}\\right)^2} \\quad\\text{for } n = m, \\\\\na_n &= 0 \\quad\\text{for } n \\neq m, \\\\\nb_n &= 0 \\quad\\text{for all } n,\n\\end{aligned}\n\\] which then tells us that \\[\nf(x) = \\frac{\\cos\\left(\\frac{2\\pi m x}{L}\\right)}{1 - \\left(\\frac{2\\pi m}{L}\\right)^2}.\n\\]\nSubstituting this back into the original equation, we can check that it is indeed a solution: \\[\n\\begin{aligned}\nf''(x) + f(x) &= -\\left(\\frac{2\\pi m}{L}\\right)^2 \\frac{\\cos\\left(\\frac{2\\pi m x}{L}\\right)}{1 - \\left(\\frac{2\\pi m}{L}\\right)^2} + \\frac{\\cos\\left(\\frac{2\\pi m x}{L}\\right)}{1 - \\left(\\frac{2\\pi m}{L}\\right)^2} \\\\&= \\cos\\left(\\frac{2\\pi m x}{L}\\right).\n\\end{aligned}\n\\]\n\n\nExample (PDE)\nConsider the hyperdiffusion equation \\[\n{\\frac{\\partial u}{\\partial t}} = -\\alpha {\\frac{\\partial^4 u}{\\partial x^4}},\n\\] where \\(\\alpha\\) is a positive constant. Let’s look for a solution \\(u(x,t)\\) and the initial condition \\(u(x,0) = f(x)\\) for some periodic function \\(f\\) with period \\(L\\).\nWe could use separation of variables to solve this, but it is easier to write \\(u\\) as a Fourier series (assuming the solution is always periodic with period \\(L\\)), and then use the properties of Fourier series to turn the PDE into an ODE for the Fourier coefficients.\nWe write \\[\nu(x,t) = a_0(t) + \\sum_{n=1}^\\infty \\left[ a_n(t) \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n(t) \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right].\n\\] Notice that the Fourier coefficients are now functions of \\(t\\), because \\(u\\) is a function of both \\(x\\) and \\(t\\).\nThen the fourth derivative of \\(u\\) with respect to \\(x\\) is \\[\n{\\frac{\\partial^4 u}{\\partial x^4}} = \\sum_{n=1}^\\infty \\left[ \\left(\\frac{2\\pi n}{L}\\right)^4 a_n(t) \\cos\\left(\\frac{2\\pi n x}{L}\\right) + \\left(\\frac{2\\pi n}{L}\\right)^4 b_n(t) \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right].\n\\]\nSubstituting into the PDE and comparing coefficients of sines and cosines, we get \\[\n\\begin{aligned}\n\\frac{da_0}{dt} &= 0, \\\\\n\\frac{da_n}{dt} &= -\\alpha \\left(\\frac{2\\pi n}{L}\\right)^4 a_n, \\\\\n\\frac{db_n}{dt} &= -\\alpha \\left(\\frac{2\\pi n}{L}\\right)^4 b_n,\n\\end{aligned}\n\\] which is a family of ODEs for the Fourier coefficients. We can solve these ODEs to get \\[\n\\begin{aligned}\na_0(t) &= a_0(0), \\\\\na_n(t) &= a_n(0) e^{-\\alpha \\left(\\frac{2\\pi n}{L}\\right)^4 t}, \\\\\nb_n(t) &= b_n(0) e^{-\\alpha \\left(\\frac{2\\pi n}{L}\\right)^4 t}.\n\\end{aligned}\n\\]\nTo satisfy the initial condition \\(u(x,0) = f(x)\\), we need to choose the Fourier coefficients at time \\(t=0\\) such that \\[\nf(x) = a_0(0) + \\sum_{n=1}^\\infty \\left[ a_n(0) \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n(0) \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right].\n\\] This is exactly a Fourier series, so we can use the Fourier coefficients of \\(f\\) to find the initial values of the Fourier coefficients of \\(u\\), and hence find \\(u\\) itself.",
     "crumbs": [
-      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
-      "Scalar and vector fields"
+      "Chapter 6: Fourier Series (Week 21)",
+      "Application to ODEs and PDEs"
     ]
   },
   {
-    "objectID": "fields.html#the-position-vector",
-    "href": "fields.html#the-position-vector",
-    "title": "Scalar and vector fields",
-    "section": "The position vector",
-    "text": "The position vector\nA very special vector field is where at each point, we assign the position vector for that point. So at the point \\((x,y,z)\\), the vector field has value \\([x,y,z]\\). We notate this by \\({\\mathbf{r}}\\). So (in Cartesian coordinates, at least) \\[\n{\\mathbf{r}}(x,y,z) = [x,y,z].\n\\]",
-    "crumbs": [
-      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
-      "Scalar and vector fields"
-    ]
-  },
-  {
-    "objectID": "fields.html#footnotes",
-    "href": "fields.html#footnotes",
-    "title": "Scalar and vector fields",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nHere the range of \\(z\\) is infinite. Wind tunnels aren’t really infinitely long, but this is a common approximation if one dimension is much larger than the others. We are neglecting the confinement in \\(z\\).↩︎\nAs a mathematician I don’t worry about units too much. Sometimes units are important, but for this module, you can safely ignore them.↩︎",
-    "crumbs": [
-      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
-      "Scalar and vector fields"
-    ]
-  },
-  {
-    "objectID": "curves.html",
-    "href": "curves.html",
-    "title": "Curves",
+    "objectID": "divergence.html",
+    "href": "divergence.html",
+    "title": "The divergence theorem",
     "section": "",
-    "text": "For the purpose of this module, a curve is a one-dimensional object in three-dimensional space. Imagine a hula hoop or a rope. In fact, we’ll generally assume:\nCurves have many important applications in maths and physics, for example, the path of an electron in a magnetic field, or the boundary of a circular disc.",
+    "text": "The divergence theorem is similar to Stokes’ theorem, but it relates volumes and surfaces rather than surfaces and curves. As the name suggests, it uses the divergence: \\[\n\\int_V \\nabla\\cdot {\\mathbf{F}}({\\mathbf{r}}) dV = \\int_{\\partial V} {\\mathbf{F}}({\\mathbf{r}})\\cdot d{\\mathbf{S}}.\n\\]\nAs you may be able to guess, \\(\\partial V\\) is the boundary of the volume \\(V\\), with the normal facing out. Again, we may need to do the boundary in more than one piece.",
     "crumbs": [
-      "Chapter 2: Curves, surfaces, volumes (Week 16)",
-      "Curves"
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Divergence theorem"
     ]
   },
   {
-    "objectID": "curves.html#longer-example",
-    "href": "curves.html#longer-example",
-    "title": "Curves",
-    "section": "Longer example",
-    "text": "Longer example\nTo conclude this part of the notes, let’s see a more complicated example.\nFind the total arc-length of the curve which is parameterised as \\[\n{\\mathbf{r}}(t) = \\left[ \\cos t, \\sin t, t \\right], \\quad 0\\leq t\\leq 4\\pi.\n\\]\nThink: What is this shape?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nIn \\(x\\) and \\(y\\), it just traces out a circle twice. But as it does so, the \\(z\\) co-ordinate increases. So this is a helix, like a slinky.\n\n\n\n\nStep 1: Calculate the tangent vector\n\\[\n{\\mathbf{T}}(t) = \\frac{d{\\mathbf{r}}}{dt} = \\left[-\\sin t, \\cos t, 1\\right].\n\\]\n\n\nStep 2: Find its magnitude\n\\[\n\\left|{\\mathbf{T}}\\right| = \\sqrt{(-\\sin t)^2+(\\cos t)^2 + 1^2} = \\sqrt{2}.\n\\]\n\n\nStep 3: Integrate this\nHere we need to remember that the limits of the integral are the limits of the parameterisation \\[\n\\int_0^{4\\pi} \\sqrt{2} dt = 4\\pi \\sqrt{2}.\n\\]",
+    "objectID": "divergence.html#greens-first-identity",
+    "href": "divergence.html#greens-first-identity",
+    "title": "The divergence theorem",
+    "section": "Green’s first identity",
+    "text": "Green’s first identity\nGreen’s first identity states that, for any scalar fields \\(f\\) and \\(g\\), \\[\n\\int_V \\left(g\\Delta f + \\nabla f \\cdot \\nabla g\\right)dV = \\int_{\\partial V} g\\nabla f \\cdot d{\\mathbf{S}}.\n\\]\nTo prove this, we obviously need to use the divergence theorem. It’s not clear how we can use that on the left-hand side, so let’s start with the right-hand side and use the product rule: \\[\n\\begin{aligned}\n\\int_{\\partial V} g\\nabla f \\cdot d{\\mathbf{S}} &= \\int_{V} \\nabla \\cdot \\left(g\\nabla f\\right) dV\n\\\\ &= \\int_{V} \\left(\\nabla g \\cdot \\nabla f + g\\nabla\\cdot\\nabla f \\right) dV\n\\end{aligned}\n\\] which is exactly what we wanted, when we remember that \\(\\Delta f = \\nabla\\cdot\\nabla f\\).",
     "crumbs": [
-      "Chapter 2: Curves, surfaces, volumes (Week 16)",
-      "Curves"
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Divergence theorem"
+    ]
+  },
+  {
+    "objectID": "divergence.html#greens-second-identity",
+    "href": "divergence.html#greens-second-identity",
+    "title": "The divergence theorem",
+    "section": "Green’s second identity",
+    "text": "Green’s second identity\nGreen’s second identity states that, for any scalar fields \\(f\\) and \\(g\\), \\[\n\\int_V \\left(f\\Delta g - g\\Delta f\\right)dV = \\int_{\\partial V} \\left(f\\nabla g - g\\nabla f\\right) \\cdot d{\\mathbf{S}}.\n\\] You can get this one from subtracting the first identity from itself with \\(f\\) and \\(g\\) swapped.\nThis one is quite handy when you rearrange it: \\[\n\\int_V f\\Delta g\\ dV = \\int_{\\partial V} \\left(f\\nabla g - g\\nabla f\\right) \\cdot d{\\mathbf{S}} + \\int_V g\\Delta f\\ dV.\n\\] This is basically a form of integration by parts for the Laplacian \\(\\Delta\\).",
+    "crumbs": [
+      "Chapter 4: Vector Calculus Theorems (Week 19)",
+      "Divergence theorem"
     ]
   },
   {
@@ -413,36 +413,124 @@
     ]
   },
   {
-    "objectID": "divergence.html",
-    "href": "divergence.html",
-    "title": "The divergence theorem",
+    "objectID": "curves.html",
+    "href": "curves.html",
+    "title": "Curves",
     "section": "",
-    "text": "The divergence theorem is similar to Stokes’ theorem, but it relates volumes and surfaces rather than surfaces and curves. As the name suggests, it uses the divergence: \\[\n\\int_V \\nabla\\cdot {\\mathbf{F}}({\\mathbf{r}}) dV = \\int_{\\partial V} {\\mathbf{F}}({\\mathbf{r}})\\cdot d{\\mathbf{S}}.\n\\]\nAs you may be able to guess, \\(\\partial V\\) is the boundary of the volume \\(V\\), with the normal facing out. Again, we may need to do the boundary in more than one piece.",
+    "text": "For the purpose of this module, a curve is a one-dimensional object in three-dimensional space. Imagine a hula hoop or a rope. In fact, we’ll generally assume:\nCurves have many important applications in maths and physics, for example, the path of an electron in a magnetic field, or the boundary of a circular disc.",
     "crumbs": [
-      "Chapter 4: Vector Calculus Theorems (Week 19)",
-      "Divergence theorem"
+      "Chapter 2: Curves, surfaces, volumes (Week 16)",
+      "Curves"
     ]
   },
   {
-    "objectID": "divergence.html#greens-first-identity",
-    "href": "divergence.html#greens-first-identity",
-    "title": "The divergence theorem",
-    "section": "Green’s first identity",
-    "text": "Green’s first identity\nGreen’s first identity states that, for any scalar fields \\(f\\) and \\(g\\), \\[\n\\int_V \\left(g\\Delta f + \\nabla f \\cdot \\nabla g\\right)dV = \\int_{\\partial V} g\\nabla f \\cdot d{\\mathbf{S}}.\n\\]\nTo prove this, we obviously need to use the divergence theorem. It’s not clear how we can use that on the left-hand side, so let’s start with the right-hand side and use the product rule: \\[\n\\begin{aligned}\n\\int_{\\partial V} g\\nabla f \\cdot d{\\mathbf{S}} &= \\int_{V} \\nabla \\cdot \\left(g\\nabla f\\right) dV\n\\\\ &= \\int_{V} \\left(\\nabla g \\cdot \\nabla f + g\\nabla\\cdot\\nabla f \\right) dV\n\\end{aligned}\n\\] which is exactly what we wanted, when we remember that \\(\\Delta f = \\nabla\\cdot\\nabla f\\).",
+    "objectID": "curves.html#longer-example",
+    "href": "curves.html#longer-example",
+    "title": "Curves",
+    "section": "Longer example",
+    "text": "Longer example\nTo conclude this part of the notes, let’s see a more complicated example.\nFind the total arc-length of the curve which is parameterised as \\[\n{\\mathbf{r}}(t) = \\left[ \\cos t, \\sin t, t \\right], \\quad 0\\leq t\\leq 4\\pi.\n\\]\nThink: What is this shape?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nIn \\(x\\) and \\(y\\), it just traces out a circle twice. But as it does so, the \\(z\\) co-ordinate increases. So this is a helix, like a slinky.\n\n\n\n\nStep 1: Calculate the tangent vector\n\\[\n{\\mathbf{T}}(t) = \\frac{d{\\mathbf{r}}}{dt} = \\left[-\\sin t, \\cos t, 1\\right].\n\\]\n\n\nStep 2: Find its magnitude\n\\[\n\\left|{\\mathbf{T}}\\right| = \\sqrt{(-\\sin t)^2+(\\cos t)^2 + 1^2} = \\sqrt{2}.\n\\]\n\n\nStep 3: Integrate this\nHere we need to remember that the limits of the integral are the limits of the parameterisation \\[\n\\int_0^{4\\pi} \\sqrt{2} dt = 4\\pi \\sqrt{2}.\n\\]",
     "crumbs": [
-      "Chapter 4: Vector Calculus Theorems (Week 19)",
-      "Divergence theorem"
+      "Chapter 2: Curves, surfaces, volumes (Week 16)",
+      "Curves"
     ]
   },
   {
-    "objectID": "divergence.html#greens-second-identity",
-    "href": "divergence.html#greens-second-identity",
-    "title": "The divergence theorem",
-    "section": "Green’s second identity",
-    "text": "Green’s second identity\nGreen’s second identity states that, for any scalar fields \\(f\\) and \\(g\\), \\[\n\\int_V \\left(f\\Delta g - g\\Delta f\\right)dV = \\int_{\\partial V} \\left(f\\nabla g - g\\nabla f\\right) \\cdot d{\\mathbf{S}}.\n\\] You can get this one from subtracting the first identity from itself with \\(f\\) and \\(g\\) swapped.\nThis one is quite handy when you rearrange it: \\[\n\\int_V f\\Delta g\\ dV = \\int_{\\partial V} \\left(f\\nabla g - g\\nabla f\\right) \\cdot d{\\mathbf{S}} + \\int_V g\\Delta f\\ dV.\n\\] This is basically a form of integration by parts for the Laplacian \\(\\Delta\\).",
+    "objectID": "fields.html",
+    "href": "fields.html",
+    "title": "Scalar and vector fields",
+    "section": "",
+    "text": "By this module, you should already be very comfortable with the idea of vectors as things which can be added and multiplied in certain ways, and as having both a direction and a magnitude.\nIn this module, we will deal with vector fields as well as scalar fields. Instead of being a single number, this is a vector or a scalar for every point in space.\nBefore we move onto definitions, here are some examples to make the concepts clear:\nMathematically, we can define a scalar field as a function which takes co-ordinates, and gives a single number. Mostly in this course we will deal with three dimensions, so the function takes three numbers and gives one. We can write this as \\[\n\\alpha : \\mathbb{R}^3 \\to \\mathbb{R}.\n\\] Very often we will use Greek letters for scalar fields.\nA vector field is a function which takes co-ordinates and gives us a vector. In 3D: \\[\n{\\mathbf{u}} : \\mathbb{R}^3 \\to \\mathbb{R}^3.\n\\] When printing, we use bold letters like \\({\\mathbf{u}}\\) for vector fields. You should use an underline when you handwrite them.",
     "crumbs": [
-      "Chapter 4: Vector Calculus Theorems (Week 19)",
-      "Divergence theorem"
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Scalar and vector fields"
+    ]
+  },
+  {
+    "objectID": "fields.html#making-scalar-fields-from-vector-fields",
+    "href": "fields.html#making-scalar-fields-from-vector-fields",
+    "title": "Scalar and vector fields",
+    "section": "Making scalar fields from vector fields",
+    "text": "Making scalar fields from vector fields\nWe’ll soon see ways to differentiate fields which can produce scalar fields from vector fields and vice versa, but even without calculus we can do this.\nFor example, given any two vector fields \\({\\mathbf{a}}\\) and \\({\\mathbf{b}}\\), we can take the dot product \\({\\mathbf{a}}\\cdot{\\mathbf{b}}\\) which gives a scalar field, or the cross product \\({\\mathbf{a}}\\times{\\mathbf{b}}\\) gives a different vector field. Or we can take the magnitude of a vector field to give a scalar field\n\nExample\nA wind tunnel is decribed by Cartesian co-ordinates with \\(0\\leq x \\leq 1\\), \\(0 \\leq y \\leq 1\\), \\(z\\in \\mathbb{R}\\).1 The velocity of the air in a wind tunnel is given by the vector field \\(\\mathbf{v} = [x(1-x)y(1-y), 0 ,0]\\).2 What is the windspeed, given as a scalar field? At what co-ordinates is the wind fastest? Where is there no wind?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThe speed is just the magnitude of the velocity, so we can work out \\[\n|\\mathbf{v}| = \\sqrt{\\left(x(1-x)y(1-y)\\right)^2 + 0^2 + 0^2} = x(1-x)y(1-y).\n\\] Note that this answer is non-negative, as required for a magnitude, because of the range of \\(x\\) and \\(y\\) we are considering.\nThis is greatest when \\(x=1/2\\) and \\(y=1/2\\). The value of \\(z\\) is not important. This is the centre of the wind tunnel.\nThere is no wind when \\(x=0\\) or \\(x=1\\) or \\(y=0\\) or \\(y=1\\). This makes sense - these are the sidewalls of the tunnel.",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Scalar and vector fields"
+    ]
+  },
+  {
+    "objectID": "fields.html#the-position-vector",
+    "href": "fields.html#the-position-vector",
+    "title": "Scalar and vector fields",
+    "section": "The position vector",
+    "text": "The position vector\nA very special vector field is where at each point, we assign the position vector for that point. So at the point \\((x,y,z)\\), the vector field has value \\([x,y,z]\\). We notate this by \\({\\mathbf{r}}\\). So (in Cartesian coordinates, at least) \\[\n{\\mathbf{r}}(x,y,z) = [x,y,z].\n\\]",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Scalar and vector fields"
+    ]
+  },
+  {
+    "objectID": "fields.html#footnotes",
+    "href": "fields.html#footnotes",
+    "title": "Scalar and vector fields",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nHere the range of \\(z\\) is infinite. Wind tunnels aren’t really infinitely long, but this is a common approximation if one dimension is much larger than the others. We are neglecting the confinement in \\(z\\).↩︎\nAs a mathematician I don’t worry about units too much. Sometimes units are important, but for this module, you can safely ignore them.↩︎",
+    "crumbs": [
+      "Chapter 1: Fields, co-ordinates and derivatives (Weeks 14/15)",
+      "Scalar and vector fields"
+    ]
+  },
+  {
+    "objectID": "fourierseries.html",
+    "href": "fourierseries.html",
+    "title": "Fourier series",
+    "section": "",
+    "text": "The Fourier series of a periodic function allows us to express that function as a sum of sines and cosines. As long as a function is exactly periodic, that is \\(f(x + L) = f(x)\\) for some period \\(L\\), and it is “nice” enough (piecewise continuous, etc.), we can represent it as a Fourier series.\nWe write that1 \\[\nf(x) = a_0 + \\sum_{n=1}^\\infty \\left[ a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right],\n\\] where the \\(a_n\\) and \\(b_n\\) are the Fourier coefficients.\nConsider the function \\(f(x) = \\sin x\\). This is periodic with period \\(L = 2\\pi\\). It is already in the form of a Fourier series, with coefficients \\[\na_0 = 0, \\quad a_n = 0 \\text{ for all } n, \\quad b_1 = 1, \\quad b_n = 0 \\text{ for } n \\neq 1.\n\\]",
+    "crumbs": [
+      "Chapter 6: Fourier Series (Week 21)",
+      "Fourier Series"
+    ]
+  },
+  {
+    "objectID": "fourierseries.html#orthogonality-of-sines-and-cosines",
+    "href": "fourierseries.html#orthogonality-of-sines-and-cosines",
+    "title": "Fourier series",
+    "section": "Orthogonality of sines and cosines",
+    "text": "Orthogonality of sines and cosines\nFor two vectors \\({\\mathbf{u}}\\) and \\({\\mathbf{v}}\\), we say they are orthogonal if their dot product is zero, that is \\({\\mathbf{u}} \\cdot {\\mathbf{v}} = 0\\). This means that the two vectors are perpendicular to each other in some sense.\nWe can generalise the dot product to an inner product defined as an integral. For periodic functions \\(f(x)\\) and \\(g(x)\\) with period \\(L\\), we define the inner product as \\[\n\\langle f(x), g(x) \\rangle = \\int_0^L f(x) g(x) dx.\n\\] Note that this satisfies \\(\\langle f(x), g(x) + h(x) \\rangle = \\langle f(x), g(x) \\rangle + \\langle f(x), h(x) \\rangle\\), and \\(\\langle f(x), c g(x) \\rangle = c \\langle f(x), g(x) \\rangle\\) for any constant \\(c\\). We will use these rules later.\nTwo functions are called orthogonal if their inner product is zero, that is \\(\\langle f, g \\rangle = 0\\).\nSine and cosine are both periodic functions with period \\(2\\pi\\), and they are orthogonal because \\[\n\\langle \\cos x, \\sin x \\rangle = \\int_0^{2\\pi} \\cos x \\sin x \\,dx = \\int_0^{2\\pi} \\frac{1}{2} \\sin(2x) \\,dx = 0.\n\\]\nIn fact, for any period \\(L\\) and any integers \\(m\\) and \\(n\\), we have \\[\n\\begin{aligned}\n\\left\\langle \\cos\\left(\\frac{2\\pi m x}{L}\\right), \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right\\rangle &= \\int_0^L \\cos\\left(\\frac{2\\pi m x}{L}\\right) \\sin\\left(\\frac{2\\pi n x}{L}\\right) dx &= 0, \\\\\n\\left\\langle \\cos\\left(\\frac{2\\pi m x}{L}\\right), \\cos\\left(\\frac{2\\pi n x}{L}\\right) \\right\\rangle &= \\int_0^L \\cos\\left(\\frac{2\\pi m x}{L}\\right) \\cos\\left(\\frac{2\\pi n x}{L}\\right) dx &= \\begin{cases}\nL & m = n = 0 \\\\\n\\frac{L}{2} & m = n &gt; 0 \\\\\n0 & m \\neq n\n\\end{cases},\\\\\n\\left\\langle \\sin\\left(\\frac{2\\pi m x}{L}\\right), \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right\\rangle &= \\int_0^L \\sin\\left(\\frac{2\\pi m x}{L}\\right) \\sin\\left(\\frac{2\\pi n x}{L}\\right) dx &= \\begin{cases}\n0 & m = 0 \\\\\n\\frac{L}{2} & m = n &gt; 0 \\\\\n0 & m \\neq n\n\\end{cases}\n\\end{aligned}\n\\]\nThis means that the set \\[\n\\left\\{ 1, \\cos\\left(\\frac{2\\pi x}{L}\\right), \\sin\\left(\\frac{2\\pi x}{L}\\right), \\cos\\left(\\frac{4\\pi x}{L}\\right), \\sin\\left(\\frac{4\\pi x}{L}\\right), \\ldots \\right\\}\n\\] is an orthogonal set of functions which are all periodic with period \\(L\\), and it is this property that allows us to find the Fourier coefficients using the inner product.",
+    "crumbs": [
+      "Chapter 6: Fourier Series (Week 21)",
+      "Fourier Series"
+    ]
+  },
+  {
+    "objectID": "fourierseries.html#finding-the-fourier-coefficients",
+    "href": "fourierseries.html#finding-the-fourier-coefficients",
+    "title": "Fourier series",
+    "section": "Finding the Fourier coefficients",
+    "text": "Finding the Fourier coefficients\nAbove, we saw some very simple examples where we could read off the Fourier coefficients by inspection. In general, we need to use the orthogonality of sines and cosines to find the coefficients. This gives a formula \\[\n\\begin{aligned}\na_n &= \\begin{cases}\n\\frac{1}{L} \\int_0^L f(x)  dx & n = 0\\\\\n\\frac{2}{L} \\int_0^L f(x) \\cos\\left(\\frac{2\\pi n x}{L}\\right) dx & n &gt; 0\n\\end{cases}\\\\\nb_n &= \\frac{2}{L} \\int_0^L f(x)\n\\sin\\left(\\frac{2\\pi n x}{L}\\right) dx\n\\end{aligned}\n\\]\n\n\n\n\n\n\nNote\n\n\n\nThis is a very important formula, because it allows us to find the Fourier coefficients for any periodic function, as long as we can evaluate the integrals. In practice, these integrals can often be evaluated using standard techniques of integration, such as substitution, integration by parts, or using known integrals of trigonometric functions.\n\n\n\nProof (Non-examinable)\nUsing the definition of the Fourier series above, we have \\[\n\\begin{aligned}\n\\frac{1}{L} \\int_0^L f(x)  dx &= \\frac{1}{L} \\left\\langle f(x), 1 \\right\\rangle = \\frac{1}{L} \\left\\langle a_0 + \\sum_{n=1}^\\infty \\left[ a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right], 1 \\right\\rangle \\\\&= \\frac{a_0}{L}\\left\\langle 1, 1 \\right\\rangle  + \\sum_{n=1}^\\infty \\left[ a_n \\left\\langle \\cos\\left(\\frac{2\\pi n x}{L}\\right), 1 \\right\\rangle + b_n \\left\\langle \\sin\\left(\\frac{2\\pi n x}{L}\\right), 1 \\right\\rangle \\right] \\\\&= a_0.\n\\end{aligned}\n\\] Similarly we have \\[\n\\begin{aligned}\n\\frac{2}{L} \\int_0^L f(x) \\cos\\left(\\frac{2\\pi n x}{L}\\right) dx &= \\frac{2}{L} \\left\\langle f(x), \\cos\\left(\\frac{2\\pi n x}{L}\\right) \\right\\rangle \\\\&= \\frac{2}{L} \\left\\langle a_0 + \\sum_{m=1}^\\infty \\left[ a_m \\cos\\left(\\frac{2\\pi m x}{L}\\right) + b_m \\sin\\left(\\frac{2\\pi m x}{L}\\right) \\right], \\cos\\left(\\frac{2\\pi n x}{L}\\right) \\right\\rangle \\\\&= a_n,\n\\end{aligned}\n\\] and exactly the same with \\(\\sin\\left(\\frac{2\\pi n x}{L}\\right)\\) to get \\(b_n\\).\n\n\nExample\nFind the Fourier coefficients for the triangle wave \\[\nf(x) = \\begin{cases}\n\\frac{2x}{L} & 0 \\leq x &lt; \\frac{L}{2} \\\\\n\\frac{2(L-x)}{L} & \\frac{L}{2} \\leq x \\leq L\n\\end{cases}\n\\] which is periodic with period \\(L\\).\n\n\n\n\n\n\nSolution\n\n\n\n\n\nFor the constant term, \\[\na_0=\\frac{1}{L}\\int_0^L f(x)\\,dx\n=\\frac{1}{L}\\left(\\int_0^{L/2}\\frac{2x}{L}\\,dx+\\int_{L/2}^L\\frac{2(L-x)}{L}\\,dx\\right)\n=\\frac{1}{2}.\n\\]\nFor \\(n\\ge1\\), \\[\na_n=\\frac{2}{L}\\int_0^L f(x)\\cos\\!\\left(\\frac{2\\pi n x}{L}\\right)\\,dx.\n\\] Using the symmetry \\(f(x)=f(L-x)\\) and \\(\\cos\\!\\left(\\frac{2\\pi n (L-x)}{L}\\right)=\\cos\\!\\left(\\frac{2\\pi n x}{L}\\right)\\), this becomes \\[\na_n=\\frac{4}{L}\\int_0^{L/2}\\frac{2x}{L}\\cos\\!\\left(\\frac{2\\pi n x}{L}\\right)\\,dx\n=\\frac{8}{L^2}\\int_0^{L/2}x\\cos(kx)\\,dx,\n\\quad k=\\frac{2\\pi n}{L}.\n\\] Since \\(\\int x\\cos(kx)\\,dx=\\frac{x\\sin(kx)}{k}+\\frac{\\cos(kx)}{k^2}\\), evaluating from \\(0\\) to \\(L/2\\) gives \\[\n\\int_0^{L/2}x\\cos(kx)\\,dx=\\frac{(-1)^n-1}{k^2},\n\\] and hence \\[\na_n=\\frac{2}{\\pi^2 n^2}\\bigl((-1)^n-1\\bigr)\n=\n\\begin{cases}\n-\\dfrac{4}{\\pi^2 n^2} & n\\ \\text{odd},\\\\[6pt]\n0 & n\\ \\text{even}.\n\\end{cases}\n\\]\nFor the sine coefficients, \\[\nb_n=\\frac{2}{L}\\int_0^L f(x)\\sin\\!\\left(\\frac{2\\pi n x}{L}\\right)\\,dx=0\n\\quad\\text{for all }n,\n\\] again by the symmetry \\(f(x)=f(L-x)\\) and \\(\\sin\\!\\left(\\frac{2\\pi n (L-x)}{L}\\right)=-\\sin\\!\\left(\\frac{2\\pi n x}{L}\\right)\\).\nSo the Fourier series is \\[\nf(x)=\\frac{1}{2}-\\frac{4}{\\pi^2}\\sum_{\\substack{n=1\\\\ n\\ \\text{odd}}}^\\infty\n\\frac{1}{n^2}\\cos\\!\\left(\\frac{2\\pi n x}{L}\\right).\n\\]",
+    "crumbs": [
+      "Chapter 6: Fourier Series (Week 21)",
+      "Fourier Series"
+    ]
+  },
+  {
+    "objectID": "fourierseries.html#complex-form-of-the-fourier-series",
+    "href": "fourierseries.html#complex-form-of-the-fourier-series",
+    "title": "Fourier series",
+    "section": "Complex form of the Fourier series",
+    "text": "Complex form of the Fourier series\nThere are various ways to transform between real trigonometric functions and complex exponentials. Using Euler’s formula, we can rewrite the Fourier series in terms of complex exponentials: \\[\nf(x) = \\sum_{n=-\\infty}^\\infty c_n e^{i \\frac{2\\pi n x}{L}},\n\\] where the complex Fourier coefficients \\(c_n\\) are related to the real coefficients by \\[\nc_0 = a_0,\\quad\nc_n = \\frac{a_n - i b_n}{2}\\ \\text{ for } n&gt;0,\\quad\nc_{-n} = \\frac{a_n + i b_n}{2}\\ \\text{ for } n&gt;0.\n\\] Even if we are dealing with a purely real function, using the complex form can often simplify calculations, especially when dealing with differential equations or integrals, and it is this form that naturally leads us to the Fourier transform when we consider non-periodic functions.",
+    "crumbs": [
+      "Chapter 6: Fourier Series (Week 21)",
+      "Fourier Series"
+    ]
+  },
+  {
+    "objectID": "fourierseries.html#footnotes",
+    "href": "fourierseries.html#footnotes",
+    "title": "Fourier series",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThere are various conventions for the Fourier series, but this is the one we will use in this module.↩︎",
+    "crumbs": [
+      "Chapter 6: Fourier Series (Week 21)",
+      "Fourier Series"
     ]
   },
   {
@@ -452,7 +540,7 @@
     "section": "",
     "text": "Fourier series work great when we have a function which is perfectly periodic, or defined on a finite interval. But often in practice we have functions defined on the whole real line, when we use an approximation that something in infinitely big.\nIn this case, there isn’t an exact wavelength that fits perfectly, and instead we have to consider all possible wavelengths. This leads us to the Fourier transform.",
     "crumbs": [
-      "Chapter 7: Fourier Transforms and Delta Functions (Week 23)",
+      "Chapter 7: Fourier Transforms and Delta Functions (Weeks 22/23)",
       "Fourier transforms"
     ]
   },
@@ -463,7 +551,7 @@
     "section": "Definition of the Fourier transform",
     "text": "Definition of the Fourier transform\nThe Fourier transform of a function \\(f(x)\\) is defined as1 \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty f(x) e^{-ikx}\\,dx,\n\\] where \\(k\\) is called the wave number.\nThe inverse Fourier transform is given by \\[\nf(x) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty F(k) e^{ikx}\\,dk.\n\\] These two equations are very similar in form to the Fourier series equations, but now we have integrals over all possible wave numbers \\(k\\) instead of sums over discrete wavelengths.",
     "crumbs": [
-      "Chapter 7: Fourier Transforms and Delta Functions (Week 23)",
+      "Chapter 7: Fourier Transforms and Delta Functions (Weeks 22/23)",
       "Fourier transforms"
     ]
   },
@@ -474,7 +562,7 @@
     "section": "Example",
     "text": "Example\nFind the Fourier transform of \\[\nf(x) = e^{-\\frac{x^2}{2}}.\n\\]\n\n\n\n\n\n\nSolution\n\n\n\n\n\nWe have \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{x^2}{2}} e^{-ikx}\\,dx.\n\\] Combining the exponents gives \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{x^2}{2} - ikx}\\,dx = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{x^2 + 2ikx}{2}}\\,dx.\n\\] Completing the square in the exponent: \\[\nx^2 + 2ikx = (x + ik)^2 - k^2,\n\\] so \\[\nF(k) = \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{(x + ik)^2 - k^2}{2}}\\,dx = \\frac{e^{\\frac{k^2}{2}}}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{(x + ik)^2}{2}}\\,dx.\n\\] Now we can make the substitution \\(u = x + ik\\), so \\(du = dx\\). The limits of integration remain \\(-\\infty\\) to \\(\\infty\\) since shifting by a constant (even a complex one) doesn’t change them. Thus, \\[\nF(k) = \\frac{e^{\\frac{k^2}{2}}}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty e^{-\\frac{u^2}{2}}\\,du.\n\\] The integral is just the standard Gaussian integral, which evaluates to \\(\\sqrt{2\\pi}\\). Therefore, \\[\nF(k) = \\frac{e^{\\frac{k^2}{2}}}{\\sqrt{2\\pi}} \\cdot \\sqrt{2\\pi} = e^{\\frac{k^2}{2}}.\n\\] So the Fourier transform of \\(f(x) = e^{-\\frac{x^2}{2\n}}\\) is \\[\nF(k) = e^{\\frac{k^2}{2}}.\n\\]",
     "crumbs": [
-      "Chapter 7: Fourier Transforms and Delta Functions (Week 23)",
+      "Chapter 7: Fourier Transforms and Delta Functions (Weeks 22/23)",
       "Fourier transforms"
     ]
   },
@@ -485,7 +573,7 @@
     "section": "Footnotes",
     "text": "Footnotes\n\n\nLots of different conventions exist for the Fourier transform, this is one of the most common.↩︎",
     "crumbs": [
-      "Chapter 7: Fourier Transforms and Delta Functions (Week 23)",
+      "Chapter 7: Fourier Transforms and Delta Functions (Weeks 22/23)",
       "Fourier transforms"
     ]
   },
@@ -518,7 +606,7 @@
     "section": "",
     "text": "ODEs are ordinary differential equations. These are equations which relate ordinary derivatives (not partial derivatives) of a function with each other. You’ve seen these many times before. Because they are ordinary derivatives, there is only one independent variable, which we typically call either \\(x\\) (when talking about space) or \\(t\\) (when talking about time). However, we can have more than one dependent variable.\nHere are some famous examples: \\[\n{\\frac{\\mathrm{d}^2 x}{\\mathrm{d} t^2}} = -\\frac{k}{m}x \\quad\\text{(Simple harmonic motion)}\n\\] This describes, for example, a mass on a spring, or a pendulum undergoing small oscillations. The solutions are sinusoidal functions.\n\\[\n{\\frac{\\mathrm{d} T}{\\mathrm{d} t}} = -k(T - T_{\\text{amb}}) \\quad\\text{(Newton's law of cooling)}\n\\] This describes how an object cools down (or heats up) to the ambient temperature. The solution is an exponential decay (or growth) towards the ambient temperature.\n\\[\n{\\frac{\\mathrm{d} N}{\\mathrm{d} t}} = rN\\left(1-\\frac{N}{K}\\right) \\quad\\text{(Logistic equation for population growth)}\n\\] This describes how a population grows rapidly at first, then slows down as it approaches a maximum sustainable population \\(K\\). The solution is an S-shaped curve called a logistic function.\nThe following is a ‘system’ of ODEs, meaning there are several dependent variables which depend on the same independent variable. Here, \\(x\\), \\(y\\) and \\(z\\) all depend on the time \\(t\\): \\[\n\\begin{aligned}\n{\\frac{\\mathrm{d} x}{\\mathrm{d} t}} &= \\sigma(y - x) \\\\\n{\\frac{\\mathrm{d} y}{\\mathrm{d} t}} &= x(\\rho - z) - y \\\\\n{\\frac{\\mathrm{d} z}{\\mathrm{d} t}} &= xy - \\beta z \\quad\\text{(Lorenz equations for convection)}\n\\end{aligned}\n\\] This system is famous for exhibiting chaotic behaviour for certain values of the parameters \\(\\sigma\\), \\(\\rho\\) and \\(\\beta\\). It was originally derived as a simplified model of atmospheric convection.",
     "crumbs": [
-      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Chapter 5: ODEs and PDEs (Week 20)",
       "Examples of ODEs"
     ]
   },
@@ -529,7 +617,7 @@
     "section": "Linear and non-linear ODEs",
     "text": "Linear and non-linear ODEs\nAn ODE is called linear if the dependent variable(s) and all their derivatives appear to the first power only, and are not multiplied together. Of those above, the first two are linear, and the last two are non-linear.\nIn many cases, you can solve linear ODEs exactly, using methods you may have seen before. Non-linear ODEs are much harder to solve, and in many cases you can’t find an exact solution at all. Instead, you have to use numerical methods to find approximate solutions.\nIt is important to be able to distinguish the two types, especially as we progress to PDEs.",
     "crumbs": [
-      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Chapter 5: ODEs and PDEs (Week 20)",
       "Examples of ODEs"
     ]
   },
@@ -540,7 +628,7 @@
     "section": "Constant coefficient ODEs",
     "text": "Constant coefficient ODEs\nA linear ODE is said to have constant coefficients if the coefficients (the numbers multiplying the dependent variable and its derivatives) are constants, not functions of the independent variable. For example, in the simple harmonic motion equation above, \\(k\\) and \\(m\\) are constants, so it has constant coefficients.\nA general first order linear, homogeneous ODE with constant coefficients has the form \\[\na{\\frac{\\mathrm{d} y}{\\mathrm{d} x}} + by = 0,\n\\] and this has the solution \\[\ny(x) = C e^{-\\frac{b}{a}x},\n\\] where \\(C\\) is an arbitrary constant.\nA general second order linear, homogeneous ODE with constant coefficients has the form \\[\na{\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}} + b{\\frac{\\mathrm{d} y}{\\mathrm{d} x}} + cy = 0,\n\\] and this has the solution \\[\ny(x) = C_1 e^{r_1 x} + C_2 e^{r_2 x},\n\\] where \\(C_1\\) and \\(C_2\\) are arbitrary constants, and \\(r_1\\) and \\(r_2\\) are the roots of the characteristic equation \\[\nar^2 + br + c = 0.\n\\] which may be real or complex.\nNotice the exponentials in both cases. If in doubt, try an exponential function as a solution!\n\n\n\n\n\n\nNote\n\n\n\nThis stuff shouldn’t be new to you, but we’ll see it a lot when we’re solving more complicated equations, so it’s worth making sure you understand it.",
     "crumbs": [
-      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Chapter 5: ODEs and PDEs (Week 20)",
       "Examples of ODEs"
     ]
   },
@@ -551,7 +639,7 @@
     "section": "Existence and uniqueness of solutions",
     "text": "Existence and uniqueness of solutions\nWhen we turn to PDEs, it becomes very important to know whether a given equation has a solution, and whether that solution is unique. For ODEs, and especially for those second order, constant coefficient ODEs, there are well-established theorems that give conditions for existence and uniqueness of solutions.\nIt is important, however, to think about what boundary or initial conditions you need to specify in order to get a unique solution. For example, for a second order ODE, you typically need to specify two conditions, such specifying both the value of the function and its first derivative at a particular point, but this may not always be the case.\nFor example, consider the equation \\[\n{\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}} + {\\frac{\\mathrm{d} y}{\\mathrm{d} x}} = 0.\n\\] This is a second order ODE, so we need two conditions to specify a unique solution.\nThe general solution to this ODE is \\[\ny(x) = C_1 + C_2 e^{-x},\n\\] where \\(C_1\\) and \\(C_2\\) are arbitrary constants.\nIf we specify \\[\ny(0) = 1, \\quad {\\frac{\\mathrm{d} y}{\\mathrm{d} x}}(0) = -1,\n\\] then we find the unique solution \\[\ny(x) = 1 - e^{-x}.\n\\]\nHowever, if we instead specify that \\[\n{\\frac{\\mathrm{d} y}{\\mathrm{d} x}}(0) = -1, \\quad {\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}}(0) = 1,\n\\] then we can have any solution of the form \\[\ny(x) = C_1 + e^{-x},\n\\] where \\(C_1\\) can be any constant. Thus, the solution is not unique in this case.\nOn the other hand, if we specify \\[\n{\\frac{\\mathrm{d} y}{\\mathrm{d} x}}(0) = -1, \\quad {\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}}(0) = -1,\n\\] then there is no solution that satisfies both conditions, so in this case a solution does not exist.\n\n\n\n\n\n\nNote\n\n\n\nI won’t ever ask you to solve an equation that has no solution, though I might ask you to identify when this is the case.\n\n\n\nExample\nFor the linear ODE \\[\n{\\frac{\\mathrm{d}^2 y}{\\mathrm{d} x^2}} = -y,\n\\] subject to the boundary conditions \\(y(0) = 0\\) and \\(y'(0) = 1\\) for some constant \\(L\\), find a solution and show that it is unique.\n\n\n\n\n\n\nSolution\n\n\n\n\n\nWe can guess a solution to this ODE \\[\ny(x) = sin(x),\n\\] which satisfies the ODE and the boundary conditions.\nTo show that this solution is unique, suppose there is another solution \\(y_2(x)\\) that also satisfies the ODE and the boundary conditions. Then the difference \\(v(x) = y(x) - y_2(x)\\) satisfies the ODE \\[\n{\\frac{\\mathrm{d}^2 v}{\\mathrm{d} x^2}} = -v,\n\\] with the boundary conditions \\(v(0) = y(0) - y_2(0) = 0\\) and \\(v'(0) = y'(0) - y_2'(0) = 0\\).\nThe general solution to this ODE is \\[\nv(x) = C_1 \\sin(x) + C_2 \\cos(x),\n\\] where \\(C_1\\) and \\(C_2\\) are arbitrary constants. Applying the boundary conditions gives \\(C_1 = 0\\) and \\(C_2 = 0\\), so the only solution is the trivial solution \\(v(x) = 0\\). Therefore, we have shown that \\(y(x) = y_2(x)\\), and hence the solution is unique.",
     "crumbs": [
-      "Chapter 5: ODEs and PDEs (Weeks 20/21)",
+      "Chapter 5: ODEs and PDEs (Week 20)",
       "Examples of ODEs"
     ]
   },
@@ -740,105 +828,6 @@
     "crumbs": [
       "Chapter 3: Integrals (Weeks 17/18)",
       "Volume integrals"
-    ]
-  },
-  {
-    "objectID": "fourierseries.html#orthogonality-of-sines-and-cosines",
-    "href": "fourierseries.html#orthogonality-of-sines-and-cosines",
-    "title": "Fourier series",
-    "section": "Orthogonality of sines and cosines",
-    "text": "Orthogonality of sines and cosines\nFor two vectors \\({\\mathbf{u}}\\) and \\({\\mathbf{v}}\\), we say they are orthogonal if their dot product is zero, that is \\({\\mathbf{u}} \\cdot {\\mathbf{v}} = 0\\). This means that the two vectors are perpendicular to each other in some sense.\nWe can generalise the dot product to an inner product defined as an integral. For periodic functions \\(f(x)\\) and \\(g(x)\\) with period \\(L\\), we define the inner product as \\[\n\\langle f(x), g(x) \\rangle = \\int_0^L f(x) g(x) dx.\n\\] Note that this satisfies \\(\\langle f(x), g(x) + h(x) \\rangle = \\langle f(x), g(x) \\rangle + \\langle f(x), h(x) \\rangle\\), and \\(\\langle f(x), c g(x) \\rangle = c \\langle f(x), g(x) \\rangle\\) for any constant \\(c\\). We will use these rules later.\nTwo functions are called orthogonal if their inner product is zero, that is \\(\\langle f, g \\rangle = 0\\).\nSine and cosine are both periodic functions with period \\(2\\pi\\), and they are orthogonal because \\[\n\\langle \\cos x, \\sin x \\rangle = \\int_0^{2\\pi} \\cos x \\sin x \\,dx = \\int_0^{2\\pi} \\frac{1}{2} \\sin(2x) \\,dx = 0.\n\\]\nIn fact, for any period \\(L\\) and any integers \\(m\\) and \\(n\\), we have \\[\n\\begin{aligned}\n\\left\\langle \\cos\\left(\\frac{2\\pi m x}{L}\\right), \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right\\rangle &= \\int_0^L \\cos\\left(\\frac{2\\pi m x}{L}\\right) \\sin\\left(\\frac{2\\pi n x}{L}\\right) dx &= 0, \\\\\n\\left\\langle \\cos\\left(\\frac{2\\pi m x}{L}\\right), \\cos\\left(\\frac{2\\pi n x}{L}\\right) \\right\\rangle &= \\int_0^L \\cos\\left(\\frac{2\\pi m x}{L}\\right) \\cos\\left(\\frac{2\\pi n x}{L}\\right) dx &= \\begin{cases}\nL & m = n = 0 \\\\\n\\frac{L}{2} & m = n &gt; 0 \\\\\n0 & m \\neq n\n\\end{cases},\\\\\n\\left\\langle \\sin\\left(\\frac{2\\pi m x}{L}\\right), \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right\\rangle &= \\int_0^L \\sin\\left(\\frac{2\\pi m x}{L}\\right) \\sin\\left(\\frac{2\\pi n x}{L}\\right) dx &= \\begin{cases}\n0 & m = 0 \\\\\n\\frac{L}{2} & m = n &gt; 0 \\\\\n0 & m \\neq n\n\\end{cases}\n\\end{aligned}\n\\]\nThis means that the set \\[\n\\left\\{ 1, \\cos\\left(\\frac{2\\pi x}{L}\\right), \\sin\\left(\\frac{2\\pi x}{L}\\right), \\cos\\left(\\frac{4\\pi x}{L}\\right), \\sin\\left(\\frac{4\\pi x}{L}\\right), \\ldots \\right\\}\n\\] is an orthogonal set of functions which are all periodic with period \\(L\\), and it is this property that allows us to find the Fourier coefficients using the inner product.",
-    "crumbs": [
-      "Chapter 6: Fourier Series (Week 21)",
-      "Fourier Series"
-    ]
-  },
-  {
-    "objectID": "fourierseries.html#footnotes",
-    "href": "fourierseries.html#footnotes",
-    "title": "Fourier series",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThere are various conventions for the Fourier series, but this is the one we will use in this module.↩︎",
-    "crumbs": [
-      "Chapter 6: Fourier Series (Week 21)",
-      "Fourier Series"
-    ]
-  },
-  {
-    "objectID": "pdes.html#odes-from-pdes",
-    "href": "pdes.html#odes-from-pdes",
-    "title": "Examples of PDEs",
-    "section": "ODEs from PDEs",
-    "text": "ODEs from PDEs\nPDEs, even linear ones, are often very difficult to solve directly. However, by making certain assumptions about the form of the solution, we can reduce a PDE to an ODE, which is much easier to solve. For example, in the heat equation \\({\\frac{\\partial u}{\\partial t}} = {\\frac{\\partial^2 u}{\\partial x^2}}\\), if we assume that the solution is independent of space, i.e. \\(u(x,t) = u(t)\\), then the PDE reduces to the ODE \\({\\frac{\\partial u}{\\partial t}} = 0\\), which has the solution \\(u(t) = C\\) for some constant \\(C\\). Similarly we could assume that the solution is independent of time, i.e. \\(u(x,t) = u(x)\\), which reduces the PDE to the ODE \\({\\frac{\\partial^2 u}{\\partial x^2}} = 0\\), which has the solution \\(u(x) = C_1 x + C_2\\) for some constants \\(C_1\\) and \\(C_2\\).\nBy making a very slightly more general assumption about the form of the solution, we arrive at the method of separation of variables, which we will see in the next section.\nIn all of these cases, we are just guessing a solution of a particular form, and then checking that it satisfies the PDE. This is a very common technique for solving PDEs, and it is often the first step in finding a solution to a PDE. But this means that it is very important to check whether the solution we have found is unique, and whether it satisfies the boundary and initial conditions that we have specified.",
-    "crumbs": [
-      "Chapter 5: ODEs and PDEs (Week 20)",
-      "Examples of PDEs"
-    ]
-  },
-  {
-    "objectID": "fourierdes.html",
-    "href": "fourierdes.html",
-    "title": "Fourier series for ODEs and PDEs",
-    "section": "",
-    "text": "Our main reason for introducing Fourier series in this module is to use them to solve differential equations. Firstly, Fourier series arise automatically when we use separation of variables.",
-    "crumbs": [
-      "Chapter 6: Fourier Series (Week 21)",
-      "Application to ODEs and PDEs"
-    ]
-  },
-  {
-    "objectID": "fourierdes.html#fourier-series-and-differentiation",
-    "href": "fourierdes.html#fourier-series-and-differentiation",
-    "title": "Fourier series for ODEs and PDEs",
-    "section": "Fourier series and differentiation",
-    "text": "Fourier series and differentiation\nMore generally, we can use Fourier series to solve ODEs and PDEs by writing the solution as a Fourier series, and then using the properties of Fourier series to turn the differential equation into an algebraic equation for the Fourier coefficients.\nWe can do this because of one important property. If \\[\nf(x) = a_0 + \\sum_{n=1}^\\infty \\left[ a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right],\n\\] then we can differentiate this term by term, to get \\[\nf'(x) = \\sum_{n=1}^\\infty \\left[ -\\frac{2\\pi n}{L} a_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) + \\frac{2\\pi n}{L} b_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) \\right],\n\\] and therefore the Fourier coefficients of \\(f'\\) are \\[\n\\begin{aligned}\nc_n &= \\frac{2\\pi n}{L} b_n, \\\\\nd_n &= -\\frac{2\\pi n}{L} a_n.\n\\end{aligned}\n\\]\nSimilarly, the second derivative of \\(f\\) is \\[\nf''(x) = \\sum_{n=1}^\\infty \\left[ -\\left(\\frac{2\\pi n}{L}\\right)^2 a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) - \\left(\\frac{2\\pi n}{L}\\right)^2 b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right],\n\\] and so the Fourier coefficients of \\(f''\\) are the same as those of \\(f\\), but multiplied by \\(-\\left(\\frac{2\\pi n}{L}\\right)^2\\).\n\nExample (ODE)\nConsider the equation \\[\nf''(x) + f(x) = g(x),\n\\] where \\(g(x)\\) is a known function, and we are looking for a solution \\(f(x)\\).\nWe can write \\(g(x)\\) as a Fourier series: \\[\ng(x) = c_0 + \\sum_{n=1}^\\infty \\left[ c_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + d_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right].\n\\]\nIf we write \\(f(x)\\) as a Fourier series: \\[\nf(x) = a_0 +\\sum_{n=1}^\\infty \\left[ a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right],\n\\] then the second derivative of \\(f\\) is: \\[\nf''(x) = \\sum_{n=1}^\\infty \\left[ -\\left(\\frac{2\\pi n}{L}\\right)^2 a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) - \\left(\\frac{2\\pi n}{L}\\right)^2 b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right].\n\\]\nSubstituting into the differential equation, we get: \\[\n\\begin{aligned}\n&\\sum_{n=1}^\\infty \\left[ -\\left(\\frac{2\\pi n}{L}\\right)^2 a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) - \\left(\\frac{2\\pi n}{L}\\right)^2 b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right] + a_0 + \\sum_{n=1}^\\infty \\left[ a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right] \\\\&= c_0 + \\sum_{n=1}^\\infty \\left[ c_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + d_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right].\n\\end{aligned}\n\\] Because of the orthogonality of sines and cosines, we can compare coefficients to get different equations for the Fourier coefficients: \\[\n\\begin{aligned}\na_0 &= c_0, \\\\\n\\left(1 - \\left(\\frac{2\\pi n}{L}\\right)^2\\right) a_n &= c_n, \\\\\n\\left(1 - \\left(\\frac{2\\pi n}{L}\\right)^2\\right) b_n &= d_n.\n\\end{aligned}\n\\] If we know the Fourier coefficients of \\(g\\), then we can solve for the Fourier coefficients of \\(f\\), and hence find \\(f\\) itself.\nFor example, if \\(g(x) = \\cos\\left(\\frac{2\\pi m x}{L}\\right)\\) for some integer \\(m\\), then the Fourier coefficients of \\(g\\) are \\(c_m = 1\\) and all the other coefficients are zero. In this case, we have \\[\n\\begin{aligned}\na_0 &= 0, \\\\\na_n &= \\frac{1}{1 - \\left(\\frac{2\\pi n}{L}\\right)^2} \\quad\\text{for } n = m, \\\\\na_n &= 0 \\quad\\text{for } n \\neq m, \\\\\nb_n &= 0 \\quad\\text{for all } n,\n\\end{aligned}\n\\] which then tells us that \\[\nf(x) = \\frac{\\cos\\left(\\frac{2\\pi m x}{L}\\right)}{1 - \\left(\\frac{2\\pi m}{L}\\right)^2}.\n\\]\nSubstituting this back into the original equation, we can check that it is indeed a solution: \\[\n\\begin{aligned}\nf''(x) + f(x) &= -\\left(\\frac{2\\pi m}{L}\\right)^2 \\frac{\\cos\\left(\\frac{2\\pi m x}{L}\\right)}{1 - \\left(\\frac{2\\pi m}{L}\\right)^2} + \\frac{\\cos\\left(\\frac{2\\pi m x}{L}\\right)}{1 - \\left(\\frac{2\\pi m}{L}\\right)^2} \\\\&= \\cos\\left(\\frac{2\\pi m x}{L}\\right).\n\\end{aligned}\n\\]\n\n\nExample (PDE)\nConsider the hyperdiffusion equation \\[\n{\\frac{\\partial u}{\\partial t}} = -\\alpha {\\frac{\\partial^4 u}{\\partial x^4}},\n\\] where \\(\\alpha\\) is a positive constant. Let’s look for a solution \\(u(x,t)\\) and the initial condition \\(u(x,0) = f(x)\\) for some periodic function \\(f\\) with period \\(L\\).\nWe could use separation of variables to solve this, but it is easier to write \\(u\\) as a Fourier series (assuming the solution is always periodic with period \\(L\\)), and then use the properties of Fourier series to turn the PDE into an ODE for the Fourier coefficients.\nWe write \\[\nu(x,t) = a_0(t) + \\sum_{n=1}^\\infty \\left[ a_n(t) \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n(t) \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right].\n\\] Notice that the Fourier coefficients are now functions of \\(t\\), because \\(u\\) is a function of both \\(x\\) and \\(t\\).\nThen the fourth derivative of \\(u\\) with respect to \\(x\\) is \\[\n{\\frac{\\partial^4 u}{\\partial x^4}} = \\sum_{n=1}^\\infty \\left[ \\left(\\frac{2\\pi n}{L}\\right)^4 a_n(t) \\cos\\left(\\frac{2\\pi n x}{L}\\right) + \\left(\\frac{2\\pi n}{L}\\right)^4 b_n(t) \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right].\n\\]\nSubstituting into the PDE and comparing coefficients of sines and cosines, we get \\[\n\\begin{aligned}\n\\frac{da_0}{dt} &= 0, \\\\\n\\frac{da_n}{dt} &= -\\alpha \\left(\\frac{2\\pi n}{L}\\right)^4 a_n, \\\\\n\\frac{db_n}{dt} &= -\\alpha \\left(\\frac{2\\pi n}{L}\\right)^4 b_n,\n\\end{aligned}\n\\] which is a family of ODEs for the Fourier coefficients. We can solve these ODEs to get \\[\n\\begin{aligned}\na_0(t) &= a_0(0), \\\\\na_n(t) &= a_n(0) e^{-\\alpha \\left(\\frac{2\\pi n}{L}\\right)^4 t}, \\\\\nb_n(t) &= b_n(0) e^{-\\alpha \\left(\\frac{2\\pi n}{L}\\right)^4 t}.\n\\end{aligned}\n\\]\nTo satisfy the initial condition \\(u(x,0) = f(x)\\), we need to choose the Fourier coefficients at time \\(t=0\\) such that \\[\nf(x) = a_0(0) + \\sum_{n=1}^\\infty \\left[ a_n(0) \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n(0) \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right].\n\\] This is exactly a Fourier series, so we can use the Fourier coefficients of \\(f\\) to find the initial values of the Fourier coefficients of \\(u\\), and hence find \\(u\\) itself.",
-    "crumbs": [
-      "Chapter 6: Fourier Series (Week 21)",
-      "Application to ODEs and PDEs"
-    ]
-  },
-  {
-    "objectID": "fourierstheorem.html",
-    "href": "fourierstheorem.html",
-    "title": "Theorems about Fourier series",
-    "section": "",
-    "text": "Fourier analysis (both series and transforms, which we will see in the next section) is a vast area of mathematics, and there are many theorems. We will only cover two of the most important ones here. We will later see versions of these theorems for Fourier transforms.\nAgain, we use the convention that \\[\nf(x) = a_0 + \\sum_{n=1}^\\infty \\left[ a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right],\n\\] where \\(L\\) is the period of the function \\(f\\).",
-    "crumbs": [
-      "Chapter 6: Fourier Series (Week 21)",
-      "Fourier series theorems"
-    ]
-  },
-  {
-    "objectID": "fourierstheorem.html#convolution-theorem",
-    "href": "fourierstheorem.html#convolution-theorem",
-    "title": "Theorems about Fourier series",
-    "section": "Convolution theorem",
-    "text": "Convolution theorem\nConsider two periodic functions \\(f(x)\\) and \\(g(x)\\), with the same period \\(L\\), and with Fourier coefficients \\(a_n, b_n\\) and \\(c_n, d_n\\) respectively. We can define the convolution of these two functions as \\[\n(f * g)(x) = \\int_0^L f(y) g(x - y) \\, dy.\n\\] Here \\(f * g\\) is a new function, which is also periodic with period \\(L\\). Functions like this arise in many contexts, such as signal processing, probability theory, and the study of PDEs. Versions of this are particularly important in modern machine learning, where they are used in convolutional neural networks (CNNs).\nThe convolution theorem states that the Fourier coefficients \\(A_n\\) and \\(B_n\\) of the function \\(f * g\\) are given by \\[\n\\begin{aligned}\nA_n &= a_n c_n - b_n d_n, \\\\\nB_n &= a_n d_n + b_n c_n.\n\\end{aligned}\n\\]\n\nProof (Non-examinable)\nThis can be calculated directly, just by substituting the Fourier series for \\(f\\) and \\(g\\) into the definition of the convolution, and then using the orthogonality of sines and cosines to evaluate the integrals. The details are a bit tedious, but it is a straightforward calculation.\n\\[\n\\begin{aligned}\nA_0 &=\\frac{1}{L} \\int_0^L (f * g)(x) \\, dx \\\\&= \\frac{1}{L} \\int_0^L \\left( \\int_0^L f(y) g(x - y) \\, dy \\right) dx \\\\\n&= \\int_0^L f(y) \\left( \\frac{1}{L} \\int_0^L g(x - y) \\, dx \\right) dy \\\\\n&= \\int_0^L f(y) c_0 \\, dy \\\\\n&= c_0 a_0.\n\\end{aligned}\n\\]",
-    "crumbs": [
-      "Chapter 6: Fourier Series (Week 21)",
-      "Fourier series theorems"
-    ]
-  },
-  {
-    "objectID": "fourierstheorem.html#parsevals-theorem",
-    "href": "fourierstheorem.html#parsevals-theorem",
-    "title": "Theorems about Fourier series",
-    "section": "Parseval’s theorem",
-    "text": "Parseval’s theorem\nParseval’s theorem states that the Fourier coefficients of a function \\(f\\) satisfy \\[\n\\frac{1}{L} \\int_0^L |f(x)|^2\n= a_0^2 + \\frac{1}{2} \\sum_{n=1}^\\infty (a_n^2 + b_n^2).\n\\] This is a very important result, because it tells us that the Fourier coefficients contain all the information about the function \\(f\\). In particular, it tells us that the sum of the squares of the Fourier coefficients is equal to the average value of the square of the function. This is a kind of “energy conservation” principle, which is very useful in many applications.\n\nProof (Non-examinable)\nHere we can again use the inner product. \\[\n\\begin{aligned}\n\\frac{1}{L} \\int_0^L |f(x)|^2 dx &= \\frac{1}{L} \\langle f(x), f(x) \\rangle \\\\\n&= \\frac{1}{L} \\left\\langle a_0 + \\sum_{n=1}^\\infty \\left[ a_n \\cos\\left(\\frac{2\\pi n x}{L}\\right) + b_n \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\right], a_0 + \\sum_{m=1}^\\infty \\left[ a_m \\cos\\left(\\frac{2\\pi m x}{L}\\right) + b_m \\sin\\left(\\frac{2\\pi m x}{L}\\right) \\right] \\right\\rangle \\\\\n&= \\frac{a_0^2}{L} \\langle 1, 1 \\rangle + \\sum_{n=1}^\\infty \\left[ \\frac{a_n^2}{L} \\langle \\cos\\left(\\frac{2\\pi n x}{L}\\right), \\cos\\left(\\frac{2\\pi n x}{L}\\right) \\rangle + \\frac{b_n^2}{L} \\langle \\sin\\left(\\frac{2\\pi n x}{L}\\right), \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\rangle \\right] \\\\&= a_0^2 + \\frac{1}{2} \\sum_{n=1}^\\infty (a_n^2 + b_n^2).\n\\end{aligned}\n\\] where we have used the facts that \\(\\langle 1, 1 \\rangle = L\\), \\(\\langle \\cos\\left(\\frac{2\\pi n x}{L}\\right), \\cos\\left(\\frac{2\\pi n x}{L}\\right) \\rangle = \\frac{L}{2}\\), and \\(\\langle \\sin\\left(\\frac{2\\pi n x}{L}\\right), \\sin\\left(\\frac{2\\pi n x}{L}\\right) \\rangle = \\frac{L}{2}\\), with all the other inner products being zero.",
-    "crumbs": [
-      "Chapter 6: Fourier Series (Week 21)",
-      "Fourier series theorems"
-    ]
-  },
-  {
-    "objectID": "fourierstheorem.html#convolution-theorem-non-examinable",
-    "href": "fourierstheorem.html#convolution-theorem-non-examinable",
-    "title": "Theorems about Fourier series",
-    "section": "Convolution theorem (Non-examinable)",
-    "text": "Convolution theorem (Non-examinable)\nConsider two periodic functions \\(f(x)\\) and \\(g(x)\\), with the same period \\(L\\), and with Fourier coefficients \\(a_n, b_n\\) and \\(c_n, d_n\\) respectively. We can define the convolution of these two functions as \\[\n(f * g)(x) = \\frac{1}{L}\\int_0^L f(y) g(x - y) \\, dy.\n\\] Here \\(f * g\\) is a new function, which is also periodic with period \\(L\\). Functions like this arise in many contexts, such as signal processing, probability theory, and the study of PDEs. Versions of this are particularly important in modern machine learning, where they are used in convolutional neural networks (CNNs).\nThe convolution theorem states that the Fourier coefficients \\(A_n\\) and \\(B_n\\) of the function \\(f * g\\) are given by \\[\n\\begin{aligned}\nA_n &= a_n c_n - b_n d_n, \\\\\nB_n &= a_n d_n + b_n c_n.\n\\end{aligned}\n\\]\nThis can be proved using the definition of the convolution and the Fourier coefficient formulas.",
-    "crumbs": [
-      "Chapter 6: Fourier Series (Week 21)",
-      "Fourier series theorems"
     ]
   }
 ]
