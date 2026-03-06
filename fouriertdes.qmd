@@ -1,0 +1,123 @@
+---
+title: "Fourier transforms for Differential Equations"
+---
+
+::: {.hidden}
+ \providecommand{\vv}[1]{{\mathbf{#1}}}
+ \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
+:::
+
+Our main reason for seeing Fourier transforms in this module is to solve differential equations. They are useful because of one important property:
+
+If the Fourier transform of $f(x)$ is $\hat f(k)$, the Fourier transform of its derivative, $f'(x)$, is $\widehat{f'}(k)=ik\hat f(k)$.
+
+::: {.callout-tip}
+In Fourier space, differentiation becomes multiplication by $ik$.
+:::
+
+### 'Proof' (Non-examinable)
+For a differentiable function $f(x)$, we can calculate the Fourier transform of its derivative directly:
+$$
+\begin{aligned}
+\widehat{f'}(k) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f'(x) e^{-ikx}\,dx \\
+&= \frac{1}{\sqrt{2\pi}}\left[ f(x)e^{-ikx} \right]_{-\infty}^\infty + \frac{ik}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x) e^{-ikx}\,dx \\
+&= ik\hat f(k),
+\end{aligned}
+$$
+where we have used integration by parts and the fact that $f(x)$ vanishes at infinity (which is a common assumption for functions we want to take Fourier transforms of).
+
+::: {.callout-note}
+To do this properly, we need contour integration and the theory of distributions, which is beyond the scope of this module. The calculation above is just a heuristic argument to show why the property holds.
+:::
+
+## Second derivatives
+By applying the property above twice, we can also find the Fourier transform of the second derivative:
+$$ 
+\widehat{f''}(k) = ik\widehat{f'}(k) = ik(ik\hat f(k)) = -k^2 \hat f(k).
+$$
+
+## Fourier transforms of differential equations
+This property of Fourier transforms allows us to solve differential equations by transforming them into algebraic equations in Fourier space. For example, if we have a differential equation of the form
+$$
+f'(x) + f(x) = g(x),
+$$
+we can take the Fourier transform of both sides to get
+$$
+ik \hat f(k) + \hat f(k) = \hat g(k),
+$$
+which simplifies to
+$$
+(1 + ik)\hat f(k) = \hat g(k),
+$$
+and therefore
+$$
+\hat f(k) = \frac{\hat g(k)}{1 + ik}.
+$$
+
+So if we know a Fourier transform for $g(x)$, we can find $\hat f(k)$, and then take the inverse Fourier transform to find $f(x)$.
+
+### Example
+Let's use this to solve a differential equation that we already know different methods for.
+
+Solve the differential equation
+$$
+f''(x) + f(x) = \sin 2x.
+$$
+
+::: {.callout-tip collapse="true"}
+## Solution
+Taking the Fourier transform of both sides gives
+$$
+-k^2 \hat f(k) + \hat f(k) = \frac{\sqrt{2\pi}}{2i}\delta(k-2) - \frac{\sqrt{2\pi}}{2i}\delta(k+2),
+$$
+by recalling the formula for the Fourier transform of $\sin 2x$ from the previous section. As long as $k^2 \neq 1$, this simplifies to
+$$
+\hat f(k) = \frac{\frac{\sqrt{2\pi}}{2i}\delta(k-2) - \frac{\sqrt{2\pi}}{2i}\delta(k+2)}{1 - k^2}.
+$$
+To find $f(x)$, we take the inverse Fourier transform:
+$$
+f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \frac{\frac{\sqrt{2\pi}}{2i}\delta(k-2) - \frac{\sqrt{2\pi}}{2i}\delta(k+2)}{1 - k^2} e^{ikx}\,dk.
+$$
+Using the sifting property of the delta distribution, this evaluates to
+$$
+f(x) = \frac{1}{\sqrt{2\pi}}\left( \frac{\frac{\sqrt{2\pi}}{2i}e^{2ix}}{1 - 2^2} - \frac{\frac{\sqrt{2\pi}}{2i}e^{-2ix}}{1 - (-2)^2} \right) = -\frac{1}{6i}e^{2ix} + \frac{1}{6i}e^{-2ix} = -\frac{1}{3}\sin 2x.
+$$
+So the solution to the differential equation is
+$$
+f(x) = -\frac{1}{3}\sin 2x,
+$$
+which is indeed a solution.
+
+What about when $k^2 = 1$? This corresponds to the homogeneous equation $f''(x) + f(x) = 0$, which has solutions $\sin x$ and $\cos x$. We can add on any solution to the homogeneous equation to get more solutions to the inhomogeneous equation, so the general solution is
+$$
+f(x) = A\cos x + B\sin x - \frac{1}{3}\sin 2x,
+$$
+for any constants $A$ and $B$.
+:::
+
+### Example
+This second example shows that we can now find solutions to equations we couldn't solve before.
+
+Find a solution to the differential equation
+$$
+f''(x) + f(x) = e^{-\frac{x^2}{2}}.
+$$
+
+::: {.callout-tip collapse="true"}
+## Solution
+Taking the Fourier transform of both sides gives
+$$
+-k^2 \hat f(k) + \hat f(k) = e^{\frac{k^2}{2}},
+$$
+by recalling the formula for the Fourier transform of $e^{-\frac{x^2}{2}}$ from the previous section. If $k^2 \neq 1$, this simplifies to
+$$
+\hat f(k) = \frac{e^{\frac{k^2}{2}}}{1 - k^2}.
+$$
+To find $f(x)$, we take the inverse Fourier transform:
+$$
+f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \frac{e^{\frac{k^2}{2}}}{1 - k^2} e^{ikx}\,dk.
+$$
+This integral doesn't have a simple closed-form solution, but it can be evaluated numerically to find $f(x)$ for any given $x$.
+
+(As before, we can add on any solution to the homogeneous equation $f''(x) + f(x) = 0$ to get more solutions, but the one we have found is a particular solution to the inhomogeneous equation.)
+:::

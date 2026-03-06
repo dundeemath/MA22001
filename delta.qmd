@@ -1,0 +1,108 @@
+---
+title: "The Dirac delta function"
+---
+
+::: {.hidden}
+ \providecommand{\vv}[1]{{\mathbf{#1}}}
+ \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
+:::
+
+In order to take Fourier transforms of periodic functions such as sines and cosines, we need to introduce the *Dirac delta*, denoted $\delta(x)$. This is not a function in the usual sense, but a **distribution**: it is defined by how it behaves inside integrals.
+
+Informally, $\delta(x)$ is concentrated at $x=0$, is zero away from $0$, and has total mass $1$:
+$$
+\int_{-\infty}^{\infty} \delta(x)\,dx = 1.
+$$
+In fact, it integrates to 1 when the interval contains $x=0$, and integrates to zero otherwise. You can think of it as a very high, very narrow spike around $x=0$.
+
+Its most important property is the **sifting property**:
+$$
+\int_{-\infty}^{\infty} f(x)\,\delta(x-a)\,dx = f(a),
+$$
+for any function $f$ that is continuous at $x=a$. In particular,
+$$
+\int_{-\infty}^{\infty} f(x)\,\delta(x)\,dx = f(0).
+$$
+
+We will also need the *Heaviside step function*, denoted $H(x)$, which is defined by
+$$
+H(x) =
+\begin{cases}
+0 & \text{if } x < 0, \\
+1 & \text{if } x \geq 0.
+\end{cases}
+$$
+
+By the definitions above,
+$$
+\int_{-\infty}^x \delta(x')\,dx' = H(x).
+$$
+So the delta distribution can be thought of as the derivative of the Heaviside function
+$$
+\delta(x) = \frac{d}{dx}H(x).
+$$
+
+The delta distribution is often used to model point sources or impulses. In Fourier analysis, it is especially useful because it lets us describe the Fourier transforms of periodic functions.
+
+## Fourier transform of sines and cosines
+
+Recall our Fourier transform convention:
+$$
+\hat{f}(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} f(x)e^{-ikx}\,dx,
+$$
+with inverse transform
+$$
+f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \hat{f}(k)e^{ikx}\,dk.
+$$
+
+We now find the Fourier transform of $f(x)=\sin(ax)$. Since
+$$
+\sin(ax) = \frac{1}{2i}e^{iax} - \frac{1}{2i}e^{-iax},
+$$
+we seek a distribution $\hat{f}(k)$ such that
+$$
+\frac{1}{2i}e^{iax} - \frac{1}{2i}e^{-iax}
+=
+\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \hat{f}(k)e^{ikx}\,dk.
+$$
+
+Using the sifting property of the delta distribution, we see that this is achieved by
+$$
+\hat{f}(k) = \frac{\sqrt{2\pi}}{2i}\delta(k-a) - \frac{\sqrt{2\pi}}{2i}\delta(k+a).
+$$
+
+Indeed,
+$$
+\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+\left(
+\frac{\sqrt{2\pi}}{2i}\delta(k-a) - \frac{\sqrt{2\pi}}{2i}\delta(k+a)
+\right)e^{ikx}\,dk
+=
+\frac{1}{2i}e^{iax} - \frac{1}{2i}e^{-iax}
+=
+\sin(ax).
+$$
+
+A similar calculation gives the Fourier transform of $\cos(ax)$:
+$$
+\hat{f}(k) = \frac{\sqrt{2\pi}}{2}\delta(k-a) + \frac{\sqrt{2\pi}}{2}\delta(k+a).
+$$
+
+::: {.callout-important}
+With this Fourier transform convention,
+$$
+\widehat{\sin(ax)}(k)
+=
+\frac{\sqrt{2\pi}}{2i}\delta(k-a)
+-
+\frac{\sqrt{2\pi}}{2i}\delta(k+a),
+$$
+and
+$$
+\widehat{\cos(ax)}(k)
+=
+\frac{\sqrt{2\pi}}{2}\delta(k-a)
++
+\frac{\sqrt{2\pi}}{2}\delta(k+a).
+$$
+:::

@@ -1,0 +1,23 @@
+---
+title: "Convolutions and Theorems"
+---
+
+::: {.hidden}
+ \providecommand{\vv}[1]{{\mathbf{#1}}}
+ \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
+:::
+
+## Parseval's theorem
+Recall Parseval's theorem for Fourier series in complex exponential form:
+$$
+\frac{1}{L} \int_0^L |f(x)|^2\,dx = \sum_{n=-\infty}^\infty |c_n|^2.
+$$
+
+Thinking of Fourier transforms as a continuous version of this discrete sum, we get Parseval's theorem for Fourier transforms:
+$$
+\int_{-\infty}^\infty |f(x)|^2\,dx= \int_{-\infty}^\infty |\hat f(x)|^2\,dx
+$$
+The proof is straightforward.
+
+## Convolution theorem
+TODO

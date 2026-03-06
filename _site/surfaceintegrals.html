@@ -353,14 +353,23 @@ window.Quarto = {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Delta functions</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./delta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Dirac delta function</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Convolution</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./fouriertdes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier transforms for Differential Equations</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Application to ODEs and PDEs</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./convolution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convolutions and Theorems</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -620,7 +629,7 @@ Tip
 </div>
 <section id="example-flux-through-a-surface" class="level3">
 <h3 class="anchored" data-anchor-id="example-flux-through-a-surface">Example: Flux through a surface</h3>
-<p>Calculate the total flux of the vector field <span class="math inline">\({\mathbf{F}}(x,y,z) = [z^2,z,0]\)</span> through the hemisphere <span class="math inline">\(x^2+y^2+z^1=1\)</span>, <span class="math inline">\(x\geq 0\)</span>, with an outward-facing normal.</p>
+<p>Calculate the total flux of the vector field <span class="math inline">\({\mathbf{F}}(x,y,z) = [z^2,z,0]\)</span> through the hemisphere <span class="math inline">\(x^2+y^2+z^2=1\)</span>, <span class="math inline">\(x\geq 0\)</span>, with an outward-facing normal.</p>
 <section id="step-1-parameterise-the-surface-1" class="level4">
 <h4 class="anchored" data-anchor-id="step-1-parameterise-the-surface-1">Step 1: Parameterise the surface</h4>
 <p>The hemisphere means spherical co-ordinates seem natural here, as we can take <span class="math inline">\(r=1\)</span> and use <span class="math display">\[

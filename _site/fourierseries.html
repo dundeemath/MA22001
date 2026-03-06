@@ -353,14 +353,23 @@ window.Quarto = {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Delta functions</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./delta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Dirac delta function</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Convolution</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./fouriertdes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier transforms for Differential Equations</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Application to ODEs and PDEs</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./convolution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convolutions and Theorems</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -587,7 +596,11 @@ f(x) = \sum_{n=-\infty}^\infty c_n e^{i \frac{2\pi n x}{L}},
 \]</span> where the <em>complex</em> Fourier coefficients <span class="math inline">\(c_n\)</span> are related to the real coefficients by <span class="math display">\[
 c_0 = a_0,\quad
 c_n = \frac{a_n - i b_n}{2}\ \text{ for } n&gt;0,\quad
-c_{-n} = \frac{a_n + i b_n}{2}\ \text{ for } n&gt;0.
+c_{-n} = \frac{a_n + i b_n}{2}\ \text{ for } n&gt;0,
+\]</span> or equivalently, <span class="math display">\[
+a_0 = a_0,\quad
+a_n = c_n+c_{-n}\ \text{ for } n&gt;0,\quad
+b_n = i(c_n-c_{-n})\ \text{ for } n&gt;0.
 \]</span> Even if we are dealing with a purely real function, using the complex form can often simplify calculations, especially when dealing with differential equations or integrals, and it is this form that naturally leads us to the Fourier transform when we consider non-periodic functions.</p>
 
 

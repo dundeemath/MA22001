@@ -192,7 +192,7 @@ Learn this last formula. The rest is really just derivation.
 :::
 
 ### Example: Flux through a surface
-Calculate the total flux of the vector field $\vv{F}(x,y,z) = [z^2,z,0]$ through the hemisphere $x^2+y^2+z^1=1$, $x\geq 0$, with an outward-facing normal.
+Calculate the total flux of the vector field $\vv{F}(x,y,z) = [z^2,z,0]$ through the hemisphere $x^2+y^2+z^2=1$, $x\geq 0$, with an outward-facing normal.
 
 #### Step 1: Parameterise the surface
 The hemisphere means spherical co-ordinates seem natural here, as we can take $r=1$ and use

@@ -353,14 +353,23 @@ window.Quarto = {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Delta functions</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./delta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Dirac delta function</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Convolution</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./fouriertdes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier transforms for Differential Equations</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Application to ODEs and PDEs</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./convolution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convolutions and Theorems</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -380,7 +389,10 @@ window.Quarto = {
    
   <ul>
   <li><a href="#definition-of-the-fourier-transform" id="toc-definition-of-the-fourier-transform" class="nav-link active" data-scroll-target="#definition-of-the-fourier-transform">Definition of the Fourier transform</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a>
+  <ul class="collapse">
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -414,11 +426,24 @@ window.Quarto = {
 <section id="definition-of-the-fourier-transform" class="level2">
 <h2 class="anchored" data-anchor-id="definition-of-the-fourier-transform">Definition of the Fourier transform</h2>
 <p>The <em>Fourier transform</em> of a function <span class="math inline">\(f(x)\)</span> is defined as<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math display">\[
-F(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x) e^{-ikx}\,dx,
+\hat f(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x) e^{-ikx}\,dx,
 \]</span> where <span class="math inline">\(k\)</span> is called the <em>wave number</em>.</p>
 <p>The <em>inverse Fourier transform</em> is given by <span class="math display">\[
-f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty F(k) e^{ikx}\,dk.
+f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \hat f(k) e^{ikx}\,dk.
 \]</span> These two equations are very similar in form to the Fourier series equations, but now we have integrals over all possible wave numbers <span class="math inline">\(k\)</span> instead of sums over discrete wavelengths.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can think of the Fourier transform as a continuous version of the Fourier series. Instead of summing over discrete wavelengths, we integrate over all possible wave numbers. The Fourier transform tells us how much of each wave number is present in our function, just like the Fourier coefficients tell us how much of each sine and cosine is present in a periodic function.</p>
+</div>
+</div>
 </section>
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
@@ -426,7 +451,7 @@ f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty F(k) e^{ikx}\,dk.
 f(x) = e^{-\frac{x^2}{2}}.
 \]</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -435,29 +460,58 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>We have <span class="math display">\[
-F(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{x^2}{2}} e^{-ikx}\,dx.
+\hat f(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{x^2}{2}} e^{-ikx}\,dx.
 \]</span> Combining the exponents gives <span class="math display">\[
-F(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{x^2}{2} - ikx}\,dx = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{x^2 + 2ikx}{2}}\,dx.
+\hat f(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{x^2}{2} - ikx}\,dx = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{x^2 + 2ikx}{2}}\,dx.
 \]</span> Completing the square in the exponent: <span class="math display">\[
 x^2 + 2ikx = (x + ik)^2 - k^2,
 \]</span> so <span class="math display">\[
-F(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{(x + ik)^2 - k^2}{2}}\,dx = \frac{e^{\frac{k^2}{2}}}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{(x + ik)^2}{2}}\,dx.
+\hat f(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{(x + ik)^2 - k^2}{2}}\,dx = \frac{e^{\frac{k^2}{2}}}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{(x + ik)^2}{2}}\,dx.
 \]</span> Now we can make the substitution <span class="math inline">\(u = x + ik\)</span>, so <span class="math inline">\(du = dx\)</span>. The limits of integration remain <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(\infty\)</span> since shifting by a constant (even a complex one) doesn’t change them. Thus, <span class="math display">\[
-F(k) = \frac{e^{\frac{k^2}{2}}}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{u^2}{2}}\,du.
+\hat f(k) = \frac{e^{\frac{k^2}{2}}}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{u^2}{2}}\,du.
 \]</span> The integral is just the standard Gaussian integral, which evaluates to <span class="math inline">\(\sqrt{2\pi}\)</span>. Therefore, <span class="math display">\[
-F(k) = \frac{e^{\frac{k^2}{2}}}{\sqrt{2\pi}} \cdot \sqrt{2\pi} = e^{\frac{k^2}{2}}.
+\hat f(k) = \frac{e^{\frac{k^2}{2}}}{\sqrt{2\pi}} \cdot \sqrt{2\pi} = e^{\frac{k^2}{2}}.
 \]</span> So the Fourier transform of <span class="math inline">\(f(x) = e^{-\frac{x^2}{2
 }}\)</span> is <span class="math display">\[
-F(k) = e^{\frac{k^2}{2}}.
+\hat f(k) = e^{\frac{k^2}{2}}.
+\]</span></p>
+</div>
+</div>
+</div>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1">Example</h3>
+<p>Find the inverse Fourier transform of <span class="math display">\[
+\hat  f(k) = \begin{cases}
+1 &amp; \text{if } |k| \leq 1, \\
+0 &amp; \text{if } |k| &gt; 1.
+\end{cases}
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We have <span class="math display">\[
+f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \hat f(k) e^{ikx}\,dk = \frac{1}{\sqrt{2\pi}}\int_{-1}^1 e^{ikx}\,dk.
+\]</span> We can integrate this directly: <span class="math display">\[
+f(x) = \frac{1}{\sqrt{2\pi}}\left[ \frac{e^{ikx}}{ix} \right]_{-1}^1 = \frac{1}{\sqrt{2\pi}}\left( \frac{e^{ix} - e^{-ix}}{ix} \right) = \sqrt{\frac{2}{\pi}}\frac{\sin x}{x}.
 \]</span></p>
 </div>
 </div>
 </div>
 
 
+</section>
 </section>
 
 

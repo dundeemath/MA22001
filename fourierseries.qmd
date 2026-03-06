@@ -181,6 +181,12 @@ where the _complex_ Fourier coefficients $c_n$ are related to the real coefficie
 $$
 c_0 = a_0,\quad
 c_n = \frac{a_n - i b_n}{2}\ \text{ for } n>0,\quad
-c_{-n} = \frac{a_n + i b_n}{2}\ \text{ for } n>0.
+c_{-n} = \frac{a_n + i b_n}{2}\ \text{ for } n>0,
+$$
+or equivalently,
+$$
+a_0 = a_0,\quad
+a_n = c_n+c_{-n}\ \text{ for } n>0,\quad
+b_n = i(c_n-c_{-n})\ \text{ for } n>0.
 $$
 Even if we are dealing with a purely real function, using the complex form can often simplify calculations, especially when dealing with differential equations or integrals, and it is this form that naturally leads us to the Fourier transform when we consider non-periodic functions.

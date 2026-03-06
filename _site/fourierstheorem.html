@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Theorems about Fourier series – MA22001 Core Mathematics IV</title>
+<title>Parseval’s theorem – MA22001 Core Mathematics IV</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -353,14 +353,23 @@ window.Quarto = {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Delta functions</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./delta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Dirac delta function</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Convolution</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./fouriertdes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier transforms for Differential Equations</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Application to ODEs and PDEs</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./convolution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convolutions and Theorems</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -379,11 +388,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#convolution-theorem-non-examinable" id="toc-convolution-theorem-non-examinable" class="nav-link active" data-scroll-target="#convolution-theorem-non-examinable">Convolution theorem (Non-examinable)</a></li>
-  <li><a href="#parsevals-theorem" id="toc-parsevals-theorem" class="nav-link" data-scroll-target="#parsevals-theorem">Parseval’s theorem</a>
+  <li><a href="#parsevals-theorem" id="toc-parsevals-theorem" class="nav-link active" data-scroll-target="#parsevals-theorem">Parseval’s theorem</a>
   <ul class="collapse">
   <li><a href="#proof-non-examinable" id="toc-proof-non-examinable" class="nav-link" data-scroll-target="#proof-non-examinable">Proof (Non-examinable)</a></li>
   </ul></li>
+  <li><a href="#in-exponential-form" id="toc-in-exponential-form" class="nav-link" data-scroll-target="#in-exponential-form">In exponential form</a></li>
   </ul>
 </nav>
     </div>
@@ -392,7 +401,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fourierseries.html">Chapter 6: Fourier Series (Week 21)</a></li><li class="breadcrumb-item"><a href="./fourierstheorem.html">Fourier series theorems</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Theorems about Fourier series</h1>
+<h1 class="title">Parseval’s theorem</h1>
 </div>
 
 
@@ -412,41 +421,43 @@ window.Quarto = {
 <div class="hidden">
 
 </div>
-<p>Fourier analysis (both series and transforms, which we will see in the next section) is a vast area of mathematics, and there are many theorems. We will only cover two of the most important ones here. We will later see versions of these theorems for Fourier transforms.</p>
+<p>Fourier analysis (both series and transforms, which we will see in the next section) is a vast area of mathematics, and there are many theorems. We will only cover one of the most important ones here.</p>
 <p>Again, we use the convention that <span class="math display">\[
 f(x) = a_0 + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right],
 \]</span> where <span class="math inline">\(L\)</span> is the period of the function <span class="math inline">\(f\)</span>.</p>
-<section id="convolution-theorem-non-examinable" class="level2">
-<h2 class="anchored" data-anchor-id="convolution-theorem-non-examinable">Convolution theorem (Non-examinable)</h2>
-<p>Consider two periodic functions <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(g(x)\)</span>, with the same period <span class="math inline">\(L\)</span>, and with Fourier coefficients <span class="math inline">\(a_n, b_n\)</span> and <span class="math inline">\(c_n, d_n\)</span> respectively. We can define the <em>convolution</em> of these two functions as <span class="math display">\[
-(f * g)(x) = \frac{1}{L}\int_0^L f(y) g(x - y) \, dy.
-\]</span> Here <span class="math inline">\(f * g\)</span> is a new function, which is also periodic with period <span class="math inline">\(L\)</span>. Functions like this arise in many contexts, such as signal processing, probability theory, and the study of PDEs. Versions of this are particularly important in modern machine learning, where they are used in convolutional neural networks (CNNs).</p>
-<p>The convolution theorem states that the Fourier coefficients <span class="math inline">\(A_n\)</span> and <span class="math inline">\(B_n\)</span> of the function <span class="math inline">\(f * g\)</span> are given by <span class="math display">\[
-\begin{aligned}
-A_n &amp;= a_n c_n - b_n d_n, \\
-B_n &amp;= a_n d_n + b_n c_n.
-\end{aligned}
-\]</span></p>
-<p>This can be proved using the definition of the convolution and the Fourier coefficient formulas.</p>
-</section>
 <section id="parsevals-theorem" class="level2">
 <h2 class="anchored" data-anchor-id="parsevals-theorem">Parseval’s theorem</h2>
 <p>Parseval’s theorem states that the Fourier coefficients of a function <span class="math inline">\(f\)</span> satisfy <span class="math display">\[
-\frac{1}{L} \int_0^L |f(x)|^2
-= a_0^2 + \frac{1}{2} \sum_{n=1}^\infty (a_n^2 + b_n^2).
+\frac{1}{L} \int_0^L |f(x)|^2\,dx
+= |a_0|^2 + \frac{1}{2} \sum_{n=1}^\infty (|a_n|^2 + |b_n|^2).
 \]</span> This is a very important result, because it tells us that the Fourier coefficients contain all the information about the function <span class="math inline">\(f\)</span>. In particular, it tells us that the sum of the squares of the Fourier coefficients is equal to the average value of the square of the function. This is a kind of “energy conservation” principle, which is very useful in many applications.</p>
 <section id="proof-non-examinable" class="level3">
 <h3 class="anchored" data-anchor-id="proof-non-examinable">Proof (Non-examinable)</h3>
-<p>Here we can again use the inner product. <span class="math display">\[
+<p>Here we can again use the inner product. Assume the <span class="math inline">\(a_n\)</span> and <span class="math inline">\(b_n\)</span> are all real. <span class="math display">\[
 \begin{aligned}
 \frac{1}{L} \int_0^L |f(x)|^2 dx &amp;= \frac{1}{L} \langle f(x), f(x) \rangle \\
 &amp;= \frac{1}{L} \left\langle a_0 + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + b_n \sin\left(\frac{2\pi n x}{L}\right) \right], a_0 + \sum_{m=1}^\infty \left[ a_m \cos\left(\frac{2\pi m x}{L}\right) + b_m \sin\left(\frac{2\pi m x}{L}\right) \right] \right\rangle \\
 &amp;= \frac{a_0^2}{L} \langle 1, 1 \rangle + \sum_{n=1}^\infty \left[ \frac{a_n^2}{L} \langle \cos\left(\frac{2\pi n x}{L}\right), \cos\left(\frac{2\pi n x}{L}\right) \rangle + \frac{b_n^2}{L} \langle \sin\left(\frac{2\pi n x}{L}\right), \sin\left(\frac{2\pi n x}{L}\right) \rangle \right] \\&amp;= a_0^2 + \frac{1}{2} \sum_{n=1}^\infty (a_n^2 + b_n^2).
 \end{aligned}
 \]</span> where we have used the facts that <span class="math inline">\(\langle 1, 1 \rangle = L\)</span>, <span class="math inline">\(\langle \cos\left(\frac{2\pi n x}{L}\right), \cos\left(\frac{2\pi n x}{L}\right) \rangle = \frac{L}{2}\)</span>, and <span class="math inline">\(\langle \sin\left(\frac{2\pi n x}{L}\right), \sin\left(\frac{2\pi n x}{L}\right) \rangle = \frac{L}{2}\)</span>, with all the other inner products being zero.</p>
-
-
 </section>
+</section>
+<section id="in-exponential-form" class="level2">
+<h2 class="anchored" data-anchor-id="in-exponential-form">In exponential form</h2>
+<p>If we have a Fourier series in complex exponential form <span class="math display">\[f(x) = \sum_{n=-\infty}^\infty c_n e^{i \frac{2\pi n x}{L}},\]</span> using <span class="math display">\[
+a_0 = a_0,\quad
+a_n = c_n+c_{-n}\ \text{ for } n&gt;0,\quad
+b_n = i(c_n-c_{-n})\ \text{ for } n&gt;0,
+\]</span> Parseval’s theorem becomes <span class="math display">\[
+\begin{aligned}
+\frac{1}{L} \int_0^L |f(x)|^2\,dx
+&amp;= |c_0|^2 + \frac{1}{2} \sum_{n=1}^\infty \left(|c_n+c_{-n}|^2 + |i(c_n-c_{-n})|^2\right)
+\\&amp;=|c_0|^2 + \sum_{n=1}^\infty \left(|c_n|^2 + |c_{-n}|^2\right)
+\\&amp;=\sum_{-\infty}^\infty |c_n|^2.
+\end{aligned}
+\]</span></p>
+
+
 </section>
 
 </main> <!-- /main -->

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>convolution – MA22001 Core Mathematics IV</title>
+<title>Convolutions and Theorems – MA22001 Core Mathematics IV</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,6 +79,35 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -91,9 +120,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      MA22001 Core Mathematics IV
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fouriertransforms.html">Chapter 7: Fourier Transforms and Delta Functions (Weeks 22/23)</a></li><li class="breadcrumb-item"><a href="./convolution.html">Convolutions and Theorems</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -326,14 +353,23 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">Delta functions</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./delta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Dirac delta function</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Convolution</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./fouriertdes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier transforms for Differential Equations</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Application to ODEs and PDEs</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./convolution.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Convolutions and Theorems</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -347,17 +383,56 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#parsevals-theorem" id="toc-parsevals-theorem" class="nav-link active" data-scroll-target="#parsevals-theorem">Parseval’s theorem</a></li>
+  <li><a href="#convolution-theorem" id="toc-convolution-theorem" class="nav-link" data-scroll-target="#convolution-theorem">Convolution theorem</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fouriertransforms.html">Chapter 7: Fourier Transforms and Delta Functions (Weeks 22/23)</a></li><li class="breadcrumb-item"><a href="./convolution.html">Convolutions and Theorems</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Convolutions and Theorems</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
+
+<div class="hidden">
+
+</div>
+<section id="parsevals-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="parsevals-theorem">Parseval’s theorem</h2>
+<p>Recall Parseval’s theorem for Fourier series in complex exponential form: <span class="math display">\[
+\frac{1}{L} \int_0^L |f(x)|^2\,dx = \sum_{n=-\infty}^\infty |c_n|^2.
+\]</span></p>
+<p>Thinking of Fourier transforms as a continuous version of this discrete sum, we get Parseval’s theorem for Fourier transforms: <span class="math display">\[
+\int_{-\infty}^\infty |f(x)|^2\,dx= \int_{-\infty}^\infty |\hat f(x)|^2\,dx
+\]</span> The proof is straightforward.</p>
+</section>
+<section id="convolution-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="convolution-theorem">Convolution theorem</h2>
+<p>TODO</p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

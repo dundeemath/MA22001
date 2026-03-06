@@ -1,5 +1,5 @@
 ---
-title: "Theorems about Fourier series"
+title: "Parseval's theorem"
 ---
 
 ::: {.hidden}
@@ -10,7 +10,7 @@ title: "Theorems about Fourier series"
  \providecommand{\ddd}[2]{{\frac{\mathrm{d}^2 #1}{\mathrm{d} #2^2}}}
 :::
 
-Fourier analysis (both series and transforms, which we will see in the next section) is a vast area of mathematics, and there are many theorems. We will only cover two of the most important ones here. We will later see versions of these theorems for Fourier transforms. 
+Fourier analysis (both series and transforms, which we will see in the next section) is a vast area of mathematics, and there are many theorems. We will only cover one of the most important ones here. 
 
 Again, we use the convention that
 $$
@@ -18,34 +18,17 @@ f(x) = a_0 + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + 
 $$
 where $L$ is the period of the function $f$.
 
-## Convolution theorem (Non-examinable)
-Consider two periodic functions $f(x)$ and $g(x)$, with the same period $L$, and with Fourier coefficients $a_n, b_n$ and $c_n, d_n$ respectively. We can define the _convolution_ of these two functions as
-$$
-(f * g)(x) = \frac{1}{L}\int_0^L f(y) g(x - y) \, dy.
-$$
-Here $f * g$ is a new function, which is also periodic with period $L$. Functions like this arise in many contexts, such as signal processing, probability theory, and the study of PDEs.
-Versions of this are particularly important in modern machine learning, where they are used in convolutional neural networks (CNNs).
-
-The convolution theorem states that the Fourier coefficients $A_n$ and $B_n$ of the function $f * g$ are given by
-$$
-\begin{aligned}
-A_n &= a_n c_n - b_n d_n, \\
-B_n &= a_n d_n + b_n c_n.
-\end{aligned}
-$$
-
-This can be proved using the definition of the convolution and the Fourier coefficient formulas.
 
 ## Parseval's theorem
 Parseval's theorem states that the Fourier coefficients of a function $f$ satisfy
 $$
-\frac{1}{L} \int_0^L |f(x)|^2
-= a_0^2 + \frac{1}{2} \sum_{n=1}^\infty (a_n^2 + b_n^2).
+\frac{1}{L} \int_0^L |f(x)|^2\,dx
+= |a_0|^2 + \frac{1}{2} \sum_{n=1}^\infty (|a_n|^2 + |b_n|^2).
 $$
 This is a very important result, because it tells us that the Fourier coefficients contain all the information about the function $f$. In particular, it tells us that the sum of the squares of the Fourier coefficients is equal to the average value of the square of the function. This is a kind of "energy conservation" principle, which is very useful in many applications.
 
 ### Proof (Non-examinable)
-Here we can again use the inner product.
+Here we can again use the inner product. Assume the $a_n$ and $b_n$ are all real.
 $$
 \begin{aligned}
 \frac{1}{L} \int_0^L |f(x)|^2 dx &= \frac{1}{L} \langle f(x), f(x) \rangle \\
@@ -54,3 +37,23 @@ $$
 \end{aligned}
 $$
 where we have used the facts that $\langle 1, 1 \rangle = L$, $\langle \cos\left(\frac{2\pi n x}{L}\right), \cos\left(\frac{2\pi n x}{L}\right) \rangle = \frac{L}{2}$, and $\langle \sin\left(\frac{2\pi n x}{L}\right), \sin\left(\frac{2\pi n x}{L}\right) \rangle = \frac{L}{2}$, with all the other inner products being zero.
+
+## In exponential form
+If we have a Fourier series in complex exponential form
+$$f(x) = \sum_{n=-\infty}^\infty c_n e^{i \frac{2\pi n x}{L}},$$
+using
+$$
+a_0 = a_0,\quad
+a_n = c_n+c_{-n}\ \text{ for } n>0,\quad
+b_n = i(c_n-c_{-n})\ \text{ for } n>0,
+$$
+Parseval's theorem becomes
+$$
+\begin{aligned}
+\frac{1}{L} \int_0^L |f(x)|^2\,dx
+&= |c_0|^2 + \frac{1}{2} \sum_{n=1}^\infty \left(|c_n+c_{-n}|^2 + |i(c_n-c_{-n})|^2\right)
+\\&=|c_0|^2 + \sum_{n=1}^\infty \left(|c_n|^2 + |c_{-n}|^2\right)
+\\&=\sum_{-\infty}^\infty |c_n|^2.
+\end{aligned}
+$$
+
