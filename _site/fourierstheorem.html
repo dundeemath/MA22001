@@ -445,7 +445,7 @@ f(x) = a_0 + \sum_{n=1}^\infty \left[ a_n \cos\left(\frac{2\pi n x}{L}\right) + 
 <section id="in-exponential-form" class="level2">
 <h2 class="anchored" data-anchor-id="in-exponential-form">In exponential form</h2>
 <p>If we have a Fourier series in complex exponential form <span class="math display">\[f(x) = \sum_{n=-\infty}^\infty c_n e^{i \frac{2\pi n x}{L}},\]</span> using <span class="math display">\[
-a_0 = a_0,\quad
+a_0 = c_0,\quad
 a_n = c_n+c_{-n}\ \text{ for } n&gt;0,\quad
 b_n = i(c_n-c_{-n})\ \text{ for } n&gt;0,
 \]</span> Parseval’s theorem becomes <span class="math display">\[
@@ -453,7 +453,7 @@ b_n = i(c_n-c_{-n})\ \text{ for } n&gt;0,
 \frac{1}{L} \int_0^L |f(x)|^2\,dx
 &amp;= |c_0|^2 + \frac{1}{2} \sum_{n=1}^\infty \left(|c_n+c_{-n}|^2 + |i(c_n-c_{-n})|^2\right)
 \\&amp;=|c_0|^2 + \sum_{n=1}^\infty \left(|c_n|^2 + |c_{-n}|^2\right)
-\\&amp;=\sum_{-\infty}^\infty |c_n|^2.
+\\&amp;=\sum_{n=-\infty}^\infty |c_n|^2.
 \end{aligned}
 \]</span></p>
 

@@ -64,12 +64,12 @@ website:
       - section: "Chapter 7: Fourier Transforms and Delta Functions (Weeks 22/23)"
         contents:
         - href: fouriertransforms.qmd
-        - href: delta.qmd 
+        - href: delta.qmd
         - href: fouriertdes.qmd
         - href: convolution.qmd
       - href: links.qmd
   comments: 
-    hypothesis:
+    hypothesis: 
       theme: clean
       openSidebar: false
       

@@ -7,7 +7,7 @@ title: "Fourier transforms"
  \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
 :::
 
-Fourier series work great when we have a function which is perfectly periodic, or defined on a finite interval. But often in practice we have functions defined on the whole real line, when we use an approximation that something in infinitely big.
+Fourier series work great when we have a function which is perfectly periodic, or defined on a finite interval. But often in practice we have functions defined on the whole real line, when we approximate a system as infinitely large.
 
 In this case, there isn't an exact wavelength that fits perfectly, and instead we have to consider all possible wavelengths. This leads us to the _Fourier transform_.
 
@@ -46,24 +46,23 @@ $$
 $$
 Completing the square in the exponent:
 $$
-x^2 + 2ikx = (x + ik)^2 - k^2,
+x^2 + 2ikx = (x + ik)^2 + k^2,
 $$
 so
 $$
-\hat f(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{(x + ik)^2 - k^2}{2}}\,dx = \frac{e^{\frac{k^2}{2}}}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{(x + ik)^2}{2}}\,dx.
+\hat f(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{(x + ik)^2 + k^2}{2}}\,dx = \frac{e^{-\frac{k^2}{2}}}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{(x + ik)^2}{2}}\,dx.
 $$
 Now we can make the substitution $u = x + ik$, so $du = dx$. The limits of integration remain $-\infty$ to $\infty$ since shifting by a constant (even a complex one) doesn't change them. Thus,
 $$
-\hat f(k) = \frac{e^{\frac{k^2}{2}}}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{u^2}{2}}\,du.
+\hat f(k) = \frac{e^{-\frac{k^2}{2}}}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{u^2}{2}}\,du.
 $$
 The integral is just the standard Gaussian integral, which evaluates to $\sqrt{2\pi}$. Therefore,
 $$
-\hat f(k) = \frac{e^{\frac{k^2}{2}}}{\sqrt{2\pi}} \cdot \sqrt{2\pi} = e^{\frac{k^2}{2}}.
+\hat f(k) = \frac{e^{-\frac{k^2}{2}}}{\sqrt{2\pi}} \cdot \sqrt{2\pi} = e^{-\frac{k^2}{2}}.
 $$
-So the Fourier transform of $f(x) = e^{-\frac{x^2}{2
-}}$ is
+So the Fourier transform of $f(x) = e^{-\frac{x^2}{2}}$ is
 $$
-\hat f(k) = e^{\frac{k^2}{2}}.
+\hat f(k) = e^{-\frac{k^2}{2}}.
 $$
 :::
 
@@ -86,4 +85,5 @@ We can integrate this directly:
 $$
 f(x) = \frac{1}{\sqrt{2\pi}}\left[ \frac{e^{ikx}}{ix} \right]_{-1}^1 = \frac{1}{\sqrt{2\pi}}\left( \frac{e^{ix} - e^{-ix}}{ix} \right) = \sqrt{\frac{2}{\pi}}\frac{\sin x}{x}.
 $$
+for $x\neq 0$. At $x=0$, we use the limit $\sin x/x \to 1$, so $f(0)=\sqrt{2/\pi}$.
 :::

@@ -185,7 +185,7 @@ c_{-n} = \frac{a_n + i b_n}{2}\ \text{ for } n>0,
 $$
 or equivalently,
 $$
-a_0 = a_0,\quad
+a_0 = c_0,\quad
 a_n = c_n+c_{-n}\ \text{ for } n>0,\quad
 b_n = i(c_n-c_{-n})\ \text{ for } n>0.
 $$

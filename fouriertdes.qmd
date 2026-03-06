@@ -26,10 +26,6 @@ $$
 $$
 where we have used integration by parts and the fact that $f(x)$ vanishes at infinity (which is a common assumption for functions we want to take Fourier transforms of).
 
-::: {.callout-note}
-To do this properly, we need contour integration and the theory of distributions, which is beyond the scope of this module. The calculation above is just a heuristic argument to show why the property holds.
-:::
-
 ## Second derivatives
 By applying the property above twice, we can also find the Fourier transform of the second derivative:
 $$ 
@@ -107,17 +103,18 @@ $$
 ## Solution
 Taking the Fourier transform of both sides gives
 $$
--k^2 \hat f(k) + \hat f(k) = e^{\frac{k^2}{2}},
+-k^2 \hat f(k) + \hat f(k) = e^{-\frac{k^2}{2}},
 $$
 by recalling the formula for the Fourier transform of $e^{-\frac{x^2}{2}}$ from the previous section. If $k^2 \neq 1$, this simplifies to
 $$
-\hat f(k) = \frac{e^{\frac{k^2}{2}}}{1 - k^2}.
+\hat f(k) = \frac{e^{-\frac{k^2}{2}}}{1 - k^2}.
 $$
 To find $f(x)$, we take the inverse Fourier transform:
 $$
-f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \frac{e^{\frac{k^2}{2}}}{1 - k^2} e^{ikx}\,dk.
+f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \frac{e^{-\frac{k^2}{2}}}{1 - k^2} e^{ikx}\,dk.
 $$
-This integral doesn't have a simple closed-form solution, but it can be evaluated numerically to find $f(x)$ for any given $x$.
+This integral does not have a simple closed-form expression in elementary functions. 
+Because the integrand has poles at $k=\pm 1$, this inverse transform must be interpreted with care (for example in a principal value/distributional sense).
 
 (As before, we can add on any solution to the homogeneous equation $f''(x) + f(x) = 0$ to get more solutions, but the one we have found is a particular solution to the inhomogeneous equation.)
 :::

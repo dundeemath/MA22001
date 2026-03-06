@@ -389,7 +389,11 @@ window.Quarto = {
    
   <ul>
   <li><a href="#parsevals-theorem" id="toc-parsevals-theorem" class="nav-link active" data-scroll-target="#parsevals-theorem">Parseval’s theorem</a></li>
-  <li><a href="#convolution-theorem" id="toc-convolution-theorem" class="nav-link" data-scroll-target="#convolution-theorem">Convolution theorem</a></li>
+  <li><a href="#convolution-theorem" id="toc-convolution-theorem" class="nav-link" data-scroll-target="#convolution-theorem">Convolution theorem</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-convolution" id="toc-what-is-a-convolution" class="nav-link" data-scroll-target="#what-is-a-convolution">What is a convolution?</a></li>
+  <li><a href="#convolution-theorem-fourier-transforms" id="toc-convolution-theorem-fourier-transforms" class="nav-link" data-scroll-target="#convolution-theorem-fourier-transforms">Convolution theorem (Fourier transforms)</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -424,14 +428,46 @@ window.Quarto = {
 \frac{1}{L} \int_0^L |f(x)|^2\,dx = \sum_{n=-\infty}^\infty |c_n|^2.
 \]</span></p>
 <p>Thinking of Fourier transforms as a continuous version of this discrete sum, we get Parseval’s theorem for Fourier transforms: <span class="math display">\[
-\int_{-\infty}^\infty |f(x)|^2\,dx= \int_{-\infty}^\infty |\hat f(x)|^2\,dx
+\int_{-\infty}^\infty |f(x)|^2\,dx= \int_{-\infty}^\infty |\hat f(k)|^2\,dk
 \]</span> The proof is straightforward.</p>
 </section>
 <section id="convolution-theorem" class="level2">
 <h2 class="anchored" data-anchor-id="convolution-theorem">Convolution theorem</h2>
-<p>TODO</p>
+<section id="what-is-a-convolution" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-a-convolution">What is a convolution?</h3>
+<p>If <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(g(x)\)</span> are two functions, their convolution is a new function written <span class="math display">\[
+(f*g)(x).
+\]</span> It is defined by <span class="math display">\[
+(f*g)(x)=\int_{-\infty}^{\infty} f(\xi)\,g(x-\xi)\,d\xi.
+\]</span></p>
+<p>You can think of this as: 1. Slide one function across the other. 2. Multiply them where they overlap. 3. Add up (integrate) the result.</p>
+<p>So convolution is a way of mixing two signals/functions.</p>
+</section>
+<section id="convolution-theorem-fourier-transforms" class="level3">
+<h3 class="anchored" data-anchor-id="convolution-theorem-fourier-transforms">Convolution theorem (Fourier transforms)</h3>
+<p>The key result is: <span class="math display">\[
+\widehat{f*g}(k)=\hat f(k)\,\hat g(k).
+\]</span></p>
+<p>So: 1. Convolution in <span class="math inline">\(x\)</span>-space becomes simple multiplication in <span class="math inline">\(k\)</span>-space. 2. Multiplication in <span class="math inline">\(x\)</span>-space becomes convolution in <span class="math inline">\(k\)</span>-space.</p>
+<p>Equivalently, <span class="math display">\[
+\widehat{f\,g}(k)=\frac{1}{\sqrt{2\pi}}(\hat f * \hat g)(k).
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For calculations, this is very useful: convolutions are hard, but multiplication is easy.</p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

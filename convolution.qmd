@@ -15,9 +15,43 @@ $$
 
 Thinking of Fourier transforms as a continuous version of this discrete sum, we get Parseval's theorem for Fourier transforms:
 $$
-\int_{-\infty}^\infty |f(x)|^2\,dx= \int_{-\infty}^\infty |\hat f(x)|^2\,dx
+\int_{-\infty}^\infty |f(x)|^2\,dx= \int_{-\infty}^\infty |\hat f(k)|^2\,dk
 $$
 The proof is straightforward.
 
 ## Convolution theorem
-TODO
+### What is a convolution?
+If $f(x)$ and $g(x)$ are two functions, their convolution is a new function written
+$$
+(f*g)(x).
+$$
+It is defined by
+$$
+(f*g)(x)=\int_{-\infty}^{\infty} f(\xi)\,g(x-\xi)\,d\xi.
+$$
+
+You can think of this as:
+1. Slide one function across the other.
+2. Multiply them where they overlap.
+3. Add up (integrate) the result.
+
+So convolution is a way of mixing two signals/functions.
+
+### Convolution theorem (Fourier transforms)
+The key result is:
+$$
+\widehat{f*g}(k)=\hat f(k)\,\hat g(k).
+$$
+
+So:
+1. Convolution in $x$-space becomes simple multiplication in $k$-space.
+2. Multiplication in $x$-space becomes convolution in $k$-space.
+
+Equivalently,
+$$
+\widehat{f\,g}(k)=\frac{1}{\sqrt{2\pi}}(\hat f * \hat g)(k).
+$$
+
+::: {.callout-tip}
+For calculations, this is very useful: convolutions are hard, but multiplication is easy.
+:::
