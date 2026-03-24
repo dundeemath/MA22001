@@ -389,6 +389,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#definition-of-the-fourier-transform" id="toc-definition-of-the-fourier-transform" class="nav-link active" data-scroll-target="#definition-of-the-fourier-transform">Definition of the Fourier transform</a></li>
+  <li><a href="#parity-and-the-realimaginary-parts" id="toc-parity-and-the-realimaginary-parts" class="nav-link" data-scroll-target="#parity-and-the-realimaginary-parts">Parity and the real/imaginary parts</a></li>
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a>
   <ul class="collapse">
   <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
@@ -445,13 +446,68 @@ Tip
 </div>
 </div>
 </section>
+<section id="parity-and-the-realimaginary-parts" class="level2">
+<h2 class="anchored" data-anchor-id="parity-and-the-realimaginary-parts">Parity and the real/imaginary parts</h2>
+<p>Using <span class="math display">\[
+e^{-ikx} = \cos(kx) - i\sin(kx),
+\]</span> we can write the Fourier transform as <span class="math display">\[
+\hat f(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)\cos(kx)\,dx - \frac{i}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)\sin(kx)\,dx.
+\]</span> So the real part of <span class="math inline">\(\hat f(k)\)</span> comes from the cosine integral, and the imaginary part comes from the sine integral: <span class="math display">\[
+\begin{aligned}
+\operatorname{Re}(\hat f(k)) &amp;= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)\cos(kx)\,dx, \\
+\operatorname{Im}(\hat f(k)) &amp;= -\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)\sin(kx)\,dx.
+\end{aligned}
+\]</span></p>
+<p>Now recall that <span class="math inline">\(\cos(kx)\)</span> is an even function of <span class="math inline">\(x\)</span>, while <span class="math inline">\(\sin(kx)\)</span> is odd. This gives some very useful symmetry rules.</p>
+<ul>
+<li>If <span class="math inline">\(f\)</span> is even, then <span class="math inline">\(f(x)\cos(kx)\)</span> is even and <span class="math inline">\(f(x)\sin(kx)\)</span> is odd. Therefore the sine integral is zero, so <span class="math inline">\(\hat f(k)\)</span> is purely real. In fact, <span class="math inline">\(\hat f(k)\)</span> is also even as a function of <span class="math inline">\(k\)</span>.</li>
+<li>If <span class="math inline">\(f\)</span> is odd, then <span class="math inline">\(f(x)\cos(kx)\)</span> is odd and <span class="math inline">\(f(x)\sin(kx)\)</span> is even. Therefore the cosine integral is zero, so <span class="math inline">\(\hat f(k)\)</span> is purely imaginary. In fact, <span class="math inline">\(\hat f(k)\)</span> is also odd as a function of <span class="math inline">\(k\)</span>.</li>
+</ul>
+<p>More generally, any function can be split into its even and odd parts: <span class="math display">\[
+f(x) = f_e(x) + f_o(x),
+\]</span> where <span class="math display">\[
+f_e(x) = \frac{f(x)+f(-x)}{2}, \qquad f_o(x) = \frac{f(x)-f(-x)}{2}.
+\]</span> Then the Fourier transform of the even part contributes the real part, and the Fourier transform of the odd part contributes the imaginary part.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For a real-valued function <span class="math inline">\(f\)</span>, the parity of <span class="math inline">\(f\)</span> tells us immediately what sort of Fourier transform we get:</p>
+<ul>
+<li>If <span class="math inline">\(f\)</span> is even, then <span class="math inline">\(\hat f(k)\)</span> is purely real and even.</li>
+<li>If <span class="math inline">\(f\)</span> is odd, then <span class="math inline">\(\hat f(k)\)</span> is purely imaginary and odd.</li>
+<li>More generally, the even part of <span class="math inline">\(f\)</span> contributes to the real part of <span class="math inline">\(\hat f\)</span>, and the odd part contributes to the imaginary part.</li>
+</ul>
+<p>This is often the quickest way to simplify a Fourier transform before doing any integration.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>So if <span class="math inline">\(f\)</span> is even, it is often enough to compute a cosine integral, and if <span class="math inline">\(f\)</span> is odd, it is often enough to compute a sine integral.</p>
+</div>
+</div>
+</section>
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
 <p>Find the Fourier transform of <span class="math display">\[
 f(x) = e^{-\frac{x^2}{2}}.
 \]</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -460,7 +516,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>We have <span class="math display">\[
 \hat f(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{x^2}{2}} e^{-ikx}\,dx.
@@ -489,7 +545,7 @@ x^2 + 2ikx = (x + ik)^2 + k^2,
 \end{cases}
 \]</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -498,7 +554,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>We have <span class="math display">\[
 f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \hat f(k) e^{ikx}\,dk = \frac{1}{\sqrt{2\pi}}\int_{-1}^1 e^{ikx}\,dk.

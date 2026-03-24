@@ -28,6 +28,52 @@ These two equations are very similar in form to the Fourier series equations, bu
 You can think of the Fourier transform as a continuous version of the Fourier series. Instead of summing over discrete wavelengths, we integrate over all possible wave numbers. The Fourier transform tells us how much of each wave number is present in our function, just like the Fourier coefficients tell us how much of each sine and cosine is present in a periodic function.
 :::
 
+## Parity and the real/imaginary parts
+Using
+$$
+e^{-ikx} = \cos(kx) - i\sin(kx),
+$$
+we can write the Fourier transform as
+$$
+\hat f(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)\cos(kx)\,dx - \frac{i}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)\sin(kx)\,dx.
+$$
+So the real part of $\hat f(k)$ comes from the cosine integral, and the imaginary part comes from the sine integral:
+$$
+\begin{aligned}
+\operatorname{Re}(\hat f(k)) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)\cos(kx)\,dx, \\
+\operatorname{Im}(\hat f(k)) &= -\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)\sin(kx)\,dx.
+\end{aligned}
+$$
+
+Now recall that $\cos(kx)$ is an even function of $x$, while $\sin(kx)$ is odd. This gives some very useful symmetry rules.
+
+- If $f$ is even, then $f(x)\cos(kx)$ is even and $f(x)\sin(kx)$ is odd. Therefore the sine integral is zero, so $\hat f(k)$ is purely real. In fact, $\hat f(k)$ is also even as a function of $k$.
+- If $f$ is odd, then $f(x)\cos(kx)$ is odd and $f(x)\sin(kx)$ is even. Therefore the cosine integral is zero, so $\hat f(k)$ is purely imaginary. In fact, $\hat f(k)$ is also odd as a function of $k$.
+
+More generally, any function can be split into its even and odd parts:
+$$
+f(x) = f_e(x) + f_o(x),
+$$
+where
+$$
+f_e(x) = \frac{f(x)+f(-x)}{2}, \qquad f_o(x) = \frac{f(x)-f(-x)}{2}.
+$$
+Then the Fourier transform of the even part contributes the real part, and the Fourier transform of the odd part contributes the imaginary part.
+
+::: {.callout-important}
+For a real-valued function $f$, the parity of $f$ tells us immediately what sort of Fourier transform we get:
+
+- If $f$ is even, then $\hat f(k)$ is purely real and even.
+- If $f$ is odd, then $\hat f(k)$ is purely imaginary and odd.
+- More generally, the even part of $f$ contributes to the real part of $\hat f$, and the odd part contributes to the imaginary part.
+
+This is often the quickest way to simplify a Fourier transform before doing any integration.
+:::
+
+::: {.callout-tip}
+So if $f$ is even, it is often enough to compute a cosine integral, and if $f$ is odd, it is often enough to compute a sine integral.
+:::
+
 ## Example
 Find the Fourier transform of
 $$

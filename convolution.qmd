@@ -37,6 +37,41 @@ You can think of this as:
 
 So convolution is a way of mixing two signals/functions.
 
+### Example (convolution of functions)
+Let
+$$
+f(x)=g(x)=
+\begin{cases}
+1 & |x|\le \frac{1}{2},\\
+0 & |x|>\frac{1}{2}.
+\end{cases}
+$$
+Find $(f*g)(x)$.
+
+::: {.callout-tip collapse="true"}
+## Solution
+By definition,
+$$
+(f*g)(x)=\int_{-\infty}^{\infty} f(\xi)\,g(x-\xi)\,d\xi.
+$$
+Here, $f(\xi)=1$ only on $\left[-\frac12,\frac12\right]$ and $g(x-\xi)=1$ only on $\left[x-\frac12,x+\frac12\right]$.
+So the integral is just the overlap length of these two intervals.
+
+If $|x|>1$, there is no overlap, so $(f*g)(x)=0$.
+
+If $|x|\le1$, the overlap length is $1-|x|$, so $(f*g)(x)=1-|x|$.
+
+Therefore
+$$
+(f*g)(x)=
+\begin{cases}
+1-|x| & |x|\le 1,\\
+0 & |x|>1.
+\end{cases}
+$$
+So convolving two box pulses gives a triangle pulse.
+:::
+
 ### Convolution theorem (Fourier transforms)
 The key result is:
 $$
@@ -51,6 +86,27 @@ Equivalently,
 $$
 \widehat{f\,g}(k)=\frac{1}{\sqrt{2\pi}}(\hat f * \hat g)(k).
 $$
+
+### Example (using the theorem, same functions)
+Using the same box function
+$$
+f(x)=g(x)=
+\begin{cases}
+1 & |x|\le \frac{1}{2},\\
+0 & |x|>\frac{1}{2},
+\end{cases}
+$$
+we have
+$$
+\hat f(k)=\frac{1}{\sqrt{2\pi}}\int_{-1/2}^{1/2}e^{-ikx}\,dx
+=\sqrt{\frac{2}{\pi}}\frac{\sin(k/2)}{k}.
+$$
+Since $f=g$, the convolution theorem gives
+$$
+\widehat{f*g}(k)=\hat f(k)\hat g(k)=\big(\hat f(k)\big)^2
+=\frac{2}{\pi}\left(\frac{\sin(k/2)}{k}\right)^2.
+$$
+So in Fourier space, the convolution is just a product.
 
 ::: {.callout-tip}
 For calculations, this is very useful: convolutions are hard, but multiplication is easy.

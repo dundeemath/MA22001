@@ -19,6 +19,10 @@ where the $a_n$ and $b_n$ are the _Fourier coefficients_.
 What this really says is that if we have a function that exactly repeats itself after some distance $L$, then we can write it as a sum of sines and cosines with wavelengths that are integer fractions of $L$. The Fourier coefficients tell us how much of each sine and cosine we need to add together to get back our original function.
 :::
 
+![A Fourier series approximation: adding more sine terms gives a waveform closer to a square wave.](https://commons.wikimedia.org/wiki/Special:FilePath/Fourier_series_for_square_wave.gif)
+
+Source: [Wikimedia Commons, *Fourier series for square wave.gif*](https://commons.wikimedia.org/wiki/File:Fourier_series_for_square_wave.gif), license CC BY-SA 3.0.
+
 Consider the function $f(x) = \sin x$. This is periodic with period $L = 2\pi$. It is already in the form of a Fourier series, with coefficients
 $$
 a_0 = 0, \quad a_n = 0 \text{ for all } n, \quad b_1 = 1, \quad b_n = 0 \text{ for } n \neq 1.

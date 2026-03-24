@@ -392,7 +392,9 @@ window.Quarto = {
   <li><a href="#convolution-theorem" id="toc-convolution-theorem" class="nav-link" data-scroll-target="#convolution-theorem">Convolution theorem</a>
   <ul class="collapse">
   <li><a href="#what-is-a-convolution" id="toc-what-is-a-convolution" class="nav-link" data-scroll-target="#what-is-a-convolution">What is a convolution?</a></li>
+  <li><a href="#example-convolution-of-functions" id="toc-example-convolution-of-functions" class="nav-link" data-scroll-target="#example-convolution-of-functions">Example (convolution of functions)</a></li>
   <li><a href="#convolution-theorem-fourier-transforms" id="toc-convolution-theorem-fourier-transforms" class="nav-link" data-scroll-target="#convolution-theorem-fourier-transforms">Convolution theorem (Fourier transforms)</a></li>
+  <li><a href="#example-using-the-theorem-same-functions" id="toc-example-using-the-theorem-same-functions" class="nav-link" data-scroll-target="#example-using-the-theorem-same-functions">Example (using the theorem, same functions)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -443,6 +445,43 @@ window.Quarto = {
 <p>You can think of this as: 1. Slide one function across the other. 2. Multiply them where they overlap. 3. Add up (integrate) the result.</p>
 <p>So convolution is a way of mixing two signals/functions.</p>
 </section>
+<section id="example-convolution-of-functions" class="level3">
+<h3 class="anchored" data-anchor-id="example-convolution-of-functions">Example (convolution of functions)</h3>
+<p>Let <span class="math display">\[
+f(x)=g(x)=
+\begin{cases}
+1 &amp; |x|\le \frac{1}{2},\\
+0 &amp; |x|&gt;\frac{1}{2}.
+\end{cases}
+\]</span> Find <span class="math inline">\((f*g)(x)\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>By definition, <span class="math display">\[
+(f*g)(x)=\int_{-\infty}^{\infty} f(\xi)\,g(x-\xi)\,d\xi.
+\]</span> Here, <span class="math inline">\(f(\xi)=1\)</span> only on <span class="math inline">\(\left[-\frac12,\frac12\right]\)</span> and <span class="math inline">\(g(x-\xi)=1\)</span> only on <span class="math inline">\(\left[x-\frac12,x+\frac12\right]\)</span>. So the integral is just the overlap length of these two intervals.</p>
+<p>If <span class="math inline">\(|x|&gt;1\)</span>, there is no overlap, so <span class="math inline">\((f*g)(x)=0\)</span>.</p>
+<p>If <span class="math inline">\(|x|\le1\)</span>, the overlap length is <span class="math inline">\(1-|x|\)</span>, so <span class="math inline">\((f*g)(x)=1-|x|\)</span>.</p>
+<p>Therefore <span class="math display">\[
+(f*g)(x)=
+\begin{cases}
+1-|x| &amp; |x|\le 1,\\
+0 &amp; |x|&gt;1.
+\end{cases}
+\]</span> So convolving two box pulses gives a triangle pulse.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="convolution-theorem-fourier-transforms" class="level3">
 <h3 class="anchored" data-anchor-id="convolution-theorem-fourier-transforms">Convolution theorem (Fourier transforms)</h3>
 <p>The key result is: <span class="math display">\[
@@ -452,6 +491,22 @@ window.Quarto = {
 <p>Equivalently, <span class="math display">\[
 \widehat{f\,g}(k)=\frac{1}{\sqrt{2\pi}}(\hat f * \hat g)(k).
 \]</span></p>
+</section>
+<section id="example-using-the-theorem-same-functions" class="level3">
+<h3 class="anchored" data-anchor-id="example-using-the-theorem-same-functions">Example (using the theorem, same functions)</h3>
+<p>Using the same box function <span class="math display">\[
+f(x)=g(x)=
+\begin{cases}
+1 &amp; |x|\le \frac{1}{2},\\
+0 &amp; |x|&gt;\frac{1}{2},
+\end{cases}
+\]</span> we have <span class="math display">\[
+\hat f(k)=\frac{1}{\sqrt{2\pi}}\int_{-1/2}^{1/2}e^{-ikx}\,dx
+=\sqrt{\frac{2}{\pi}}\frac{\sin(k/2)}{k}.
+\]</span> Since <span class="math inline">\(f=g\)</span>, the convolution theorem gives <span class="math display">\[
+\widehat{f*g}(k)=\hat f(k)\hat g(k)=\big(\hat f(k)\big)^2
+=\frac{2}{\pi}\left(\frac{\sin(k/2)}{k}\right)^2.
+\]</span> So in Fourier space, the convolution is just a product.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
