@@ -7,3 +7,9 @@ title: "Helpful links"
 - Most of the important results in this module are here: <https://en.wikipedia.org/wiki/Vector_calculus_identities>. Your formula sheet in the exam should be based off this.
 
 - The curvilinear co-ordinate results are summarised here: <https://en.wikipedia.org/wiki/Del_in_cylindrical_and_spherical_coordinates>.
+
+- On YouTube, you can find many good videos on all parts of this module. I particularly like 3Blue1Brown:
+    - Div and curl: <https://www.youtube.com/watch?v=rB83DpBJQsE>
+    - Fourier series: <https://www.youtube.com/watch?v=r6sGWTCMz2k>
+    - Fourier transforms: <https://www.youtube.com/watch?v=spUNpyF58BY>
+    - Convolutions: <https://www.youtube.com/watch?v=IaSGqQa5O-M>

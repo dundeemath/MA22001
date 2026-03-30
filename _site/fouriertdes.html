@@ -332,7 +332,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./fourierstheorem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fourier series theorems</span></a>
+ <span class="menu-text">Parseval’s theorem</span></a>
   </div>
 </li>
       </ul>
@@ -360,14 +360,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fouriertdes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Fourier transforms for Differential Equations</span></a>
+  <a href="./convolution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convolutions and Theorems</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./convolution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convolutions and Theorems</span></a>
+  <a href="./fouriertdes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Fourier transforms for Differential Equations</span></a>
   </div>
 </li>
       </ul>
@@ -394,6 +394,10 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
+  </ul></li>
+  <li><a href="#fourier-transforms-and-pdes" id="toc-fourier-transforms-and-pdes" class="nav-link" data-scroll-target="#fourier-transforms-and-pdes">Fourier transforms and PDEs</a>
+  <ul class="collapse">
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -528,6 +532,61 @@ Solution
 f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \frac{e^{-\frac{k^2}{2}}}{1 - k^2} e^{ikx}\,dk.
 \]</span> This integral does not have a simple closed-form expression in elementary functions. Because the integrand has poles at <span class="math inline">\(k=\pm 1\)</span>, this inverse transform must be interpreted with care (for example in a principal value/distributional sense).</p>
 <p>(As before, we can add on any solution to the homogeneous equation <span class="math inline">\(f''(x) + f(x) = 0\)</span> to get more solutions, but the one we have found is a particular solution to the inhomogeneous equation.)</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="fourier-transforms-and-pdes" class="level2">
+<h2 class="anchored" data-anchor-id="fourier-transforms-and-pdes">Fourier transforms and PDEs</h2>
+<p>Fourier transforms are also very useful for PDEs on the whole real line. The idea is to take the Fourier transform with respect to the spatial variable <span class="math inline">\(x\)</span>, while treating <span class="math inline">\(t\)</span> as a parameter.</p>
+<p>If <span class="math inline">\(u(x,t)\)</span> has Fourier transform <span class="math inline">\(\hat u(k,t)\)</span> in the <span class="math inline">\(x\)</span> variable, then <span class="math display">\[
+\widehat{{\frac{\partial u}{\partial t}}}(k,t) = {\frac{\partial \hat u}{\partial t}}(k,t)
+\qquad \text{and} \qquad
+\widehat{{\frac{\partial^2 u}{\partial x^2}}}(k,t) = -k^2 \hat u(k,t).
+\]</span> So a PDE can often be turned into an ODE in the variable <span class="math inline">\(t\)</span>.</p>
+<section id="example-2" class="level3">
+<h3 class="anchored" data-anchor-id="example-2">Example</h3>
+<p>Solve the heat equation <span class="math display">\[
+{\frac{\partial u}{\partial t}} = \alpha {\frac{\partial^2 u}{\partial x^2}},
+\]</span> for <span class="math inline">\(-\infty &lt; x &lt; \infty\)</span>, <span class="math inline">\(t&gt;0\)</span>, with initial condition <span class="math display">\[
+u(x,0) = e^{-\frac{x^2}{2}}.
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(\hat u(k,t)\)</span> be the Fourier transform of <span class="math inline">\(u(x,t)\)</span> with respect to <span class="math inline">\(x\)</span>. Taking the Fourier transform of the PDE gives <span class="math display">\[
+{\frac{\partial \hat u}{\partial t}} = -\alpha k^2 \hat u.
+\]</span> For each fixed <span class="math inline">\(k\)</span>, this is now an ordinary differential equation in <span class="math inline">\(t\)</span>. Its solution is <span class="math display">\[
+\hat u(k,t) = A(k)e^{-\alpha k^2 t},
+\]</span> where <span class="math inline">\(A(k)\)</span> is determined by the initial condition.</p>
+<p>At <span class="math inline">\(t=0\)</span> we have <span class="math display">\[
+\hat u(k,0) = A(k) = \widehat{e^{-x^2/2}}(k).
+\]</span> From the previous section, we know that <span class="math display">\[
+\widehat{e^{-x^2/2}}(k) = e^{-k^2/2}.
+\]</span> So <span class="math display">\[
+\hat u(k,t) = e^{-k^2/2}e^{-\alpha k^2 t}
+= e^{-(\frac{1}{2}+\alpha t)k^2}
+= e^{-\frac{1+2\alpha t}{2}k^2}.
+\]</span></p>
+<p>Now use the same Gaussian Fourier transform formula in reverse. Since the inverse Fourier transform of <span class="math inline">\(e^{-ck^2/2}\)</span> is <span class="math display">\[
+\frac{1}{\sqrt{c}}e^{-x^2/(2c)},
+\]</span> we get <span class="math display">\[
+u(x,t) = \frac{1}{\sqrt{1+2\alpha t}}e^{-\frac{x^2}{2(1+2\alpha t)}}.
+\]</span></p>
+<p>So the solution is <span class="math display">\[
+u(x,t) = \frac{1}{\sqrt{1+2\alpha t}}e^{-\frac{x^2}{2(1+2\alpha t)}}.
+\]</span></p>
+<p>This shows a nice feature of the heat equation: a Gaussian initial condition stays Gaussian, but spreads out and flattens as time increases.</p>
 </div>
 </div>
 </div>

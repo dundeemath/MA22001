@@ -28,6 +28,80 @@ These two equations are very similar in form to the Fourier series equations, bu
 You can think of the Fourier transform as a continuous version of the Fourier series. Instead of summing over discrete wavelengths, we integrate over all possible wave numbers. The Fourier transform tells us how much of each wave number is present in our function, just like the Fourier coefficients tell us how much of each sine and cosine is present in a periodic function.
 :::
 
+## Basic properties
+The Fourier transform has several algebraic properties that make it easy to manipulate functions before doing any integration.
+
+### Linearity
+If $f(x)$ has Fourier transform $\hat f(k)$ and $g(x)$ has Fourier transform $\hat g(k)$, then
+$$
+\widehat{af+bg}(k) = a\hat f(k) + b\hat g(k),
+$$
+for any constants $a$ and $b$.
+
+This follows directly from the linearity of the integral:
+$$
+\begin{aligned}
+\widehat{af+bg}(k)
+&= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty (af(x)+bg(x))e^{-ikx}\,dx \\
+&= a\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)e^{-ikx}\,dx \\
+&\qquad + b\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty g(x)e^{-ikx}\,dx \\
+&= a\hat f(k)+b\hat g(k).
+\end{aligned}
+$$
+
+### Scaling
+If $a\neq 0$, then the Fourier transform of $f(ax)$ is
+$$
+\widehat{f(ax)}(k) = \frac{1}{|a|}\hat f\!\left(\frac{k}{a}\right).
+$$
+
+To show this, start from
+$$
+\widehat{f(ax)}(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(ax)e^{-ikx}\,dx,
+$$
+and make the substitution $u=ax$, so $dx=du/a$. If $a<0$, the limits reverse, which produces the absolute value. This gives the stated result.^[If $a>0$, this is simply $\widehat{f(ax)}(k)=\frac{1}{a}\hat f(k/a)$.]
+
+So compressing a function in real space stretches its Fourier transform in frequency space, and vice versa.
+
+### Shifts in $x$
+If we shift the function in real space, then
+$$
+\widehat{f(x-a)}(k) = e^{-ika}\hat f(k).
+$$
+
+This is straightforward to show using the substitution $u=x-a$:
+$$
+\begin{aligned}
+\widehat{f(x-a)}(k)
+&= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x-a)e^{-ikx}\,dx \\
+&= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(u)e^{-ik(u+a)}\,du \\
+&= e^{-ika}\hat f(k).
+\end{aligned}
+$$
+
+### Multiplication by a complex exponential
+Multiplying by $e^{iax}$ shifts the Fourier transform:
+$$
+\widehat{e^{iax}f(x)}(k) = \hat f(k-a).
+$$
+
+This follows because
+$$
+\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{iax}f(x)e^{-ikx}\,dx
+= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)e^{-i(k-a)x}\,dx.
+$$
+
+::: {.callout-important}
+The most useful basic rules are:
+
+- $\widehat{af+bg}(k)=a\hat f(k)+b\hat g(k)$
+- $\widehat{f(ax)}(k)=\frac{1}{|a|}\hat f(k/a)$ for $a\neq 0$
+- $\widehat{f(x-a)}(k)=e^{-ika}\hat f(k)$
+- $\widehat{e^{iax}f(x)}(k)=\hat f(k-a)$
+
+These let us recycle transforms we already know instead of recomputing integrals from scratch.
+:::
+
 ## Parity and the real/imaginary parts
 Using
 $$

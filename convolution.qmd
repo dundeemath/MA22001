@@ -73,14 +73,14 @@ So convolving two box pulses gives a triangle pulse.
 :::
 
 ### Convolution theorem (Fourier transforms)
-The key result is:
+With our Fourier transform convention, the key result is:
 $$
-\widehat{f*g}(k)=\hat f(k)\,\hat g(k).
+\widehat{f*g}(k)=\sqrt{2\pi}\,\hat f(k)\,\hat g(k).
 $$
 
 So:
-1. Convolution in $x$-space becomes simple multiplication in $k$-space.
-2. Multiplication in $x$-space becomes convolution in $k$-space.
+1. Convolution in $x$-space becomes multiplication in $k$-space, up to the factor $\sqrt{2\pi}$.
+2. Multiplication in $x$-space becomes convolution in $k$-space, up to the factor $1/\sqrt{2\pi}$.
 
 Equivalently,
 $$
@@ -101,12 +101,15 @@ $$
 \hat f(k)=\frac{1}{\sqrt{2\pi}}\int_{-1/2}^{1/2}e^{-ikx}\,dx
 =\sqrt{\frac{2}{\pi}}\frac{\sin(k/2)}{k}.
 $$
+At $k=0$, this is understood by continuity, giving $\hat f(0)=1/\sqrt{2\pi}$.
+
 Since $f=g$, the convolution theorem gives
 $$
-\widehat{f*g}(k)=\hat f(k)\hat g(k)=\big(\hat f(k)\big)^2
-=\frac{2}{\pi}\left(\frac{\sin(k/2)}{k}\right)^2.
+\widehat{f*g}(k)=\sqrt{2\pi}\,\hat f(k)\hat g(k)
+=\sqrt{2\pi}\,\big(\hat f(k)\big)^2
+=2\sqrt{\frac{2}{\pi}}\left(\frac{\sin(k/2)}{k}\right)^2.
 $$
-So in Fourier space, the convolution is just a product.
+So in Fourier space, the convolution becomes a product up to a constant factor.
 
 ::: {.callout-tip}
 For calculations, this is very useful: convolutions are hard, but multiplication is easy.

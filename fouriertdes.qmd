@@ -5,6 +5,7 @@ title: "Fourier transforms for Differential Equations"
 ::: {.hidden}
  \providecommand{\vv}[1]{{\mathbf{#1}}}
  \providecommand{\pd}[2]{{\frac{\partial #1}{\partial #2}}}
+ \providecommand{\pdd}[2]{{\frac{\partial^2 #1}{\partial #2^2}}}
 :::
 
 Our main reason for seeing Fourier transforms in this module is to solve differential equations. They are useful because of one important property:
@@ -117,4 +118,69 @@ This integral does not have a simple closed-form expression in elementary functi
 Because the integrand has poles at $k=\pm 1$, this inverse transform must be interpreted with care (for example in a principal value/distributional sense).
 
 (As before, we can add on any solution to the homogeneous equation $f''(x) + f(x) = 0$ to get more solutions, but the one we have found is a particular solution to the inhomogeneous equation.)
+:::
+
+## Fourier transforms and PDEs
+Fourier transforms are also very useful for PDEs on the whole real line. The idea is to take the Fourier transform with respect to the spatial variable $x$, while treating $t$ as a parameter.
+
+If $u(x,t)$ has Fourier transform $\hat u(k,t)$ in the $x$ variable, then
+$$
+\widehat{\pd{u}{t}}(k,t) = \pd{\hat u}{t}(k,t)
+\qquad \text{and} \qquad
+\widehat{\pdd{u}{x}}(k,t) = -k^2 \hat u(k,t).
+$$
+So a PDE can often be turned into an ODE in the variable $t$.
+
+### Example
+Solve the heat equation
+$$
+\pd{u}{t} = \alpha \pdd{u}{x},
+$$
+for $-\infty < x < \infty$, $t>0$, with initial condition
+$$
+u(x,0) = e^{-\frac{x^2}{2}}.
+$$
+
+::: {.callout-tip collapse="true"}
+## Solution
+Let $\hat u(k,t)$ be the Fourier transform of $u(x,t)$ with respect to $x$. Taking the Fourier transform of the PDE gives
+$$
+\pd{\hat u}{t} = -\alpha k^2 \hat u.
+$$
+For each fixed $k$, this is now an ordinary differential equation in $t$. Its solution is
+$$
+\hat u(k,t) = A(k)e^{-\alpha k^2 t},
+$$
+where $A(k)$ is determined by the initial condition.
+
+At $t=0$ we have
+$$
+\hat u(k,0) = A(k) = \widehat{e^{-x^2/2}}(k).
+$$
+From the previous section, we know that
+$$
+\widehat{e^{-x^2/2}}(k) = e^{-k^2/2}.
+$$
+So
+$$
+\hat u(k,t) = e^{-k^2/2}e^{-\alpha k^2 t}
+= e^{-(\frac{1}{2}+\alpha t)k^2}
+= e^{-\frac{1+2\alpha t}{2}k^2}.
+$$
+
+Now use the same Gaussian Fourier transform formula in reverse. Since the inverse Fourier transform of $e^{-ck^2/2}$ is
+$$
+\frac{1}{\sqrt{c}}e^{-x^2/(2c)},
+$$
+we get
+$$
+u(x,t) = \frac{1}{\sqrt{1+2\alpha t}}e^{-\frac{x^2}{2(1+2\alpha t)}}.
+$$
+
+So the solution is
+$$
+u(x,t) = \frac{1}{\sqrt{1+2\alpha t}}e^{-\frac{x^2}{2(1+2\alpha t)}}.
+$$
+
+This shows a nice feature of the heat equation: a Gaussian initial condition stays Gaussian, but spreads out and flattens as time increases.
 :::

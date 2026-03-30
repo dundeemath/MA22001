@@ -332,7 +332,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./fourierstheorem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fourier series theorems</span></a>
+ <span class="menu-text">Parseval’s theorem</span></a>
   </div>
 </li>
       </ul>
@@ -360,14 +360,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fouriertdes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fourier transforms for Differential Equations</span></a>
+  <a href="./convolution.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Convolutions and Theorems</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./convolution.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Convolutions and Theorems</span></a>
+  <a href="./fouriertdes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier transforms for Differential Equations</span></a>
   </div>
 </li>
       </ul>
@@ -484,10 +484,10 @@ Solution
 </section>
 <section id="convolution-theorem-fourier-transforms" class="level3">
 <h3 class="anchored" data-anchor-id="convolution-theorem-fourier-transforms">Convolution theorem (Fourier transforms)</h3>
-<p>The key result is: <span class="math display">\[
-\widehat{f*g}(k)=\hat f(k)\,\hat g(k).
+<p>With our Fourier transform convention, the key result is: <span class="math display">\[
+\widehat{f*g}(k)=\sqrt{2\pi}\,\hat f(k)\,\hat g(k).
 \]</span></p>
-<p>So: 1. Convolution in <span class="math inline">\(x\)</span>-space becomes simple multiplication in <span class="math inline">\(k\)</span>-space. 2. Multiplication in <span class="math inline">\(x\)</span>-space becomes convolution in <span class="math inline">\(k\)</span>-space.</p>
+<p>So: 1. Convolution in <span class="math inline">\(x\)</span>-space becomes multiplication in <span class="math inline">\(k\)</span>-space, up to the factor <span class="math inline">\(\sqrt{2\pi}\)</span>. 2. Multiplication in <span class="math inline">\(x\)</span>-space becomes convolution in <span class="math inline">\(k\)</span>-space, up to the factor <span class="math inline">\(1/\sqrt{2\pi}\)</span>.</p>
 <p>Equivalently, <span class="math display">\[
 \widehat{f\,g}(k)=\frac{1}{\sqrt{2\pi}}(\hat f * \hat g)(k).
 \]</span></p>
@@ -503,10 +503,12 @@ f(x)=g(x)=
 \]</span> we have <span class="math display">\[
 \hat f(k)=\frac{1}{\sqrt{2\pi}}\int_{-1/2}^{1/2}e^{-ikx}\,dx
 =\sqrt{\frac{2}{\pi}}\frac{\sin(k/2)}{k}.
-\]</span> Since <span class="math inline">\(f=g\)</span>, the convolution theorem gives <span class="math display">\[
-\widehat{f*g}(k)=\hat f(k)\hat g(k)=\big(\hat f(k)\big)^2
-=\frac{2}{\pi}\left(\frac{\sin(k/2)}{k}\right)^2.
-\]</span> So in Fourier space, the convolution is just a product.</p>
+\]</span> At <span class="math inline">\(k=0\)</span>, this is understood by continuity, giving <span class="math inline">\(\hat f(0)=1/\sqrt{2\pi}\)</span>.</p>
+<p>Since <span class="math inline">\(f=g\)</span>, the convolution theorem gives <span class="math display">\[
+\widehat{f*g}(k)=\sqrt{2\pi}\,\hat f(k)\hat g(k)
+=\sqrt{2\pi}\,\big(\hat f(k)\big)^2
+=2\sqrt{\frac{2}{\pi}}\left(\frac{\sin(k/2)}{k}\right)^2.
+\]</span> So in Fourier space, the convolution becomes a product up to a constant factor.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

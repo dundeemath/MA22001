@@ -332,7 +332,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./fourierstheorem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fourier series theorems</span></a>
+ <span class="menu-text">Parseval’s theorem</span></a>
   </div>
 </li>
       </ul>
@@ -360,14 +360,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fouriertdes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fourier transforms for Differential Equations</span></a>
+  <a href="./convolution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convolutions and Theorems</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./convolution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convolutions and Theorems</span></a>
+  <a href="./fouriertdes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier transforms for Differential Equations</span></a>
   </div>
 </li>
       </ul>
@@ -389,6 +389,13 @@ window.Quarto = {
    
   <ul>
   <li><a href="#definition-of-the-fourier-transform" id="toc-definition-of-the-fourier-transform" class="nav-link active" data-scroll-target="#definition-of-the-fourier-transform">Definition of the Fourier transform</a></li>
+  <li><a href="#basic-properties" id="toc-basic-properties" class="nav-link" data-scroll-target="#basic-properties">Basic properties</a>
+  <ul class="collapse">
+  <li><a href="#linearity" id="toc-linearity" class="nav-link" data-scroll-target="#linearity">Linearity</a></li>
+  <li><a href="#scaling" id="toc-scaling" class="nav-link" data-scroll-target="#scaling">Scaling</a></li>
+  <li><a href="#shifts-in-x" id="toc-shifts-in-x" class="nav-link" data-scroll-target="#shifts-in-x">Shifts in <span class="math inline">\(x\)</span></a></li>
+  <li><a href="#multiplication-by-a-complex-exponential" id="toc-multiplication-by-a-complex-exponential" class="nav-link" data-scroll-target="#multiplication-by-a-complex-exponential">Multiplication by a complex exponential</a></li>
+  </ul></li>
   <li><a href="#parity-and-the-realimaginary-parts" id="toc-parity-and-the-realimaginary-parts" class="nav-link" data-scroll-target="#parity-and-the-realimaginary-parts">Parity and the real/imaginary parts</a></li>
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a>
   <ul class="collapse">
@@ -445,6 +452,79 @@ Tip
 <p>You can think of the Fourier transform as a continuous version of the Fourier series. Instead of summing over discrete wavelengths, we integrate over all possible wave numbers. The Fourier transform tells us how much of each wave number is present in our function, just like the Fourier coefficients tell us how much of each sine and cosine is present in a periodic function.</p>
 </div>
 </div>
+</section>
+<section id="basic-properties" class="level2">
+<h2 class="anchored" data-anchor-id="basic-properties">Basic properties</h2>
+<p>The Fourier transform has several algebraic properties that make it easy to manipulate functions before doing any integration.</p>
+<section id="linearity" class="level3">
+<h3 class="anchored" data-anchor-id="linearity">Linearity</h3>
+<p>If <span class="math inline">\(f(x)\)</span> has Fourier transform <span class="math inline">\(\hat f(k)\)</span> and <span class="math inline">\(g(x)\)</span> has Fourier transform <span class="math inline">\(\hat g(k)\)</span>, then <span class="math display">\[
+\widehat{af+bg}(k) = a\hat f(k) + b\hat g(k),
+\]</span> for any constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</p>
+<p>This follows directly from the linearity of the integral: <span class="math display">\[
+\begin{aligned}
+\widehat{af+bg}(k)
+&amp;= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty (af(x)+bg(x))e^{-ikx}\,dx \\
+&amp;= a\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)e^{-ikx}\,dx \\
+&amp;\qquad + b\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty g(x)e^{-ikx}\,dx \\
+&amp;= a\hat f(k)+b\hat g(k).
+\end{aligned}
+\]</span></p>
+</section>
+<section id="scaling" class="level3">
+<h3 class="anchored" data-anchor-id="scaling">Scaling</h3>
+<p>If <span class="math inline">\(a\neq 0\)</span>, then the Fourier transform of <span class="math inline">\(f(ax)\)</span> is <span class="math display">\[
+\widehat{f(ax)}(k) = \frac{1}{|a|}\hat f\!\left(\frac{k}{a}\right).
+\]</span></p>
+<p>To show this, start from <span class="math display">\[
+\widehat{f(ax)}(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(ax)e^{-ikx}\,dx,
+\]</span> and make the substitution <span class="math inline">\(u=ax\)</span>, so <span class="math inline">\(dx=du/a\)</span>. If <span class="math inline">\(a&lt;0\)</span>, the limits reverse, which produces the absolute value. This gives the stated result.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>So compressing a function in real space stretches its Fourier transform in frequency space, and vice versa.</p>
+</section>
+<section id="shifts-in-x" class="level3">
+<h3 class="anchored" data-anchor-id="shifts-in-x">Shifts in <span class="math inline">\(x\)</span></h3>
+<p>If we shift the function in real space, then <span class="math display">\[
+\widehat{f(x-a)}(k) = e^{-ika}\hat f(k).
+\]</span></p>
+<p>This is straightforward to show using the substitution <span class="math inline">\(u=x-a\)</span>: <span class="math display">\[
+\begin{aligned}
+\widehat{f(x-a)}(k)
+&amp;= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x-a)e^{-ikx}\,dx \\
+&amp;= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(u)e^{-ik(u+a)}\,du \\
+&amp;= e^{-ika}\hat f(k).
+\end{aligned}
+\]</span></p>
+</section>
+<section id="multiplication-by-a-complex-exponential" class="level3">
+<h3 class="anchored" data-anchor-id="multiplication-by-a-complex-exponential">Multiplication by a complex exponential</h3>
+<p>Multiplying by <span class="math inline">\(e^{iax}\)</span> shifts the Fourier transform: <span class="math display">\[
+\widehat{e^{iax}f(x)}(k) = \hat f(k-a).
+\]</span></p>
+<p>This follows because <span class="math display">\[
+\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{iax}f(x)e^{-ikx}\,dx
+= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)e^{-i(k-a)x}\,dx.
+\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The most useful basic rules are:</p>
+<ul>
+<li><span class="math inline">\(\widehat{af+bg}(k)=a\hat f(k)+b\hat g(k)\)</span></li>
+<li><span class="math inline">\(\widehat{f(ax)}(k)=\frac{1}{|a|}\hat f(k/a)\)</span> for <span class="math inline">\(a\neq 0\)</span></li>
+<li><span class="math inline">\(\widehat{f(x-a)}(k)=e^{-ika}\hat f(k)\)</span></li>
+<li><span class="math inline">\(\widehat{e^{iax}f(x)}(k)=\hat f(k-a)\)</span></li>
+</ul>
+<p>These let us recycle transforms we already know instead of recomputing integrals from scratch.</p>
+</div>
+</div>
+</section>
 </section>
 <section id="parity-and-the-realimaginary-parts" class="level2">
 <h2 class="anchored" data-anchor-id="parity-and-the-realimaginary-parts">Parity and the real/imaginary parts</h2>
@@ -507,7 +587,7 @@ Tip
 f(x) = e^{-\frac{x^2}{2}}.
 \]</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -516,7 +596,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>We have <span class="math display">\[
 \hat f(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{x^2}{2}} e^{-ikx}\,dx.
@@ -545,7 +625,7 @@ x^2 + 2ikx = (x + ik)^2 + k^2,
 \end{cases}
 \]</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -554,7 +634,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>We have <span class="math display">\[
 f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \hat f(k) e^{ikx}\,dk = \frac{1}{\sqrt{2\pi}}\int_{-1}^1 e^{ikx}\,dk.
@@ -574,6 +654,7 @@ f(x) = \frac{1}{\sqrt{2\pi}}\left[ \frac{e^{ikx}}{ix} \right]_{-1}^1 = \frac{1}{
 
 <ol>
 <li id="fn1"><p>Lots of different conventions exist for the Fourier transform, this is one of the most common.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>If <span class="math inline">\(a&gt;0\)</span>, this is simply <span class="math inline">\(\widehat{f(ax)}(k)=\frac{1}{a}\hat f(k/a)\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
